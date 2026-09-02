@@ -707,7 +707,8 @@
                 <h2 class="category-title" data-fr="2. Produits Alimentaires & En Vrac" data-en="2. Food Products & Bulk">2. Produits Alimentaires & En Vrac</h2>
                 <div class="products-grid">
                     
-                   <style>
+    
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -744,6 +745,7 @@
             text-transform: uppercase;
             margin-bottom: 15px;
             letter-spacing: 0.5px;
+            text-align: center; /* Centré explicitement */
         }
 
         .section-separator {
@@ -759,13 +761,15 @@
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.5;
+            text-align: center; /* Centré explicitement */
         }
 
-        /* --- CATALOGUE DES PRODUITS --- */
+        /* --- CATALOGUE DES PRODUITS : Cartes côte à côte (Grid fluide) --- */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
+            justify-content: center;
         }
 
         .product-card {
@@ -901,6 +905,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-align: center; /* Titres de section de la modal centrés ou structurés */
         }
 
         .slider-controls-hint {
@@ -1082,8 +1087,76 @@
     </div>
 
     <script>
-        // --- BASE DE DONNÉES DES 17 PRODUITS UNIQUES ---
+        // --- BASE DE DONNÉES DES PRODUITS AVEC LES 15 IMAGES INTÉGRÉES ---
         const productsDatabase = [
+            {
+                name: "Sucre Crystal Blanc",
+                image: "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
+                origin: "Brésil / Grupo Bazan",
+                ref: "CCS-SUCRE-BLANC",
+                cond: "Sacs de 50 kg (Poids Net)",
+                qual: "Açúcar Cristal White - Grade A",
+                log: "Empotage conteneur sécurisé",
+                extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
+                videoLoop: "videos/sucre.mp4",
+                images: [
+                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.36.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.20 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.20.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.43.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.22.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.43 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.36.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.20 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.20.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.43.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.22.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.43 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg"
+                ]
+            },
+            {
+                name: "Piment Rouge",
+                image: "WhatsApp Image 2026-09-02 at 12.27.37 (1).jpeg",
+                origin: "Inde / International",
+                ref: "CCS-PIMENT-ROUGE",
+                cond: "Sacs de 10 kg (Poids Net)",
+                qual: "Grade A Premium - Best Foods",
+                log: "Empotage conteneur sécurisé",
+                extra: "Piment rouge entier de qualité supérieure Best Foods, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
+                videoLoop: "videos/piment-rouge.mp4",
+                images: [
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (2).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (3).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (4).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (3).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (4).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (3)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (4)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (1)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (2)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (3)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (4)_2.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (3).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.53 (4).jpeg"
+                ]
+            },
+            {
+                name: "Poivre Noir",
+                image: "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                origin: "Brésil / International",
+                ref: "CCS-POIVRE-03",
+                cond: "Sacs de 25 kg / Cartons",
+                qual: "Grade A Premium - Best Foods",
+                log: "Empotage conteneur sécurisé",
+                extra: "Poivre noir Best Foods de qualité supérieure, récolté et conditionné avec soin.",
+                videoLoop: "videos/poivre-noir.mp4",
+                images: Array(15).fill("WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg")
+            },
             {
                 name: "Ananas Sarama",
                 image: "produit_ananas-sarama-1.jpg",
@@ -1092,8 +1165,9 @@
                 cond: "Carton / Palette",
                 qual: "Extra Frais / Conserve",
                 log: "Optimisé frigo & conteneur",
-                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné pour sa teneur en sucre et sa qualité gustative supérieure. Traçabilité complète assurée de la récolte jusqu'aux entrepôts logistiques CCS.",
-                videoLoop: "videos/ananas-sarama.mp4"
+                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
+                videoLoop: "videos/ananas-sarama.mp4",
+                images: Array(15).fill("produit_ananas-sarama-1.jpg")
             },
             {
                 name: "Café Sélection CCS",
@@ -1103,8 +1177,9 @@
                 cond: "Sacs / Paquets étanches",
                 qual: "100% Pur Arabica / Robusta",
                 log: "Stockage en milieu sec ventilé",
-                extra: "Café d'exception torréfié et emballé sous vide pour préserver tous ses arômes. Conditionnement optimisé pour les opérations d'import-export en gros volumes.",
-                videoLoop: "videos/cafe.mp4"
+                extra: "Café d'exception torréfié et emballé sous vide.",
+                videoLoop: "videos/cafe.mp4",
+                images: Array(15).fill("produit_cafe.jpg")
             },
             {
                 name: "Clous de Girofle",
@@ -1114,8 +1189,9 @@
                 cond: "Sacs de jute / Cartons",
                 qual: "Grade A Premium",
                 log: "Protection contre l'humidité",
-                extra: "Clous de girofle aux notes intenses, récoltés à maturité et contrôlés selon des critères stricts de pureté et d'arôme.",
-                videoLoop: "videos/clous-de-girofle.mp4"
+                extra: "Clous de girofle aux notes intenses, récoltés à maturité.",
+                videoLoop: "videos/clous-de-girofle.mp4",
+                images: Array(15).fill("produit_clous-de-girofle.jpg")
             },
             {
                 name: "Feuilles de Laurier",
@@ -1125,19 +1201,37 @@
                 cond: "Sachets protecteurs / Cartons",
                 qual: "Séchées naturellement",
                 log: "Empotage rigoureux en conteneur",
-                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé et leur intégrité physique lors du transport maritime et routier.",
-                videoLoop: "videos/feuilles-laurier.mp4"
+                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
+                videoLoop: "videos/feuilles-laurier.mp4",
+                images: Array(15).fill("produit_feuilles-laurier.jpg")
             },
             {
                 name: "Huiles Trois Continental",
-                image: "produit_huiles-trois-continental.jpg",
-                origin: "International",
+                image: "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
+                origin: "Malaisie / International",
                 ref: "CCS-HUILE-05",
-                cond: "Bidons / Bouteilles / Fûts",
-                qual: "Qualité Alimentaire Supérieure",
-                log: "Palettisation anti-chute",
-                extra: "Huile de cuisson de marque Trois Continental, idéale pour l'alimentation générale et la distribution de masse à l'international.",
-                videoLoop: "videos/huiles-trois-continental.mp4"
+                cond: "Bidons de 20 Litres",
+                qual: "100% pure huile végétale pour la cuisine",
+                log: "Palettisation et empotage sécurisé",
+                extra: "Huile végétale pure Sarama / Trois Continental de qualité supérieure, conditionnée en bidons de 20 litres. Richesse et stabilité garanties pour toutes les cuissons.",
+                videoLoop: "videos/huiles-trois-continental.mp4",
+                images: [
+                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
+                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg"
+                ]
             },
             {
                 name: "Jus d'Orange Trois Continental",
@@ -1147,8 +1241,9 @@
                 cond: "Briques / Bouteilles PET",
                 qual: "Pur jus / Nectar",
                 log: "Chaîne du froid respectée",
-                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés, offrant une excellente stabilité logistique en entrepôt tempéré.",
-                videoLoop: "videos/jus-orange-trois.mp4"
+                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
+                videoLoop: "videos/jus-orange-trois.mp4",
+                images: Array(15).fill("produit_jus-orange-trois.jpg")
             },
             {
                 name: "Lait Concentré Touba",
@@ -1158,8 +1253,9 @@
                 cond: "Boîtes métalliques / Cartons",
                 qual: "Onctueux et riche",
                 log: "Stockage longue conservation",
-                extra: "Lait concentré sucré de marque Touba, très apprécié pour sa texture onctueuse et sa longue durée de conservation en rayon.",
-                videoLoop: "videos/lait-concentre-touba.mp4"
+                extra: "Lait concentré sucré de marque Touba.",
+                videoLoop: "videos/lait-concentre-touba.mp4",
+                images: Array(15).fill("produit_lait-concentre-touba.jpg")
             },
             {
                 name: "Lait Évaporé Touba",
@@ -1169,8 +1265,9 @@
                 cond: "Boîtes de conserve étanches",
                 qual: "Standard professionnel",
                 log: "Empilage sécurisé sur palettes",
-                extra: "Lait évaporé Touba, idéal pour les préparations culinaires et les boissons chaudes, bénéficiant d'un conditionnement ultra-résistant.",
-                videoLoop: "videos/lait-evapore-touba.mp4"
+                extra: "Lait évaporé Touba pour préparations culinaires.",
+                videoLoop: "videos/lait-evapore-touba.mp4",
+                images: Array(15).fill("produit_lait-evapore-touba.jpg")
             },
             {
                 name: "Lait en Poudre Victoria",
@@ -1180,8 +1277,9 @@
                 cond: "Sachets / Boîtes hermétiques",
                 qual: "Enrichi en vitamines",
                 log: "Protection anti-humidité",
-                extra: "Lait en poudre Victoria, formulé pour une dissolution rapide et une excellente conservation dans les climats tropicaux.",
-                videoLoop: "videos/lait-poudre-victoria.mp4"
+                extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
+                videoLoop: "videos/lait-poudre-victoria.mp4",
+                images: Array(15).fill("produit_lait-poudre-victoria.jpg")
             },
             {
                 name: "Papier Smart Copy",
@@ -1191,8 +1289,9 @@
                 cond: "Rames de 500 feuilles (A4/A3)",
                 qual: "80g/m² Haute Blancheur",
                 log: "Film étanche anti-humidité",
-                extra: "Papier de photocopie Smart Copy haut de gamme, conçu pour les impressions haute vitesse sans bourrage papier.",
-                videoLoop: "videos/papier-smart-copy.mp4"
+                extra: "Papier de photocopie Smart Copy haut de gamme.",
+                videoLoop: "videos/papier-smart-copy.mp4",
+                images: Array(15).fill("produit_papier-smart-copy-1.jpg")
             },
             {
                 name: "Pâte de Tomate Sarama",
@@ -1202,8 +1301,9 @@
                 cond: "Boîtes / Sachets doypack",
                 qual: "Concentré 28-30% Brix",
                 log: "Conditionnement antichoc",
-                extra: "Pâte de tomate Sarama riche en goût et en couleur, indispensable pour les cuisines professionnelles et familiales.",
-                videoLoop: "videos/pate-tomate-sarama.mp4"
+                extra: "Pâte de tomate Sarama riche en goût.",
+                videoLoop: "videos/pate-tomate-sarama.mp4",
+                images: Array(15).fill("produit_pate-tomate-sarama-1.jpg")
             },
             {
                 name: "Petits Pois en Conserve",
@@ -1213,19 +1313,9 @@
                 cond: "Boîtes métalliques",
                 qual: "Tendres et savoureux",
                 log: "Stockage tempéré",
-                extra: "Petits pois sélectionnés cueillis et mis en conserve le jour même pour garantir un croquant et une fraicheur irréprochables.",
-                videoLoop: "videos/petits-pois.mp4"
-            },
-            {
-                name: "Poivre Noir",
-                image: "produit_poivre-noir.jpg",
-                origin: "International",
-                ref: "CCS-POIVRE-13",
-                cond: "Sachets / Moulins étanches",
-                qual: "Aromatique intense",
-                log: "Protection contre l'humidité",
-                extra: "Poivre noir rigoureusement trié, reconnu pour son piquant chaleureux et ses notes boisées caractéristiques.",
-                videoLoop: "videos/poivre-noir.mp4"
+                extra: "Petits pois sélectionnés mis en conserve le jour même.",
+                videoLoop: "videos/petits-pois.mp4",
+                images: Array(15).fill("produit_petits-pois.jpg")
             },
             {
                 name: "Raisins Secs",
@@ -1235,8 +1325,9 @@
                 cond: "Cartons de 10kg / Sachets",
                 qual: "Moelleux et sucrés",
                 log: "Atmosphère contrôlée",
-                extra: "Raisins secs sélectionnés, riches en énergie et naturellement sucrés, parfaits pour l'industrie agroalimentaire et la pâtisserie.",
-                videoLoop: "videos/raisins-secs.mp4"
+                extra: "Raisins secs sélectionnés, riches en énergie.",
+                videoLoop: "videos/raisins-secs.mp4",
+                images: Array(15).fill("produit_raisins-secs.jpg")
             },
             {
                 name: "Riz Moba (100% Brisure)",
@@ -1246,8 +1337,25 @@
                 cond: "Sacs tissés 25kg / 50kg",
                 qual: "Brisure de riz de qualité",
                 log: "Empotage conteneur lourd",
-                extra: "Riz Moba 100% brisure, très prisé pour sa capacité d'absorption des sauces et sa cuisson rapide homogène.",
-                videoLoop: "videos/riz-moba.mp4"
+                extra: "Riz Moba 100% brisure, cuisson rapide homogène.",
+                videoLoop: "videos/riz-moba.mp4",
+                images: [
+                    "WhatsApp Image 2026-09-02 at 12.15.32.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.17.14.jpeg",
+                    "00_0.jpg",
+                    "00_1.jpg",
+                    "00_2.jpg",
+                    "00_3.jpg",
+                    "00_4.jpg",
+                    "00_5.jpg",
+                    "00_6.jpg",
+                    "00_7.jpg",
+                    "WhatsApp Image 2026-09-02 at 12.15.32.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.17.14.jpeg",
+                    "00_0.jpg",
+                    "00_1.jpg",
+                    "00_2.jpg"
+                ]
             },
             {
                 name: "Riz Oriba",
@@ -1257,19 +1365,53 @@
                 cond: "Sacs de 25kg / 50kg",
                 qual: "Grains longs sélectionnés",
                 log: "Stockage entrepôt sec",
-                extra: "Riz Oriba de premier choix, garantissant des grains entiers, parfumés et non collants après cuisson.",
-                videoLoop: "videos/riz-oriba.mp4"
+                extra: "Riz Oriba de premier choix, grains entiers parfumés.",
+                videoLoop: "videos/riz-oriba.mp4",
+                images: [
+                    "00_0(1).jpg",
+                    "00_1(1).jpg",
+                    "00_2(1).jpg",
+                    "00_3(1).jpg",
+                    "00_4(1).jpg",
+                    "00_5(1).jpg",
+                    "00_6(1).jpg",
+                    "00_7(1).jpg",
+                    "00_0(1).jpg",
+                    "00_1(1).jpg",
+                    "00_2(1).jpg",
+                    "00_3(1).jpg",
+                    "00_4(1).jpg",
+                    "00_5(1).jpg",
+                    "00_6(1).jpg"
+                ]
             },
             {
                 name: "Tamarin",
-                image: "produit_tamarin.jpg",
+                image: "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
                 origin: "Afrique / International",
                 ref: "CCS-TAMARIN-17",
                 cond: "Vrac / Cartons / Sachets",
                 qual: "Pulpe naturelle sélectionnée",
                 log: "Conditionnement étanche",
-                extra: "Tamarin de qualité supérieure, utilisé traditionnellement pour ses vertus et ses saveurs acidulées uniques en cuisine et boissons.",
-                videoLoop: "videos/tamarin.mp4"
+                extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg. Idéal pour la cuisine, les boissons et les préparations traditionnelles.",
+                videoLoop: "videos/tamarin.mp4",
+                images: [
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (5).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (6).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (5).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (2).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (3).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (5).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (6).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.37 (5).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (1).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (2).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38 (3).jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg"
+                ]
             }
         ];
 
@@ -1294,7 +1436,7 @@
         let currentSlideIndex = 0;
         let activeProductImages = [];
         let sliderInterval = null;
-        let isPlaying = true; // État de lecture automatique du slider
+        let isPlaying = true;
 
         function openProductModal(index) {
             currentProductIndex = index;
@@ -1302,10 +1444,7 @@
             isPlaying = true;
             const prod = productsDatabase[index];
 
-            activeProductImages = [];
-            for (let imgIdx = 1; imgIdx <= 15; imgIdx++) {
-                activeProductImages.push(`https://via.placeholder.com/900x500/002664/ffffff?text=${encodeURIComponent(prod.name)}+-+Chargement+${imgIdx}`);
-            }
+            activeProductImages = prod.images;
 
             document.getElementById('modalProductName').innerText = prod.name;
             document.getElementById('specOrigin').innerText = prod.origin;
@@ -1347,14 +1486,13 @@
             updateSlideImage();
         }
 
-        // --- GESTION DU DÉFILEMENT AUTOMATIQUE AVEC PAUSE / REPRISE AU CLIC ---
         function startAutoPlay() {
             stopAutoPlay();
             sliderInterval = setInterval(() => {
                 if (isPlaying) {
                     nextSlide();
                 }
-            }, 3000); // Change d'image toutes les 3 secondes
+            }, 3000);
         }
 
         function stopAutoPlay() {
@@ -1376,7 +1514,7 @@
             }
         }
     </script>
-                </div>
+
                 <!-- SECTION : PREUVES ET OPÉRATIONS DE CHARGEMENT -->
                 <div class="evidence-section-wrapper">
                     <h2 class="category-title" data-fr="3. Preuves & Opérations de Chargement" data-en="3. Evidence & Loading Operations">3. Preuves & Opérations de Chargement</h2>
