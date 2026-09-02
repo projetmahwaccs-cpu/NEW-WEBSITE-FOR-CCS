@@ -704,11 +704,7 @@
                 </div>
 
                 <!-- CATÉGORIE 2 : PRODUITS ALIMENTAIRE EN VRAC -->
-                <h2 class="category-title" data-fr="2. Produits Alimentaires & En Vrac" data-en="2. Food Products & Bulk">2. Produits Alimentaires & En Vrac</h2>
-                <div class="products-grid">
-                    
-    
-    <style>
+            <style>
         * {
             margin: 0;
             padding: 0;
@@ -728,6 +724,10 @@
             background-color: #ffffff;
         }
 
+        .section-container:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -745,7 +745,7 @@
             text-transform: uppercase;
             margin-bottom: 15px;
             letter-spacing: 0.5px;
-            text-align: center; /* Centré explicitement */
+            text-align: center;
         }
 
         .section-separator {
@@ -761,7 +761,7 @@
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.5;
-            text-align: center; /* Centré explicitement */
+            text-align: center;
         }
 
         /* --- CATALOGUE DES PRODUITS : Cartes côte à côte (Grid fluide) --- */
@@ -832,6 +832,76 @@
 
         .product-card:hover .product-card-btn {
             background-color: #e41e2b;
+        }
+
+        /* --- SECTION PREUVE & ENGAGEMENTS --- */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .proof-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .proof-card:hover {
+            transform: translateY(-5px);
+            border-color: #002664;
+        }
+
+        .proof-icon {
+            font-size: 40px;
+            color: #e41e2b;
+            margin-bottom: 20px;
+        }
+
+        .proof-title {
+            color: #002664;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .proof-text {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* --- SECTION PARTENAIRES --- */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            align-items: center;
+        }
+
+        .partner-logo-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            font-weight: bold;
+            color: #002664;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo-box:hover {
+            border-color: #e41e2b;
+            box-shadow: 0 5px 15px rgba(228, 30, 43, 0.1);
         }
 
 
@@ -905,7 +975,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-align: center; /* Titres de section de la modal centrés ou structurés */
+            text-align: center;
         }
 
         .slider-controls-hint {
@@ -1034,6 +1104,52 @@
             </div>
             <div class="products-grid" id="productsGridContainer">
                 <!-- Généré dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION : PREUVES & ENGAGEMENTS ================= -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Preuves & Engagements Qualité</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Une traçabilité totale et des contrôles rigoureux à chaque étape logistique.</p>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-icon">✔</div>
+                    <h3 class="proof-title">Traçabilité Certifiée</h3>
+                    <p class="proof-text">Suivi méticuleux de l'origine de nos produits (Brésil, Inde, Asie, Afrique) jusqu'à la livraison finale.</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-icon">🛡</div>
+                    <h3 class="proof-title">Contrôle d'Empotage</h3>
+                    <p class="proof-text">Vidéos et galeries photo détaillées pour chaque opération de chargement et d'empotage en conteneur.</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-icon">★</div>
+                    <h3 class="proof-title">Standards Premium</h3>
+                    <p class="proof-text">Sélection rigoureuse des grades A et respect strict des normes de conservation et de sécurité maritime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION : PARTENAIRES ================= -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Partenaires de Confiance</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Ils collaborent avec CCS pour l'exportation et la distribution internationale.</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo-box">Grupo Bazan</div>
+                <div class="partner-logo-box">Best Foods</div>
+                <div class="partner-logo-box">Sarama</div>
+                <div class="partner-logo-box">Trois Continental</div>
+                <div class="partner-logo-box">Touba International</div>
             </div>
         </div>
     </section>
@@ -1514,753 +1630,6 @@
             }
         }
     </script>
-
-                <!-- SECTION : PREUVES ET OPÉRATIONS DE CHARGEMENT -->
-                <div class="evidence-section-wrapper">
-                    <h2 class="category-title" data-fr="3. Preuves & Opérations de Chargement" data-en="3. Evidence & Loading Operations">3. Preuves & Opérations de Chargement</h2>
-                    <p data-en="Transparency and operational tracking: overview of our container loading and shipping operations worldwide." data-fr="Transparence et suivi opérationnel : aperçu de nos opérations de chargement de conteneurs et d'expéditions à travers le monde." style="margin-bottom: 20px; color: #555; font-size: 14px; line-height: 1.6;">
-                        Transparence et suivi opérationnel : aperçu de nos opérations de chargement de conteneurs et d'expéditions à travers le monde.
-                    </p>
-                    
-                    <div class="evidence-grid">
-                        
-                        <!-- Toutes les 60 cartes d'évidences listées dans les captures d'écran -->
-                        <div class="evidence-card" onclick="openModal('Preuve Sucre Blanc Pantaleon (1)', 'Opérations', 'evidence1_Sucre_Blanc_Pantaleon.jpg', 'Documentation et inspection initiale des lots de sucre blanc Pantaleon en entrepôt d origine.', 'Entrepôt Logistique', 'Contrôle rigoureux des standards de conditionnement.')">
-                            <div class="evidence-img"><img src="evidence1_Sucre_Blanc_Pantaleon.jpg" alt="Preuve Sucre Pantaleon 1"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Inspection Sucre Pantaleon</h3>
-                                <p>Vérification des sacs de sucre avant la validation des expéditions.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Sucre Blanc Pantaleon (2)', 'Opérations', 'evidence2_Sucre_Blanc_Pantaleon.jpg', 'Inspection complémentaire des lots de sucre blanc Pantaleon.', 'Entrepôt Logistique', 'Contrôle de conformité.')">
-                            <div class="evidence-img"><img src="evidence2_Sucre_Blanc_Pantaleon.jpg" alt="Preuve Sucre Pantaleon 2"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Sucre Blanc Pantaleon (2)</h3>
-                                <p>Vérification additionnelle des lots de sucre blanc.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (3)', 'Opérations', 'evidence3_Cafe_Kenya_Best_Foods.jpg', 'Contrôle des sacs de café Best Foods.', 'Kenya', 'Inspection qualité.')">
-                            <div class="evidence-img"><img src="evidence3_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 3"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Café Kenya Best Foods (3)</h3>
-                                <p>Contrôle rigoureux des sacs de café avant empotage.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Sucre Blanc Pantaleon (4)', 'Opérations', 'evidence4_Sucre_Blanc_Pantaleon.jpg', 'Vérification des lots de sucre Pantaleon.', 'Entrepôt Logistique', 'Suivi de lot.')">
-                            <div class="evidence-img"><img src="evidence4_Sucre_Blanc_Pantaleon.jpg" alt="Sucre Pantaleon 4"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Sucre Blanc Pantaleon (4)</h3>
-                                <p>Inspection des palettes et des sacs de sucre.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (5)', 'Opérations', 'evidence5_Cafe_Kenya_Best_Foods.jpg', 'Suivi des opérations d empotage et contrôle des lots de café au Kenya.', 'Terminal / Kenya', 'Contrôle de conformité des sacs de 50 kg.')">
-                            <div class="evidence-img"><img src="evidence5_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 5"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Suivi Empotage Café Kenya (5)</h3>
-                                <p>Inspection détaillée du processus de chargement en conteneur.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (6)', 'Opérations', 'evidence6_Cafe_Kenya_Best_Foods.jpg', 'Vérification de la disposition interne et des calages de sécurité.', 'Terminal / Kenya', 'Assurance qualité pour le transport international.')">
-                            <div class="evidence-img"><img src="evidence6_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 6"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Calage & Sécurité Fret (6)</h3>
-                                <p>Respect des procédures d empotage maritime international.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Empotage Conteneur TGHU 122380 8', 'Opérations', 'evidence7_Cafe_Kenya_Best_Foods.jpg', 'Chargement en cours du conteneur 22G1 TGHU 122380 8 (Max Wt : 30,480 KGS, Payload : 28,280 KGS, Tare Wt : 2,200 KGS).', 'Terminal Conteneur / Port', 'Protection interne par des panneaux et calages conformes aux normes d export.')">
-                            <div class="evidence-img"><img src="evidence7_Cafe_Kenya_Best_Foods.jpg" alt="Empotage Conteneur TGHU 122380 8"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Empotage Conteneur TGHU 122380 8</h3>
-                                <p>Vérification des plaques CSC et des charges utiles autorisées.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Sucre Blanc Pantaleon', 'Alimentaire', 'evidence8_Sucre_Blanc_Pantaleon.jpg', 'Sucre blanc pur de canne, conditionné en sacs de 50 kg.', 'Nicaragua / Brésil', '100% pur sucre de canne.')">
-                            <div class="evidence-img"><img src="evidence8_Sucre_Blanc_Pantaleon.jpg" alt="Sucre Blanc Pantaleon"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Sucre Blanc Pantaleon (8)</h3>
-                                <p>Conditionnement en sacs de 50 kg pour l'exportation.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Empotage Café Kenya (Conteneur MSNU 249803 7)', 'Opérations', 'evidence9_Cafe_Kenya_Best_Foods.jpg', 'Empotage du Café Kenya Best Foods en conteneur 22G1 MSNU 249803 7.', 'Terminal Conteneur', 'Contrôle quantitatif.')">
-                            <div class="evidence-img"><img src="evidence9_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya Conteneur MSNU 249803 7"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Empotage Café Kenya (MSNU 249803 7)</h3>
-                                <p>Suivi rigoureux du chargement de conteneur.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Piles de Stockage Café Kenya Best Foods', 'Opérations', 'evidence10_Cafe_Kenya_Best_Foods.jpg', 'Empilage sécurisé et structuré des sacs de café en entrepôt.', 'Entrepôt Partenaire / Kenya', 'Contrôle visuel des marquages (50 KG).')">
-                            <div class="evidence-img"><img src="evidence10_Cafe_Kenya_Best_Foods.jpg" alt="Stockage Entrepôt Café Kenya 2"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Piles de Stockage Café Kenya</h3>
-                                <p>Organisation professionnelle des sacs pour un contrôle qualité optimal.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Stockage Sucre Blanc Pantaleon', 'Opérations', 'evidence11_Sucre_Blanc_Pantaleon.jpg', 'Vue des stocks de sucre blanc Pantaleon en entrepôt.', 'Entrepôt Logistique Central', 'Conformité aux conditions d hygiène.')">
-                            <div class="evidence-img"><img src="evidence11_Sucre_Blanc_Pantaleon.jpg" alt="Stockage Sucre Pantaleon"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Stockage & Gestion des Stocks Sucre</h3>
-                                <p>Organisation professionnelle des lots de sucre de canne.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Stockage Entrepôt Café Kenya (Lots Principaux)', 'Opérations', 'evidence12_Cafe_Kenya_Best_Foods.jpg', 'Vue d ensemble du stockage en entrepôt des sacs de jute de 50 kg.', 'Entrepôt Partenaire / Kenya', 'Production : 12/2025 | Expiration : 12/2027.')">
-                            <div class="evidence-img"><img src="evidence12_Cafe_Kenya_Best_Foods.jpg" alt="Stockage Entrepôt Café Kenya 1"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Stockage Entrepôt Café Kenya</h3>
-                                <p>Gestion rigoureuse des stocks en entrepôt et préparation des lots.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Empotage Conteneur MSNU 180582 2', 'Opérations', 'evidence13_Cafe_Kenya_Best_Foods.jpg', 'Vue détaillée de l empotage du conteneur 22G1 MSNU 180582 2.', 'Terminal Conteneur / Port', 'Disposition méticuleuse des rangées de sacs.')">
-                            <div class="evidence-img"><img src="evidence13_Cafe_Kenya_Best_Foods.jpg" alt="Empotage Conteneur MSNU 180582 2"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Empotage Conteneur MSNU 180582 2</h3>
-                                <p>Suivi précis des charges et capacités de conteneurisation certifiées.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Empotage Café Kenya (Conteneur MSNU 180582 2)', 'Opérations', 'evidence14_Cafe_Kenya_Best_Foods.jpg', 'Chargement sécurisé du Café Kenya Best Foods dans le conteneur MSNU 180582 2.', 'Terminal Conteneur', 'Vérification du scellé.')">
-                            <div class="evidence-img"><img src="evidence14_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya Conteneur MSNU 180582 2"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Empotage Café Kenya (MSNU 180582 2)</h3>
-                                <p>Inspection et chargement validé de sacs de café.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (15)', 'Opérations', 'evidence15_Cafe_Kenya_Best_Foods.jpg', 'Inspection et suivi des lots de café Kenya.', 'Entrepôt / Kenya', 'Contrôle qualité.')">
-                            <div class="evidence-img"><img src="evidence15_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 15"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Café Kenya Best Foods (15)</h3>
-                                <p>Vérification approfondie de l'état des sacs.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (16)', 'Opérations', 'evidence16_Cafe_Kenya_Best_Foods.jpg', 'Suivi logistique des cargaisons de café Kenya.', 'Terminal / Kenya', 'Traçabilité.')">
-                            <div class="evidence-img"><img src="evidence16_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 16"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Café Kenya Best Foods (16)</h3>
-                                <p>Opérations d'empotage et de chargement sécurisé.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Empotage & Calage Rigoureux Café Kenya', 'Opérations', 'evidence17_Cafe_Kenya_Best_Foods.jpg', 'Disposition structurée et calage de sécurité des sacs de café dans le conteneur.', 'Terminal Portuaire / Kenya', 'Contrôle quantitatif.')">
-                            <div class="evidence-img"><img src="evidence17_Cafe_Kenya_Best_Foods.jpg" alt="Empotage Calage Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Empotage & Calage (Bloc 6/55)</h3>
-                                <p>Organisation méthodique garantissant l'intégrité des sacs.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Échantillonnage & Contrôle Lots Best Foods', 'Opérations', 'evidence18_Cafe_Kenya_Best_Foods.jpg', 'Inspection rapprochée et ouverture de sacs de jute Best Foods.', 'Entrepôt Partenaire / Kenya', 'Poids net : 50 kg.')">
-                            <div class="evidence-img"><img src="evidence18_Cafe_Kenya_Best_Foods.jpg" alt="Échantillonnage Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Échantillonnage & Analyse Lots</h3>
-                                <p>Validation rigoureuse des standards de qualité avant la mise en conteneur.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Vue d\'Ensemble Piles Entrepôt Kenya', 'Opérations', 'evidence19_Cafe_Kenya_Best_Foods.jpg', 'Stockage de masse en entrepôt des sacs de Café Kenya Best Foods.', 'Entrepôt Logistique / Kenya', 'Gestion professionnelle des flux.')">
-                            <div class="evidence-img"><img src="evidence19_Cafe_Kenya_Best_Foods.jpg" alt="Vue d'Ensemble Entrepôt Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Stockage en Masse Entrepôt</h3>
-                                <p>Vue panoramique des stocks de café préparés pour l'expédition.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Préparation & Contrôle Lots de Café', 'Opérations', 'evidence20_Cafe_Kenya_Best_Foods.jpg', 'Sacs de café alignés et ouverts pour inspection finale.', 'Entrepôt / Kenya', 'Traçabilité transparente.')">
-                            <div class="evidence-img"><img src="evidence20_Cafe_Kenya_Best_Foods.jpg" alt="Préparation Lots Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Contrôle Final des Lots</h3>
-                                <p>Inspection minutieuse des sacs avant la validation définitive.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Preuve Café Kenya Best Foods (21)', 'Opérations', 'evidence21_Cafe_Kenya_Best_Foods.jpg', 'Contrôle final et validation des lots de café avant fermeture des portes.', 'Terminal Portuaire / Kenya', 'Traçabilité transparente garantie.')">
-                            <div class="evidence-img"><img src="evidence21_Cafe_Kenya_Best_Foods.jpg" alt="Café Kenya 21"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Validation Finale Lots Café (21)</h3>
-                                <p>Vérification finale des quantités et de l'état des sacs empotés.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Tamarin Best Foods', 'Alimentaire', 'evidence22_Tamarin_Best_Foods.jpg', 'Tamarin de qualité supérieure sélectionné par Best Foods.', 'International', '100% naturel.')">
-                            <div class="evidence-img"><img src="evidence22_Tamarin_Best_Foods.jpg" alt="Tamarin Best Foods"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Tamarin Best Foods (22)</h3>
-                                <p>Produit naturel de premier choix pour la cuisine.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Lait Concentré Touba', 'Alimentaire', 'evidence23_Lait_Concentre_Touba.jpg', 'Lait concentré sucré Touba, onctueux et riche.', 'International', 'Boîte de qualité supérieure.')">
-                            <div class="evidence-img"><img src="evidence23_Lait_Concentre_Touba.jpg" alt="Lait Concentré Touba"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Lait Concentré Touba (23)</h3>
-                                <p>Onctuosité et saveur authentique pour vos préparations.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Touba', 'Alimentaire', 'evidence24_Riz_Touba.jpg', 'Riz de qualité supérieure Touba.', 'International', 'Cuisson parfaite et homogène.')">
-                            <div class="evidence-img"><img src="evidence24_Riz_Touba.jpg" alt="Riz Touba"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Touba (24)</h3>
-                                <p>Riz de premier choix, grains sélectionnés avec soin.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Huile de Cuisine Trois Continental', 'Alimentaire', 'evidence25_Huile_Cuisine_Trois_Continental.jpg', 'Huile végétale raffinée Trois Continental.', 'International', 'Idéale pour la cuisine et les fritures.')">
-                            <div class="evidence-img"><img src="evidence25_Huile_Cuisine_Trois_Continental.jpg" alt="Huile Trois Continental"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Huile Trois Continental (25)</h3>
-                                <p>Huile raffinée de grande qualité pour professionnels.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Tamarin Best Foods (26)', 'Alimentaire', 'evidence26_Tamarin_Best_Foods.jpg', 'Conditionnement du tamarin Best Foods.', 'International', 'Qualité supérieure.')">
-                            <div class="evidence-img"><img src="evidence26_Tamarin_Best_Foods.jpg" alt="Tamarin Best Foods 26"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Tamarin Best Foods (26)</h3>
-                                <p>Emballage et conditionnement professionnel du tamarin.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Touba (27)', 'Alimentaire', 'evidence27_Riz_Touba.jpg', 'Lots de riz Touba en entrepôt.', 'International', 'Distribution professionnelle.')">
-                            <div class="evidence-img"><img src="evidence27_Riz_Touba.jpg" alt="Riz Touba 27"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Touba (27)</h3>
-                                <p>Vérification des sacs de riz Touba avant distribution.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Ananas Sarama', 'Alimentaire', 'evidence28_Ananas_Sarama.jpg', 'Conserves ou jus d\'ananas Sarama.', 'International', 'Qualité supérieure.')">
-                            <div class="evidence-img"><img src="evidence28_Ananas_Sarama.jpg" alt="Ananas Sarama"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Ananas Sarama (28)</h3>
-                                <p>Produits à base d'ananas de la marque Sarama.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Ananas Touba', 'Alimentaire', 'evidence29_Ananas_Touba.jpg', 'Produits à base d\'ananas Touba.', 'International', 'Sélection rigoureuse.')">
-                            <div class="evidence-img"><img src="evidence29_Ananas_Touba.jpg" alt="Ananas Touba"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Ananas Touba (29)</h3>
-                                <p>Gamme de produits ananas de la marque Touba.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Cafe Kenya Best Foods (30)', 'Opérations', 'evidence30_Cafe_Kenya_Best_Foods.jpg', 'Nouveaux lots de café Kenya Best Foods.', 'Kenya', 'Contrôle additionnel.')">
-                            <div class="evidence-img"><img src="evidence30_Cafe_Kenya_Best_Foods.jpg" alt="Cafe Kenya 30"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Cafe Kenya Best Foods (30)</h3>
-                                <p>Inspection visuelle des sacs de café en entrepôt.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Brisure', 'Alimentaire', 'evidence31_Riz_Brisure.jpg', 'Riz brisé de qualité supérieure.', 'International', 'Conditionnement export.')">
-                            <div class="evidence-img"><img src="evidence31_Riz_Brisure.jpg" alt="Riz Brisure"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Brisure (31)</h3>
-                                <p>Riz brisé sélectionné pour le marché de gros.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Tamarin Sarama', 'Alimentaire', 'evidence32_Tamarin_Sarama.jpg', 'Tamarin de marque Sarama.', 'International', 'Produit naturel.')">
-                            <div class="evidence-img"><img src="evidence32_Tamarin_Sarama.jpg" alt="Tamarin Sarama"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Tamarin Sarama (32)</h3>
-                                <p>Conditionnement et emballage du tamarin Sarama.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Basmati Sarama', 'Alimentaire', 'evidence33_Riz_Basmati_Sarama.jpg', 'Riz Basmati de qualité supérieure Sarama.', 'International', 'Grains longs parfumés.')">
-                            <div class="evidence-img"><img src="evidence33_Riz_Basmati_Sarama.jpg" alt="Riz Basmati Sarama"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Basmati Sarama (33)</h3>
-                                <p>Riz Basmati parfumé de premier choix.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Sarama', 'Alimentaire', 'evidence34_Riz_Sarama.jpg', 'Riz de la marque Sarama.', 'International', 'Sacs de distribution.')">
-                            <div class="evidence-img"><img src="evidence34_Riz_Sarama.jpg" alt="Riz Sarama"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Sarama (34)</h3>
-                                <p>Riz de qualité supérieure Sarama pour l'export.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Cafe Kenya Best Foods (35)', 'Opérations', 'evidence35_Cafe_Kenya_Best_Foods.jpg', 'Lots de café Kenya Best Foods en préparation.', 'Kenya', 'Traçabilité lots.')">
-                            <div class="evidence-img"><img src="evidence35_Cafe_Kenya_Best_Foods.jpg" alt="Cafe Kenya 35"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Cafe Kenya Best Foods (35)</h3>
-                                <p>Vérification des lots de café en entrepôt partenaire.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Lait Poudre Oriba Lac', 'Alimentaire', 'evidence36_Lait_Poudre_Oriba_Lac.jpg', 'Lait en poudre Oriba Lac de qualité supérieure.', 'International', 'Riche en nutriments.')">
-                            <div class="evidence-img"><img src="evidence36_Lait_Poudre_Oriba_Lac.jpg" alt="Lait Poudre Oriba Lac"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Lait Poudre Oriba Lac (36)</h3>
-                                <p>Lait en poudre complet pour usage familial et professionnel.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Jus Mixed Fruit Trois', 'Alimentaire', 'evidence37_Jus_Mixed_Fruit_Trois.jpg', 'Jus de fruits mélangés Trois Continental.', 'International', '100% rafraîchissant.')">
-                            <div class="evidence-img"><img src="evidence37_Jus_Mixed_Fruit_Trois.jpg" alt="Jus Mixed Fruit Trois"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Jus Mixed Fruit Trois (37)</h3>
-                                <p>Jus de fruits mélangés de qualité supérieure.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Lait Evaporé Touba', 'Alimentaire', 'evidence38_Lait_Evapore_Touba.jpg', 'Lait évaporé Touba.', 'International', 'Format boîte de qualité.')">
-                            <div class="evidence-img"><img src="evidence38_Lait_Evapore_Touba.jpg" alt="Lait Evapore Touba"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Lait Evaporé Touba (38)</h3>
-                                <p>Lait évaporé crémeux et onctueux de marque Touba.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Jus Ananas Trois', 'Alimentaire', 'evidence39_Jus_Ananas_Trois.jpg', 'Jus d\'ananas Trois Continental.', 'International', 'Saveur authentique.')">
-                            <div class="evidence-img"><img src="evidence39_Jus_Ananas_Trois.jpg" alt="Jus Ananas Trois"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Jus Ananas Trois (39)</h3>
-                                <p>Jus d'ananas rafraîchissant Trois Continental.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Jus Orange Trois', 'Alimentaire', 'evidence40_Jus_Orange_Trois.jpg', 'Jus d\'orange Trois Continental.', 'International', 'Riche en vitamines.')">
-                            <div class="evidence-img"><img src="evidence40_Jus_Orange_Trois.jpg" alt="Jus Orange Trois"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Jus Orange Trois (40)</h3>
-                                <p>Jus d'orange de qualité supérieure Trois Continental.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Container Vide Interieur', 'Opérations', 'evidence41_Container_Vide_Interieur.jpg', 'Inspection de l\'intérieur d\'un conteneur vide avant empotage.', 'Terminal Portuaire', 'Vérification de propreté et absence d\'humidité.')">
-                            <div class="evidence-img"><img src="evidence41_Container_Vide_Interieur.jpg" alt="Container Vide Interieur"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Container Vide Interieur (41)</h3>
-                                <p>Contrôle minutieux de l'intégrité interne du conteneur.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Container Vide Exterieur', 'Opérations', 'evidence42_Container_Vide_Exterieur.jpg', 'Inspection extérieure d\'un conteneur vide (plaques CSC et état général).', 'Terminal Portuaire', 'Conformité maritime.')">
-                            <div class="evidence-img"><img src="evidence42_Container_Vide_Exterieur.jpg" alt="Container Vide Exterieur"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Container Vide Exterieur (42)</h3>
-                                <p>Vérification des structures externes du conteneur avant chargement.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Plaque Immatriculation Camion', 'Opérations', 'evidence43_Plaque_Immatriculation_Camion.jpg', 'Détail de la plaque d\'immatriculation du camion de transport.', 'Transport Routier', 'Traçabilité logistique.')">
-                            <div class="evidence-img"><img src="evidence43_Plaque_Immatriculation_Camion.jpg" alt="Plaque Immatriculation Camion"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Plaque Immatriculation Camion (43)</h3>
-                                <p>Enregistrement officiel du véhicule de transport routier.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Tamarin Brut', 'Alimentaire', 'evidence44_Tamarin_Brut.jpg', 'Tamarin brut sélectionné pour transformation ou export.', 'International', '100% naturel.')">
-                            <div class="evidence-img"><img src="evidence44_Tamarin_Brut.jpg" alt="Tamarin Brut"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Tamarin Brut (44)</h3>
-                                <p>Lots de tamarin brut avant conditionnement final.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Oriba Rice (45)', 'Alimentaire', 'evidence45_Riz_Oriba_Rice.jpg', 'Riz Oriba Rice de qualité supérieure.', 'International', 'Sacs de distribution.')">
-                            <div class="evidence-img"><img src="evidence45_Riz_Oriba_Rice.jpg" alt="Riz Oriba Rice 45"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Oriba Rice (45)</h3>
-                                <p>Inspection des lots de riz Oriba Rice en entrepôt.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Oriba Rice (46)', 'Alimentaire', 'evidence46_Riz_Oriba_Rice.jpg', 'Stockage des sacs de riz Oriba Rice.', 'International', 'Gestion logistique.')">
-                            <div class="evidence-img"><img src="evidence46_Riz_Oriba_Rice.jpg" alt="Riz Oriba Rice 46"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Oriba Rice (46)</h3>
-                                <p>Vérification des piles de stockage de riz Oriba Rice.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Container Vide Extérieur (47)', 'Opérations', 'evidence47_Container_Vide_Exterieur.jpg', 'Vue extérieure d\'un conteneur destiné à l\'empotage.', 'Terminal', 'Contrôle technique.')">
-                            <div class="evidence-img"><img src="evidence47_Container_Vide_Exterieur.jpg" alt="Container Vide Extérieur 47"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Container Vide Extérieur (47)</h3>
-                                <p>Vérification de l'état général du conteneur avant utilisation.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Étalement & Analyse des Grains Café Kenya', 'Opérations', 'evidence48_Cafe_Kenya_Best_Foods.jpg', 'Inspection détaillée et étalement des grains de café Best Foods sur support de contrôle.', 'Entrepôt / Kenya', 'Production : 12/2025 | Expiration : 12/2027.')">
-                            <div class="evidence-img"><img src="evidence48_Cafe_Kenya_Best_Foods.jpg" alt="Étalement Grains Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Analyse & Étalement Café Kenya</h3>
-                                <p>Contrôle visuel approfondi de la texture et de la pureté des lots.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Préparation & Ouverture Sacs Café Kenya', 'Opérations', 'evidence49_Cafe_Kenya_Best_Foods.jpg', 'Stock intermédiaire et ouverture contrôlée des sacs de jute Best Foods.', 'Entrepôt Partenaire / Kenya', 'Traçabilité irréprochable.')">
-                            <div class="evidence-img"><img src="evidence49_Cafe_Kenya_Best_Foods.jpg" alt="Ouverture Sacs Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Préparation & Échantillonnage Lots</h3>
-                                <p>Gestion rigoureuse des stocks et inspection des sacs ouverts.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Scellé de Sécurité Officiel Conteneur', 'Opérations', 'evidence50_Scelle_Container.jpg', 'Détail du boulon de scellé de sécurité à haute résistance numéroté (LG00986790).', 'Port d Expédition / Terminal', 'Conformité douanière.')">
-                            <div class="evidence-img"><img src="evidence50_Scelle_Container.jpg" alt="Scellé de Sécurité Conteneur"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Scellé de Sécurité Numéroté</h3>
-                                <p>Apposition du scellé officiel validant la fermeture sécurisée.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Vue Globale Stockage Entrepôt Café Kenya', 'Opérations', 'evidence51_Cafe_Kenya_Best_Foods.jpg', 'Vue d ensemble des vastes piles de sacs de 50 kg de Café Kenya Best Foods.', 'Entrepôt Logistique / Kenya', 'Production : 12/2025 | Expiration : 12/2027.')">
-                            <div class="evidence-img"><img src="evidence51_Cafe_Kenya_Best_Foods.jpg" alt="Vue Globale Stockage Café Kenya"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Stockage Grande Échelle Café Kenya</h3>
-                                <p>Organisation professionnelle des lots de café pour commandes volumineuses.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Moba Rice', 'Alimentaire', 'evidence52_Riz_Moba_Rice.jpg', 'Riz Moba Rice de qualité supérieure.', 'International', 'Sacs résistants.')">
-                            <div class="evidence-img"><img src="evidence52_Riz_Moba_Rice.jpg" alt="Riz Moba Rice"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Moba Rice (52)</h3>
-                                <p>Contrôle des sacs de riz Moba Rice destinés à l'export.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Plaque Immatriculation Camion (53)', 'Opérations', 'evidence53_Plaque_Immatriculation_Camion.jpg', 'Vérification de la plaque d\'immatriculation du camion.', 'Transport Routier', 'Sécurité logistique.')">
-                            <div class="evidence-img"><img src="evidence53_Plaque_Immatriculation_Camion.jpg" alt="Plaque Immatriculation Camion 53"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Plaque Immatriculation Camion (53)</h3>
-                                <p>Validation du véhicule affecté au transport des conteneurs.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Ticket Pesée Camion', 'Opérations', 'evidence54_Ticket_Pesee_Camion.jpg', 'Ticket de pesée officielle du camion chargé.', 'Station de Pesage / Port', 'Conformité des charges.')">
-                            <div class="evidence-img"><img src="evidence54_Ticket_Pesee_Camion.jpg" alt="Ticket Pesée Camion"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Ticket Pesée Camion (54)</h3>
-                                <p>Vérification du poids net et brut de la cargaison transportée.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Lait Poudre Oriba Lac (55)', 'Alimentaire', 'evidence55_Lait_Poudre_Oriba_Lac.jpg', 'Lots de lait en poudre Oriba Lac.', 'International', 'Contrôle qualité.')">
-                            <div class="evidence-img"><img src="evidence55_Lait_Poudre_Oriba_Lac.jpg" alt="Lait Poudre Oriba Lac 55"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Lait Poudre Oriba Lac (55)</h3>
-                                <p>Inspection des boîtes et sachets de lait en poudre Oriba Lac.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Oriba Rice (56)', 'Alimentaire', 'evidence56_Riz_Oriba_Rice.jpg', 'Sacs de riz Oriba Rice en entrepôt.', 'International', 'Distribution de gros.')">
-                            <div class="evidence-img"><img src="evidence56_Riz_Oriba_Rice.jpg" alt="Riz Oriba Rice 56"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Oriba Rice (56)</h3>
-                                <p>Vérification finale des lots de riz Oriba Rice avant expédition.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Lait Poudre Victoria', 'Alimentaire', 'evidence57_Lait_Poudre_Victoria.jpg', 'Lait en poudre Victoria de qualité supérieure.', 'International', 'Riche et onctueux.')">
-                            <div class="evidence-img"><img src="evidence57_Lait_Poudre_Victoria.jpg" alt="Lait Poudre Victoria"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Lait Poudre Victoria (57)</h3>
-                                <p>Présentation des lots de lait en poudre de marque Victoria.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Groupe Frigorifique Container', 'Opérations', 'evidence58_Groupe_Frigorifique_Container.jpg', 'Détail du groupe frigorifique d\'un conteneur Reefer.', 'Terminal Portuaire / Logistique', 'Contrôle de la chaîne du froid.')">
-                            <div class="evidence-img"><img src="evidence58_Groupe_Frigorifique_Container.jpg" alt="Groupe Frigorifique Container"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Groupe Frigorifique Container (58)</h3>
-                                <p>Vérification du système de réfrigération pour les produits sensibles.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Riz Sarama (59)', 'Alimentaire', 'evidence59_Riz_Sarama.jpg', 'Sacs de riz Sarama empilés en entrepôt.', 'International', 'Qualité supérieure.')">
-                            <div class="evidence-img"><img src="evidence59_Riz_Sarama.jpg" alt="Riz Sarama 59"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Riz Sarama (59)</h3>
-                                <p>Inspection des stocks de riz Sarama prêts pour la livraison.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                        <div class="evidence-card" onclick="openModal('Transport Routier Conteneur CXRU 153287 3', 'Opérations', 'evidence60_Camion_Container_Route.jpg', 'Vue arrière d un camion transportant le conteneur High Cube CXRU 153287 3.', 'Transport Routier / Logistique', 'Conformité aux normes de transport lourd.')">
-                            <div class="evidence-img"><img src="evidence60_Camion_Container_Route.jpg" alt="Camion Transport Conteneur Route"></div>
-                            <div class="evidence-content">
-                                <span class="product-badge">Opérations</span>
-                                <h3>Transport Routier Conteneur (CXRU 153287 3)</h3>
-                                <p>Acheminement sécurisé du conteneur par voie terrestre.</p>
-                                <span class="click-hint">Voir les détails +</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- SECTION PARTENAIRES : CARROUSEL HORIZONTAL INFINI -->
-                <div class="partners-section-wrapper">
-                    <div class="partners-title-container">
-                        <h3 class="partners-title" data-fr="Nos Partenaires Internationaux" data-en="Our International Partners">Nos Partenaires Internationaux</h3>
-                        <span class="pause-instruction" data-fr="(Survolez ou cliquez pour mettre en pause)" data-en="(Hover or click to pause)">(Survolez ou cliquez pour mettre en pause)</span>
-                    </div>
-                    
-                    <div class="marquee-container" id="marqueeContainer">
-                        <div class="marquee-track" id="marqueeTrack" onclick="toggleMarqueePause()">
-                            
-                            <a href="https://www.ekremagro.com.tr/" target="_blank" class="partner-logo-card">
-                                <h4>Ekrem Agro</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.instagram.com/copa.cafe" target="_blank" class="partner-logo-card">
-                                <h4>Copacafé</h4>
-                                <span data-fr="Voir Instagram" data-en="View Instagram">Voir Instagram</span>
-                            </a>
-                            <a href="https://agrospice.com.br/" target="_blank" class="partner-logo-card">
-                                <h4>Agrospice</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://koreagro.com/" target="_blank" class="partner-logo-card">
-                                <h4>Kore International</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://hanfimex.com/" target="_blank" class="partner-logo-card">
-                                <h4>Hanfimex</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.ekn.se/en/" target="_blank" class="partner-logo-card">
-                                <h4>EKN</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://timbrotrading.com/" target="_blank" class="partner-logo-card">
-                                <h4>Timbro Trm</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://cndivision.com/" target="_blank" class="partner-logo-card">
-                                <h4>Central National</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.grancafe.com.br/" target="_blank" class="partner-logo-card">
-                                <h4>Grancafé</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.troisconti.com" target="_blank" class="partner-logo-card">
-                                <h4>Trois Continental</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://alicampo.com/" target="_blank" class="partner-logo-card">
-                                <h4>Alicampo</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-
-                            <!-- DUPLICATION POUR FLUIDITÉ DU DÉFILEMENT CONTINU -->
-                            <a href="https://www.ekremagro.com.tr/" target="_blank" class="partner-logo-card">
-                                <h4>Ekrem Agro</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.instagram.com/copa.cafe" target="_blank" class="partner-logo-card">
-                                <h4>Copacafé</h4>
-                                <span data-fr="Voir Instagram" data-en="View Instagram">Voir Instagram</span>
-                            </a>
-                            <a href="https://agrospice.com.br/" target="_blank" class="partner-logo-card">
-                                <h4>Agrospice</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://koreagro.com/" target="_blank" class="partner-logo-card">
-                                <h4>Kore International</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://hanfimex.com/" target="_blank" class="partner-logo-card">
-                                <h4>Hanfimex</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.ekn.se/en/" target="_blank" class="partner-logo-card">
-                                <h4>EKN</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://timbrotrading.com/" target="_blank" class="partner-logo-card">
-                                <h4>Timbro Trm</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://cndivision.com/" target="_blank" class="partner-logo-card">
-                                <h4>Central National</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.grancafe.com.br/" target="_blank" class="partner-logo-card">
-                                <h4>Grancafé</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://www.troisconti.com" target="_blank" class="partner-logo-card">
-                                <h4>Trois Continental</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-                            <a href="https://alicampo.com/" target="_blank" class="partner-logo-card">
-                                <h4>Alicampo</h4>
-                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL / POPUP -->
-    <div class="modal-overlay" id="productModal" onclick="closeModalOnOutside(event)">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h2 id="modalTitle">Nom</h2>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-img-box">
-                    <img id="modalImg" src="" alt="Aperçu">
-                </div>
-                <div class="modal-details">
-                    <span class="product-badge" id="modalCategory">Catégorie</span>
-                    <h4 data-fr="Origine / Contexte :" data-en="Origin / Context:">Origine / Contexte :</h4>
-                    <p id="modalOrigin">-</p>
-                    <h4 data-fr="Description & Caractéristiques :" data-en="Description & Characteristics:">Description & Caractéristiques :</h4>
-                    <p id="modalDesc">-</p>
-                    <h4 data-fr="Informations Utiles :" data-en="Useful Info:">Informations Utiles :</h4>
-                    <p id="modalInfo">-</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
