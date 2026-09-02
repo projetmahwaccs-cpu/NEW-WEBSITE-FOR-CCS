@@ -1,966 +1,162 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CCS — Comptoir Commercial Sourang</title><style>
-    /* =========================================================
-       CCS — COMPTOR COMMERCIAL SOURANG
-       Page inspirée de la structure des captures fournies.
-       AUCUN LIEN D'IMAGE EXTERNE :
-       ajoutez vos propres images dans les variables ci-dessous.
-       ========================================================= */
-
-    :root{
-      --blue:#25286f;
-      --blue-dark:#191b59;
-      --red:#ff1717;
-      --text:#666;
-      --white:#fff;
-      --light:#f7f7f7;
-      --container:1180px;
-
-      /* =====================================================
-         VOS IMAGES
-         Remplacez les "" par vos fichiers locaux, par exemple :
-         url("images/hero.jpg")
-         ===================================================== */
-      --hero-image: none;
-      --about-image: none;
-      --sustainability-image: none;
-      --product-one-image: none;
-      --product-two-image: none;
-      --contact-image: none;
-      --testimonial-image: none;
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:#fff;
-      overflow-x:hidden;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    button{
-      font-family:inherit;
-    }
-
-    .container{
-      width:min(var(--container), calc(100% - 50px));
-      margin:auto;
-    }
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-    .header{
-      height:88px;
-      background:#fff;
-      border-bottom:3px solid var(--red);
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
-
-    .header-inner{
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      width:min(1180px, calc(100% - 50px));
-      margin:auto;
-    }
-
-    .logo{
-      width:145px;
-      height:62px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
-    }
-
-    .logo-main{
-      font-size:43px;
-      line-height:.8;
-      letter-spacing:-4px;
-      font-weight:700;
-      color:var(--blue);
-      position:relative;
-    }
-
-    .logo-main::after{
-      content:"";
-      position:absolute;
-      width:7px;
-      height:7px;
-      background:var(--red);
-      top:0;
-      left:51px;
-    }
-
-    .logo-sub{
-      font-size:8px;
-      letter-spacing:.5px;
-      color:#777;
-      margin-top:7px;
-      font-weight:bold;
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:31px;
-      height:100%;
-    }
-
-    .nav a{
-      color:var(--blue);
-      font-size:14px;
-      font-weight:600;
-      position:relative;
-      padding:33px 0;
-      transition:.25s;
-    }
-
-    .nav a::before{
-      content:"";
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:9px;
-      height:9px;
-      background:transparent;
-    }
-
-    .nav a:hover,
-    .nav a.active{
-      color:var(--red);
-    }
-
-    .nav a.active::before{
-      background:var(--red);
-    }
-
-    .menu-btn{
-      display:none;
-      border:0;
-      background:transparent;
-      font-size:29px;
-      color:var(--blue);
-      cursor:pointer;
-    }
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-    .hero{
-      min-height:650px;
-      position:relative;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
-      background-color:#d9ddd1;
-      background-image:var(--hero-image);
-      background-size:cover;
-      background-position:center;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(0,0,0,.04));
-    }
-
-    .hero-card{
-      position:relative;
-      z-index:2;
-      width:min(680px, calc(100% - 30px));
-      margin-left:auto;
-      margin-right:10%;
-      padding:55px 65px;
-      background:rgba(37,40,111,.91);
-      color:#fff;
-      text-align:center;
-    }
-
-    .hero-card .mini{
-      color:#fff;
-      font-size:15px;
-      letter-spacing:2px;
-      font-weight:700;
-      margin-bottom:13px;
-    }
-
-    .hero-card h1{
-      font-size:48px;
-      line-height:1.12;
-      margin-bottom:23px;
-      font-weight:800;
-    }
-
-    .hero-card p{
-      font-size:16px;
-      line-height:1.8;
-      margin-bottom:30px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:145px;
-      min-height:47px;
-      padding:11px 22px;
-      border:1px solid currentColor;
-      background:transparent;
-      color:inherit;
-      font-size:14px;
-      font-weight:700;
-      cursor:pointer;
-      transition:.25s;
-    }
-
-    .btn:hover{
-      background:#fff;
-      color:var(--blue);
-    }
-
-    /* petits carrés rouges décoratifs comme dans les captures */
-    .red-square{
-      position:absolute;
-      width:45px;
-      height:45px;
-      background:var(--red);
-      z-index:3;
-    }
-
-    .hero .red-square{
-      left:0;
-      bottom:0;
-    }
-
-    /* =========================================================
-       SECTION TITLE
-       ========================================================= */
-    .section-title{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      color:var(--blue);
-      font-size:27px;
-      font-weight:800;
-      margin-bottom:36px;
-    }
-
-    .section-title::after{
-      content:"";
-      flex:1;
-      height:1px;
-      background:currentColor;
-      opacity:.65;
-    }
-
-    /* =========================================================
-       ABOUT
-       ========================================================= */
-    .about{
-      padding:80px 0;
-      background:#fff;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:70px;
-      align-items:center;
-    }
-
-    .image-box{
-      min-height:450px;
-      background:#e8e8e8 center/cover no-repeat;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .about-image{
-      background-image:var(--about-image);
-    }
-
-    .image-box::after{
-      content:"VOTRE IMAGE";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#aaa;
-      font-size:16px;
-      font-weight:700;
-      letter-spacing:2px;
-      pointer-events:none;
-    }
-
-    .image-box.has-image::after{
-      display:none;
-    }
-
-    .about-content h2{
-      color:var(--blue);
-      font-size:27px;
-      margin-bottom:25px;
-      font-weight:800;
-    }
-
-    .about-content p{
-      font-size:15px;
-      line-height:1.9;
-      margin-bottom:18px;
-    }
-
-    .about-content .btn{
-      color:var(--blue);
-      margin-top:14px;
-    }
-
-    .about-content .btn:hover{
-      color:#fff;
-      background:var(--blue);
-    }
-
-    /* =========================================================
-       SUSTAINABILITY
-       ========================================================= */
-    .sustainability{
-      min-height:700px;
-      padding:85px 0;
-      position:relative;
-      background:#dfe6d8;
-      background-image:var(--sustainability-image);
-      background-size:cover;
-      background-position:center;
-    }
-
-    .sustainability::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(255,255,255,.70);
-    }
-
-    .sustainability-inner{
-      position:relative;
-      z-index:2;
-      max-width:1000px;
-      margin:auto;
-      border:1px solid rgba(37,40,111,.45);
-      padding:0 70px 60px;
-      text-align:center;
-    }
-
-    .sustainability-inner h2{
-      display:inline-block;
-      transform:translateY(-18px);
-      background:rgba(255,255,255,.86);
-      padding:0 25px;
-      color:var(--blue);
-      font-size:26px;
-    }
-
-    .sustainability-intro{
-      font-size:15px;
-      line-height:1.9;
-      margin:0 auto 35px;
-      max-width:850px;
-    }
-
-    .sustainability-card{
-      min-height:360px;
-      background:#25286f;
-      background-image:var(--sustainability-image);
-      background-size:cover;
-      background-position:center;
-      position:relative;
-      display:flex;
-      align-items:center;
-      text-align:left;
-      padding:50px;
-      color:#fff;
-      overflow:visible;
-    }
-
-    .sustainability-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(10,13,35,.72);
-    }
-
-    .sustainability-card::after{
-      content:"";
-      position:absolute;
-      left:-50px;
-      top:50%;
-      transform:translateY(-50%);
-      width:72px;
-      height:72px;
-      background:var(--red);
-    }
-
-    .sustainability-content{
-      position:relative;
-      z-index:2;
-    }
-
-    .sustainability-content h3{
-      font-size:26px;
-      line-height:1.15;
-      margin-bottom:20px;
-    }
-
-    .sustainability-content p{
-      font-size:15px;
-      line-height:1.85;
-      margin-bottom:13px;
-    }
-
-    /* =========================================================
-       PRODUCTS
-       ========================================================= */
-    .products{
-      background:var(--blue);
-      color:#fff;
-      padding:55px 0 70px;
-      position:relative;
-    }
-
-    .products .section-title{
-      color:#fff;
-    }
-
-    .product-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-    }
-
-    .product-card{
-      min-height:460px;
-      background:#444 center/cover no-repeat;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      cursor:pointer;
-    }
-
-    .product-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.47);
-      transition:.3s;
-    }
-
-    .product-card:hover::before{
-      background:rgba(0,0,0,.60);
-    }
-
-    .product-card:nth-child(1){
-      background-image:var(--product-one-image);
-    }
-
-    .product-card:nth-child(2){
-      background-image:var(--product-two-image);
-    }
-
-    .product-content{
-      position:relative;
-      z-index:2;
-      text-align:center;
-      padding:30px;
-    }
-
-    .product-content h3{
-      color:#fff;
-      font-size:40px;
-      line-height:1.15;
-      margin-bottom:28px;
-      font-weight:800;
-    }
-
-    .product-content .btn{
-      color:#fff;
-    }
-
-    .products-bottom{
-      text-align:center;
-      margin-top:30px;
-    }
-
-    /* =========================================================
-       TESTIMONIAL
-       ========================================================= */
-    .testimonial{
-      padding:58px 0 70px;
-      position:relative;
-      background:#dfe8d8;
-      background-image:var(--testimonial-image);
-      background-size:cover;
-      background-position:center;
-      text-align:center;
-    }
-
-    .testimonial::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(255,255,255,.70);
-    }
-
-    .testimonial-inner{
-      position:relative;
-      z-index:2;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    .testimonial h2{
-      color:var(--blue);
-      font-size:24px;
-      margin-bottom:35px;
-    }
-
-    .quote{
-      font-size:20px;
-      line-height:1.7;
-      color:#222;
-      margin-bottom:22px;
-    }
-
-    .author{
-      color:#111;
-      font-weight:700;
-      margin-bottom:28px;
-    }
-
-    .testimonial-controls{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .arrow{
-      width:52px;
-      height:52px;
-      border:0;
-      background:var(--blue);
-      color:#fff;
-      font-size:26px;
-      cursor:pointer;
-    }
-
-    .dots{
-      display:flex;
-      gap:9px;
-      justify-content:center;
-    }
-
-    .dot{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:#ddd;
-    }
-
-    .dot.active{
-      background:var(--blue);
-    }
-
-    /* =========================================================
-       CONTACT CTA
-       ========================================================= */
-    .contact{
-      min-height:520px;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#253044;
-      background-image:var(--contact-image);
-      background-size:cover;
-      background-position:center;
-      padding:80px 20px;
-    }
-
-    .contact::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(20,23,74,.80);
-    }
-
-    .contact-card{
-      position:relative;
-      z-index:2;
-      max-width:930px;
-      width:100%;
-      padding:65px 80px;
-      color:#fff;
-      background:rgba(37,40,111,.78);
-      text-align:center;
-    }
-
-    .contact-card h2{
-      font-size:58px;
-      line-height:1;
-      margin-bottom:25px;
-    }
-
-    .contact-card p{
-      font-size:16px;
-      line-height:1.8;
-      margin-bottom:25px;
-    }
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-    .footer{
-      background:#151515;
-      color:#fff;
-    }
-
-    .footer-main{
-      min-height:350px;
-      padding:65px 0;
-      background:#182047;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .footer-main::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(37,40,111,.96),rgba(15,20,48,.92));
-    }
-
-    .footer-grid{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:1.1fr 1fr 1fr 1.4fr;
-      gap:45px;
-    }
-
-    .footer-logo .logo-main{
-      color:#fff;
-    }
-
-    .footer-logo .logo-sub{
-      color:#bbb;
-    }
-
-    .footer h3{
-      color:#fff;
-      font-size:16px;
-      margin-bottom:25px;
-    }
-
-    .footer ul{
-      list-style:none;
-    }
-
-    .footer li{
-      margin-bottom:13px;
-      color:#ddd;
-      font-size:14px;
-    }
-
-    .footer li::before{
-      content:"■";
-      color:var(--red);
-      font-size:7px;
-      margin-right:12px;
-      vertical-align:middle;
-    }
-
-    .footer p{
-      color:#ddd;
-      line-height:1.8;
-      font-size:14px;
-      margin-bottom:10px;
-    }
-
-    .copyright{
-      min-height:62px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:15px;
-      font-size:13px;
-      color:#ddd;
-    }
-
-    /* =========================================================
-       FLOATING BUTTONS
-       ========================================================= */
-    .floating{
-      position:fixed;
-      right:24px;
-      bottom:24px;
-      z-index:1100;
-      display:flex;
-      gap:13px;
-    }
-
-    .float-btn{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      font-weight:bold;
-      font-size:19px;
-      border:0;
-      cursor:pointer;
-      box-shadow:0 7px 25px rgba(0,0,0,.20);
-    }
-
-    .float-instagram{background:#8d35c7}
-    .float-whatsapp{background:#1bd66c}
-    .float-phone{background:#ff1717}
-
-    .top-btn{
-      position:fixed;
-      right:25px;
-      bottom:95px;
-      z-index:1100;
-      width:43px;
-      height:43px;
-      background:#eee;
-      color:#000;
-      border:1px solid #777;
-      cursor:pointer;
-      font-size:20px;
-    }
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-    @media(max-width:900px){
-      .header{
-        height:76px;
-      }
-
-      .header-inner{
-        width:calc(100% - 30px);
-      }
-
-      .nav{
-        position:absolute;
-        top:76px;
-        left:0;
-        width:100%;
-        height:auto;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        background:#fff;
-        border-bottom:2px solid var(--red);
-        padding:10px 25px 20px;
-      }
-
-      .nav.open{
-        display:flex;
-      }
-
-      .nav a{
-        padding:15px 0;
-      }
-
-      .nav a::before{
-        display:none;
-      }
-
-      .menu-btn{
-        display:block;
-      }
-
-      .hero{
-        min-height:600px;
-      }
-
-      .hero-card{
-        margin:auto;
-        padding:40px 28px;
-      }
-
-      .hero-card h1{
-        font-size:36px;
-      }
-
-      .about-grid,
-      .product-grid{
-        grid-template-columns:1fr;
-      }
-
-      .about{
-        padding:55px 0;
-      }
-
-      .image-box{
-        min-height:330px;
-      }
-
-      .sustainability-inner{
-        padding:0 25px 45px;
-      }
-
-      .sustainability-card{
-        padding:35px 25px;
-      }
-
-      .sustainability-card::after{
-        left:-25px;
-        width:50px;
-        height:50px;
-      }
-
-      .product-card{
-        min-height:350px;
-      }
-
-      .product-content h3{
-        font-size:31px;
-      }
-
-      .contact-card{
-        padding:45px 25px;
-      }
-
-      .contact-card h2{
-        font-size:40px;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .floating{
-        right:14px;
-        bottom:14px;
-      }
-
-      .top-btn{
-        right:15px;
-        bottom:82px;
-      }
-    }
-
-    @media(max-width:600px){
-      .container{
-        width:calc(100% - 30px);
-      }
-
-      .section-title{
-        font-size:22px;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr;
-      }
-
-      .floating{
-        gap:7px;
-      }
-
-      .float-btn{
-        width:45px;
-        height:45px;
-      }
-    }
-  
-.inner-page{min-height:650px;padding:85px 0;background:#fff}
-.inner-page h1{color:var(--blue);font-size:36px;font-weight:800;margin-bottom:45px}
-.page-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.inner-page h2{color:var(--blue);margin-bottom:22px}
-.inner-page p{font-size:16px;line-height:1.9;margin-bottom:18px}
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.news-card{border:1px solid #ddd;padding-bottom:25px}.news-card h2,.news-card p{padding:0 22px}
-.news-card h2{font-size:19px;margin:22px 0 12px}.news-image{height:220px;background:#e8e8e8}
-.contact-page{background:#f7f7f7}.contact-grid{align-items:start}
-.contact-grid form{background:#fff;padding:35px}.contact-grid input,.contact-grid textarea{width:100%;padding:15px;border:1px solid #ddd;margin-bottom:16px;font:inherit}
-.contact-grid textarea{height:150px}.blue-btn{background:var(--blue);color:#fff;border-color:var(--blue)}
-.blue-btn:hover{background:#fff;color:var(--blue)}
-@media(max-width:900px){.page-grid,.contact-grid,.news-grid{grid-template-columns:1fr}}
-
-.logo-img-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-img{width:150px;height:58px;object-fit:contain;display:block}
-.logo-placeholder{width:150px;height:58px;border:1px dashed #999;display:flex;align-items:center;justify-content:center;font-size:10px;color:#777;text-align:center}
-.logo-file{display:none}
-.africa-banner{background:#242873;color:#fff;padding:18px 0;text-align:center;border-top:4px solid #ff1717}
-.africa-banner strong{font-size:20px;letter-spacing:.3px}
-.africa-banner p{margin:6px auto 0;max-width:850px;font-size:14px;opacity:.95}
-</style></head><body>
-<header class="header"><div class="header-inner"><a href="index.html" class="logo-img-wrap" title="BEST FOODS">
-<img src="images/faq.png" alt="CCS LOGO" class="logo-img"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-<span class="logo-placeholder" style="display:none;">INSÉRER ICI<br>VOTRE LOGO CCS</span>
-</a><button class="menu-btn" id="menuBtn">☰</button><nav class="nav" id="mainNav"><a href="index.html" class="active">HOME</a><a href="about.html" class="">ABOUT US</a><a href="products.html" class="">PRODUCT</a><a href="sustainability.html" class="">SUSTAINABILITY</a><a href="news.html" class="">NEWS</a><a href="career.html" class="">CAREER</a><a href="contact.html" class="">CONTACT</a></nav></div></header>
-<div class="africa-banner">
-<strong>NOTRE AMBITION : EXPANDRE NOTRE COMMERCE EN AFRIQUE DE L’OUEST</strong>
-<p>CCS souhaite développer progressivement son réseau commercial et renforcer ses partenariats dans toute l’Afrique de l’Ouest.</p>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCS — Comptoir Commercial Sourang</title>
+<meta name="description" content="CCS — Import-export, commerce général et distribution au Sénégal, avec une ambition ouest-africaine.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root{
+  --ink:#07152a;--blue:#073b8f;--blue2:#0b5ed7;--gold:#d8a72c;--paper:#f5f7fb;
+  --muted:#6d7890;--white:#fff;--line:rgba(7,21,42,.11);--radius:28px;
+  --shadow:0 25px 70px rgba(7,21,42,.12);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden}
+h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.02;letter-spacing:-.045em}
+p{line-height:1.7;color:var(--muted)}a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.nav{position:fixed;top:18px;left:0;right:0;z-index:100;transition:.35s}
+.nav.scrolled{top:0}.nav-inner{height:76px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.22);background:rgba(7,21,42,.35);backdrop-filter:blur(18px);border-radius:24px;transition:.35s}
+.nav.scrolled .nav-inner{background:rgba(255,255,255,.9);border-color:var(--line);box-shadow:0 12px 35px rgba(7,21,42,.1)}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;letter-spacing:.05em}.nav.scrolled .brand{color:var(--ink)}
+.brand-mark{width:47px;height:47px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--blue);font:800 15px Manrope;box-shadow:0 7px 20px #0002}.brand small{font-size:9px;display:block;opacity:.7;letter-spacing:.18em}
+.links{display:flex;gap:24px;align-items:center}.links a{font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;opacity:.9}.nav.scrolled .links a{color:var(--ink)}
+.nav-cta{padding:12px 17px;border-radius:14px;background:var(--gold);color:var(--ink)!important}
+.menu{display:none;background:none;border:0;color:#fff;font-size:25px}.nav.scrolled .menu{color:var(--ink)}
+
+.hero{height:100vh;min-height:720px;position:relative;background:#061326;color:#fff;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 1s}.slide.active{opacity:1;pointer-events:auto}
+.slide-bg{position:absolute;inset:-3%;background-position:center;background-size:cover;filter:saturate(.8);transform:scale(1.04);transition:transform 8s ease}.slide.active .slide-bg{transform:scale(1)}
+.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,15,32,.9),rgba(3,15,32,.45) 52%,rgba(3,15,32,.18))}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:70px;max-width:800px}
+.eyebrow,.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:800;color:var(--gold);margin-bottom:18px}
+.hero h1{font-size:clamp(48px,7vw,92px);max-width:850px}.hero p{color:#dfe7f3;font-size:18px;max-width:650px;margin:24px 0 30px}
+.btn{display:inline-flex;width:max-content;align-items:center;gap:10px;border:1px solid var(--line);padding:15px 20px;border-radius:14px;font-weight:700;font-size:13px;transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px #07152a18}.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.hero-dots{position:absolute;z-index:4;bottom:42px;left:50%;transform:translateX(-50%);display:flex;gap:8px}.hero-dot{width:35px;height:4px;border:0;background:#ffffff55;border-radius:20px;cursor:pointer}.hero-dot.active{background:var(--gold)}
+.hero-meta{position:absolute;right:40px;bottom:39px;z-index:4;font-size:11px;letter-spacing:.15em;color:#fff8}
+
+.section{padding:120px 0}.section.dark{background:#07152a;color:#fff}.section.dark p{color:#aebbd0}.section-head{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:55px}.section-head h2{font-size:clamp(38px,5vw,64px);max-width:720px}.section-head .lead{max-width:440px;margin:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.image-wrap{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}.image-wrap img{display:block;width:100%;height:100%;min-height:520px;object-fit:cover}.floating-tag{position:absolute;left:22px;bottom:22px;background:#fff;border-radius:17px;padding:16px 18px;box-shadow:0 12px 30px #0002;display:grid;gap:4px}.floating-tag strong{font-size:12px}.floating-tag span{font-size:11px;color:var(--muted)}
+.copy h2{font-size:clamp(40px,5vw,62px);margin-bottom:24px}.feature-list{display:grid;gap:19px;margin:30px 0}.feature{display:flex;gap:15px}.feature i{width:10px;height:10px;background:var(--gold);border-radius:50%;margin-top:8px;box-shadow:0 0 0 7px #d8a72c18}.feature strong,.feature span{display:block}.feature span{font-size:13px;color:var(--muted);margin-top:4px}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #ffffff22}.flow-item{padding:32px 24px 0;border-right:1px solid #ffffff22;min-height:240px}.flow-item:last-child{border:0}.flow-item small{color:var(--gold);font-weight:800;font-size:10px;letter-spacing:.15em}.flow-item h3{font-size:25px;margin:16px 0}.flow-item p{font-size:14px}
+
+.double{background:linear-gradient(135deg,#fff 0%,#f4f7fc 100%)}.partner-grid{display:grid;grid-template-columns:1fr .9fr;gap:80px;align-items:center}.double-logo{font:800 clamp(60px,9vw,120px) Manrope;letter-spacing:-.08em;color:#123b8c;margin:8px 0}.double-logo span{color:#1592d0}.stream{width:170px;height:4px;background:linear-gradient(90deg,#123b8c,#1592d0,transparent);margin:15px 0 25px}.specs{display:grid;grid-template-columns:repeat(4,1fr);margin-top:35px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.spec{padding:18px 8px;border-right:1px solid var(--line)}.spec:last-child{border:0}.spec b{display:block;font:700 18px Manrope}.spec span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.3s}.card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}.card-img{height:260px;overflow:hidden;background:#eef2f7}.card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}.card:hover img{transform:scale(1.06)}.card-body{padding:22px}.pill{display:inline-block;font-size:9px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--blue);background:#eaf1fc;border-radius:50px;padding:7px 10px}.card h3{font-size:23px;margin:14px 0 8px}.card p{font-size:12px;margin:0 0 18px}.card a{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--blue)}
+.vision{background:#f4f7fb;overflow:hidden}.map{height:500px;border-radius:35px;background:radial-gradient(circle at 34% 48%,#dceaff 0 2%,transparent 3%),linear-gradient(145deg,#eef4fb,#dfe8f4);position:relative;overflow:hidden;border:1px solid var(--line)}.map:before{content:"";position:absolute;width:650px;height:650px;border:1px dashed #0b5ed733;border-radius:50%;left:8%;top:-18%;animation:spin 28s linear infinite}.map:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #0b5ed722;border-radius:50%;left:17%;top:5%;animation:spin 20s linear reverse infinite}.hub{position:absolute;left:30%;top:46%;width:18px;height:18px;background:var(--gold);border:5px solid #fff;border-radius:50%;box-shadow:0 0 0 12px #d8a72c33,0 0 45px #d8a72c88;z-index:3}.route{position:absolute;left:30%;top:48%;height:2px;width:32%;background:linear-gradient(90deg,var(--gold),#0b5ed700);transform-origin:left;z-index:2}.r1{transform:rotate(-28deg)}.r2{transform:rotate(-9deg);width:40%}.r3{transform:rotate(18deg);width:34%}.r4{transform:rotate(38deg);width:38%}.country{position:absolute;font-size:10px;font-weight:800;letter-spacing:.12em;color:#49627f}.c1{left:24%;top:27%}.c2{left:48%;top:22%}.c3{left:49%;top:67%}.c4{left:64%;top:72%}.c5{left:78%;top:56%}
+@keyframes spin{to{transform:rotate(360deg)}}.beyond{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.mini-card{height:250px;border-radius:22px;overflow:hidden;background-size:cover;background-position:center;position:relative;transition:.3s}.mini-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,#07152acc)}.mini-card:hover{transform:translateY(-5px)}.mini-card span{position:absolute;z-index:2;left:20px;bottom:18px;color:#fff;font:700 22px Manrope}
+.origin-line{display:grid;grid-template-columns:repeat(5,1fr);position:relative}.origin-line:before{content:"";height:2px;background:linear-gradient(90deg,var(--gold),var(--blue));position:absolute;left:5%;right:5%;top:23px}.origin-step{position:relative;text-align:center;padding:65px 14px 0}.origin-step:before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:17px;height:17px;background:var(--white);border:5px solid var(--gold);border-radius:50%;z-index:2}.origin-step h3{font-size:20px}.origin-step p{font-size:12px}
+.sustain{background:#081a31;color:#fff;position:relative;overflow:hidden}.sustain:before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;right:-200px;top:-150px;background:#0b5ed722;filter:blur(20px)}.sustain .lead{color:#afbdd1}.sustain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.sustain-card{border:1px solid #ffffff17;border-radius:22px;padding:28px;min-height:190px;background:#ffffff06;transition:.3s}.sustain-card:hover{background:#ffffff0d;transform:translateY(-5px)}.sustain-card h3{font-size:21px}.sustain-card p{font-size:12px;color:#aebbd0}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.news-card{border:1px solid var(--line);border-radius:22px;padding:30px;min-height:230px;transition:.3s}.news-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.news-card h3{font-size:28px;margin:20px 0 10px}.news-card p{font-size:13px}
+.cta{padding:100px 0;background:var(--gold)}.cta h2{font-size:clamp(45px,7vw,82px);max-width:850px}.cta p{max-width:600px;color:#35445a}.cta .btn{background:var(--ink);color:#fff;border-color:var(--ink)}
+.footer{background:#061326;color:#fff;padding:75px 0 25px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:45px}.footer h3{font-size:15px;margin-bottom:18px}.footer a,.footer p{display:block;color:#aebbd0;font-size:12px;line-height:2}.footer-brand{font:800 24px Manrope}.copy{margin-top:50px;padding-top:20px;border-top:1px solid #ffffff17;color:#68778f;font-size:11px}
+.float{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;gap:9px}.float a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 10px 30px #0002;font-weight:800}.float .wa{background:#16a56b;color:#fff}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.links{display:none}.menu{display:block}.nav-inner{height:68px}.menu.open+.links{display:flex}.split,.partner-grid{grid-template-columns:1fr;gap:45px}.flow{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:1fr 1fr}.sustain-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.section-head .lead{margin-top:20px}.origin-line{grid-template-columns:1fr;gap:25px}.origin-line:before{left:calc(50% - 1px);top:5%;bottom:5%;height:auto;width:2px;background:linear-gradient(var(--gold),var(--blue))}.origin-step{padding:0 0 0 60px;text-align:left}.origin-step:before{left:0;top:3px}.map{height:430px}.country{font-size:8px}}
+@media(max-width:600px){.container{width:min(100% - 28px,1180px)}.hero{min-height:650px}.hero h1{font-size:48px}.hero p{font-size:15px}.hero-meta{right:15px}.section{padding:78px 0}.flow,.product-grid,.beyond,.sustain-grid,.news-grid,.footer-grid{grid-template-columns:1fr}.image-wrap img{min-height:390px}.specs{grid-template-columns:1fr 1fr}.spec:nth-child(2){border:0}.mini-card{height:210px}.nav{top:10px}.nav-inner{border-radius:18px}.links{position:absolute;top:78px;left:0;right:0;padding:18px;flex-direction:column;align-items:flex-start;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.links a{color:var(--ink)!important}.menu.open{transform:rotate(90deg)}}
+</style>
+<!-- All visual assets are local files from the CCS asset list; no external image source is used. -->
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top"><span class="brand-mark">CCS</span><span>COMPTOIR COMMERCIAL SOURANG<small>IMPORT • EXPORT • COMMERCE GÉNÉRAL</small></span></a>
+    <button class="menu" id="menu">☰</button>
+    <nav class="links" id="links">
+      <a href="#about">À PROPOS</a><a href="#doublea">DOUBLE A</a><a href="#products">PRODUITS</a><a href="#vision">VISION</a><a href="#sustainability">SUSTAINABILITY</a><a href="#news">NEWS</a><a class="nav-cta" href="#contact">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <article class="slide active"><div class="slide-bg" style="background-image:url('cafe-kenya.jpg')"></div><div class="container hero-content"><div class="eyebrow">Depuis 2019 • Sénégal</div><h1>Du Sénégal vers l'Afrique de l'Ouest.</h1><p>CCS connecte fournisseurs internationaux, produits de qualité et marchés sénégalais à travers une activité d'import-export et de commerce général.</p><a class="btn primary" href="#about">Découvrir CCS →</a></div></article>
+  <article class="slide"><div class="slide-bg" style="background-image:url('feuilles-de-laurier.jpg')"></div><div class="container hero-content"><div class="eyebrow">Papeterie • Depuis 2019</div><h1>Une expertise construite autour du papier.</h1><p>Avec Double A comme relation historique, puis Smart Copy et Capital Paper, CCS développe progressivement son portefeuille papeterie.</p><a class="btn primary" href="#doublea">CCS × Double A →</a></div></article>
+  <article class="slide"><div class="slide-bg" style="background-image:url('piment-rouge.jpg')"></div><div class="container hero-content"><div class="eyebrow">Import-export alimentaire</div><h1>Des origines internationales aux marchés locaux.</h1><p>Épices, légumineuses, produits laitiers et autres denrées : une diversification pensée pour répondre aux besoins du marché sénégalais.</p><a class="btn primary" href="#products">Voir les produits →</a></div></article>
+  <article class="slide"><div class="slide-bg" style="background-image:url('raisins-secs.jpg')"></div><div class="container hero-content"><div class="eyebrow">Notre prochain horizon</div><h1>Grandir, marché après marché.</h1><p>Le Sénégal est notre point d'ancrage. L'Afrique de l'Ouest est notre ambition.</p><a class="btn primary" href="#vision">Notre vision →</a></div></article>
+  <div class="hero-dots"><button class="hero-dot active"></button><button class="hero-dot"></button><button class="hero-dot"></button><button class="hero-dot"></button></div><div class="hero-meta">CCS / 01—04</div>
+</section>
+
+<section class="section" id="about"><div class="container split">
+  <div class="image-wrap reveal"><img src="cafe-kenya-sac.jpg" alt="Logistique internationale"><div class="floating-tag"><strong>GLOBAL SOURCING</strong><span>International → Sénégal → Afrique de l'Ouest</span></div></div>
+  <div class="copy reveal"><div class="kicker">Qui sommes-nous ?</div><h2>Une entreprise sénégalaise ouverte sur le monde.</h2><p>Créée au Sénégal en 2019, CCS — Comptoir Commercial Sourang — évolue dans l'import-export et le commerce général. Son parcours commence notamment dans la papeterie, puis s'élargit progressivement vers l'alimentaire.</p><div class="feature-list"><div class="feature"><i></i><div><strong>Qualité</strong><span>Des produits sélectionnés avec attention.</span></div></div><div class="feature"><i></i><div><strong>Rapidité</strong><span>Une volonté de service et de livraison rapide partout au Sénégal.</span></div></div><div class="feature"><i></i><div><strong>Compétitivité</strong><span>Des offres pensées pour rester compétitives.</span></div></div></div><a class="btn" href="#origin">Notre parcours →</a></div>
+</div></section>
+
+<section class="section dark" id="origin"><div class="container"><div class="section-head reveal"><div><div class="kicker">Notre modèle</div><h2>Origin → Sourcing → CCS → Distribution → West Africa.</h2></div><p class="lead">Une chaîne commerciale pensée pour relier les bonnes sources aux bons marchés.</p></div><div class="flow reveal">
+  <div class="flow-item"><small>01 / ORIGIN</small><h3>Origine</h3><p>Comprendre la provenance et les informations disponibles sur le produit.</p></div>
+  <div class="flow-item"><small>02 / SOURCING</small><h3>Sourcing</h3><p>Identifier des fournisseurs et des opportunités adaptées aux besoins.</p></div>
+  <div class="flow-item"><small>03 / CCS</small><h3>Le pont commercial</h3><p>Coordination, relation commerciale, importation et mise en marché.</p></div>
+  <div class="flow-item"><small>04 / DISTRIBUTION</small><h3>Marché</h3><p>Distribuer et servir les clients au Sénégal, avec une ambition régionale.</p></div>
+</div></div></section>
+
+<section class="section double" id="doublea"><div class="container partner-grid">
+  <div class="reveal"><div class="kicker">CCS × Double A</div><div class="double-logo">Double <span>A</span></div><div class="stream"></div><h2>Une relation historique depuis 2019.</h2><p class="lead">Depuis 2019, CCS représente au Sénégal la marque Double A, une marque de papier originaire de Thaïlande. Cette collaboration constitue un élément majeur du parcours de CCS dans la papeterie.</p><p>Au fil de son évolution, CCS élargit son portefeuille avec <strong>Smart Copy</strong> et développe <strong>Capital Paper</strong>, une marque initiée par CCS et introduite sur le marché sénégalais.</p><div class="specs"><div class="spec"><b>2019</b><span>Début de la relation</span></div><div class="spec"><b>Thaïlande</b><span>Origine Double A</span></div><div class="spec"><b>Smart Copy</b><span>Portefeuille papier</span></div><div class="spec"><b>Capital Paper</b><span>Initiative CCS</span></div></div></div>
+  <div class="image-wrap reveal"><img src="lait-yoghurt-king.jpg" alt="Papier professionnel"><div class="floating-tag"><strong>PAPER BUSINESS</strong><span>Double A • Smart Copy • Capital Paper</span></div></div>
+</div></section>
+
+<section class="section products" id="products"><div class="container"><div class="section-head reveal"><div><div class="kicker">Catalogue</div><h2>Beyond Paper.</h2></div><p class="lead">CCS diversifie progressivement son activité vers l'import-export de produits alimentaires.</p></div>
+<div class="product-grid">
+  <article class="card reveal"><div class="card-img"><img src="poivre-noir.jpg" alt="Poivre noir"></div><div class="card-body"><span class="pill">Épices</span><h3>Poivre noir</h3><p>Produit cité dans le portefeuille alimentaire de CCS, notamment avec une origine Brésil communiquée.</p><a href="#contact">DEMANDER →</a></div></article>
+  <article class="card reveal"><div class="card-img"><img src="piment-rouge-sac.jpg" alt="Chili séché"></div><div class="card-body"><span class="pill">Épices</span><h3>Chili</h3><p>Produit alimentaire cité dans l'activité d'importation, notamment depuis l'Inde.</p><a href="#contact">DEMANDER →</a></div></article>
+  <article class="card reveal"><div class="card-img"><img src="lentilles.jpg" alt="Lentilles"></div><div class="card-body"><span class="pill">Produits secs</span><h3>Lentilles</h3><p>Une des catégories de produits secs citées dans le développement alimentaire de CCS.</p><a href="#contact">DEMANDER →</a></div></article>
+  <article class="card reveal"><div class="card-img"><img src="lait-yoghurt-king.jpg" alt="Lait en poudre"></div><div class="card-body"><span class="pill">Produits laitiers</span><h3>Lait en poudre</h3><p>Produit laitier cité parmi les denrées importées et développées par CCS.</p><a href="#contact">DEMANDER →</a></div></article>
 </div>
+<div class="beyond" style="margin-top:18px">
+  <div class="mini-card reveal" style="background-image:url('petits-pois.jpg')"><span>Sucre</span></div>
+  <div class="mini-card reveal" style="background-image:url('noix-de-muscade.jpg')"><span>Petits pois</span></div>
+  <div class="mini-card reveal" style="background-image:url('gingembre.jpg')"><span>Tamarin</span></div>
+</div></div></section>
 
-<section class="hero" id="home"><div class="hero-card">
-<div class="mini">COMPTOIR COMMERCIAL SOURANG</div>
-<h1>YOUR TRUSTED<br>COMMERCIAL PARTNER</h1>
-<p>Une entreprise commerciale tournée vers la qualité, la fiabilité et le développement durable.</p>
-<a class="btn" href="products.html">VIEW PRODUCTS</a></div><div class="red-square"></div></section>
-<section class="about"><div class="container"><div class="about-grid">
-<div class="image-box about-image"></div><div class="about-content"><h2>ABOUT CCS</h2>
-<p>Comptoir Commercial Sourang (CCS) est une entreprise commerciale basée au Sénégal, spécialisée dans l'approvisionnement, le négoce et la distribution.</p>
-<p>Notre ambition est de construire des partenariats solides avec nos fournisseurs et nos clients, puis d’étendre progressivement notre commerce à l’ensemble de l’Afrique de l’Ouest.</p>
-<a class="btn" href="about.html">DISCOVER CCS</a></div></div></div></section>
-<section class="products"><div class="container"><h2 class="section-title">OUR PRODUCTS</h2>
-<div class="product-grid"><div class="product-card product-one"><div class="product-content"><h3>FOOD<br>PRODUCTS</h3><a class="btn" href="products.html">MORE DETAIL</a></div></div>
-<div class="product-card product-two"><div class="product-content"><h3>OTHER<br>PRODUCTS</h3><a class="btn" href="products.html">MORE DETAIL</a></div></div></div></div></section>
-<section class="contact"><div class="contact-card"><h2>KEEP IN TOUCH</h2><p>Pour toute demande commerciale ou information sur nos produits, notre équipe est à votre disposition.</p><a class="btn" href="contact.html">CONTACT US</a></div></section>
+<section class="section vision" id="vision"><div class="container"><div class="section-head reveal"><div><div class="kicker">West Africa</div><h2>Sénégal aujourd'hui. Afrique de l'Ouest demain.</h2></div><p class="lead">L'expansion régionale est une ambition stratégique : développer progressivement de nouveaux marchés, partenaires et routes commerciales.</p></div>
+<div class="map reveal"><div class="hub"></div><div class="route r1"></div><div class="route r2"></div><div class="route r3"></div><div class="route r4"></div><span class="country c1">MAURITANIE</span><span class="country c2">MALI</span><span class="country c3">GUINÉE</span><span class="country c4">CÔTE D’IVOIRE</span><span class="country c5">GHANA / NIGERIA</span></div></div></section>
 
-<footer class="footer">
-<div class="footer-main"><div class="container footer-grid">
-<div class="footer-logo"><img src="images/faq.png" alt="ccs logo" class="logo-img"></div>
-<div><h3>QUICK LINK</h3><ul>
-<li><a href="index.html">HOME</a></li><li><a href="about.html">ABOUT US</a></li>
-<li><a href="products.html">PRODUCTS</a></li><li><a href="sustainability.html">SUSTAINABILITY</a></li>
-</ul></div>
-<div><h3>MORE LINKS</h3><ul>
-<li><a href="career.html">CAREERS</a></li><li><a href="news.html">NEWS</a></li><li><a href="contact.html">CONTACT</a></li>
-</ul></div>
-<div><h3>CONTACT DETAILS</h3><p><strong>OFFICE:</strong><br>Dakar, Sénégal<br>Afrique de l'Ouest</p>
-<p><strong>EMAIL:</strong><br>contact@ccs.sn</p><p><strong>PHONE:</strong><br>+221 XX XXX XX XX</p></div>
-</div></div>
-<div class="copyright">Copyright © 2026 CCS — Comptoir Commercial Sourang. All Rights Reserved.</div>
-</footer>
-<div class="floating"><button class="float-btn float-instagram">◎</button><button class="float-btn float-whatsapp">◉</button><button class="float-btn float-phone">☎</button></div>
-<button class="top-btn" id="topBtn">⌃</button>
+<section class="section"><div class="container"><div class="section-head reveal"><div><div class="kicker">Beyond Paper</div><h2>Plus de catégories. Une seule vision commerciale.</h2></div><p class="lead">Papeterie, épices, produits secs et produits laitiers : CCS construit un portefeuille capable d'évoluer avec le marché.</p></div><div class="beyond">
+  <div class="mini-card reveal" style="background-image:url('feuilles-de-laurier.jpg')"><span>Papeterie</span></div>
+  <div class="mini-card reveal" style="background-image:url('poivre-noir.jpg')"><span>Épices</span></div>
+  <div class="mini-card reveal" style="background-image:url('lentilles.jpg')"><span>Légumineuses</span></div>
+  <div class="mini-card reveal" style="background-image:url('lait-yoghurt-king.jpg')"><span>Produits laitiers</span></div>
+  <div class="mini-card reveal" style="background-image:url('petits-pois.jpg')"><span>Sucre</span></div>
+  <div class="mini-card reveal" style="background-image:url('noix-de-muscade.jpg')"><span>Produits alimentaires</span></div>
+</div></div></section>
+
+<section class="section sustain" id="sustainability"><div class="container"><div class="section-head reveal"><div><div class="kicker">Sustainability</div><h2>Croître avec responsabilité.</h2></div><p class="lead">CCS veut construire des relations commerciales durables en restant attentive à l'origine, aux informations produits et au développement régional.</p></div><div class="sustain-grid">
+  <div class="sustain-card reveal"><h3>Sourcing responsable</h3><p>Développer des relations d'approvisionnement avec une attention portée aux informations disponibles.</p></div>
+  <div class="sustain-card reveal"><h3>Origine claire</h3><p>Conserver une information claire sur la provenance lorsque celle-ci est disponible et vérifiée.</p></div>
+  <div class="sustain-card reveal"><h3>Partenariats durables</h3><p>Privilégier les relations fondées sur la confiance, la fiabilité et la continuité.</p></div>
+  <div class="sustain-card reveal"><h3>Développement régional</h3><p>Construire progressivement des connexions commerciales plus fortes en Afrique de l'Ouest.</p></div>
+</div></div></section>
+
+<section class="section" id="news"><div class="container"><div class="section-head reveal"><div><div class="kicker">Actualités</div><h2>News & Partnerships.</h2></div><p class="lead">Un espace pour raconter les nouveaux produits, partenariats, opportunités et étapes de développement de CCS.</p></div><div class="news-grid">
+  <article class="news-card reveal"><span class="pill">Produits</span><h3>Nouveau portefeuille</h3><p>Mettre en avant les nouvelles références papier et alimentaires au fur et à mesure de leur disponibilité.</p></article>
+  <article class="news-card reveal"><span class="pill">Partnership</span><h3>Nouvelles connexions</h3><p>Présenter les relations fournisseurs, distributeurs et partenaires commerciaux.</p></article>
+  <article class="news-card reveal"><span class="pill">Expansion</span><h3>West Africa in focus</h3><p>Documenter progressivement les prochaines étapes de l'ambition régionale.</p></article>
+</div></div></section>
+
+<section class="cta" id="contact"><div class="container"><div class="kicker">Contact & Partnership</div><h2>Construisons la prochaine connexion.</h2><p>CCS est ouverte aux relations avec fabricants, fournisseurs, distributeurs, entreprises et acheteurs.</p><a class="btn" href="mailto:Comptoircommercialsourang@gmail.com">Nous contacter →</a></div></section>
+</main>
+    
+
+<footer class="footer"><div class="container"><div class="footer-grid">
+  <div><div class="footer-brand">CCS</div><p>Comptoir Commercial Sourang<br>Import • Export • Commerce Général<br>Depuis 2019 — Sénégal</p></div>
+  <div><h3>Navigation</h3><a href="#about">À propos</a><a href="#doublea">Double A</a><a href="#products">Produits</a><a href="#vision">Vision</a></div>
+  <div><h3>Contact</h3><p>Hann Résidence, en face de Coris Bank<br>Dakar, Sénégal</p><a href="tel:+221776990000">+221 77 699 00 00</a><a href="tel:+221776220000">+221 77 622 00 00</a><a href="tel:+221773360000">+221 77 336 00 00</a></div>
+  <div><h3>Écrire à CCS</h3><p>Pour une demande produit, sourcing ou partenariat.</p><a href="mailto:Comptoircommercialsourang@gmail.com">Comptoircommercialsourang@gmail.com</a><a href="https://wa.me/221776990000">WhatsApp →</a></div>
+</div><div class="copy">© 2026 Comptoir Commercial Sourang (CCS). Tous droits réservés.</div></div></footer>
+
+<div class="float"><a class="wa" href="https://wa.me/221776990000" aria-label="WhatsApp">W</a><a href="tel:+221776990000" aria-label="Téléphone">☎</a></div>
+
 <script>
-document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mainNav').classList.toggle('open'));
-document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mainNav').classList.remove('open')));
-document.getElementById('topBtn').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-</script></body></html>
+const nav=document.getElementById('nav'),menu=document.getElementById('menu'),links=document.getElementById('links');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>35));
+menu.addEventListener('click',()=>{menu.classList.toggle('open');links.classList.toggle('open')});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');links.classList.remove('open')}));
+const slides=[...document.querySelectorAll('.slide')],dots=[...document.querySelectorAll('.hero-dot')];let current=0,timer;
+function go(n){current=n;slides.forEach((s,i)=>s.classList.toggle('active',i===n));dots.forEach((d,i)=>d.classList.toggle('active',i===n));document.querySelector('.hero-meta').textContent=`CCS / 0${n+1}—04`}
+function autoplay(){clearInterval(timer);timer=setInterval(()=>go((current+1)%slides.length),6500)}dots.forEach((d,i)=>d.addEventListener('click',()=>{go(i);autoplay()}));autoplay();
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
