@@ -276,7 +276,7 @@
             gap: 5px;
         }
 
-        /* Section Preuves & Chargements (Evidence / Loading Operations) */
+        /* NOUVEAU DESIGN : Grandes Photos Immersives & Effet 3D JS pour Section Preuves & Chargements */
         .evidence-section-wrapper {
             margin-top: 50px;
             width: 100%;
@@ -284,62 +284,110 @@
 
         .evidence-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+            perspective: 1000px;
         }
 
         .evidence-card {
-            background: white;
-            border-radius: 8px;
+            background: #000;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+            height: 340px;
             cursor: pointer;
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .evidence-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(228, 30, 43, 0.3);
+            border-color: #e41e2b;
         }
 
         .evidence-img {
-            height: 220px;
+            height: 100%;
             width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             overflow: hidden;
-            background: #eee;
-            border-bottom: 2px solid #002664;
         }
 
         .evidence-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+            filter: brightness(0.85);
         }
 
         .evidence-card:hover .evidence-img img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: brightness(1.05);
         }
 
         .evidence-content {
-            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 38, 100, 0.95) 0%, rgba(0, 38, 100, 0.75) 65%, transparent 100%);
+            color: white;
+            transform: translateY(15px);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s ease;
+        }
+
+        .evidence-card:hover .evidence-content {
+            transform: translateY(0);
+            background: linear-gradient(to top, rgba(0, 38, 100, 0.98) 0%, rgba(0, 38, 100, 0.85) 75%, rgba(0, 38, 100, 0.4) 100%);
         }
 
         .evidence-content h3 {
-            color: #002664;
-            font-size: 16px;
-            margin-bottom: 8px;
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 6px;
             text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
         .evidence-content p {
-            color: #666;
+            color: #f1f1f1;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.4;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .evidence-card .product-badge {
+            background-color: #e41e2b;
+            margin-bottom: 8px;
+        }
+
+        .evidence-card .click-hint {
+            color: #ffc107;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .evidence-card:hover .click-hint {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Styles pour le Carrousel Horizontal Infini des Partenaires */
@@ -986,6 +1034,55 @@
                             </div>
                         </div>
 
+                        <!-- NOUVELLES IMAGES INTÉGRÉES (evidence17 à evidence20) -->
+                        <div class="evidence-card" onclick="openModal('Empotage & Calage Rigoureux Café Kenya', 'Opérations', 'evidence17_Cafe_Kenya_Best_Foods_4.jpg', 'Disposition structurée et calage de sécurité des sacs de café dans le conteneur, bloc de comptage 6/55.', 'Terminal Portuaire / Kenya', 'Contrôle quantitatif et vérification de la stabilité interne du fret.')">
+                            <div class="evidence-img">
+                                <img src="evidence17_Cafe_Kenya_Best_Foods_4.jpg" alt="Empotage Calage Café Kenya">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empotage & Calage (Bloc 6/55)" data-en="Stuffing & Chocking (Block 6/55)">Empotage & Calage (Bloc 6/55)</h3>
+                                <p data-fr="Organisation méthodique garantissant l'intégrité des sacs durant le transport." data-en="Methodical organization ensuring the integrity of bags during transport.">Organisation méthodique garantissant l'intégrité des sacs durant le transport.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <div class="evidence-card" onclick="openModal('Échantillonnage & Contrôle Lots Best Foods', 'Opérations', 'evidence18_Cafe_Kenya_Best_Foods_4.jpg', 'Inspection rapprochée et ouverture de sacs de jute Best Foods pour analyse de la qualité organoleptique.', 'Entrepôt Partenaire / Kenya', 'Poids net : 50 kg | Production : 12/2025 | Expiration : 12/2027.')">
+                            <div class="evidence-img">
+                                <img src="evidence18_Cafe_Kenya_Best_Foods_4.jpg" alt="Échantillonnage Café Kenya">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Échantillonnage & Analyse Lots" data-en="Sampling & Batch Analysis">Échantillonnage & Analyse Lots</h3>
+                                <p data-fr="Validation rigoureuse des standards de qualité avant la mise en conteneur." data-en="Rigorous validation of quality standards before containerization.">Validation rigoureuse des standards de qualité avant la mise en conteneur.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <div class="evidence-card" onclick="openModal('Vue d\'Ensemble Piles Entrepôt Kenya', 'Opérations', 'evidence19_Cafe_Kenya_Best_Foods_4.jpg', 'Stockage de masse en entrepôt des sacs de Café Kenya Best Foods prêts pour l export.', 'Entrepôt Logistique / Kenya', 'Gestion professionnelle des flux et des volumes d exportation.')">
+                            <div class="evidence-img">
+                                <img src="evidence19_Cafe_Kenya_Best_Foods_4.jpg" alt="Vue d'Ensemble Entrepôt Kenya">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Stockage en Masse Entrepôt" data-en="Mass Warehouse Storage">Stockage en Masse Entrepôt</h3>
+                                <p data-fr="Vue panoramique des stocks de café préparés pour l'expédition internationale." data-en="Panoramic view of coffee stocks prepared for international shipping.">Vue panoramique des stocks de café préparés pour l'expédition internationale.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <div class="evidence-card" onclick="openModal('Préparation & Contrôle Lots de Café', 'Opérations', 'evidence20_Cafe_Kenya_Best_Foods_4.jpg', 'Sacs de café alignés et ouverts pour inspection finale dans les entrepôts partenaires au Kenya.', 'Entrepôt / Kenya', 'Traçabilité transparente et conformité des produits.')">
+                            <div class="evidence-img">
+                                <img src="evidence20_Cafe_Kenya_Best_Foods_4.jpg" alt="Préparation Lots Café Kenya">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Contrôle Final des Lots" data-en="Final Batch Control">Contrôle Final des Lots</h3>
+                                <p data-fr="Inspection minutieuse des sacs avant la validation définitive des commandes." data-en="Meticulous inspection of bags before final order validation.">Inspection minutieuse des sacs avant la validation définitive des commandes.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
                         <!-- Élément de Preuve Ajouté : Intérieur Conteneur Vide -->
                         <div class="evidence-card" onclick="openModal('Inspection Intérieure Conteneur Vide', 'Opérations', 'evidence41_Container_Vide_Interieur.jpg', 'Vérification technique de la propreté, de l intégrité des parois en aluminium et du plancher rainuré d un conteneur avant empotage.', 'Terminal Logistique', 'Contrôle anti-humidité et absence de résidus pour garantir la sécurité de la marchandise.')">
                             <div class="evidence-img">
@@ -1086,6 +1183,31 @@
                                 <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
                                 <h3 data-fr="Empotage Café Kenya (MSNU 180582 2)" data-en="Kenya Coffee Stuffing (MSNU 180582 2)">Empotage Café Kenya (MSNU 180582 2)</h3>
                                 <p data-fr="Inspection et chargement validé de sacs de 50 kg de café en provenance du Kenya." data-en="Inspection and validated loading of 50 kg bags of coffee from Kenya.">Inspection et chargement validé de sacs de 50 kg de café en provenance du Kenya.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Nouvelles images supplémentaires (evidence15 et evidence16) -->
+                        <div class="evidence-card" onclick="openModal('Détail Empotage & Finition Conteneur Kenya', 'Opérations', 'evidence15_Cafe_Kenya_Best_Foods_4.jpg', 'Vérification de la fermeture des rangées de sacs de café à l intérieur du conteneur d expédition.', 'Terminal Portuaire / Kenya', 'Contrôle qualité final avant scellage et départ du conteneur.')">
+                            <div class="evidence-img">
+                                <img src="evidence15_Cafe_Kenya_Best_Foods_4.jpg" alt="Détail Empotage Café Kenya">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Finition Empotage Conteneur" data-en="Container Stuffing Finishing">Finition Empotage Conteneur</h3>
+                                <p data-fr="Assurance de la sécurité du chargement et conformité des normes d'export." data-en="Ensuring load safety and compliance with export standards.">Assurance de la sécurité du chargement et conformité des normes d'export.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <div class="evidence-card" onclick="openModal('Contrôle de Charge & Empilage Sacs Café', 'Opérations', 'evidence16_Cafe_Kenya_Best_Foods_4.jpg', 'Disposition méthodique des sacs de jute de 50 kg pour l équilibrage des charges en conteneur.', 'Port / Entrepôt Logistique', 'Optimisation de l espace et sécurité du transport maritime.')">
+                            <div class="evidence-img">
+                                <img src="evidence16_Cafe_Kenya_Best_Foods_4.jpg" alt="Contrôle de Charge Sacs Café">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Équilibrage & Empilage des Charges" data-en="Load Balancing & Stacking">Équilibrage & Empilage des Charges</h3>
+                                <p data-fr="Respect scrupuleux des protocoles d empotage pour une expédition sans risque." data-en="Scrupulous compliance with stuffing protocols for risk-free shipping.">Respect scrupuleux des protocoles d empotage pour une expédition sans risque.</p>
                                 <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
                             </div>
                         </div>
@@ -1319,7 +1441,7 @@
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Nos Pôles" data-en="Our Poles">Nos Pôles</h4>
+                <h4 data-fr="Nos Pôles" data-en="Nos Pôles">Nos Pôles</h4>
                 <a href="product.html" data-fr="Papeterie (Double A, Rame A4)" data-en="Stationery (Double A, A4 Paper)">Papeterie (Double A, Rame A4)</a>
                 <a href="product.html" data-fr="Import-Export Alimentaire & Vrac" data-en="Food Import-Export & Bulk">Import-Export Alimentaire & Vrac</a>
                 <a href="product.html" data-fr="Preuves & Chargements" data-en="Evidence & Loading">Preuves & Chargements</a>
@@ -1339,6 +1461,30 @@
     </footer>
 
     <script>
+        // Effet JavaScript de Tilt 3D interactif pour les cartes de preuves (grandes photos)
+        const evidenceCards = document.querySelectorAll('.evidence-card');
+        
+        evidenceCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // Position X par rapport à la carte
+                const y = e.clientY - rect.top;  // Position Y par rapport à la carte
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calcul de la rotation en degrés
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02) translateY(-5px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateY(0)';
+            });
+        });
+
         function toggleMarqueePause() {
             const track = document.getElementById('marqueeTrack');
             track.classList.toggle('paused');
