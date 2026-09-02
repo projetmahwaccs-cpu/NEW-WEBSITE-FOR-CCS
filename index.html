@@ -791,25 +791,69 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
 
     <section class="ccs-about-section">
         
-        <!-- Bloc 1 : Qui est CCS ? -->
-        <div class="ccs-row">
-            <div class="ccs-text-side">
-                <h2 class="ccs-title">Qui est CCS ?</h2>
-                <div class="ccs-separator"></div>
-                <p class="ccs-description">
-                    Comptoir Commercial Sourang (CCS) est une entreprise sénégalaise fondée en 2019, initialement spécialisée dans la distribution de papier sur l’ensemble du territoire. Acteur fiable, régulier et compétitif, CCS répond aux besoins des entreprises, administrations, écoles, imprimeries et structures professionnelles.
-                </p>
-                <p class="ccs-description">
-                    Grâce à une organisation rigoureuse, une logistique maîtrisée et un engagement constant, l'entreprise a rapidement bâti une réputation solide de professionnalisme.
-                </p>
-            </div>
-            <div class="ccs-image-side">
-                <img src="votre-image-1.jpg" alt="Qui est CCS" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop';">
-                <div class="ccs-badge-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                </div>
-            </div>
-        </div>
+      <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Vidéo en Boucle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style de la section vidéo */
+        .video-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Plein écran en hauteur (ajustez si besoin, ex: 500px) */
+            min-height: 400px;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* Style de la vidéo pour qu'elle remplisse parfaitement la section */
+        .video-section video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Ligne décorative en bas aux couleurs de la charte (Rouge Vif & Bleu Ciel) */
+        .video-bottom-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8 0%, #e41e2b 100%);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="video-section">
+        <!-- Vidéo en boucle, muette (nécessaire pour l'autoplay sur la plupart des navigateurs) et en lecture auto -->
+        <video autoplay muted loop playsinline>
+            <source src="inloop.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+        
+        <!-- Ligne décorative optionnelle -->
+        <div class="video-bottom-line"></div>
+    </section>
+
+</body>
+</html>
 
         <!-- Bloc 2 : Diversification Stratégique -->
         <div class="ccs-row reverse">
