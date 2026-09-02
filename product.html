@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCS - Comptoir Commercial Sourang | Produits, Partenaires & Évidences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: white;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 12px;
+        }
+
+        .nav-item {
+            margin: 0;
+            padding: 5px; 
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #002664;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            display: inline-block;
+            padding: 8px 12px;
+            border: 2px solid #e41e2b;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background-color: #e41e2b;
+        }
+
+        .red-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #e41e2b;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
+            top: -15px; 
+        }
+        
+        .nav-item .nav-link.active {
+            color: #e41e2b;
+            background-color: #fff;
+        }
+
+        .lang-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 15px;
+        }
+
+        .btn-lang {
+            text-decoration: none;
+            padding: 5px 12px;
+            border: 1px solid #002664;
+            color: #002664;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background: white;
+        }
+
+        .btn-lang:hover, .btn-lang.active {
+            background-color: #002664;
+            color: white;
+        }
+
+        .parallax-section {
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .parallax-overlay {
+            width: 100%;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 38, 100, 0.85);
+        }
+
+        .parallax-overlay.light-overlay {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .hero-banner {
+            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop');
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 4px solid #e41e2b;
+        }
+
+        .hero-banner .parallax-overlay {
+            background-color: rgba(0, 38, 100, 0.82);
+            padding: 0;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .category-title {
+            color: #002664;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid #e41e2b;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            height: 190px;
+            width: 100%;
+            overflow: hidden;
+            border-bottom: 2px solid #002664;
+            background: #eee;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-content h3 {
+            color: #002664;
+            font-size: 17px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-content p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background-color: #e41e2b;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .click-hint {
+            font-size: 11px;
+            color: #002664;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Section Preuves & Chargements (Evidence / Loading Operations) */
+        .evidence-section-wrapper {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .evidence-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .evidence-img {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+            background: #eee;
+            border-bottom: 2px solid #002664;
+        }
+
+        .evidence-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .evidence-card:hover .evidence-img img {
+            transform: scale(1.05);
+        }
+
+        .evidence-content {
+            padding: 20px;
+        }
+
+        .evidence-content h3 {
+            color: #002664;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .evidence-content p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Styles pour le Carrousel Horizontal Infini des Partenaires */
+        .partners-section-wrapper {
+            margin-top: 50px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .partners-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .partners-title {
+            color: #002664;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-left: 5px solid #e41e2b;
+            padding-left: 10px;
+        }
+
+        .pause-instruction {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 25px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 30px;
+            animation: scrollMarquee 35s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track,
+        .marquee-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .partner-logo-card {
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            width: 240px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .partner-logo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-color: #002664;
+        }
+
+        .partner-logo-card h4 {
+            color: #002664;
+            font-size: 15px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .partner-logo-card span {
+            color: #e41e2b;
+            font-size: 11px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Modal / Popup Detail Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-top: 5px solid #e41e2b;
+            animation: modalSlide 0.3s ease;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background-color: #002664;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #e41e2b;
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .modal-img-box {
+            width: 100%;
+            height: 250px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .modal-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details h4 {
+            color: #002664;
+            font-size: 15px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .modal-details p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background-color: #00193d;
+            color: white;
+            width: 100%;
+            padding: 50px 20px 20px 20px;
+            border-top: 4px solid #e41e2b;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #e41e2b;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #e41e2b;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        @media(max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            .parallax-section {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="votre-logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <div class="red-dot" id="redDot"></div>
+                <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Our Story</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">About Us</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Products</a></li>
+                <li class="nav-item"><a href="sustainability.html" class="nav-link" data-fr="Durabilité" data-en="Sustainability">Sustainability</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
+                <li class="nav-item"><a href="career.html" class="nav-link" data-fr="Carrières" data-en="Career">Career</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+            </ul>
+
+            <div class="lang-buttons">
+                <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
+                <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="parallax-section hero-banner">
+        <div class="parallax-overlay">
+            <h1 class="hero-title" data-fr="Nos Pôles de Produits, Partenaires & Preuves" data-en="Our Product Poles, Partners & Evidence">Nos Pôles de Produits, Partenaires & Preuves</h1>
+            <p class="hero-subtitle" data-fr="Découvrez notre gamme complète, notre réseau mondial de partenaires et nos opérations de chargement certifiées." data-en="Discover our complete range, our global partner network, and our certified loading operations.">Découvrez notre gamme complète, notre réseau mondial de partenaires et nos opérations de chargement certifiées.</p>
+        </div>
+    </section>
+
+    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1920&auto=format&fit=crop');">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                
+                <!-- CATÉGORIE 1 : PAPIERS -->
+                <h2 class="category-title" data-fr="1. Pôles Papeterie & Papiers" data-en="1. Stationery & Paper Poles">1. Pôles Papeterie & Papiers</h2>
+                <div class="products-grid">
+                    <div class="product-card" onclick="openModal('Rame papier A4 80 gsm', 'Papeterie', 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop', 'Papier de haute qualité reconnu pour sa blancheur, sa texture lisse et sa performance anti-bourrage exceptionnelle.', 'Thaïlande', 'Grammages 80 gsm, format A4, idéal pour impressions et photocopies.')">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop" alt="Rame papier A4 80 gsm">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Papeterie" data-en="Stationery">Papeterie</span>
+                            <h3 data-fr="Rame papier A4 80 gsm" data-en="A4 Paper Ream 80 gsm">Rame papier A4 80 gsm</h3>
+                            <p data-fr="Origine : Thaïlande. Papier de bureau de qualité supérieure pour une impression fluide." data-en="Origin: Thailand. Superior office paper for smooth printing.">Origine : Thaïlande. Papier de bureau de qualité supérieure pour une impression fluide.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIE 2 : PRODUITS ALIMENTAIRES & EN VRAC -->
+                <h2 class="category-title" data-fr="2. Produits Alimentaires & En Vrac" data-en="2. Food Products & Bulk">2. Produits Alimentaires & En Vrac</h2>
+                <div class="products-grid">
+                    
+                    <!-- CAFÉ KENYA BEST FOODS -->
+                    <div class="product-card" onclick="openModal('Cafe Kenya Best Foods', 'Alimentaire', 'evidence12_Cafe_Kenya_Best_Foods_3.jpg', 'Conditionné en sacs de jute de 50KG. Conteneurs associés : MSNU 180582, MSNU 249803 7, TGHU 122380 8, CAIU 611650 9. Max Gross : 30,480 KGS, Payload : ~28,260-28,380 KGS.', 'Kenya', 'Production : 12/2025 | Expiration : 12/2027.')">
+                        <div class="product-img">
+                            <img src="evidence12_Cafe_Kenya_Best_Foods_3.jpg" alt="Cafe Kenya Best Foods" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800&auto=format&fit=crop';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Cafe Kenya Best Foods" data-en="Cafe Kenya Best Foods">Cafe Kenya Best Foods</h3>
+                            <p data-fr="Origine : Kenya. Sacs de jute de 50KG, traçabilité conteneurisée certifiée." data-en="Origin: Kenya. 50KG jute bags, certified containerized traceability.">Origine : Kenya. Sacs de jute de 50KG, traçabilité conteneurisée certifiée.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- POIVRE -->
+                    <div class="product-card" onclick="openModal('Poivre', 'Alimentaire', 'poivre-noir.jpg', 'Poivre de qualité supérieure aux notes piquantes et boisées, sélectionné pour les professionnels.', 'Brésil', 'Idéal pour l’assaisonnement et l’industrie agroalimentaire.')">
+                        <div class="product-img">
+                            <img src="poivre-noir.jpg" alt="Poivre" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300?text=Poivre';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Poivre" data-en="Pepper">Poivre</h3>
+                            <p data-fr="Origine : Brésil. Poivre authentique et parfumé." data-en="Origin: Brazil. Authentic and fragrant pepper.">Origine : Brésil. Poivre authentique et parfumé.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- PETIS POIS -->
+                    <div class="product-card" onclick="openModal('Petis Pois', 'Alimentaire', 'petits-pois.jpg', 'Petits pois tendres et savoureux, conservant toute leur fraîcheur et leurs valeurs nutritives.', 'Argentine', 'Riches en vitamines et en fibres, parfaits en accompagnement.')">
+                        <div class="product-img">
+                            <img src="petits-pois.jpg" alt="Petis Pois" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300?text=Petis+Pois';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Petis Pois" data-en="Green Peas">Petis Pois</h3>
+                            <p data-fr="Origine : Argentine. Légumes sélectionnés avec soin." data-en="Origin: Argentina. Carefully selected vegetables.">Origine : Argentine. Légumes sélectionnés avec soin.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- LENTILLES -->
+                    <div class="product-card" onclick="openModal('Lentilles', 'Alimentaire', 'lentilles.jpg', 'Lentilles sélectionnées pour leur haute teneur en protéines végétales, en fibres et en minéraux essentiels.', 'Canada', 'Cuisson rapide, texture ferme et fondante.')">
+                        <div class="product-img">
+                            <img src="lentilles.jpg" alt="Lentilles" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300?text=Lentilles';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Lentilles" data-en="Lentils">Lentilles</h3>
+                            <p data-fr="Origine : Canada. Légumineuses nutritives de premier choix." data-en="Origin: Canada. Premium nutritious legumes.">Origine : Canada. Légumineuses nutritives de premier choix.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- Brazilian White Crystal Sugar / Sucre Pantaleon -->
+                    <div class="product-card" onclick="openModal('Sucre Blanc Pantaleon', 'Alimentaire', 'evidence8_Sucre_Blanc_Pantaleon_3.jpg', 'Sucre blanc pur de canne, conditionné en sacs de 50 kg. Produit au Nicaragua par Monte Rosa, S.A.. Recommandé pour l export et la distribution.', 'Nicaragua / Brésil', '100% pur sucre de canne, sans colorants ni arômes artificiels. À conserver dans un endroit frais et sec.')">
+                        <div class="product-img">
+                            <img src="evidence8_Sucre_Blanc_Pantaleon_3.jpg" alt="Sucre Blanc Pantaleon" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581441363689-1ed3dcf2c5d1?q=80&w=800&auto=format&fit=crop';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Sucre Blanc Pantaleon" data-en="Pantaleon White Sugar">Sucre Blanc Pantaleon</h3>
+                            <p data-fr="Origine : Nicaragua / Brésil. Sacs de 50 kg, pur sucre de canne." data-en="Origin: Nicaragua / Brazil. 50 kg bags, pure cane sugar.">Origine : Nicaragua / Brésil. Sacs de 50 kg, pur sucre de canne.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- PREMIUM QUALITY INDIAN PARBOILED RICE -->
+                    <div class="product-card" onclick="openModal('Premium Quality Indian Parboiled Rice', 'Alimentaire', 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800&auto=format&fit=crop', 'Riz étuvé indien de qualité supérieure à longs grains, 5% de brisure, sélection rigoureuse.', 'Inde', 'Long grain, 5% broken selected quality, idéal pour une cuisson parfaite sans coller.')">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=800&auto=format&fit=crop" alt="Indian Parboiled Rice">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Riz Étuvé Indien Long Grain" data-en="Indian Long Grain Parboiled Rice">Riz Étuvé Indien Long Grain</h3>
+                            <p data-fr="Origine : Inde. Premium Quality Indian Parboiled Rice Long Grain 5% Broken Selected Quality." data-en="Origin: India. Premium Quality Indian Parboiled Rice Long Grain 5% Broken Selected Quality.">Origine : Inde. Premium Quality Indian Parboiled Rice Long Grain 5% Broken Selected Quality.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- GIGEMBRE MATURE -->
+                    <div class="product-card" onclick="openModal('Gigembre Mature', 'Alimentaire', 'gingembre.jpg', 'Gigembre mature soigneusement sélectionné, reconnu pour sa saveur piquante, chaleureuse et intense.', 'Brésil', 'Riche en principes actifs, idéal pour l’industrie ou la transformation.')">
+                        <div class="product-img">
+                            <img src="gingembre.jpg" alt="Gigembre Mature" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300?text=Gigembre+Mature';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Gigembre Mature" data-en="Mature Ginger">Gigembre Mature</h3>
+                            <p data-fr="Origine : Brésil. Épice stimulante et savoureuse." data-en="Origin: Brazil. Stimulating and savory spice.">Origine : Brésil. Épice stimulante et savoureuse.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- LAIT CONCENTRE -->
+                    <div class="product-card" onclick="openModal('Lait Concentré', 'Alimentaire', 'lait-yoghurt-king.jpg', 'Lait concentré onctueux et riche, parfait pour les boissons chaudes, la pâtisserie et les préparations gourmandes.', 'Malaisie', 'Texture crémeuse, longue conservation, qualité supérieure.')">
+                        <div class="product-img">
+                            <img src="lait-yoghurt-king.jpg" alt="Lait Concentré" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x300?text=Lait+Concentre';">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Lait Concentré" data-en="Condensed Milk">Lait Concentré</h3>
+                            <p data-fr="Origine : Malaisie. Produit laitier onctueux et savoureux." data-en="Origin: Malaysia. Smooth and tasty dairy product.">Origine : Malaisie. Produit laitier onctueux et savoureux.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- HUILE -->
+                    <div class="product-card" onclick="openModal('Huile', 'Alimentaire', 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop', 'Huile végétale de qualité supérieure, idéale pour la cuisine quotidienne et les fritures.', 'Malaisie', 'Excellente tenue à la cuisson, neutre en goût, conditionnement professionnel.')">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop" alt="Huile">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Huile" data-en="Oil">Huile</h3>
+                            <p data-fr="Origine : Malaisie. Huile végétale raffinée de premier choix." data-en="Origin: Malaysia. Premium refined vegetable oil.">Origine : Malaisie. Huile végétale raffinée de premier choix.</p>
+                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                    <!-- Ailles -->
+                    <div class="product-card" onclick="openModal('Ailles', 'Alimentaire', 'https://images.unsplash.com/photo-1540148426945-6cf12cb64c3a?q=80&w=800&auto=format&fit=crop', 'Ail frais de qualité supérieure, aux arômes intenses et puissants pour relever vos plats.', 'Argentine', 'Bulbes fermes, conservation optimale, indispensable en cuisine.')">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1540148426945-6cf12cb64c3a?q=80&w=800&auto=format&fit=crop" alt="Ailles">
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
+                            <h3 data-fr="Ailles" data-en="Garlic">Ailles</h3>
+                            <p data-fr="Origine : Argentine. Ail frais et parfumé." data-en="Origin: Argentina. Fresh and fragrant garlic.">Origine : Argentine. Ail frais et parfumé.</p>
+                            <span class="click-hint" data-fr="Cliquez pour Details +" data-en="Click for details +">Cliquez pour détails +</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SECTION : PREUVES ET OPÉRATIONS DE CHARGEMENT (EVIDENCE & LOADING OPERATIONS) -->
+                <div class="evidence-section-wrapper">
+                    <h2 class="category-title" data-fr="3. Preuves & Opérations de Chargement" data-en="3. Evidence & Loading Operations">3. Preuves & Opérations de Chargement</h2>
+                    <p data-en="Transparency and operational tracking: overview of our container loading and shipping operations worldwide." data-fr="Transparence et suivi opérationnel : aperçu de nos opérations de chargement de conteneurs et d'expéditions à travers le monde." style="margin-bottom: 20px; color: #555; font-size: 14px; line-height: 1.6;">
+                        Transparence et suivi opérationnel : aperçu de nos opérations de chargement de conteneurs et d'expéditions à travers le monde.
+                    </p>
+                    
+                    <div class="evidence-grid">
+                        <!-- Élément 1 de Preuve : Café Kenya Empotage Conteneur 1 -->
+                        <div class="evidence-card" onclick="openModal('Empotage Café Kenya (Conteneur MSNU 180582 2)', 'Opérations', 'evidence14_Cafe_Kenya_Best_Foods_3.jpg', 'Chargement sécurisé du Café Kenya Best Foods dans le conteneur 22G1 MSNU 180582 2. Max Gross : 30,480 KGS, Payload : 28,380 KGS.', 'Terminal Conteneur / Port d Expédition', 'Vérification du scellé et du calage interne rigoureux pour éviter tout mouvement en mer.')">
+                            <div class="evidence-img">
+                                <img src="evidence14_Cafe_Kenya_Best_Foods_3.jpg" alt="Café Kenya Conteneur MSNU 180582 2">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empotage Café Kenya (MSNU 180582 2)" data-en="Kenya Coffee Stuffing (MSNU 180582 2)">Empotage Café Kenya (MSNU 180582 2)</h3>
+                                <p data-fr="Inspection et chargement validé de sacs de 50 kg de café en provenance du Kenya." data-en="Inspection and validated loading of 50 kg bags of coffee from Kenya.">Inspection et chargement validé de sacs de 50 kg de café en provenance du Kenya.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 2 de Preuve : Café Kenya Empotage Conteneur 2 -->
+                        <div class="evidence-card" onclick="openModal('Empotage Café Kenya (Conteneur MSNU 249803 7)', 'Opérations', 'evidence9_Cafe_Kenya_Best_Foods_3.jpg', 'Empotage du Café Kenya Best Foods en conteneur 22G1 MSNU 249803 7. Max Gross : 30,480 KGS, Payload : 28,260 KGS.', 'Terminal Conteneur', 'Contrôle quantitatif (ex. empilage et comptage par rangée comme le bloc 7/39).')">
+                            <div class="evidence-img">
+                                <img src="evidence9_Cafe_Kenya_Best_Foods_3.jpg" alt="Café Kenya Conteneur MSNU 249803 7">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empotage Café Kenya (MSNU 249803 7)" data-en="Kenya Coffee Stuffing (MSNU 249803 7)">Empotage Café Kenya (MSNU 249803 7)</h3>
+                                <p data-fr="Suivi rigoureux du chargement de conteneur pour le transport international du café." data-en="Strict monitoring of container loading for international coffee transport.">Suivi rigoureux du chargement de conteneur pour le transport international du café.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 3 de Preuve : Entrepôt Sucre Pantaleon -->
+                        <div class="evidence-card" onclick="openModal('Stockage Sucre Blanc Pantaleon', 'Opérations', 'evidence11_Sucre_Blanc_Pantaleon_3.jpg', 'Vue des stocks de sucre blanc Pantaleon en entrepôt avant palettisation et expédition.', 'Entrepôt Logistique Central', 'Conformité aux conditions d hygiène et de stockage à l abri de l humidité.')">
+                            <div class="evidence-img">
+                                <img src="evidence11_Sucre_Blanc_Pantaleon_3.jpg" alt="Stockage Sucre Pantaleon">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Stockage & Gestion des Stocks Sucre" data-en="Sugar Stockage & Inventory Management">Stockage & Gestion des Stocks Sucre</h3>
+                                <p data-fr="Organisation professionnelle des lots de sucre de canne pour une traçabilité sans faille." data-en="Professional organization of cane sugar batches for seamless traceability.">Organisation professionnelle des lots de sucre de canne pour une traçabilité sans faille.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 4 de Preuve : Stockage Entrepôt Café Kenya (1) -->
+                        <div class="evidence-card" onclick="openModal('Stockage Entrepôt Café Kenya (Lots Principaux)', 'Opérations', 'evidence12_Cafe_Kenya_Best_Foods_3.jpg', 'Vue d ensemble du stockage en entrepôt des sacs de jute de 50 kg de Café Kenya Best Foods prêts pour l empotage.', 'Entrepôt Partenaire / Kenya', 'Production : 12/2025 | Expiration : 12/2027. Vérification des lots avant chargement.')">
+                            <div class="evidence-img">
+                                <img src="evidence12_Cafe_Kenya_Best_Foods_3.jpg" alt="Stockage Entrepôt Café Kenya 1">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Stockage Entrepôt Café Kenya" data-en="Kenya Coffee Warehouse Storage">Stockage Entrepôt Café Kenya</h3>
+                                <p data-fr="Gestion rigoureuse des stocks en entrepôt et préparation des lots de café." data-en="Rigorous warehouse inventory management and coffee batch preparation.">Gestion rigoureuse des stocks en entrepôt et préparation des lots de café.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 5 de Preuve : Stockage Entrepôt Café Kenya (2) -->
+                        <div class="evidence-card" onclick="openModal('Piles de Stockage Café Kenya Best Foods', 'Opérations', 'evidence10_Cafe_Kenya_Best_Foods_3.jpg', 'Empilage sécurisé et structuré des sacs de café en entrepôt pour garantir la circulation de l air et éviter l humidité.', 'Entrepôt Partenaire / Kenya', 'Contrôle visuel des marquages et des spécifications de poids net (50 KG).')">
+                            <div class="evidence-img">
+                                <img src="evidence10_Cafe_Kenya_Best_Foods_3.jpg" alt="Stockage Entrepôt Café Kenya 2">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Piles de Stockage Café Kenya" data-en="Kenya Coffee Storage Stacks">Piles de Stockage Café Kenya</h3>
+                                <p data-fr="Organisation professionnelle des sacs pour un contrôle qualité optimal." data-en="Professional organization of bags for optimal quality control.">Organisation professionnelle des sacs pour un contrôle qualité optimal.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 6 de Preuve : Stockage Entrepôt Café Kenya (3) -->
+                        <div class="evidence-card" onclick="openModal('Contrôle des Lots de Café Kenya', 'Opérations', 'evidence12_Cafe_Kenya_Best_Foods_3.jpg', 'Inspection rapprochée des sacs ouverts et étiquetés Best Foods Café Kenya en entrepôt de logistique.', 'Entrepôt Partenaire / Kenya', 'Validation des dates de production (12/2025) et d’expiration (12/2027).')">
+                            <div class="evidence-img">
+                                <img src="evidence12_Cafe_Kenya_Best_Foods_3.jpg" alt="Stockage Entrepôt Café Kenya 3">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Contrôle Lots Café Kenya" data-en="Kenya Coffee Lot Inspection">Contrôle Lots Café Kenya</h3>
+                                <p data-fr="Vérification détaillée des sacs de jute et des étiquettes de conformité." data-en="Detailed verification of jute bags and compliance labels.">Vérification détaillée des sacs de jute et des étiquettes de conformité.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 7 de Preuve : Empotage Conteneur MSNU 180582 2 -->
+                        <div class="evidence-card" onclick="openModal('Empotage Conteneur MSNU 180582 2', 'Opérations', 'evidence13_Cafe_Kenya_Best_Foods_3.jpg', 'Vue détaillée de l empotage du conteneur 22G1 MSNU 180582 2 (Max Gross : 30,480 KGS, Payload : 28,380 KGS, Tare : 2,100 KGS).', 'Terminal Conteneur / Port', 'Disposition méticuleuse des rangées de sacs (bloc 7/39) pour une stabilité maximale.')">
+                            <div class="evidence-img">
+                                <img src="evidence13_Cafe_Kenya_Best_Foods_3.jpg" alt="Empotage Conteneur MSNU 180582 2">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empotage Conteneur MSNU 180582 2" data-en="Container Stuffing MSNU 180582 2">Empotage Conteneur MSNU 180582 2</h3>
+                                <p data-fr="Suivi précis des charges et capacités de conteneurisation certifiées." data-en="Precise tracking of certified container loads and capacities.">Suivi précis des charges et capacités de conteneurisation certifiées.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 8 de Preuve : Empotage Conteneur TGHU 122380 8 -->
+                        <div class="evidence-card" onclick="openModal('Empotage Conteneur TGHU 122380 8', 'Opérations', 'evidence7_Cafe_Kenya_Best_Foods_2.jpg', 'Chargement en cours du conteneur 22G1 TGHU 122380 8 (Max Wt : 30,480 KGS, Payload : 28,280 KGS, Tare Wt : 2,200 KGS).', 'Terminal Conteneur / Port', 'Protection interne par des panneaux et calages conformes aux normes d export.')">
+                            <div class="evidence-img">
+                                <img src="evidence7_Cafe_Kenya_Best_Foods_2.jpg" alt="Empotage Conteneur TGHU 122380 8">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empotage Conteneur TGHU 122380 8" data-en="Container Stuffing TGHU 122380 8">Empotage Conteneur TGHU 122380 8</h3>
+                                <p data-fr="Vérification des plaques CSC et des charges utiles autorisées." data-en="Verification of CSC plates and authorized payloads.">Vérification des plaques CSC et des charges utiles autorisées.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+
+                        <!-- Élément 9 de Preuve : Empilage Intérieur Conteneur (Block 6/55) -->
+                        <div class="evidence-card" onclick="openModal('Empilage & Calage Interne (Block 6/55)', 'Opérations', 'evidence10_Cafe_Kenya_Best_Foods_3.jpg', 'Vue interne montrant le positionnement rigoureux des sacs de café et des absorbeurs d humidité (Dry Pole).', 'Intérieur Conteneur', 'Assurance d un transport maritime sans risque d humidité ou de glissement de cargaison.')">
+                            <div class="evidence-img">
+                                <img src="evidence10_Cafe_Kenya_Best_Foods_3.jpg" alt="Empilage et Calage Interne">
+                            </div>
+                            <div class="evidence-content">
+                                <span class="product-badge" data-fr="Opérations" data-en="Operations">Opérations</span>
+                                <h3 data-fr="Empilage & Calage Interne (Block 6/55)" data-en="Internal Stuffing & Bracing (Block 6/55)">Empilage & Calage Interne (Block 6/55)</h3>
+                                <p data-fr="Mise en place de sachets déshydratants et calage professionnel des rangées." data-en="Installation of desiccant bags and professional row bracing.">Mise en place de sachets déshydratants et calage professionnel des rangées.</p>
+                                <span class="click-hint" data-fr="Voir les détails +" data-en="View details +">Voir les détails +</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION PARTENAIRES : CARROUSEL HORIZONTAL INFINI -->
+                <div class="partners-section-wrapper">
+                    <div class="partners-title-container">
+                        <h3 class="partners-title" data-fr="Nos Partenaires Internationaux" data-en="Our International Partners">Nos Partenaires Internationaux</h3>
+                        <span class="pause-instruction" data-fr="(Survolez ou cliquez pour mettre en pause)" data-en="(Hover or click to pause)">(Survolez ou cliquez pour mettre en pause)</span>
+                    </div>
+                    
+                    <div class="marquee-container" id="marqueeContainer">
+                        <div class="marquee-track" id="marqueeTrack" onclick="toggleMarqueePause()">
+                            
+                            <a href="https://www.ekremagro.com.tr/" target="_blank" class="partner-logo-card">
+                                <h4>Ekrem Agro</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.instagram.com/copa.cafe" target="_blank" class="partner-logo-card">
+                                <h4>Copacafé</h4>
+                                <span data-fr="Voir Instagram" data-en="View Instagram">Voir Instagram</span>
+                            </a>
+                            <a href="https://agrospice.com.br/" target="_blank" class="partner-logo-card">
+                                <h4>Agrospice</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://koreagro.com/" target="_blank" class="partner-logo-card">
+                                <h4>Kore International</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://hanfimex.com/" target="_blank" class="partner-logo-card">
+                                <h4>Hanfimex</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.ekn.se/en/" target="_blank" class="partner-logo-card">
+                                <h4>EKN</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://timbrotrading.com/" target="_blank" class="partner-logo-card">
+                                <h4>Timbro Trm</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://cndivision.com/" target="_blank" class="partner-logo-card">
+                                <h4>Central National</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.grancafe.com.br/" target="_blank" class="partner-logo-card">
+                                <h4>Grancafé</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.troisconti.com" target="_blank" class="partner-logo-card">
+                                <h4>Trois Continental</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://alicampo.com/" target="_blank" class="partner-logo-card">
+                                <h4>Alicampo</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+
+                            <!-- DUPLICATION POUR FLUIDITÉ DU DÉFILEMENT CONTINU -->
+                            <a href="https://www.ekremagro.com.tr/" target="_blank" class="partner-logo-card">
+                                <h4>Ekrem Agro</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.instagram.com/copa.cafe" target="_blank" class="partner-logo-card">
+                                <h4>Copacafé</h4>
+                                <span data-fr="Voir Instagram" data-en="View Instagram">Voir Instagram</span>
+                            </a>
+                            <a href="https://agrospice.com.br/" target="_blank" class="partner-logo-card">
+                                <h4>Agrospice</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://koreagro.com/" target="_blank" class="partner-logo-card">
+                                <h4>Kore International</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://hanfimex.com/" target="_blank" class="partner-logo-card">
+                                <h4>Hanfimex</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.ekn.se/en/" target="_blank" class="partner-logo-card">
+                                <h4>EKN</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://timbrotrading.com/" target="_blank" class="partner-logo-card">
+                                <h4>Timbro Trm</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://cndivision.com/" target="_blank" class="partner-logo-card">
+                                <h4>Central National</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.grancafe.com.br/" target="_blank" class="partner-logo-card">
+                                <h4>Grancafé</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://www.troisconti.com" target="_blank" class="partner-logo-card">
+                                <h4>Trois Continental</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+                            <a href="https://alicampo.com/" target="_blank" class="partner-logo-card">
+                                <h4>Alicampo</h4>
+                                <span data-fr="Visiter le site" data-en="Visit website">Visiter le site</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL / POPUP -->
+    <div class="modal-overlay" id="productModal" onclick="closeModalOnOutside(event)">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nom</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img-box">
+                    <img id="modalImg" src="" alt="Aperçu">
+                </div>
+                <div class="modal-details">
+                    <span class="product-badge" id="modalCategory">Catégorie</span>
+                    <h4 data-fr="Origine / Contexte :" data-en="Origin / Context:">Origine / Contexte :</h4>
+                    <p id="modalOrigin">-</p>
+                    <h4 data-fr="Description & Caractéristiques :" data-en="Description & Characteristics:">Description & Caractéristiques :</h4>
+                    <p id="modalDesc">-</p>
+                    <h4 data-fr="Informations Utiles :" data-en="Useful Info:">Informations Utiles :</h4>
+                    <p id="modalInfo">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4 data-fr="À propos de CCS" data-en="About CCS">À propos de CCS</h4>
+                <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019." data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
+                    Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
+                <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+                <a href="story.html" data-fr="Notre Histoire" data-en="Our Story">Our Story</a>
+                <a href="product.html" data-fr="Produits" data-en="Products">Products</a>
+                <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Nos Pôles" data-en="Our Poles">Nos Pôles</h4>
+                <a href="product.html" data-fr="Papeterie (Double A, Rame A4)" data-en="Stationery (Double A, A4 Paper)">Papeterie (Double A, Rame A4)</a>
+                <a href="product.html" data-fr="Import-Export Alimentaire & Vrac" data-en="Food Import-Export & Bulk">Import-Export Alimentaire & Vrac</a>
+                <a href="product.html" data-fr="Preuves & Chargements" data-en="Evidence & Loading">Preuves & Chargements</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
+                <p data-fr="Dakar, Sénégal" data-en="Dakar, Senegal">Dakar, Sénégal</p>
+                <p>Email : contact@ccs-sourang.com</p>
+                <p>Tél : +221 XX XXX XX XX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-fr="© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés." data-en="© 2019 - 2026 CCS (Comptoir Commercial Sourang). All rights reserved.">
+                © 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMarqueePause() {
+            const track = document.getElementById('marqueeTrack');
+            track.classList.toggle('paused');
+        }
+
+        function openModal(name, category, imgSrc, desc, origin, info) {
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalCategory').textContent = category;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalOrigin').textContent = origin;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalInfo').textContent = info;
+            
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function closeModalOnOutside(event) {
+            if (event.target === document.getElementById('productModal')) {
+                closeModal();
+            }
+        }
+
+        function changeLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+
+            document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+            const translatableElements = document.querySelectorAll('[data-fr][data-en]');
+            translatableElements.forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const redDot = document.getElementById('redDot');
+
+        function moveDot(element) {
+            const linkRect = element.getBoundingClientRect();
+            const navRect = document.getElementById('navLinks').getBoundingClientRect();
+            redDot.style.left = `${linkRect.left - navRect.left + (linkRect.width / 2) - 4}px`;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) {
+                moveDot(activeLink);
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                moveDot(e.target);
+            });
+        });
+
+        document.getElementById('navLinks').addEventListener('mouseleave', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) {
+                moveDot(activeLink);
+            }
+        });
+    </script>
+</body>
+</html>
