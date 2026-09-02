@@ -707,230 +707,675 @@
                 <h2 class="category-title" data-fr="2. Produits Alimentaires & En Vrac" data-en="2. Food Products & Bulk">2. Produits Alimentaires & En Vrac</h2>
                 <div class="products-grid">
                     
-                    <div class="product-card" onclick="openModal('Café Sélection', 'Alimentaire', 'produit_cafe.jpg', 'Café de qualité supérieure soigneusement sélectionné.', 'International', 'Arôme riche et authentique.')">
-                        <div class="product-img">
-                            <img src="produit_cafe.jpg" alt="Café" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Cafe';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Café Sélection" data-en="Selected Coffee">Café Sélection</h3>
-                            <p data-fr="Café de qualité supérieure." data-en="Superior quality coffee.">Café de qualité supérieure.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
-  <div class="product-card" onclick="openModal('Piment Rouge', 'Alimentaire', 'piment-rouge.jpg', 'Piment rouge piquant et de grande qualité.', 'International', 'Pour relever vos plats.')">
-                        <div class="product-img">
-                            <img src="piment-rouge.jpg" alt="Piment Rouge" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Piment+Rouge';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Piment Rouge" data-en="Red Chili">Piment Rouge</h3>
-                            <p data-fr="Piquant et savoureux." data-en="Hot and flavorful.">Piquant et savoureux.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+                   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-                    
-                    
-                      <div class="product-card" onclick="openModal('Petits Pois en Conserve', 'Alimentaire', 'produit_petits-pois.jpg', 'Petits pois tendres et savoureux.', 'International', 'Conserve de qualité supérieure.')">
-                        <div class="product-img">
-                            <img src="produit_petits-pois.jpg" alt="Petits Pois" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Petits+Pois';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Petits Pois" data-en="Green Peas">Petits Pois</h3>
-                            <p data-fr="Tendres et savoureux." data-en="Tender and flavorful.">Tendres et savoureux.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
 
-                        <div class="product-card" onclick="openModal('Poivre Noir', 'Alimentaire', 'produit_poivre-noir.jpg', 'Poivre noir aromatique et de grande qualité.', 'International', 'Idéal pour relever vos plats.')">
-                        <div class="product-img">
-                            <img src="produit_poivre-noir.jpg" alt="Poivre Noir" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Poivre+Noir';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Poivre Noir" data-en="Black Pepper">Poivre Noir</h3>
-                            <p data-fr="Aromatique et puissant." data-en="Aromatic and powerful.">Aromatique et puissant.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        .section-container {
+            position: relative;
+            width: 100%;
+            padding: 80px 20px;
+            background-color: #ffffff;
+        }
 
-                    <div class="product-card" onclick="openModal('Raisins Secs', 'Alimentaire', 'produit_raisins-secs.jpg', 'Raisins secs naturellement sucrés et savoureux.', 'International', 'Parfaits pour la cuisine et la pâtisserie.')">
-                        <div class="product-img">
-                            <img src="produit_raisins-secs.jpg" alt="Raisins Secs" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Raisins+Secs';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Raisins Secs" data-en="Raisins">Raisins Secs</h3>
-                            <p data-fr="Naturellement sucrés." data-en="Naturally sweet.">Naturellement sucrés.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-                    <div class="product-card" onclick="openModal('Tamarin en Vrac (1)', 'Alimentaire', 'produit_tamarin-vrac-.jpg', 'Tamarin en vrac de qualité supérieure pour l export.', 'International', 'Conditionnement professionnel.')">
-                        <div class="product-img">
-                            <img src="produit_tamarin-vrac-1.jpg" alt="Tamarin Vrac 1" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Tamarin+Vrac+1';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Tamarin en Vrac (1)" data-en="Bulk Tamarind (1)">Tamarin en Vrac (1)</h3>
-                            <p data-fr="Qualité vrac export." data-en="Bulk export quality.">Qualité vrac export.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-              
+        .section-title {
+            color: #002664;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
 
-                    <div class="product-card" onclick="openModal('Riz Oriba', 'Alimentaire', 'produit_riz-oriba.jpg', 'Riz Oriba de qualité supérieure pour une cuisson parfaite.', 'International', 'Grains sélectionnés.')">
-                        <div class="product-img">
-                            <img src="produit_riz-oriba.jpg" alt="Riz Oriba" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Riz+Oriba';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Riz Oriba" data-en="Oriba Rice">Riz Oriba</h3>
-                            <p data-fr="Riz de premier choix." data-en="First-choice rice.">Riz de premier choix.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        .section-separator {
+            width: 60px;
+            height: 3px;
+            background-color: #e41e2b;
+            margin: 0 auto 20px auto;
+        }
 
-                   
+        .section-subtitle {
+            color: #64748b;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
 
+        /* --- CATALOGUE DES PRODUITS --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 25px rgba(0, 38, 100, 0.1);
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #cbd5e1;
+        }
+
+        .product-card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card-title {
+            color: #002664;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-card-desc {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .product-card-btn {
+            background-color: #002664;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .product-card:hover .product-card-btn {
+            background-color: #e41e2b;
+        }
+
+
+        /* --- MINI-PAGE MODAL PRODUIT (GRANDE & SPACIEUSE) --- */
+        .product-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .product-modal.active { display: flex; }
+
+        .product-modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 1250px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            position: relative;
+            max-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            animation: scaleUp 0.3s ease;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .product-modal-header {
+            background-color: #002664;
+            color: #ffffff;
+            padding: 22px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-modal-title { font-size: 24px; font-weight: bold; }
+
+        .product-modal-close {
+            font-size: 36px;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .product-modal-close:hover { color: #38bdf8; }
+
+        .product-modal-body {
+            padding: 35px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .slider-section-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            color: #e41e2b;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider-controls-hint {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: none;
+            font-weight: normal;
+        }
+
+        .product-slider-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: #0f172a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .product-slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 38, 100, 0.8);
+            color: #fff;
+            border: none;
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .slider-btn:hover { background: #e41e2b; }
+        .slider-prev { left: 20px; }
+        .slider-next { right: 20px; }
+
+        .slider-counter {
+            position: absolute;
+            bottom: 15px; right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 15px;
+        }
+
+        .product-info-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .product-info-grid { grid-template-columns: 1fr; }
+        }
+
+        .product-video-box {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .product-video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-specs-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+        }
+
+        .spec-item {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .spec-label {
+            font-weight: bold;
+            color: #002664;
+            display: inline-block;
+            width: 150px;
+        }
+
+        .spec-value { color: #334155; }
+
+        .product-extra-text {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= SECTION : CATALOGUE DES PRODUITS UNIQUES ================= -->
+    <section class="section-container ccs-products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Catalogue de nos Produits</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Cliquez sur un produit pour afficher sa grande mini-page interactive.</p>
+            </div>
+            <div class="products-grid" id="productsGridContainer">
+                <!-- Généré dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MODAL MINI-PAGE PRODUIT ================= -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-content">
+            <div class="product-modal-header">
+                <span class="product-modal-title" id="modalProductName">Nom du Produit</span>
+                <span class="product-modal-close" onclick="closeProductModal()">&times;</span>
+            </div>
+            <div class="product-modal-body">
                 
+                <div class="slider-section-title">
+                    <span>Galerie des 15 Images de Chargement & Opérations</span>
+                    <span class="slider-controls-hint">(Défilement automatique • Cliquez sur l'image pour arrêter/reprendre)</span>
+                </div>
+                <!-- Zone cliquable pour commuter pause / lecture du slider -->
+                <div class="product-slider-container" onclick="toggleAutoPlay()" title="Cliquez pour arrêter ou reprendre le défilement">
+                    <button class="slider-btn slider-prev" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
+                    <img id="sliderImg" src="" class="product-slider-img" alt="Image Chargement">
+                    <button class="slider-btn slider-next" onclick="event.stopPropagation(); nextSlide();">&#10095;</button>
+                    <div class="slider-counter" id="sliderCounter">1 / 15</div>
+                </div>
 
-                
-                    
-
-                    
-                   
-
-                    <div class="product-card" onclick="openModal('Clous de Girofle', 'Alimentaire', 'produit_clous-de-girofle.jpg', 'Clous de girofle parfumés et de première qualité.', 'International', 'Idéal pour la cuisine et les infusions.')">
-                        <div class="product-img">
-                            <img src="produit_clous-de-girofle.jpg" alt="Clous de Girofle" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Clous+de+Girofle';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Clous de Girofle" data-en="Cloves">Clous de Girofle</h3>
-                            <p data-fr="Parfumés et intenses." data-en="Fragrant and intense.">Parfumés et intenses.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
+                <div class="product-info-grid">
+                    <div>
+                        <div class="slider-section-title" style="margin-bottom: 12px;">Vidéo .MP4 en Boucle du Produit</div>
+                        <div class="product-video-box">
+                            <video id="modalProductVideo" autoplay muted loop playsinline>
+                                Votre navigateur ne prend pas en charge la lecture de vidéos.
+                            </video>
                         </div>
                     </div>
-  
-                    <div class="product-card" onclick="openModal('Feuilles de Laurier', 'Alimentaire', 'produit_feuilles-laurier.jpg', 'Feuilles de laurier séchées pour rehausser vos plats.', 'International', 'Qualité supérieure.')">
-                        <div class="product-img">
-                            <img src="produit_feuilles-laurier.jpg" alt="Feuilles de Laurier" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Feuilles+de+Laurier';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Feuilles de Laurier" data-en="Bay Leaves">Feuilles de Laurier</h3>
-                            <p data-fr="Séchées et parfumées." data-en="Dried and fragrant.">Séchées et parfumées.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
+                    <div class="product-specs-box">
+                        <div class="slider-section-title" style="margin-bottom: 18px;">Fiche Technique & Origine</div>
+                        <div class="spec-item"><span class="spec-label">Origine :</span><span class="spec-value" id="specOrigin">-</span></div>
+                        <div class="spec-item"><span class="spec-label">Référence :</span><span class="spec-value" id="specRef">-</span></div>
+                        <div class="spec-item"><span class="spec-label">Conditionnement :</span><span class="spec-value" id="specCond">-</span></div>
+                        <div class="spec-item"><span class="spec-label">Qualité :</span><span class="spec-value" id="specQual">-</span></div>
+                        <div class="spec-item"><span class="spec-label">Logistique :</span><span class="spec-value" id="specLog">-</span></div>
                     </div>
-                    
+                </div>
 
-                    <div class="product-card" onclick="openModal('Jus d\'Orange Trois', 'Alimentaire', 'produit_jus-orange-trois.jpg', 'Jus d\'orange rafraîchissant Trois Continental.', 'International', 'Riche en vitamines.')">
-                        <div class="product-img">
-                            <img src="produit_jus-orange-trois.jpg" alt="Jus d'Orange Trois" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Jus+Orange+Trois';">
+                <div class="product-extra-text" id="modalProductExtra">
+                    <strong>Informations Complémentaires :</strong> -
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- BASE DE DONNÉES DES 17 PRODUITS UNIQUES ---
+        const productsDatabase = [
+            {
+                name: "Ananas Sarama",
+                image: "produit_ananas-sarama-1.jpg",
+                origin: "Côte d'Ivoire / International",
+                ref: "CCS-ANANAS-01",
+                cond: "Carton / Palette",
+                qual: "Extra Frais / Conserve",
+                log: "Optimisé frigo & conteneur",
+                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné pour sa teneur en sucre et sa qualité gustative supérieure. Traçabilité complète assurée de la récolte jusqu'aux entrepôts logistiques CCS.",
+                videoLoop: "videos/ananas-sarama.mp4"
+            },
+            {
+                name: "Café Sélection CCS",
+                image: "produit_cafe.jpg",
+                origin: "Afrique de l'Ouest / Amériques",
+                ref: "CCS-CAFE-02",
+                cond: "Sacs / Paquets étanches",
+                qual: "100% Pur Arabica / Robusta",
+                log: "Stockage en milieu sec ventilé",
+                extra: "Café d'exception torréfié et emballé sous vide pour préserver tous ses arômes. Conditionnement optimisé pour les opérations d'import-export en gros volumes.",
+                videoLoop: "videos/cafe.mp4"
+            },
+            {
+                name: "Clous de Girofle",
+                image: "produit_clous-de-girofle.jpg",
+                origin: "Madagascar / International",
+                ref: "CCS-GIROFLE-03",
+                cond: "Sacs de jute / Cartons",
+                qual: "Grade A Premium",
+                log: "Protection contre l'humidité",
+                extra: "Clous de girofle aux notes intenses, récoltés à maturité et contrôlés selon des critères stricts de pureté et d'arôme.",
+                videoLoop: "videos/clous-de-girofle.mp4"
+            },
+            {
+                name: "Feuilles de Laurier",
+                image: "produit_feuilles-laurier.jpg",
+                origin: "Bassin Méditerranéen",
+                ref: "CCS-LAURIER-04",
+                cond: "Sachets protecteurs / Cartons",
+                qual: "Séchées naturellement",
+                log: "Empotage rigoureux en conteneur",
+                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé et leur intégrité physique lors du transport maritime et routier.",
+                videoLoop: "videos/feuilles-laurier.mp4"
+            },
+            {
+                name: "Huiles Trois Continental",
+                image: "produit_huiles-trois-continental.jpg",
+                origin: "International",
+                ref: "CCS-HUILE-05",
+                cond: "Bidons / Bouteilles / Fûts",
+                qual: "Qualité Alimentaire Supérieure",
+                log: "Palettisation anti-chute",
+                extra: "Huile de cuisson de marque Trois Continental, idéale pour l'alimentation générale et la distribution de masse à l'international.",
+                videoLoop: "videos/huiles-trois-continental.mp4"
+            },
+            {
+                name: "Jus d'Orange Trois Continental",
+                image: "produit_jus-orange-trois.jpg",
+                origin: "International",
+                ref: "CCS-JUS-06",
+                cond: "Briques / Bouteilles PET",
+                qual: "Pur jus / Nectar",
+                log: "Chaîne du froid respectée",
+                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés, offrant une excellente stabilité logistique en entrepôt tempéré.",
+                videoLoop: "videos/jus-orange-trois.mp4"
+            },
+            {
+                name: "Lait Concentré Touba",
+                image: "produit_lait-concentre-touba.jpg",
+                origin: "Sénégal / International",
+                ref: "CCS-LAIT-CONC-07",
+                cond: "Boîtes métalliques / Cartons",
+                qual: "Onctueux et riche",
+                log: "Stockage longue conservation",
+                extra: "Lait concentré sucré de marque Touba, très apprécié pour sa texture onctueuse et sa longue durée de conservation en rayon.",
+                videoLoop: "videos/lait-concentre-touba.mp4"
+            },
+            {
+                name: "Lait Évaporé Touba",
+                image: "produit_lait-evapore-touba.jpg",
+                origin: "Sénégal / International",
+                ref: "CCS-LAIT-EVAP-08",
+                cond: "Boîtes de conserve étanches",
+                qual: "Standard professionnel",
+                log: "Empilage sécurisé sur palettes",
+                extra: "Lait évaporé Touba, idéal pour les préparations culinaires et les boissons chaudes, bénéficiant d'un conditionnement ultra-résistant.",
+                videoLoop: "videos/lait-evapore-touba.mp4"
+            },
+            {
+                name: "Lait en Poudre Victoria",
+                image: "produit_lait-poudre-victoria.jpg",
+                origin: "International",
+                ref: "CCS-LAIT-POUD-09",
+                cond: "Sachets / Boîtes hermétiques",
+                qual: "Enrichi en vitamines",
+                log: "Protection anti-humidité",
+                extra: "Lait en poudre Victoria, formulé pour une dissolution rapide et une excellente conservation dans les climats tropicaux.",
+                videoLoop: "videos/lait-poudre-victoria.mp4"
+            },
+            {
+                name: "Papier Smart Copy",
+                image: "produit_papier-smart-copy-1.jpg",
+                origin: "Papeterie Internationale",
+                ref: "CCS-PAPIER-10",
+                cond: "Rames de 500 feuilles (A4/A3)",
+                qual: "80g/m² Haute Blancheur",
+                log: "Film étanche anti-humidité",
+                extra: "Papier de photocopie Smart Copy haut de gamme, conçu pour les impressions haute vitesse sans bourrage papier.",
+                videoLoop: "videos/papier-smart-copy.mp4"
+            },
+            {
+                name: "Pâte de Tomate Sarama",
+                image: "produit_pate-tomate-sarama-1.jpg",
+                origin: "International",
+                ref: "CCS-TOMATE-11",
+                cond: "Boîtes / Sachets doypack",
+                qual: "Concentré 28-30% Brix",
+                log: "Conditionnement antichoc",
+                extra: "Pâte de tomate Sarama riche en goût et en couleur, indispensable pour les cuisines professionnelles et familiales.",
+                videoLoop: "videos/pate-tomate-sarama.mp4"
+            },
+            {
+                name: "Petits Pois en Conserve",
+                image: "produit_petits-pois.jpg",
+                origin: "International",
+                ref: "CCS-POIS-12",
+                cond: "Boîtes métalliques",
+                qual: "Tendres et savoureux",
+                log: "Stockage tempéré",
+                extra: "Petits pois sélectionnés cueillis et mis en conserve le jour même pour garantir un croquant et une fraicheur irréprochables.",
+                videoLoop: "videos/petits-pois.mp4"
+            },
+            {
+                name: "Poivre Noir",
+                image: "produit_poivre-noir.jpg",
+                origin: "International",
+                ref: "CCS-POIVRE-13",
+                cond: "Sachets / Moulins étanches",
+                qual: "Aromatique intense",
+                log: "Protection contre l'humidité",
+                extra: "Poivre noir rigoureusement trié, reconnu pour son piquant chaleureux et ses notes boisées caractéristiques.",
+                videoLoop: "videos/poivre-noir.mp4"
+            },
+            {
+                name: "Raisins Secs",
+                image: "produit_raisins-secs.jpg",
+                origin: "International",
+                ref: "CCS-RAISIN-14",
+                cond: "Cartons de 10kg / Sachets",
+                qual: "Moelleux et sucrés",
+                log: "Atmosphère contrôlée",
+                extra: "Raisins secs sélectionnés, riches en énergie et naturellement sucrés, parfaits pour l'industrie agroalimentaire et la pâtisserie.",
+                videoLoop: "videos/raisins-secs.mp4"
+            },
+            {
+                name: "Riz Moba (100% Brisure)",
+                image: "produit_riz-moba-100-brisure.jpg",
+                origin: "Asie / International",
+                ref: "CCS-RIZ-MOBA",
+                cond: "Sacs tissés 25kg / 50kg",
+                qual: "Brisure de riz de qualité",
+                log: "Empotage conteneur lourd",
+                extra: "Riz Moba 100% brisure, très prisé pour sa capacité d'absorption des sauces et sa cuisson rapide homogène.",
+                videoLoop: "videos/riz-moba.mp4"
+            },
+            {
+                name: "Riz Oriba",
+                image: "produit_riz-oriba.jpg",
+                origin: "International",
+                ref: "CCS-RIZ-ORIBA",
+                cond: "Sacs de 25kg / 50kg",
+                qual: "Grains longs sélectionnés",
+                log: "Stockage entrepôt sec",
+                extra: "Riz Oriba de premier choix, garantissant des grains entiers, parfumés et non collants après cuisson.",
+                videoLoop: "videos/riz-oriba.mp4"
+            },
+            {
+                name: "Tamarin",
+                image: "produit_tamarin.jpg",
+                origin: "Afrique / International",
+                ref: "CCS-TAMARIN-17",
+                cond: "Vrac / Cartons / Sachets",
+                qual: "Pulpe naturelle sélectionnée",
+                log: "Conditionnement étanche",
+                extra: "Tamarin de qualité supérieure, utilisé traditionnellement pour ses vertus et ses saveurs acidulées uniques en cuisine et boissons.",
+                videoLoop: "videos/tamarin.mp4"
+            }
+        ];
+
+        // --- GÉNÉRATION AUTOMATIQUE DE LA GRILLE DES PRODUITS ---
+        const productsGridContainer = document.getElementById('productsGridContainer');
+        productsDatabase.forEach((prod, index) => {
+            productsGridContainer.innerHTML += `
+                <div class="product-card" onclick="openProductModal(${index})">
+                    <img src="${prod.image}" class="product-card-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
+                    <div class="product-card-body">
+                        <div>
+                            <h3 class="product-card-title">${prod.name}</h3>
+                            <p class="product-card-desc">${prod.extra.substring(0, 90)}...</p>
                         </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Jus d'Orange Trois" data-en="Trois Orange Juice">Jus d'Orange Trois</h3>
-                            <p data-fr="Rafraîchissant et vitaminé." data-en="Refreshing and vitamin-rich.">Rafraîchissant et vitaminé.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
+                        <div class="product-card-btn">Voir les détails & Chargements</div>
                     </div>
-                      <div class="product-card" onclick="openModal('Ananas Sarama (1)', 'Alimentaire', 'produit_ananas-sarama-1.jpg', 'Produits à base d ananas Sarama.', 'International', 'Qualité supérieure.')">
-                        <div class="product-img">
-                            <img src="produit_ananas-sarama.jpg" alt="Ananas Sarama 1" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Ananas+Sarama+1';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Ananas Sarama (1)" data-en="Sarama Pineapple (1)">Ananas Sarama (1)</h3>
-                            <p data-fr="Gamme Sarama." data-en="Sarama range.">Gamme Sarama.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+                </div>
+            `;
+        });
 
-                    <div class="product-card" onclick="openModal('Lait Évaporé Touba', 'Alimentaire', 'produit_lait-evapore-touba.jpg', 'Lait évaporé crémeux et onctueux de marque Touba.', 'International', 'Format boîte de qualité.')">
-                        <div class="product-img">
-                            <img src="produit_lait-evapore-touba.jpg" alt="Lait Évaporé Touba" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Lait+Evapore+Touba';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Lait Évaporé Touba" data-en="Touba Evaporated Milk">Lait Évaporé Touba</h3>
-                            <p data-fr="Crémeux et onctueux." data-en="Creamy and smooth.">Crémeux et onctueux.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        let currentProductIndex = 0;
+        let currentSlideIndex = 0;
+        let activeProductImages = [];
+        let sliderInterval = null;
+        let isPlaying = true; // État de lecture automatique du slider
 
-                    <div class="product-card" onclick="openModal('Lait Concentré Touba', 'Alimentaire', 'produit_lait-concentre-touba.jpg', 'Lait concentré sucré Touba, onctueux et riche.', 'International', 'Idéal pour boissons et desserts.')">
-                        <div class="product-img">
-                            <img src="produit_lait-concentre-touba.jpg" alt="Lait Concentré Touba" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Lait+Concentre+Touba';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Lait Concentré Touba" data-en="Touba Condensed Milk">Lait Concentré Touba</h3>
-                            <p data-fr="Riche et sucré." data-en="Rich and sweet.">Riche et sucré.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        function openProductModal(index) {
+            currentProductIndex = index;
+            currentSlideIndex = 0;
+            isPlaying = true;
+            const prod = productsDatabase[index];
 
-                    <div class="product-card" onclick="openModal('Lait en Poudre Victoria', 'Alimentaire', 'produit_lait-poudre-victoria.jpg', 'Lait en poudre Victoria de qualité supérieure.', 'International', 'Riche en nutriments.')">
-                        <div class="product-img">
-                            <img src="produit_lait-poudre-victoria.jpg" alt="Lait en Poudre Victoria" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Lait+Poudre+Victoria';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Lait en Poudre Victoria" data-en="Victoria Milk Powder">Lait en Poudre Victoria</h3>
-                            <p data-fr="Qualité supérieure." data-en="Superior quality.">Qualité supérieure.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+            activeProductImages = [];
+            for (let imgIdx = 1; imgIdx <= 15; imgIdx++) {
+                activeProductImages.push(`https://via.placeholder.com/900x500/002664/ffffff?text=${encodeURIComponent(prod.name)}+-+Chargement+${imgIdx}`);
+            }
 
-                    <div class="product-card" onclick="openModal('Pâte de Tomate Sarama (1)', 'Alimentaire', 'produit_pate-tomate-sarama-1.jpg', 'Pâte de tomate濃厚 Sarama.', 'International', 'Idéale pour vos sauces.')">
-                        <div class="product-img">
-                            <img src="produit_pate-tomate-sarama.jpg" alt="Pâte de Tomate Sarama 1" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Pate+Tomate+Sarama+1';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Pâte de Tomate Sarama (1)" data-en="Sarama Tomato Paste (1)">Pâte de Tomate Sarama )</h3>
-                            <p data-fr="Concentré de tomate." data-en="Tomato concentrate.">Concentré de tomate.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+            document.getElementById('modalProductName').innerText = prod.name;
+            document.getElementById('specOrigin').innerText = prod.origin;
+            document.getElementById('specRef').innerText = prod.ref;
+            document.getElementById('specCond').innerText = prod.cond;
+            document.getElementById('specQual').innerText = prod.qual;
+            document.getElementById('specLog').innerText = prod.log;
+            document.getElementById('modalProductExtra').innerHTML = `<strong>Informations Complémentaires :</strong> ${prod.extra}`;
+            
+            const videoElem = document.getElementById('modalProductVideo');
+            videoElem.src = prod.videoLoop;
+            videoElem.load();
 
-                   
+            updateSlideImage();
+            startAutoPlay();
+            document.getElementById('productModal').classList.add('active');
+        }
 
-                   
+        function closeProductModal() {
+            stopAutoPlay();
+            document.getElementById('productModal').classList.remove('active');
+            const videoElem = document.getElementById('modalProductVideo');
+            videoElem.pause();
+            videoElem.src = "";
+        }
 
-                    <div class="product-card" onclick="openModal('Huiles Trois Continental', 'Alimentaire', 'produit_huiles-trois-continental.jpg', 'Huile végétale raffinée Trois Continental.', 'International', 'Excellente pour la cuisine et les fritures.')">
-                        <div class="product-img">
-                            <img src="produit_huiles-trois-continental.jpg" alt="Huiles Trois Continental" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Huile+Trois+Continental';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Huiles Trois Continental" data-en="Trois Continental Oils">Huiles Trois Continental</h3>
-                            <p data-fr="Huile raffinée de qualité." data-en="Quality refined oil.">Huile raffinée de qualité.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        function updateSlideImage() {
+            document.getElementById('sliderImg').src = activeProductImages[currentSlideIndex];
+            document.getElementById('sliderCounter').innerText = `${currentSlideIndex + 1} / ${activeProductImages.length}`;
+        }
 
-                    <div class="product-card" onclick="openModal('Piment Rouge', 'Alimentaire', 'piment-rouge.jpg', 'Piment rouge piquant et de grande qualité.', 'International', 'Pour relever vos plats.')">
-                        <div class="product-img">
-                            <img src="piment-rouge.jpg" alt="Piment Rouge" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Piment+Rouge';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Alimentaire" data-en="Food">Alimentaire</span>
-                            <h3 data-fr="Piment Rouge" data-en="Red Chili">Piment Rouge</h3>
-                            <p data-fr="Piquant et savoureux." data-en="Hot and flavorful.">Piquant et savoureux.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % activeProductImages.length;
+            updateSlideImage();
+        }
 
-                    
-                    </div>
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + activeProductImages.length) % activeProductImages.length;
+            updateSlideImage();
+        }
 
+        // --- GESTION DU DÉFILEMENT AUTOMATIQUE AVEC PAUSE / REPRISE AU CLIC ---
+        function startAutoPlay() {
+            stopAutoPlay();
+            sliderInterval = setInterval(() => {
+                if (isPlaying) {
+                    nextSlide();
+                }
+            }, 3000); // Change d'image toutes les 3 secondes
+        }
+
+        function stopAutoPlay() {
+            if (sliderInterval) {
+                clearInterval(sliderInterval);
+                sliderInterval = null;
+            }
+        }
+
+        function toggleAutoPlay() {
+            isPlaying = !isPlaying;
+            const hint = document.querySelector('.slider-controls-hint');
+            if (isPlaying) {
+                hint.innerText = "(Défilement automatique • Cliquez sur l'image pour arrêter)";
+                hint.style.color = "#64748b";
+            } else {
+                hint.innerText = "(En pause • Cliquez sur l'image pour reprendre)";
+                hint.style.color = "#e41e2b";
+            }
+        }
+    </script>
                 </div>
                 <!-- SECTION : PREUVES ET OPÉRATIONS DE CHARGEMENT -->
                 <div class="evidence-section-wrapper">
