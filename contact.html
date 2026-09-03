@@ -27,7 +27,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px;
+            padding: 10px 20px;
             border-bottom: 2px solid #ddd;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
@@ -45,7 +45,7 @@
         }
 
         .logo img {
-            height: 60px;
+            height: 85px;
             width: auto;
             display: block;
         }
@@ -198,6 +198,136 @@
             max-width: 1200px;
         }
 
+        /* ===== Nos Coordonnées (téléphone / whatsapp / bureau / entrepôt) ===== */
+        .info-parallax {
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,38,100,0.2);
+        }
+
+        .info-card-media {
+            flex: 0 0 150px;
+            width: 150px;
+            overflow: hidden;
+            background-color: #eef4fb;
+        }
+
+        .info-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .info-card:hover .info-card-media img {
+            transform: scale(1.08);
+        }
+
+        .info-card-icon {
+            flex: 0 0 150px;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0ea5e9, #002664);
+        }
+
+        .info-card-icon svg {
+            width: 46px;
+            height: 46px;
+            fill: white;
+        }
+
+        .info-card-body {
+            padding: 25px 20px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .info-card-label {
+            display: block;
+            color: #0ea5e9;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .info-card-value {
+            color: #002664;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .info-card-value a {
+            color: #002664;
+            text-decoration: none;
+            display: block;
+        }
+
+        .info-card-value a:hover {
+            color: #0ea5e9;
+        }
+
+        .info-card-note {
+            color: #888;
+            font-size: 13px;
+            font-weight: normal;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .info-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            background-color: #0ea5e9;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .info-card-link:hover {
+            background-color: #002664;
+        }
+
+        .info-card-link svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
         .hero-banner {
             background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1920&auto=format&fit=crop');
             color: white;
@@ -294,6 +424,17 @@
         @media(max-width: 768px) {
             .parallax-section {
                 background-attachment: scroll;
+            }
+
+            .info-card {
+                flex-direction: column;
+            }
+
+            .info-card-media,
+            .info-card-icon {
+                width: 100%;
+                height: 140px;
+                flex: none;
             }
         }
 
@@ -680,6 +821,71 @@
         <div class="parallax-overlay">
             <h1 class="hero-title" data-fr="Rejoignez CCS" data-en="Join CCS">Rejoignez CCS</h1>
             <p class="hero-subtitle" data-fr="Contribuez au développement d'une entreprise dynamique et en pleine croissance dans le commerce et l'import-export à Dakar." data-en="Contribute to the development of a dynamic and fast-growing company in trade and import-export in Dakar.">Contribuez au développement d'une entreprise dynamique et en pleine croissance dans le commerce et l'import-export à Dakar.</p>
+        </div>
+    </section>
+
+    <section class="parallax-section info-parallax">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="Nos Coordonnées" data-en="Our Contact Details">Nos Coordonnées</h2>
+                <div class="info-grid">
+
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4.5A1 1 0 0 1 4 3.5h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>
+                        </div>
+                        <div class="info-card-body">
+                            <span class="info-card-label" data-fr="Téléphone" data-en="Phone">Téléphone</span>
+                            <div class="info-card-value">
+                                <a href="tel:+221776990000">+221 77 699 00 00</a>
+                                <a href="tel:+221776220000">+221 77 622 00 00</a>
+                                <a href="tel:+221773360000">+221 77 336 00 00</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2zm0 18.06a8 8 0 0 1-4.08-1.11l-.29-.17-3.03.8.81-2.95-.19-.3A8.06 8.06 0 1 1 12 20.06zm4.42-5.99c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4-.14 0-.3-.02-.46-.02-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+                        </div>
+                        <div class="info-card-body">
+                            <span class="info-card-label" data-fr="WhatsApp" data-en="WhatsApp">WhatsApp</span>
+                            <div class="info-card-value">
+                                <a href="https://wa.me/221776990000" target="_blank" rel="noopener" data-fr="+221 77 699 00 00" data-en="+221 77 699 00 00">+221 77 699 00 00</a>
+                            </div>
+                            <a class="info-card-link" href="https://wa.me/221776990000" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg>
+                                <span data-fr="Discuter maintenant" data-en="Chat now">Discuter maintenant</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-media">
+                            <img src="bureau.jpg" alt="Bureau CCS - Hann Mariste" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Notre+Bureau';">
+                        </div>
+                        <div class="info-card-body">
+                            <span class="info-card-label" data-fr="Notre Bureau" data-en="Our Office">Notre Bureau</span>
+                            <div class="info-card-value" style="font-size: 16px;" data-fr="Hann Mariste, en face Coris Bank, Dakar, Sénégal" data-en="Hann Mariste, opposite Coris Bank, Dakar, Senegal">Hann Mariste, en face Coris Bank, Dakar, Sénégal</div>
+                            <a class="info-card-link" href="https://www.google.com/maps/search/?api=1&query=Hann+Mariste+en+face+Coris+Bank+Dakar+Senegal" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                                <span data-fr="Voir sur la carte" data-en="View on map">Voir sur la carte</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-media">
+                            <img src="entrepot.jpg" alt="Entrepôt CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Notre+Entrepot';">
+                        </div>
+                        <div class="info-card-body">
+                            <span class="info-card-label" data-fr="Notre Entrepôt" data-en="Our Warehouse">Notre Entrepôt</span>
+                            <div class="info-card-value" style="font-size: 16px;" data-fr="Adresse à préciser, Dakar, Sénégal" data-en="Address to be confirmed, Dakar, Senegal">Adresse à préciser, Dakar, Sénégal<span class="info-card-note" data-fr="(à compléter)" data-en="(to be completed)">(à compléter)</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
