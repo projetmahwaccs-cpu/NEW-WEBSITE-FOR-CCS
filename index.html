@@ -48,7 +48,6 @@
             height: 72px;
             width: auto;
             display: block;
-            floate: left;
         }
 
         .nav-links {
@@ -119,8 +118,8 @@
         }
 
         .btn-lang:hover, .btn-lang.active {
-            background-color: #002664;I
-            color: white;U
+            background-color: #002664;
+            color: white;
         }
 
         /* --- Effet Parallaxe Global --- */
@@ -136,51 +135,22 @@
             align-items: center;
         }
 
-        /* Couche sombre semi-transparente pour la lisibilité du texte sur les fonds d'image */
         .parallax-overlay {
             width: 100%;
             padding: 80px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(0, 38, 100, 0.85); /* Teinte bleue institutionnelle par défaut */
+            background-color: rgba(0, 38, 100, 0.85);
         }
 
         .parallax-overlay.light-overlay {
-            background-color: rgba(255, 255, 255, 0.92); /* Teinte claire pour les sections blanches */
+            background-color: rgba(255, 255, 255, 0.92);
         }
 
         .section-container {
             width: 100%;
             max-width: 1200px;
-        }
-
-        /* Hero Banner en Parallaxe */
-        .hero-banner {
-            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop');
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            border-top: 4px solid #0ea5e9;
-        }
-
-        .hero-banner .parallax-overlay {
-            background-color: rgba(0, 38, 100, 0.82);
-            padding: 0;
-        }
-
-        .hero-title {
-            font-size: 32px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
         }
 
         .section-title {
@@ -227,85 +197,120 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Papeterie Parallaxe */
-        .paper-parallax {
-            background-image: url('https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?q=80&w=1920&auto=format&fit=crop');
-        }
-
-        .paper-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .paper-card {
-            background: #fff;
-            border: 2px solid #0ea5e9;
-            border-radius: 8px;
+        /* Style des blocs de présentation (CCS About Section) */
+        .ccs-about-section {
+            width: 100%;
+            background-color: #ffffff;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ccs-row {
+            display: flex;
+            width: 100%;
+            min-height: 480px;
+        }
+
+        .ccs-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .ccs-text-side {
+            flex: 1;
             display: flex;
             flex-direction: column;
-        }
-
-        .paper-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .paper-card-img {
-            width: 100%;
-            height: 200px;
-            background-color: #f1f1f1;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            border-bottom: 1px solid #ddd;
-            overflow: hidden;
+            padding: 60px 80px;
+            background-color: #ffffff;
+            z-index: 2;
         }
 
-        .paper-card-img img {
+        .ccs-title {
+            color: #002664;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.3;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .ccs-separator {
+            width: 50px;
+            height: 3px;
+            background-color: #0ea5e9;
+            margin-bottom: 20px;
+        }
+
+        .ccs-description {
+            color: #444444;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .ccs-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .ccs-list li {
+            position: relative;
+            padding-left: 20px;
+            color: #444;
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .ccs-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+        }
+
+        .ccs-image-side {
+            flex: 1;
+            position: relative;
+            background-color: #e0e0e0;
+            overflow: hidden;
+            min-height: 350px;
+        }
+
+        .ccs-image-side img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        .paper-card-content {
-            padding: 25px;
+        .ccs-badge-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 38, 100, 0.3);
+            backdrop-filter: blur(4px);
         }
 
-        .paper-badge {
-            display: inline-block;
-            background-color: #002664;
-            color: white;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            align-self: flex-start;
+        .ccs-badge-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: #ffffff;
         }
 
-        .special-badge {
-            background-color: #0ea5e9;
-        }
-
-        .paper-card-content h3 {
-            color: #002664;
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
-
-        .paper-card-content p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
+        .ccs-bottom-line {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
         }
 
         /* Pôles d'Activités Parallaxe */
@@ -573,12 +578,19 @@
             color: #aaa;
         }
 
-        @media(max-width: 768px) {
-            .about-grid, .geo-grid {
+        @media(max-width: 900px) {
+            .about-grid, .geo-grid, .ccs-row, .ccs-row.reverse {
                 grid-template-columns: 1fr;
+                flex-direction: column;
             }
             .parallax-section {
-                background-attachment: scroll; /* Désactive le fixed sur mobile pour de meilleures performances */
+                background-attachment: scroll;
+            }
+            .ccs-text-side {
+                padding: 40px 20px;
+            }
+            .ccs-image-side {
+                min-height: 300px;
             }
         }
     </style>
@@ -595,12 +607,8 @@
             <ul class="nav-links" id="navLinks">
                 <div class="red-dot" id="redDot"></div>
                 <li class="nav-item"><a href="index.html" class="nav-link active" data-fr="Home" data-en="Home">Home</a></li>
-                
-                
                 <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Products</a></li>
-               
-             <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
-             
+                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
 
@@ -610,555 +618,6 @@
             </div>
         </div>
     </header>
-  <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        .hero-video-section {
-            position: relative;
-            width: 100%;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background-color: #001a41;
-        }
-
-        .hero-video-section video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.35;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 38, 100, 0.82);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 60px 20px;
-            max-width: 1100px;
-            /* Animation globale de zoom final une fois que tous les mots sont "déposés" */
-            animation: finalZoom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.8s forwards;
-            transform: scale(0.9);
-            opacity: 0;
-        }
-
-        .hero-title {
-            color: #ffffff;
-            font-size: 40px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        /* Chaque mot arrive de nulle part individuellement et se "dépose" */
-        .word {
-            display: inline-block;
-            opacity: 0;
-            filter: blur(10px);
-            transform: translateY(-50px) scale(0.5);
-            animation: dropWord 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        /* Décalage séquentiel pour chaque mot du titre (WE ARE COMPTOIR COMMERCIAL SOURANG CCS) */
-        .word:nth-child(1) { animation-delay: 0.1s; }
-        .word:nth-child(2) { animation-delay: 0.25s; }
-        .word:nth-child(3) { animation-delay: 0.4s; }
-        .word:nth-child(4) { animation-delay: 0.55s; }
-        .word:nth-child(5) { animation-delay: 0.7s; }
-        .word:nth-child(6) { animation-delay: 0.85s; }
-
-        .hero-separator {
-            width: 70px;
-            height: 3px;
-            background-color: #0ea5e9; /* Rouge vif CCS */
-            margin: 0 auto 20px auto;
-            opacity: 0;
-            transform: scaleX(0);
-            animation: dropSeparator 0.5s ease 1s forwards;
-        }
-
-        .hero-description {
-            color: #f1f5f9;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: dropDescription 0.7s ease 1.2s forwards;
-        }
-
-        /* Animations individuelles des mots qui se déposent */
-        @keyframes dropWord {
-            0% {
-                opacity: 0;
-                filter: blur(10px);
-                transform: translateY(-60px) scale(0.5);
-            }
-            70% {
-                opacity: 1;
-                filter: blur(0px);
-                transform: translateY(8px) scale(1.05); /* Petit rebond à l'impact */
-            }
-            100% {
-                opacity: 1;
-                filter: blur(0px);
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes dropSeparator {
-            to {
-                opacity: 1;
-                transform: scaleX(1);
-            }
-        }
-
-        @keyframes dropDescription {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Le zoom final global sur tout le bloc une fois le dépôt terminé */
-        @keyframes finalZoom {
-            0% {
-                opacity: 1;
-                transform: scale(0.9);
-            }
-            70% {
-                transform: scale(1.06); /* Grossit un peu trop (zoom) */
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1); /* Revient à la taille normale */
-            }
-        }
-
-        .hero-bottom-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
-            z-index: 10;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                width: 100%;
-                    overflow-x: hidden;
-            }
-                .container,
-                    section,
-            .hero,
-            .content {
-                width:100%
-                    max-width: 100%
-            }
-            .hero-title {
-                font-size: 26px;
-                gap: 8px;
-            }
-            .hero-description {
-                font-size: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-   
-     <style>
-        :root {
-            --ccs-blue: #001f5b; 
-            --ccs-gold: #cfa965; 
-            --text-light: #ffffff;
-            --font-main: 'Montserrat', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .ccs-header {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background-color: var(--ccs-blue);
-        }
-
-        /* --- Diaporama d'arrière-plan --- */
-        .ccs-bg-media {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .ccs-bg-media img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
-        }
-
-        .ccs-bg-media img.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* --- Superposition (Overlay) --- */
-        .ccs-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, 
-                rgba(0, 31, 91, 0.65) 0%,   
-                rgba(0, 31, 91, 0.9) 100% 
-            );
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 40px 0;
-            z-index: 1;
-        }
-
-        .ccs-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        /* --- Haut : Logo et Titres --- */
-        .ccs-hero-top {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: 30px;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        .ccs-logo-wrapper {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .ccs-logo {
-            max-width: 180px;
-            height: auto;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
-        }
-
-        .ccs-logo-subtitle {
-            font-size: 10px;
-            letter-spacing: 1px;
-            margin-top: -5px;
-            color: var(--ccs-gold);
-            font-weight: 600;
-        }
-
-        .ccs-main-titles { max-width: 800px; }
-
-        .ccs-brand-name {
-            font-size: 44px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .ccs-tagline {
-            font-size: 22px;
-            font-weight: 300;
-            font-style: italic;
-            color: var(--ccs-gold);
-            margin-bottom: 10px;
-        }
-
-        .ccs-sub-tagline {
-            font-size: 15px;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        /* --- Bas : Vignette dynamique et Navigation --- */
-        .ccs-hero-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: auto;
-        }
-
-        /* Carte Miniature Synchronisée */
-        .ccs-location-card {
-            display: flex;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 10px 15px;
-            border-radius: 8px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 300px;
-            transition: all 0.5s ease;
-        }
-
-        .ccs-location-img {
-            width: 65px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-right: 12px;
-            border: 1px solid var(--ccs-gold);
-        }
-
-        .ccs-location-text h4 {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--ccs-gold);
-            margin-bottom: 2px;
-            text-transform: uppercase;
-        }
-
-        .ccs-location-text p { 
-            font-size: 13px; 
-            opacity: 0.95; 
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 190px;
-        }
-
-        .ccs-contact-nav { display: flex; flex-direction: column; align-items: flex-end; }
-
-        .ccs-contact-nav nav { display: flex; gap: 25px; margin-bottom: 10px; }
-
-        .ccs-contact-nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .ccs-contact-nav a:hover { color: var(--ccs-gold); }
-
-        .ccs-social-icons { display: flex; gap: 12px; }
-
-        .ccs-social-icons a {
-            width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; transition: transform 0.3s ease;
-            text-decoration: none;
-        }
-
-        .ccs-social-icons a:hover { transform: scale(1.1); }
-
-        .ccs-icon-whatsapp { background-color: #25d366; color: white; }
-        .ccs-icon-cart { background-color: var(--text-light); color: var(--ccs-blue); }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .ccs-hero-bottom { flex-direction: column; align-items: center; gap: 20px; }
-            .ccs-contact-nav { align-items: center; width: 100%; }
-            .ccs-contact-nav nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .ccs-brand-name { font-size: 26px; }
-            .ccs-tagline { font-size: 16px; }
-            .ccs-location-card { width: 100%; justify-content: flex-start; }
-        }
-    </style>
-</head>
-<body>
-
-    <header class="ccs-header">
-
-        <!-- 15 IMAGES D'ARRIÈRE-PLAN -->
-        <div class="ccs-bg-media" id="bg-slideshow">
-            <!-- Les images seront injectées et gérées dynamiquement via le script ci-dessous -->
-        </div>
-        
-        <div class="ccs-hero-overlay">
-            <div class="ccs-container">
-                
-                <!-- Haut : Logo et Slogan -->
-                <div class="ccs-hero-top">
-                    <div class="ccs-logo-wrapper">
-                        <img src="logo.png" alt="Logo Capital" class="ccs-logo" onerror="this.src='https://via.placeholder.com/180x80?text=LOGO.PNG'">
-                        <p class="ccs-logo-subtitle">LE COMMERCE COMMERCE ACCESSIBLE AU NIVEAU DE TOUTE L'AFRIQUE</p>
-                    </div>
-                    
-                    <div class="ccs-main-titles">
-                        <h1 class="ccs-brand-name">COMPTOIR COMMERCIAL SOURANG</h1>
-                        <p class="ccs-tagline">La qualité qui valorise chaque document</p>
-                        <p class="ccs-sub-tagline">Des performances supérieures. Une qualité durable.</p>
-                    </div>
-                </div>
-
-                <!-- Bas : Vignette dynamique et Navigation -->
-                <div class="ccs-hero-bottom">
-                    <!-- CARTE MINIATURE SYNCHRONISÉE -->
-                    <div class="ccs-location-card" id="thumb-card">
-                        <img src="" alt="Miniature" class="ccs-location-img" id="thumb-img">
-                        <div class="ccs-location-text">
-                            <h4 id="thumb-title">CHARGEMENT...</h4>
-                            <p id="thumb-desc">Synchronisation en cours</p>
-                        </div>
-                    </div>
-
-                    <div class="ccs-contact-nav">
-                        <nav>
-                            <a href="#">NOTRE MAGASIN</a>
-                            <a href="#">NOTRE SIÈGE</a>
-                            <a href="#">NOTRE ÉQUIPE</a>
-                            <a href="#">NOTRE FLOTTE</a>
-                        </nav>
-                        <div class="ccs-social-icons">
-                            <a href="#" class="ccs-icon-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="ccs-icon-cart" aria-label="Boutique en ligne"><i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <script>
-        // TABLEAU DES 15 IMAGES AVEC LEUR TITRE ET DESCRIPTION ASSOCIÉS
-        const slidesData = [
-            { img: 'img1.png', title: 'NOTRE FLOTTE', desc: 'Distribution nationale rapide' },
-            { img: 'img2.png', title: 'NOTRE SIÈGE', desc: 'Hann Mariste, Dakar' },
-            { img: 'img3.png', title: 'NOTRE ÉQUIPE', desc: 'Professionnels engagés' },
-            { img: 'img4.png', title: 'PAPIER CAPITAL', desc: 'Qualité supérieure garantie' },
-            { img: 'img5.png', title: 'MAGASIN CCS', desc: 'Espace de vente dédié' },
-            { img: 'img6.png', title: 'STOCKAGE', desc: 'Grands volumes disponibles' },
-            { img: 'img7.png', title: 'LIVRAISON', desc: 'Service logistique performant' },
-            { img: 'img8.png', title: 'BEST FOODS', desc: 'Produits alimentaires de choix' },
-            { img: 'img9.png', title: 'DOUBLE A', desc: 'Exclusivité et partenariat' },
-            { img: 'img10.png', title: 'SMART COPY', desc: 'Accessibilité et grand public' },
-            { img11.png', title: 'PARTENAIRES', desc: 'Réseau de distribution étendu' },
-            { img12.png', title: 'ESPACE CLIENT', desc: 'Proche de vos besoins' },
-            { img13.png', title: 'ENTREPÔT', desc: 'Sécurité et organisation' },
-            { img14.png', title: 'EXPANSION', desc: 'Développement régional' },
-            { img15.png', title: 'ENGAGEMENT', desc: 'La qualité au bon prix' }
-        ];
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const slideshowContainer = document.getElementById('bg-slideshow');
-            const thumbImg = document.getElementById('thumb-img');
-            const thumbTitle = document.getElementById('thumb-title');
-            const thumbDesc = document.getElementById('thumb-desc');
-            
-            let currentIndex = 0;
-            const slideInterval = 5000; // 5 secondes par image
-
-            // 1. Générer dynamiquement les balises images dans le fond
-            slidesData.forEach((slide, index) => {
-                const imgElement = document.createElement('img');
-                // Utilisation de placeholders si les images locales n'existent pas encore
-                imgElement.src = slide.img;
-                imgElement.alt = slide.title;
-                if (index === 0) imgElement.classList.add('active');
-                
-                // Gestion d'erreur visuelle si le fichier image png n'est pas encore présent
-                imgElement.onerror = function() {
-                    this.src = `https://via.placeholder.com/1920x1080?text=CCS+Image+${index + 1}`;
-                };
-                
-                slideshowContainer.appendChild(imgElement);
-            });
-
-            const bgImages = slideshowContainer.querySelectorAll('img');
-
-            // 2. Fonction de mise à jour de la diapositive active et de la vignette
-            function updateSlide() {
-                // Retirer la classe active de l'ancienne image de fond
-                bgImages[currentIndex].classList.remove('active');
-
-                // Passer à l'index suivant (boucle sur 15)
-                currentIndex = (currentIndex + 1) % slidesData.length;
-
-                // Activer la nouvelle image de fond
-                bgImages[currentIndex].classList.add('active');
-
-                // Mettre à jour la carte miniature en bas à gauche
-                const currentData = slidesData[currentIndex];
-                thumbImg.src = currentData.img;
-                thumbImg.onerror = function() {
-                    this.src = `https://via.placeholder.com/80x60?text=Vignette`;
-                };
-                thumbTitle.textContent = currentData.title;
-                thumbDesc.textContent = currentData.desc;
-            }
-
-            // Initialiser la première vignette au chargement
-            thumbImg.src = slidesData[0].img;
-            thumbImg.onerror = function() { this.src = 'https://via.placeholder.com/80x60?text=Vignette'; };
-            thumbTitle.textContent = slidesData[0].title;
-            thumbDesc.textContent = slidesData[0].desc;
-
-            // 3. Lancer l'intervalle automatique
-            setInterval(updateSlide, slideInterval);
-        });
-    </script>
-
 
     <!-- SECTION 2 : QUI SOMMES-NOUS / ORIGINE (Parallaxe) -->
     <section class="parallax-section about-parallax">
@@ -1167,9 +626,7 @@
                 <h2 class="section-title" data-fr="Qui est CCS ?" data-en="Who is CCS?">Qui est CCS ?</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p data-fr="Qui est CCS ?
-Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition simple et claire : assurer une distribution fiable, régulière et compétitive de papier sur l’ensemble du territoire. Positionnée dès ses débuts comme un partenaire de confiance pour les entreprises, administrations, imprimeries et structures éducatives, CCS s’est rapidement distinguée par son sérieux, sa réactivité et sa capacité à répondre aux besoins quotidiens en produits de papeterie.
-">
+                        <p data-fr="Créée au Sénégal en 2019, CCS — Comptoir Commercial Sourang est une entreprise spécialisée dans l'import-export et le commerce général. Dès ses débuts, elle s'est engagée à répondre aux besoins du marché sénégalais avec rigueur et professionnalisme." data-en="Created in Senegal in 2019, CCS — Comptoir Commercial Sourang is a company specializing in import-export and general trade. From its beginnings, it has committed to meeting the needs of the Senegalese market with rigor and professionalism.">
                             Créée au Sénégal en 2019, CCS — Comptoir Commercial Sourang est une entreprise spécialisée dans l'import-export et le commerce général. Dès ses débuts, elle s'est engagée à répondre aux besoins du marché sénégalais avec rigueur et professionnalisme.
                         </p>
                         <p data-fr="Au fil des années, l'entreprise a développé ses activités, tissé des relations internationales solides et diversifié ses offres pour s'imposer comme un acteur commercial incontournable." data-en="Over the years, the company has developed its activities, built strong international relationships and diversified its offers to establish itself as a key commercial player.">
@@ -1187,229 +644,40 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
         </div>
     </section>
 
-         <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Section globale de présentation (Alternance de blocs split-screen) */
-        .ccs-about-section {
-            width: 100%;
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .ccs-row {
-            display: flex;
-            width: 100%;
-            min-height: 480px;
-        }
-
-        .ccs-row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        /* Colonne Texte */
-        .ccs-text-side {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 80px;
-            background-color: #ffffff;
-            z-index: 2;
-        }
-
-        .ccs-title {
-            color: #002664;
-            font-size: 28px;
-            font-weight: bold;
-            line-height: 1.3;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .ccs-separator {
-            width: 50px;
-            height: 3px;
-            background-color: #0ea5e9; /* Rouge vif CCS */
-            margin-bottom: 20px;
-        }
-
-        .ccs-description {
-            color: #444444;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .ccs-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .ccs-list li {
-            position: relative;
-            padding-left: 20px;
-            color: #444;
-            font-size: 14px;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .ccs-list li::before {
-            content: "•";
-            color: #0ea5e9;
-            font-weight: bold;
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            top: -1px;
-        }
-
-        /* Colonne Image / Illustration */
-        .ccs-image-side {
-            flex: 1;
-            position: relative;
-            background-color: #e0e0e0;
-            overflow: hidden;
-            min-height: 350px;
-        }
-
-        .ccs-image-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Badge décoratif aux couleurs Rouge Vif et Bleu Ciel */
-        .ccs-badge-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 38, 100, 0.3);
-            backdrop-filter: blur(4px);
-        }
-
-        .ccs-badge-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: #ffffff;
-        }
-
-        /* Ligne décorative en bas de section */
-        .ccs-bottom-line {
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%); /* Bleu ciel et Rouge vif */
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .ccs-row, .ccs-row.reverse {
-                flex-direction: column;
-            }
-            .ccs-text-side {
-                padding: 40px 20px;
-            }
-            .ccs-image-side {
-                min-height: 300px;
-            }
-        }
-    </style>
-</head>
-
-
+    <!-- SECTION DE PRÉSENTATION DÉTAILLÉE (Split-Screen) -->
     <section class="ccs-about-section">
-  
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Style de la section vidéo */
-        .video-section {
-            position: relative;
-            width: 100%;
-            height: 100vh; /* Plein écran en hauteur (ajustez si besoin, ex: 500px) */
-            min-height: 400px;
-            background-color: #000;
-            overflow: hidden;
-        }
-
-        /* Style de la vidéo pour qu'elle remplisse parfaitement la section */
-        .video-section video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-        }
-
-        /* Ligne décorative en bas aux couleurs de la charte (Rouge Vif & Bleu Ciel) */
-        .video-bottom-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
-            z-index: 10;
-        }
-    </style>
-
-
-    
-
-
- <!-- Block  : Expansion Régionale -->
+        <!-- Block 1 -->
         <div class="ccs-row">
             <div class="ccs-text-side">
-                <h2 class="ccs-title"> CCS une entreprise qui fesait que du Papier a la base</h2>
+                <h2 class="ccs-title">CCS : une entreprise axée sur le papier à la base</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
-                   CCS a <strong> débuté son activité commerciale en se concentrant exclusivement sur la vente de papier Double A, une marque premium de haute qualité au Sénégal.</strong>. <br> Par la suite, face à la nécessité de s'adapter aux différents budgets puisque tout le monde ne pouvait pas s'offrir cette gamme supérieure, l'entreprise a diversifié son offre en intégrant <strong> la commercialisation du papier Smart Copy.</strong> </br>
+                    CCS a <strong>débuté son activité commerciale en se concentrant exclusivement sur la vente de papier Double A, une marque premium de haute qualité au Sénégal.</strong><br>
+                    Par la suite, face à la nécessité de s'adapter aux différents budgets puisque tout le monde ne pouvait pas s'offrir cette gamme supérieure, l'entreprise a diversifié son offre en intégrant <strong>la commercialisation du papier Smart Copy.</strong>
+                </p>
                 <p class="ccs-description">
-                   C'est dans cette dynamique que nous  <strong> avons non seulement signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais de haute qualité (A grate) /<strong>, mais nous avons aussi su adapter notre offre pour toucher tous les segments du marché — incluant les grandes structures, les particuliers, ainsi que les <strong> B-grades /<strong> et détaillants des marchés locaux.
+                    C'est dans cette dynamique que nous <strong>avons non seulement signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais de haute qualité (A grade),</strong> mais nous avons aussi su adapter notre offre pour toucher tous les segments du marché — incluant les grandes structures, les particuliers, ainsi que les détaillants des marchés locaux.
                 </p>
             </div>
             <div class="ccs-image-side">
-                <img src="ccs.png" alt="Expansion Afrique de l'Ouest" onerror="this.src='https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000&auto=format&fit=crop';">
+                <img src="ccs.png" alt="Expansion" onerror="this.src='https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000&auto=format&fit=crop';">
                 <div class="ccs-badge-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 </div>
             </div>
         </div>
-
         
-        <!-- Bloc 2 : Diversification Stratégique -->
+        <!-- Bloc 2 -->
         <div class="ccs-row reverse">
             <div class="ccs-text-side">
-                <h2 class="ccs-title"> LA CREATION DE NOS  PROPRES MARQUE DE PAPIER "CAPITAL"  ET DE PRODUIT ALIMENTAIRE "BEST FOODS"</h2>
+                <h2 class="ccs-title">La création de nos propres marques "Capital" et "Best Foods"</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
-                   Le Comptoir Commercial Sourang (CCS) a franchi une étape clé dans son développement en procédant à la création de ses propres marques, avec notamment le lancement de sa marque de papier <STRONG>« Capital » </STRONG> ainsi que de sa gamme de produits alimentaires sous la marque  <STRONG>« Best Foods »</STRONG>.
-                    Pour asseoir notre position sur le marché et garantir l'authenticité de nos produits, l'ensemble de nos marques propres — notamment « Capital » et « Best Foods » — sont officiellement reconnues et protégées juridiquement. Cette protection juridique sécurise notre propriété exclusive, renforce la confiance de notre clientèle et garantit à tous nos partenaires des produits originaux d'une qualité irréprochable.
+                    Le Comptoir Commercial Sourang (CCS) a franchi une étape clé dans son développement en procédant à la création de ses propres marques, avec notamment le lancement de sa marque de papier <strong>« Capital »</strong> ainsi que de sa gamme de produits alimentaires sous la marque <strong>« Best Foods »</strong>.
+                    Pour asseoir notre position sur le marché et garantir l'authenticité de nos produits, l'ensemble de nos marques propres sont officiellement reconnues et protégées juridiquement.
                 </p>
                 <ul class="ccs-list">
-                    <li>Gamme variée de produit <strong> BEST FOODS</strong>: Poivre noir, piment rouge sec, petits pois, lentilles.</li>
+                    <li>Gamme variée de produits <strong>BEST FOODS</strong> : Poivre noir, piment rouge sec, petits pois, lentilles.</li>
                     <li>Produits du quotidien : Huiles, laits, feuilles de laurier, raisins secs, clous de girofle.</li>
                     <li>Cible élargie : Détaillants, grossistes, hôtels, restaurants et structures de restauration collective.</li>
                 </ul>
@@ -1422,7 +690,7 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
             </div>
         </div>
 
-        <!-- Bloc 3 : Expansion Régionale -->
+        <!-- Bloc 3 -->
         <div class="ccs-row">
             <div class="ccs-text-side">
                 <h2 class="ccs-title">Une entreprise en expansion en Afrique de l’Ouest</h2>
@@ -1442,7 +710,7 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
             </div>
         </div>
 
-        <!-- Bloc 4 : Nos Missions & Nos Valeurs -->
+        <!-- Bloc 4 -->
         <div class="ccs-row reverse">
             <div class="ccs-text-side">
                 <h2 class="ccs-title">Nos Missions & Nos Valeurs</h2>
@@ -1467,7 +735,6 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
 
         <div class="ccs-bottom-line"></div>
     </section>
-   
 
     <!-- SECTION 3 : NOS PÔLES D'ACTIVITÉS (Parallaxe) -->
     <section class="parallax-section poles-parallax">
@@ -1592,14 +859,12 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
                 <div class="geo-grid">
                     <div class="geo-info">
                         <h3 data-fr="Nous sommes :" data-en="Headquarters & Offices">Siège Social & Bureaux</h3>
-                        
                         <p data-fr="Contactez-nous pour toute demande de partenariat, de distribution ou de renseignements sur nos gammes de produits." data-en="Contact us for any partnership, distribution inquiry, or information on our product ranges.">
-                            <br>HANN MARISTE EN FACE CORIS BANK </br>
+                            <br>HANN MARISTE EN FACE CORIS BANK</br>
                         </p>
                         <a href="contact.html" class="btn-see-more" style="display: inline-block; margin-top: 10px;" data-fr="Venir Chez CCS" data-en="Contact us">Nous contacter</a>
                     </div>
                     <div class="map-container">
-                        <!-- Intégration d'une carte Google Maps (exemple pour Dakar) -->
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.9553755452296!2d-17.4676878240445!3d14.692780574347732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec17326b48a4747%3A0xc39f8f413ff7ea5!2sDakar%2C%20Senegal!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1619,7 +884,6 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
             <div class="footer-col">
                 <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
                 <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-
                 <a href="product.html" data-fr="Produits" data-en="Products">Produits</a>
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
@@ -1646,21 +910,17 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
     <!-- SCRIPT DE GESTION DES LANGUES ET DU POINT ROUGE -->
     <script>
         function changeLanguage(lang) {
-            // 1. Mettre à jour l'attribut lang de la balise HTML
             document.documentElement.setAttribute('lang', lang);
 
-            // 2. Changer l'état actif des boutons de langue
             document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
             document.getElementById('btnEn').classList.toggle('active', lang === 'en');
 
-            // 3. Traduire tous les éléments possédant les attributs data-fr / data-en
             const translatableElements = document.querySelectorAll('[data-fr][data-en]');
             translatableElements.forEach(element => {
                 element.textContent = element.getAttribute(`data-${lang}`);
             });
         }
 
-        // Script optionnel pour animer le point rouge sous la navigation au survol/clic des liens
         const navLinks = document.querySelectorAll('.nav-link');
         const redDot = document.getElementById('redDot');
 
@@ -1670,7 +930,6 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
             redDot.style.left = `${linkRect.left - navRect.left + (linkRect.width / 2) - 4}px`;
         }
 
-        // Positionner initialement sur le lien actif
         window.addEventListener('DOMContentLoaded', () => {
             const activeLink = document.querySelector('.nav-link.active');
             if (activeLink) {
