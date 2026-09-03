@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCS - Comptoir Commercial Sourang | Produits, Partenaires & Évidences</title>
+    <title>CCS - Comptoir Commercial Sourang | Carrières</title>
     <style>
         * {
             margin: 0;
@@ -13,12 +13,12 @@
         }
 
         body {
-            background-color: #f8fafc;
+            background-color: #f9f9f9;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            color: #0f172a;
+            color: #333;
         }
 
         .navbar {
@@ -55,8 +55,6 @@
             align-items: center;
             position: relative;
             gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .nav-item {
@@ -74,28 +72,28 @@
             position: relative;
             display: inline-block;
             padding: 8px 12px;
-            border: 2px solid #0ea5e9;
+            border: 2px solid #1565c0;
             border-radius: 4px;
             background-color: #fff;
         }
 
         .nav-link:hover {
             color: white;
-            background-color: #0ea5e9;
+            background-color: #1565c0;
         }
 
         .red-dot {
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #0ea5e9;
+            background-color: #1565c0;
             border-radius: 50%;
             transition: left 0.3s ease-in-out;
             top: -15px; 
         }
         
         .nav-item .nav-link.active {
-            color: #0ea5e9;
+            color: #1565c0;
             background-color: #fff;
         }
 
@@ -123,57 +121,6 @@
             color: white;
         }
 
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: 2px solid #002664;
-            border-radius: 4px;
-            color: #002664;
-            font-size: 22px;
-            line-height: 1;
-            padding: 6px 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .nav-toggle:hover {
-            background-color: #002664;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: inline-block;
-            }
-            .nav-content {
-                justify-content: space-between;
-            }
-            .nav-links {
-                display: none;
-                flex-basis: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                order: 3;
-            }
-            .nav-links.open {
-                display: flex;
-            }
-            .nav-item {
-                width: 100%;
-            }
-            .nav-link {
-                display: block;
-                text-align: center;
-            }
-            .lang-buttons {
-                flex-basis: 100%;
-                justify-content: center;
-                margin-left: 0;
-                order: 4;
-            }
-        }
-
         .parallax-section {
             position: relative;
             background-attachment: fixed;
@@ -196,7 +143,7 @@
         }
 
         .parallax-overlay.light-overlay {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.92);
         }
 
         .section-container {
@@ -205,11 +152,11 @@
         }
 
         .hero-banner {
-            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1920&auto=format&fit=crop');
             color: white;
             padding: 100px 20px;
             text-align: center;
-            border-top: 4px solid #0ea5e9;
+            border-top: 4px solid #1565c0;
         }
 
         .hero-banner .parallax-overlay {
@@ -231,111 +178,76 @@
             line-height: 1.5;
         }
 
-        .category-title {
+        .section-title {
+            text-align: center;
+            color: #002664;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #1565c0;
+            margin: 10px auto 0;
+        }
+
+        .career-parallax {
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .career-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #002664;
+        }
+
+        .career-box h3 {
             color: #002664;
             font-size: 22px;
-            text-transform: uppercase;
-            margin: 40px 0 20px 0;
-            border-bottom: 2px solid #0ea5e9;
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .product-img {
-            height: 190px;
-            width: 100%;
-            overflow: hidden;
-            border-bottom: 2px solid #002664;
-            background: #eee;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-content h3 {
-            color: #002664;
-            font-size: 17px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .product-content p {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.5;
             margin-bottom: 15px;
-            flex-grow: 1;
+            text-transform: uppercase;
         }
 
-        .product-badge {
+        .career-box p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-apply {
             display: inline-block;
-            background-color: #0ea5e9;
+            background-color: #1565c0;
             color: white;
-            font-size: 10px;
+            text-decoration: none;
+            padding: 12px 30px;
             font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 3px;
+            border-radius: 4px;
             text-transform: uppercase;
-            align-self: flex-start;
-            margin-bottom: 8px;
+            transition: background-color 0.3s ease;
         }
 
-        .click-hint {
-            font-size: 11px;
-            color: #002664;
-            font-weight: bold;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .btn-apply:hover {
+            background-color: #002664;
         }
-
 
         .footer {
             background-color: #00193d;
             color: white;
             width: 100%;
             padding: 50px 20px 20px 20px;
-            border-top: 4px solid #0ea5e9;
+            border-top: 4px solid #1565c0;
         }
 
         .footer-content {
@@ -348,7 +260,7 @@
         }
 
         .footer-col h4 {
-            color: #0ea5e9;
+            color: #1565c0;
             font-size: 16px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -365,7 +277,7 @@
         }
 
         .footer-col a:hover {
-            color: #0ea5e9;
+            color: #1565c0;
         }
 
         .footer-bottom {
@@ -382,882 +294,293 @@
             .parallax-section {
                 background-attachment: scroll;
             }
-            .red-dot {
-                display: none;
+        }
+
+        /* ===== Galerie (parties images manquantes) ===== */
+        .gallery-parallax {
+            background-image: url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            aspect-ratio: 4 / 3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 15px;
+            background: linear-gradient(0deg, rgba(0,38,100,0.85), transparent);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        @media(max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        .catalog-section {
-            position: relative;
-            width: 100%;
-            padding: 80px 20px;
-            background-color: #ffffff;
-        }
-
-        .catalog-section:nth-child(even) {
-            background-color: #f8fafc;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            color: #002664;
-            font-size: 32px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-
-        .section-separator {
-            width: 60px;
-            height: 3px;
-            background-color: #0ea5e9;
-            margin: 0 auto 20px auto;
-        }
-
-        .section-subtitle {
-            color: #64748b;
-            font-size: 16px;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.5;
-            text-align: center;
-        }
-
-        /* --- CATALOGUE DES PRODUITS : chaque produit = image + petit paragraphe à côté --- */
-        .products-list {
-            display: flex;
-            flex-direction: column;
+        /* ===== Cards postes (mouvance / tilt / cascade) ===== */
+        .job-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .product-row {
+        .job-card {
             position: relative;
-            background: #fff;
-            border-radius: 0;
+            background: white;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0, 38, 100, 0.08);
-            cursor: pointer;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
-            display: flex;
-            align-items: stretch;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.3s ease;
             transform-style: preserve-3d;
             will-change: transform;
         }
 
-        .product-row::before {
-            content: "";
+        .job-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .job-card:hover {
+            box-shadow: 0 20px 35px rgba(0,38,100,0.25);
+        }
+
+        .job-card-banner {
             position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #002664);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1565c0, #4fa8ff);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.5s ease;
+            transition: height 0.35s ease, transform 0.35s ease;
             z-index: 2;
         }
 
-        .product-row:hover::before {
+        .job-card:hover .job-card-banner {
             transform: scaleX(1);
+            height: 8px;
         }
 
-        .product-row:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 22px 40px rgba(0, 38, 100, 0.18);
-        }
-
-        .product-row-img-wrap {
-            position: relative;
-            width: 320px;
-            min-width: 320px;
-            overflow: hidden;
-        }
-
-        .product-row-img {
+        .job-card-media {
             width: 100%;
-            height: 100%;
-            min-height: 260px;
-            object-fit: cover;
-            background-color: #cbd5e1;
-            display: block;
-            transition: transform 0.6s cubic-bezier(.22,1,.36,1);
-        }
-
-        .product-row:hover .product-row-img {
-            transform: scale(1.12) rotate(0.3deg);
-        }
-
-        .product-row-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(0, 38, 100, 0.72);
-            backdrop-filter: blur(3px);
-            color: #fff;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            z-index: 2;
-        }
-
-        .product-row-body {
-            padding: 32px 36px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .product-row-title {
-            color: #002664;
-            font-size: 21px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .product-row:hover .product-row-title {
-            color: #0ea5e9;
-        }
-
-        .product-row-desc {
-            color: #64748b;
-            font-size: 15px;
-            line-height: 1.7;
-            max-width: 680px;
-        }
-
-        .product-row-btn {
-            background-color: #002664;
-            color: #fff;
-            text-align: center;
-            padding: 10px 22px;
-            font-size: 13px;
-            font-weight: bold;
-            border-radius: 5px;
-            align-self: flex-start;
-            margin-top: 8px;
-            transition: background-color 0.2s, transform 0.3s ease;
-        }
-
-        .product-row:hover .product-row-btn {
-            background-color: #0ea5e9;
-            transform: translateX(4px);
-        }
-
-        @media (max-width: 640px) {
-            .product-row {
-                flex-direction: column;
-            }
-            .product-row-img-wrap {
-                width: 100%;
-            }
-            .product-row-img {
-                min-height: 220px;
-                height: 220px;
-            }
-            .product-row-body {
-                padding: 22px;
-            }
-        }
-
-        /* --- SECTION PREUVE & ENGAGEMENTS --- */
-        .proof-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .proof-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease;
-        }
-
-        .proof-card:hover {
-            transform: translateY(-5px);
-            border-color: #002664;
-        }
-
-        .proof-icon {
-            font-size: 40px;
-            color: #0ea5e9;
-            margin-bottom: 20px;
-        }
-
-        .proof-title {
-            color: #002664;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .proof-text {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* --- SECTION PARTENAIRES --- */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            align-items: center;
-        }
-
-        .partner-logo-box {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            font-weight: bold;
-            color: #002664;
-            font-size: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-        }
-
-        .partner-logo-box:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1);
-        }
-
-        /* --- SECTION GALERIE CONTENEURS --- */
-        .container-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-        }
-
-        .container-gallery-item {
-            position: relative;
-            border-radius: 10px;
+            height: 170px;
             overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 4 / 3;
-            background-color: #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .container-gallery-item img {
+        .job-card-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
-        .container-gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 22px rgba(0, 38, 100, 0.18);
+        .job-card:hover .job-card-media img {
+            transform: scale(1.12);
         }
 
-        .container-gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        .container-gallery-item::after {
-            content: "🔍";
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 38, 100, 0.75);
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .container-gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        .gallery-lightbox {
-            display: none;
-            position: fixed;
-            z-index: 100000;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .gallery-lightbox.active {
-            display: flex;
-        }
-
-        .gallery-lightbox img {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        .gallery-lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 38px;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .gallery-lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            padding: 10px 18px;
-            user-select: none;
-            background-color: rgba(255,255,255,0.08);
-            border-radius: 6px;
-            transition: background-color 0.2s;
-        }
-
-        .gallery-lightbox-nav:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .gallery-lightbox-prev { left: 20px; }
-        .gallery-lightbox-next { right: 20px; }
-
-        .gallery-lightbox-counter {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #cbd5e1;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-
-        /* --- MINI-PAGE MODAL PRODUIT (GRANDE & SPACIEUSE) --- */
-        .product-modal {
-            display: none;
-            position: fixed;
-            z-index: 99999;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .product-modal.active { display: flex; }
-
-        .product-modal-content {
-            background: #ffffff;
-            width: 100%;
-            max-width: 1250px;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            position: relative;
-            max-height: 95vh;
-            display: flex;
-            flex-direction: column;
-            animation: scaleUp 0.3s ease;
-        }
-
-        @keyframes scaleUp {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .product-modal-header {
-            background-color: #002664;
-            color: #ffffff;
-            padding: 22px 35px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-modal-title { font-size: 24px; font-weight: bold; }
-
-        .product-modal-close {
-            font-size: 36px;
-            color: #fff;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .product-modal-close:hover { color: #38bdf8; }
-
-        .product-modal-body {
-            padding: 35px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        .slider-section-title {
-            font-size: 15px;
-            text-transform: uppercase;
-            color: #0ea5e9;
-            font-weight: bold;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-        }
-
-        .slider-controls-hint {
-            font-size: 12px;
-            color: #64748b;
-            text-transform: none;
-            font-weight: normal;
-        }
-
-        .product-slider-container {
-            position: relative;
-            width: 100%;
-            height: 380px;
-            background: #0f172a;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .product-slider-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 38, 100, 0.8);
-            color: #fff;
-            border: none;
-            width: 45px; height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            z-index: 10;
-        }
-        .slider-btn:hover { background: #0ea5e9; }
-        .slider-prev { left: 20px; }
-        .slider-next { right: 20px; }
-
-        .slider-counter {
-            position: absolute;
-            bottom: 15px; right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            font-size: 12px;
-            padding: 5px 12px;
-            border-radius: 15px;
-        }
-
-        .product-info-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 900px) {
-            .product-info-grid { grid-template-columns: 1fr; }
-        }
-
-        .product-video-box {
-            width: 100%;
-            height: 300px;
-            background: #000;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .product-video-box video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-specs-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
+        .job-card-body {
             padding: 25px;
         }
 
-        .spec-item {
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .spec-label {
-            font-weight: bold;
+        .job-card-body h3 {
             color: #002664;
-            display: inline-block;
-            width: 150px;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        .spec-value { color: #334155; }
-
-        .product-extra-text {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid #e2e8f0;
-            font-size: 15px;
-            color: #475569;
+        .job-card-body p {
+            color: #555;
+            font-size: 14px;
             line-height: 1.6;
-        }
-
-        /* --- ANIMATION D'APPARITION AU SCROLL --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-48px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(48px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right.revealed.product-row,
-        .reveal-left.revealed.product-row {
-            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal, .reveal-left, .reveal-right {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        /* --- BARRE DE RECHERCHE / FILTRE PRODUITS --- */
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 35px;
-        }
-
-        .filter-input {
-            flex: 1 1 260px;
-            max-width: 320px;
-            padding: 10px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #0f172a;
-        }
-
-        .filter-input:focus {
-            outline: 2px solid #002664;
-            outline-offset: 1px;
-        }
-
-        .filter-btn {
-            background: #fff;
-            border: 1px solid #cbd5e1;
-            color: #002664;
-            font-weight: bold;
-            font-size: 13px;
-            text-transform: uppercase;
-            padding: 9px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
-
-        .filter-btn:hover {
-            border-color: #002664;
-        }
-
-        .filter-btn.active {
-            background-color: #002664;
-            border-color: #002664;
-            color: #fff;
-        }
-
-        .filter-empty {
-            text-align: center;
-            color: #64748b;
-            font-size: 14px;
-            padding: 30px 10px;
-            display: none;
-        }
-
-        /* --- SECTION CHIFFRES CLÉS --- */
-        .stats-section {
-            background-color: #002664;
-            background-image: linear-gradient(135deg, #002664 0%, #013a8f 100%);
-        }
-
-        .stats-section .section-title,
-        .stats-section .section-subtitle {
-            color: #fff;
-        }
-
-        .stats-section .section-separator {
-            background-color: #ffffff;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            text-align: center;
-        }
-
-        .stat-card {
-            padding: 20px 10px;
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: bold;
-            color: #fff;
-            line-height: 1;
-        }
-
-        .stat-suffix {
-            font-size: 32px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        .stat-label {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #cbd5e1;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- SECTION TÉMOIGNAGES --- */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .testimonial-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #0ea5e9;
-            border-radius: 8px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .testimonial-quote {
-            color: #334155;
-            font-size: 15px;
-            line-height: 1.7;
             margin-bottom: 18px;
         }
 
-        .testimonial-author {
-            color: #002664;
+        .job-card-tag {
+            display: inline-block;
+            font-size: 11px;
             font-weight: bold;
-            font-size: 14px;
-        }
-
-        .testimonial-role {
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        /* --- SECTION FAQ --- */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 20px 5px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #002664;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .faq-icon {
-            flex-shrink: 0;
-            font-size: 20px;
-            color: #0ea5e9;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-        }
-
-        .faq-answer p {
-            padding: 0 5px 20px 5px;
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* --- SECTION NEWSLETTER / CONTACT RAPIDE --- */
-        .newsletter-section {
-            background-color: #f1f5f9;
-            text-align: center;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-input {
-            flex: 1 1 260px;
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        .newsletter-btn {
-            background-color: #0ea5e9;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-size: 13px;
             text-transform: uppercase;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            color: #1565c0;
+            border: 1px solid #1565c0;
+            border-radius: 3px;
+            padding: 3px 8px;
+            margin-bottom: 12px;
         }
 
-        .newsletter-btn:hover {
-            background-color: #0369a1;
-        }
-
-        .newsletter-msg {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #002664;
+        .job-card-link {
+            display: inline-block;
+            color: #1565c0;
             font-weight: bold;
-            min-height: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 2px solid #1565c0;
+            padding-bottom: 2px;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* --- BOUTON RETOUR EN HAUT --- */
-        .back-to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background-color: #002664;
-            color: #fff;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
+        .job-card-link:hover {
+            color: #002664;
+            border-color: #002664;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .job-card, .gallery-item img, .job-card-media img, .job-card-banner {
+                transition: none !important;
+                transform: none !important;
+            }
+            .job-card {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ===== Formulaire "glass" ===== */
+        .form-parallax {
+            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .form-parallax .parallax-overlay {
+            background-color: rgba(0, 38, 100, 0.78);
+        }
+
+        .glass-form {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .glass-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .glass-form .form-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
-            z-index: 500;
+            flex-direction: column;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .glass-form .form-group.full {
+            grid-column: 1 / -1;
         }
 
-        .back-to-top:hover {
-            background-color: #0ea5e9;
+        .glass-form label {
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .glass-form input,
+        .glass-form select,
+        .glass-form textarea {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: white;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .glass-form input::placeholder,
+        .glass-form textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .glass-form select option {
+            color: #002664;
+        }
+
+        .glass-form input:focus,
+        .glass-form select:focus,
+        .glass-form textarea:focus {
+            outline: none;
+            border-color: #4fa8ff;
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .glass-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .glass-form .btn-submit {
+            display: inline-block;
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .glass-form .btn-submit:hover {
+            background-color: #002664;
+        }
+
+        .form-note {
+            color: rgba(255,255,255,0.85);
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        @media(max-width: 600px) {
+            .glass-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .glass-form {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -1268,18 +591,16 @@
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
-
-            <button class="nav-toggle" id="navToggle" onclick="toggleNavMenu()" aria-label="Menu" aria-expanded="false">☰</button>
             
             <ul class="nav-links" id="navLinks">
                 <div class="red-dot" id="redDot"></div>
-                <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-                <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Notre Histoire</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">À Propos</a></li>
-                <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Produits</a></li>
-               
-                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">Actualités</a></li>
-               
+                <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Home" data-en="Home">Home</a></li>
+                <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Our Story</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">About Us</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
+              
+                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
+                
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
 
@@ -1292,228 +613,142 @@
 
     <section class="parallax-section hero-banner">
         <div class="parallax-overlay">
-            <h1 class="hero-title" data-fr="Nos Pôles de Produits, Partenaires & Évidences" data-en="Our Product Poles, Partners & Evidence">Nos Pôles de Produits, Partenaires & Évidences</h1>
-            <p class="hero-subtitle" data-fr="Découvrez notre gamme complète, notre réseau mondial de partenaires et nos opérations de chargement certifiées." data-en="Discover our complete range, our global partner network, and our certified loading operations.">Découvrez notre gamme complète, notre réseau mondial de partenaires et nos opérations de chargement certifiées.</p>
+            <h1 class="hero-title" data-fr="Rejoignez CCS" data-en="Join CCS">Rejoignez CCS</h1>
+            <p class="hero-subtitle" data-fr="Contribuez au développement d'une entreprise dynamique et en pleine croissance dans le commerce et l'import-export à Dakar." data-en="Contribute to the development of a dynamic and fast-growing company in trade and import-export in Dakar.">Contribuez au développement d'une entreprise dynamique et en pleine croissance dans le commerce et l'import-export à Dakar.</p>
         </div>
     </section>
 
-    <!-- ================= SECTION : PAPETERIE (SÉPARÉE DU CATALOGUE GÉNÉRAL) ================= -->
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Notre Gamme Papeterie</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Nos marques de papier bureautique, sélectionnées pour leur qualité d'impression.</p>
-            </div>
-            <div class="products-list" id="paperGridContainer">
-                <!-- Généré dynamiquement par JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= SECTION : CATALOGUE DES PRODUITS UNIQUES ================= -->
-    <section class="catalog-section ccs-products-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Catalogue de nos Produits</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Cliquez sur un produit pour afficher sa grande mini-page interactive.</p>
-            </div>
-            <div class="filter-bar reveal">
-                <input type="text" class="filter-input" id="productSearchInput" placeholder="Rechercher un produit (ex: riz, ail, papier...)" oninput="filterProducts()">
-                <button class="filter-btn active" data-origin="all" onclick="setOriginFilter('all', this)">Toutes origines</button>
-                <button class="filter-btn" data-origin="afrique" onclick="setOriginFilter('afrique', this)">Afrique</button>
-                <button class="filter-btn" data-origin="international" onclick="setOriginFilter('international', this)">International</button>
-            </div>
-            <div class="products-list" id="productsGridContainer">
-                <!-- Généré dynamiquement par JavaScript -->
-            </div>
-            <p class="filter-empty" id="productsEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
-        </div>
-    </section>
-
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Nos Preuves & Engagements Qualité</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Une traçabilité totale et des contrôles rigoureux à chaque étape logistique.</p>
-            </div>
-            <div class="proof-grid reveal">
-                <div class="proof-card">
-                    <div class="proof-icon">✔</div>
-                    <h3 class="proof-title">Traçabilité Certifiée</h3>
-                    <p class="proof-text">Suivi méticuleux de l'origine de nos produits (Brésil, Inde, Asie, Afrique) jusqu'à la livraison finale.</p>
-                </div>
-                <div class="proof-card">
-                    <div class="proof-icon">🛡</div>
-                    <h3 class="proof-title">Contrôle d'Empotage</h3>
-                    <p class="proof-text">Vidéos et galeries photo détaillées pour chaque opération de chargement et d'empotage en conteneur.</p>
-                </div>
-                <div class="proof-card">
-                    <div class="proof-icon">★</div>
-                    <h3 class="proof-title">Standards Premium</h3>
-                    <p class="proof-text">Sélection rigoureuse des grades A et respect strict des normes de conservation et de sécurité maritime.</p>
+    <section class="parallax-section career-parallax">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="Offres d'Emploi & Stages" data-en="Job Offers & Internships">Offres d'Emploi & Stages</h2>
+                <div class="career-box">
+                    <h3 data-fr="Envie de faire partie de l'aventure ?" data-en="Want to be part of the adventure?">Envie de faire partie de l'aventure ?</h3>
+                    <p data-fr="Nous sommes toujours à la recherche de talents motivés, rigoureux et passionnés par le commerce, la logistique et l'excellence opérationnelle. Envoyez-nous votre candidature spontanée !" data-en="We are always looking for motivated, rigorous talents passionate about commerce, logistics, and operational excellence. Send us your spontaneous application!">
+                        Nous sommes toujours à la recherche de talents motivés, rigoureux et passionnés par le commerce, la logistique et l'excellence opérationnelle. Envoyez-nous votre candidature spontanée !
+                    </p>
+                    <a href="contact.html" class="btn-apply" data-fr="Postuler Maintenant" data-en="Apply Now">Postuler Maintenant</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Galerie de nos Conteneurs</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Un aperçu réel de nos opérations d'empotage et de chargement en conteneurs, à chaque expédition.</p>
-            </div>
-            <div class="container-gallery-grid reveal" id="containerGalleryGrid"></div>
-        </div>
-    </section>
-
-    <div class="gallery-lightbox" id="galleryLightbox">
-        <span class="gallery-lightbox-close" onclick="closeGalleryLightbox()">&times;</span>
-        <span class="gallery-lightbox-nav gallery-lightbox-prev" onclick="galleryLightboxNav(-1)">&#10094;</span>
-        <img id="galleryLightboxImg" src="" alt="Conteneur CCS">
-        <span class="gallery-lightbox-nav gallery-lightbox-next" onclick="galleryLightboxNav(1)">&#10095;</span>
-        <span class="gallery-lightbox-counter" id="galleryLightboxCounter"></span>
-    </div>
-
-    <section class="catalog-section stats-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">CCS en Chiffres</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Des années de présence sur le terrain, à Dakar et à l'international.</p>
-            </div>
-            <div class="stats-grid reveal">
-                <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="6">0</span><span class="stat-suffix">+</span></div>
-                    <div class="stat-label">Années d'expérience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="5">0</span></div>
-                    <div class="stat-label">Pays d'origine des produits</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="7">0</span><span class="stat-suffix">+</span></div>
-                    <div class="stat-label">Produits au catalogue</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></div>
-                    <div class="stat-label">Traçabilité des chargements</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Ce Que Disent Nos Clients</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">La confiance de nos partenaires, bâtie chargement après chargement.</p>
-            </div>
-            <div class="testimonials-grid reveal">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« Les délais sont respectés à chaque commande et la qualité de l'ail et du gingembre est constante. Un partenaire fiable pour nos imports. »</p>
-                    <div class="testimonial-author">Grupo Bazan</div>
-                    <div class="testimonial-role">Partenaire import-export</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« La traçabilité des conteneurs et les photos d'empotage nous rassurent avant chaque expédition. Communication claire du début à la fin. »</p>
-                    <div class="testimonial-author">Sarama</div>
-                    <div class="testimonial-role">Partenaire distribution</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« Le papier Double A et Smart Copy arrive toujours en bon état, bien conditionné. Un fournisseur sérieux pour notre réseau de points de vente. »</p>
-                    <div class="testimonial-author">Touba International</div>
-                    <div class="testimonial-role">Partenaire distribution</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Nos Partenaires de Confiance</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Ils collaborent avec CCS pour l'exportation et la distribution internationale.</p>
-            </div>
-            <div class="partners-grid reveal">
-                <div class="partner-logo-box">Grupo Bazan</div>
-                <div class="partner-logo-box">Best Foods</div>
-                <div class="partner-logo-box">Sarama</div>
-                <div class="partner-logo-box">Trois Continental</div>
-                <div class="partner-logo-box">Touba International</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Questions Fréquentes</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Tout ce qu'il faut savoir avant de commander auprès de CCS.</p>
-            </div>
-            <div class="faq-list reveal">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Quels sont vos délais de chargement et d'expédition ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui, disponibles dès la fin du chargement.</p>
+    <section class="parallax-section gallery-parallax">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="La Vie Chez CCS" data-en="Life at CCS">La Vie Chez CCS</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop" alt="Équipe CCS au travail" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        <span class="gallery-caption" data-fr="L'équipe au bureau" data-en="The team at the office">L'équipe au bureau</span>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Proposez-vous des échantillons avant commande ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits alimentaires comme le riz, le tamarin, l'ail ou le gingembre.</p>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Entrepôt et logistique CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        <span class="gallery-caption" data-fr="Entrepôt & logistique" data-en="Warehouse & logistics">Entrepôt & logistique</span>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Quels modes de conditionnement utilisez-vous ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Selon le produit : cartons de 10 à 25 kg, sacs de 25/50 kg, ou conditionnement en vrac. Les fiches produits détaillent le conditionnement exact de chaque référence.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Comment vous contacter pour une demande de devis ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Par téléphone, email, ou via notre page Contact — nous répondons habituellement sous 24 à 48 heures ouvrées.</p>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop" alt="Réunion d'équipe CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        <span class="gallery-caption" data-fr="Réunions & échanges" data-en="Meetings & exchanges">Réunions & échanges</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="catalog-section newsletter-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Restez Informé</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Recevez nos actualités produits et nos disponibilités par email.</p>
+    <section class="parallax-section career-parallax">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="Postes Ouverts" data-en="Open Positions">Postes Ouverts</h2>
+                <div class="job-cards" id="jobCards">
+                    <div class="job-card">
+                        <div class="job-card-banner"></div>
+                        <div class="job-card-media">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Chargé de commerce international" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        </div>
+                        <div class="job-card-body">
+                            <span class="job-card-tag" data-fr="CDI" data-en="Full-time">CDI</span>
+                            <h3 data-fr="Chargé(e) de Commerce International" data-en="International Trade Officer">Chargé(e) de Commerce International</h3>
+                            <p data-fr="Gérez les opérations d'import-export et développez notre réseau de fournisseurs et clients." data-en="Manage import-export operations and grow our network of suppliers and clients.">Gérez les opérations d'import-export et développez notre réseau de fournisseurs et clients.</p>
+                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
+                        </div>
+                    </div>
+                    <div class="job-card">
+                        <div class="job-card-banner"></div>
+                        <div class="job-card-media">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Responsable logistique" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        </div>
+                        <div class="job-card-body">
+                            <span class="job-card-tag" data-fr="CDI" data-en="Full-time">CDI</span>
+                            <h3 data-fr="Responsable Logistique" data-en="Logistics Manager">Responsable Logistique</h3>
+                            <p data-fr="Supervisez la réception, le stockage et l'expédition des marchandises dans nos entrepôts." data-en="Oversee receiving, storage, and shipping of goods in our warehouses.">Supervisez la réception, le stockage et l'expédition des marchandises dans nos entrepôts.</p>
+                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
+                        </div>
+                    </div>
+                    <div class="job-card">
+                        <div class="job-card-banner"></div>
+                        <div class="job-card-media">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=800&auto=format&fit=crop" alt="Assistant comptable" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
+                        </div>
+                        <div class="job-card-body">
+                            <span class="job-card-tag" data-fr="Stage" data-en="Internship">Stage</span>
+                            <h3 data-fr="Assistant(e) Comptable" data-en="Accounting Assistant">Assistant(e) Comptable</h3>
+                            <p data-fr="Participez à la tenue des comptes et au suivi de la trésorerie aux côtés de notre équipe finance." data-en="Support bookkeeping and cash-flow tracking alongside our finance team.">Participez à la tenue des comptes et au suivi de la trésorerie aux côtés de notre équipe finance.</p>
+                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form class="newsletter-form reveal" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
-                <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Votre adresse email" required>
-                <button type="submit" class="newsletter-btn">S'inscrire</button>
-            </form>
-            <p class="newsletter-msg" id="newsletterMsg"></p>
         </div>
     </section>
 
-    <button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
+    <section class="parallax-section form-parallax" id="candidature">
+        <div class="parallax-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="Candidature Spontanée" data-en="Spontaneous Application" style="color: white;">Candidature Spontanée</h2>
+                <form class="glass-form" id="applicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-fr="Nom complet" data-en="Full name">Nom complet</label>
+                            <input type="text" name="fullname" data-fr-ph="Votre nom" data-en-ph="Your name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-fr="Email" data-en="Email">Email</label>
+                            <input type="email" name="email" data-fr-ph="vous@exemple.com" data-en-ph="you@example.com" placeholder="vous@exemple.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-fr="Téléphone" data-en="Phone">Téléphone</label>
+                            <input type="tel" name="phone" data-fr-ph="+221 77 000 00 00" data-en-ph="+221 77 000 00 00" placeholder="+221 77 000 00 00">
+                        </div>
+                        <div class="form-group">
+                            <label data-fr="Poste souhaité" data-en="Desired position">Poste souhaité</label>
+                            <select name="position">
+                                <option data-fr="Chargé(e) de Commerce International" data-en="International Trade Officer">Chargé(e) de Commerce International</option>
+                                <option data-fr="Responsable Logistique" data-en="Logistics Manager">Responsable Logistique</option>
+                                <option data-fr="Assistant(e) Comptable" data-en="Accounting Assistant">Assistant(e) Comptable</option>
+                                <option data-fr="Candidature libre" data-en="Open application">Candidature libre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label data-fr="CV (PDF)" data-en="Resume (PDF)">CV (PDF)</label>
+                            <input type="file" name="cv" accept=".pdf">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label data-fr="Message" data-en="Message">Message</label>
+                            <textarea name="message" data-fr-ph="Parlez-nous de vous et de votre motivation..." data-en-ph="Tell us about yourself and your motivation..." placeholder="Parlez-nous de vous et de votre motivation..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit" data-fr="Envoyer ma candidature" data-en="Send my application">Envoyer ma candidature</button>
+                    <p class="form-note" data-fr="Nous répondons généralement sous 5 jours ouvrés." data-en="We usually respond within 5 business days.">Nous répondons généralement sous 5 jours ouvrés.</p>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -1531,16 +766,16 @@
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Nos Pôles" data-en="Nos Pôles">Nos Pôles</h4>
-                <a href="product.html" data-fr="Papeterie (Double A, Rame A4)" data-en="Stationery (Double A, A4 Paper)">Papeterie (Double A, Rame A4)</a>
-                <a href="product.html" data-fr="Import-Export Alimentaire & Vrac" data-en="Food Import-Export & Bulk">Import-Export Alimentaire & Vrac</a>
-                <a href="product.html" data-fr="Preuves & Chargements" data-en="Evidence & Loading">Preuves & Chargements</a>
+                <h4 data-fr="Nos Pôles" data-en="Our Poles">Nos Pôles</h4>
+                <a href="product.html" data-fr="Papeterie (Double A, Capital Paper)" data-en="Stationery (Double A, Capital Paper)">Papeterie (Double A, Capital Paper)</a>
+                <a href="product.html" data-fr="Import-Export Alimentaire" data-en="Food Import-Export">Import-Export Alimentaire</a>
+                <a href="product.html" data-fr="Commerce Général" data-en="General Trade">Commerce Général</a>
             </div>
             <div class="footer-col">
                 <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
-                <p data-fr="Hann Mariste en Face Coris Bank, Dakar, Sénégal" data-en="Hann Mariste en face Coris Bank, Dakar, Senegal">Dakar, Sénégal</p>
+                <p data-fr=" HAnN MaristE en face Coris BANK Dakar, Sénégal" data-en=" Hann Mariste,Dakar, Senegal">Dakar, Sénégal</p>
                 <p>Email : comptoircommercialsourang@gmail.com</p>
-                <p>Tél : +221 77 699 00 00 / 77 622 00 22 / 77 336 00 00</p>
+                <p>Tél : +221 77 699 00 00 / +221 77 622 00 00 / +221 77 336 00 00</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1550,802 +785,7 @@
         </div>
     </footer>
 
-    <div class="product-modal" id="productModal">
-        <div class="product-modal-content">
-            <div class="product-modal-header">
-                <span class="product-modal-title" id="modalProductName">Nom du Produit</span>
-                <span class="product-modal-close" onclick="closeProductModal()">&times;</span>
-            </div>
-            <div class="product-modal-body">
-                
-                <div class="slider-section-title">
-                    <span>Galerie des 15 Images de Chargement & Opérations</span>
-                    <span class="slider-controls-hint">(Défilement automatique • Cliquez sur l'image pour arrêter/reprendre)</span>
-                </div>
-                <!-- Zone cliquable pour commuter pause / lecture du slider -->
-                <div class="product-slider-container" onclick="toggleAutoPlay()" title="Cliquez pour arrêter ou reprendre le défilement">
-                    <button class="slider-btn slider-prev" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
-                    <img id="sliderImg" src="" class="product-slider-img" alt="Image Chargement">
-                    <button class="slider-btn slider-next" onclick="event.stopPropagation(); nextSlide();">&#10095;</button>
-                    <div class="slider-counter" id="sliderCounter">1 / 15</div>
-                </div>
-
-                <div class="product-info-grid">
-                    <div>
-                        <div class="slider-section-title" style="margin-bottom: 12px;">Vidéo .MP4 en Boucle du Produit</div>
-                        <div class="product-video-box">
-                            <video id="modalProductVideo" autoplay muted loop playsinline>
-                                Votre navigateur ne prend pas en charge la lecture de vidéos.
-                            </video>
-                        </div>
-                    </div>
-                    <div class="product-specs-box">
-                        <div class="slider-section-title" style="margin-bottom: 18px;">Fiche Technique & Origine</div>
-                        <div class="spec-item"><span class="spec-label">Origine :</span><span class="spec-value" id="specOrigin">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Référence :</span><span class="spec-value" id="specRef">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Conditionnement :</span><span class="spec-value" id="specCond">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Qualité :</span><span class="spec-value" id="specQual">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Logistique :</span><span class="spec-value" id="specLog">-</span></div>
-                    </div>
-                </div>
-
-                <div class="product-extra-text" id="modalProductExtra">
-                    <strong>Informations Complémentaires :</strong> -
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <script>
-        // --- BASE DE DONNÉES DES PRODUITS AVEC LES 15 IMAGES INTÉGRÉES ---
-        const productsDatabase = [
-            {
-                name: "Rame Papier Double A",
-                category: "papier",
-                image: "WhatsApp_Image_2026-09-02_at_14_31_32__2_.jpeg",
-                origin: "International",
-                ref: "CCS-PAPIER-DOUBLE-A",
-                cond: "Rame standard",
-                qual: "Excellente blancheur, format standard",
-                log: "Empotage carton / palette",
-                extra: "Papier de bureau Double A de haute qualité pour une impression fluide et sans bourrage, chargé et empoté avec soin dans nos conteneurs pour l'export.",
-                videoLoop: "videos/papier-double-a.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg"
-                ]
-            },
-            {
-                name: "Rame Papier Smart Copy (2)",
-                category: "papier",
-                image: "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
-                origin: "International",
-                ref: "CCS-PAPIER-SMART-COPY-2",
-                cond: "Conditionnement en rame",
-                qual: "Grammage optimisé pour photocopies et impressions",
-                log: "Empotage carton / palette",
-                extra: "Conditionnement en rame pour impression professionnelle, idéal pour les impressions quotidiennes. Chargement et empotage réalisés avec soin dans nos conteneurs pour l'export.",
-                videoLoop: "videos/papier-smart-copy-2.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg"
-                ]
-            },
-            {
-                name: "Sucre Crystal Blanc",
-                image: "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
-                origin: "Brésil / Grupo Bazan",
-                ref: "CCS-SUCRE-BLANC",
-                cond: "Sacs de 50 kg (Poids Net)",
-                qual: "Açúcar Cristal White - Grade A",
-                log: "Empotage conteneur sécurisé",
-                extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
-                videoLoop: "videos/sucre.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_12_15_32.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.36.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.20 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.20.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.43.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.22.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.43 (1).jpeg",
-                    "WhatsApp_Image_2026-09-02_at_12_15_32.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.36.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.20 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.43.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.22.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.43 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.25.36 (1).jpeg"
-                ]
-            },
-            {
-                name: "Piment Rouge",
-                image: "WhatsApp Image 2026-09-02 at 12.27.37 (1).jpeg",
-                origin: "Inde / International",
-                ref: "CCS-PIMENT-ROUGE",
-                cond: "Sacs de 10 kg (Poids Net)",
-                qual: "Grade A Premium - Best Foods",
-                log: "Empotage conteneur sécurisé",
-                extra: "Piment rouge entier de qualité supérieure Best Foods, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
-                videoLoop: "videos/piment-rouge.mp4",
-                images: [
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (2).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (3).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (4).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (3).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (4).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (3)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (4)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (1)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (2)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (3)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (4)_2.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (3).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.53 (4).jpeg"
-                ]
-            },
-            {
-                name: "Poivre Noir",
-                image: "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                origin: "Brésil / International",
-                ref: "CCS-POIVRE-03",
-                cond: "Sacs de 25 kg / Cartons",
-                qual: "Grade A Premium - Best Foods",
-                log: "Empotage conteneur sécurisé",
-                extra: "Poivre noir Best Foods de qualité supérieure (Black Pepper), origine Brésil, récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
-                videoLoop: "videos/poivre-noir.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
-                    "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
-                    "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
-                    "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
-                    "WhatsApp_Image_2026-09-02_at_09_16_28__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg"
-                ]
-            },
-            {
-                name: "Ananas Sarama",
-                image: "produit_ananas-sarama-1.jpg",
-                origin: "Côte d'Ivoire / International",
-                ref: "CCS-ANANAS-01",
-                cond: "Carton / Palette",
-                qual: "Extra Frais / Conserve",
-                log: "Optimisé frigo & conteneur",
-                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
-                videoLoop: "videos/ananas-sarama.mp4",
-                images: Array(15).fill("produit_ananas-sarama-1.jpg")
-            },
-            {
-                name: "Café Sélection CCS",
-                image: "produit_cafe.jpg",
-                origin: "Afrique de l'Ouest / Amériques",
-                ref: "CCS-CAFE-02",
-                cond: "Sacs / Paquets étanches",
-                qual: "100% Pur Arabica / Robusta",
-                log: "Stockage en milieu sec ventilé",
-                extra: "Café d'exception torréfié et emballé sous vide.",
-                videoLoop: "videos/cafe.mp4",
-                images: Array(15).fill("produit_cafe.jpg")
-            },
-            {
-                name: "Clous de Girofle",
-                image: "produit_clous-de-girofle.jpg",
-                origin: "Madagascar / International",
-                ref: "CCS-GIROFLE-03",
-                cond: "Sacs de jute / Cartons",
-                qual: "Grade A Premium",
-                log: "Protection contre l'humidité",
-                extra: "Clous de girofle aux notes intenses, récoltés à maturité.",
-                videoLoop: "videos/clous-de-girofle.mp4",
-                images: Array(15).fill("produit_clous-de-girofle.jpg")
-            },
-            {
-                name: "Feuilles de Laurier",
-                image: "produit_feuilles-laurier.jpg",
-                origin: "Bassin Méditerranéen",
-                ref: "CCS-LAURIER-04",
-                cond: "Sachets protecteurs / Cartons",
-                qual: "Séchées naturellement",
-                log: "Empotage rigoureux en conteneur",
-                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
-                videoLoop: "videos/feuilles-laurier.mp4",
-                images: Array(15).fill("produit_feuilles-laurier.jpg")
-            },
-            {
-                name: "Huiles Trois Continental",
-                image: "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
-                origin: "Malaisie / International",
-                ref: "CCS-HUILE-05",
-                cond: "Bidons de 20 Litres",
-                qual: "100% pure huile végétale pour la cuisine",
-                log: "Palettisation et empotage sécurisé",
-                extra: "Huile végétale pure Sarama / Trois Continental de qualité supérieure, conditionnée en bidons de 20 litres. Richesse et stabilité garanties pour toutes les cuissons.",
-                videoLoop: "videos/huiles-trois-continental.mp4",
-                images: [
-                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.40.jpeg",
-                    "WhatsApp Image 2026-09-02 at 14.43.41 (1).jpeg"
-                ]
-            },
-            {
-                name: "Jus d'Orange Trois Continental",
-                image: "produit_jus-orange-trois.jpg",
-                origin: "International",
-                ref: "CCS-JUS-06",
-                cond: "Briques / Bouteilles PET",
-                qual: "Pur jus / Nectar",
-                log: "Chaîne du froid respectée",
-                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
-                videoLoop: "videos/jus-orange-trois.mp4",
-                images: Array(15).fill("produit_jus-orange-trois.jpg")
-            },
-            {
-                name: "Lait Concentré Touba",
-                image: "produit_lait-concentre-touba.jpg",
-                origin: "Sénégal / International",
-                ref: "CCS-LAIT-CONC-07",
-                cond: "Boîtes métalliques / Cartons",
-                qual: "Onctueux et riche",
-                log: "Stockage longue conservation",
-                extra: "Lait concentré sucré de marque Touba.",
-                videoLoop: "videos/lait-concentre-touba.mp4",
-                images: Array(15).fill("produit_lait-concentre-touba.jpg")
-            },
-            {
-                name: "Lait Évaporé Touba",
-                image: "produit_lait-evapore-touba.jpg",
-                origin: "Sénégal / International",
-                ref: "CCS-LAIT-EVAP-08",
-                cond: "Boîtes de conserve étanches",
-                qual: "Standard professionnel",
-                log: "Empilage sécurisé sur palettes",
-                extra: "Lait évaporé Touba pour préparations culinaires.",
-                videoLoop: "videos/lait-evapore-touba.mp4",
-                images: Array(15).fill("produit_lait-evapore-touba.jpg")
-            },
-            {
-                name: "Lait en Poudre Victoria",
-                image: "produit_lait-poudre-victoria.jpg",
-                origin: "International",
-                ref: "CCS-LAIT-POUD-09",
-                cond: "Sachets / Boîtes hermétiques",
-                qual: "Enrichi en vitamines",
-                log: "Protection anti-humidité",
-                extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
-                videoLoop: "videos/lait-poudre-victoria.mp4",
-                images: Array(15).fill("produit_lait-poudre-victoria.jpg")
-            },
-            {
-                name: "Papier Smart Copy",
-                category: "papier",
-                image: "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
-                origin: "Papeterie Internationale",
-                ref: "CCS-PAPIER-10",
-                cond: "Rames de 500 feuilles (A4/A3)",
-                qual: "80g/m² Haute Blancheur",
-                log: "Film étanche anti-humidité",
-                extra: "Papier de photocopie Smart Copy haut de gamme, chargé et empoté avec soin dans nos conteneurs pour l'export.",
-                videoLoop: "videos/papier-smart-copy.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg"
-                ]
-            },
-            {
-                name: "Rame Papier Capital",
-                category: "papier",
-                image: "papier-capital.jpg",
-                origin: "International",
-                ref: "CCS-PAPIER-CAPITAL",
-                cond: "Rames de 500 feuilles (A4)",
-                qual: "80g/m² - Haute blancheur, format standard",
-                log: "Empotage carton / palette",
-                extra: "Papier de bureau Capital, nouvelle marque de notre gamme papeterie, au grammage optimisé pour les impressions et photocopies quotidiennes. Chargé et empoté avec soin dans nos conteneurs pour l'export.",
-                videoLoop: "videos/papier-capital.mp4",
-                images: [
-                    "papier-capital.jpg",
-                    "papier-capital-2.jpg",
-                    "papier-capital-3.jpg"
-                ]
-            },
-            {
-                name: "Pâte de Tomate Sarama",
-                image: "1788398317343_image.png",
-                origin: "International",
-                ref: "CCS-TOMATE-11",
-                cond: "Boîtes / Sachets doypack",
-                qual: "Concentré 28-30% Brix",
-                log: "Conditionnement antichoc",
-                extra: "Pâte de tomate Sarama riche en goût, chargée et empotée avec soin dans nos conteneurs pour l'export.",
-                videoLoop: "videos/pate-tomate-sarama.mp4",
-                images: Array(15).fill("1788398317343_image.png")
-            },
-            {
-                name: "Petits Pois en Conserve",
-                image: "produit_petits-pois.jpg",
-                origin: "International",
-                ref: "CCS-POIS-12",
-                cond: "Boîtes métalliques",
-                qual: "Tendres et savoureux",
-                log: "Stockage tempéré",
-                extra: "Petits pois sélectionnés mis en conserve le jour même.",
-                videoLoop: "videos/petits-pois.mp4",
-                images: Array(15).fill("produit_petits-pois.jpg")
-            },
-            {
-                name: "Raisins Secs",
-                image: "produit_raisins-secs.jpg",
-                origin: "International",
-                ref: "CCS-RAISIN-14",
-                cond: "Cartons de 10kg / Sachets",
-                qual: "Moelleux et sucrés",
-                log: "Atmosphère contrôlée",
-                extra: "Raisins secs sélectionnés, riches en énergie.",
-                videoLoop: "videos/raisins-secs.mp4",
-                images: Array(15).fill("produit_raisins-secs.jpg")
-            },
-            {
-                name: "Riz Moba (100% Brisure)",
-                image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
-                origin: "Asie / International",
-                ref: "CCS-RIZ-MOBA",
-                cond: "Sacs tissés 25kg / 50kg",
-                qual: "Brisure de riz de qualité",
-                log: "Empotage conteneur lourd",
-                extra: "Riz Moba 100% brisure, cuisson rapide homogène, stocké en entrepôt et empoté en conteneur pour l'export.",
-                videoLoop: "videos/riz-moba.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
-                    "00_0.jpg",
-                    "00_1.jpg",
-                    "00_2.jpg",
-                    "00_3.jpg",
-                    "00_4.jpg",
-                    "00_5.jpg",
-                    "00_6.jpg",
-                    "00_7.jpg",
-                    "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
-                    "00_0.jpg",
-                    "00_1.jpg",
-                    "00_2.jpg",
-                    "00_3.jpg",
-                    "00_4.jpg"
-                ]
-            },
-            {
-                name: "Riz Oriba",
-                image: "produit_riz-oriba.jpg",
-                origin: "International",
-                ref: "CCS-RIZ-ORIBA",
-                cond: "Sacs de 25kg / 50kg",
-                qual: "Grains longs sélectionnés",
-                log: "Stockage entrepôt sec",
-                extra: "Riz Oriba de premier choix, grains entiers parfumés.",
-                videoLoop: "videos/riz-oriba.mp4",
-                images: [
-                    "00_0(1).jpg",
-                    "00_1(1).jpg",
-                    "00_2(1).jpg",
-                    "00_3(1).jpg",
-                    "00_4(1).jpg",
-                    "00_5(1).jpg",
-                    "00_6(1).jpg",
-                    "00_7(1).jpg",
-                    "00_0(1).jpg",
-                    "00_1(1).jpg",
-                    "00_2(1).jpg",
-                    "00_3(1).jpg",
-                    "00_4(1).jpg",
-                    "00_5(1).jpg",
-                    "00_6(1).jpg"
-                ]
-            },
-            {
-                name: "Tamarin",
-                image: "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
-                origin: "Afrique / International",
-                ref: "CCS-TAMARIN-17",
-                cond: "Vrac / Cartons / Sachets",
-                qual: "Pulpe naturelle sélectionnée",
-                log: "Conditionnement étanche",
-                extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg. Idéal pour la cuisine, les boissons et les préparations traditionnelles.",
-                videoLoop: "videos/tamarin.mp4",
-                images: [
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (5).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (6).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (5).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (2).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (3).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (5).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (6).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.37 (5).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (1).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (2).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38 (3).jpeg",
-                    "WhatsApp Image 2026-09-02 at 12.27.38.jpeg"
-                ]
-            },
-            {
-                name: "Ail (Garlic)",
-                image: "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
-                origin: "Chine / International",
-                ref: "CCS-AIL-01",
-                cond: "Cartons de 10 kg (Poids Net)",
-                qual: "Cat. 1 Premium - Calibres 50-55/55-60/60-65/65-70mm - Best Foods",
-                log: "Stockage en chambre froide / Empotage conteneur réfrigéré",
-                extra: "Ail frais Best Foods de qualité supérieure (Cat. 1), disponible en plusieurs calibres (50 à 70mm). Conditionné en filets puis en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
-                videoLoop: "videos/ail.mp4",
-                images: [
-                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
-                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg"
-                ]
-            },
-            {
-                name: "Gingembre (Ginger)",
-                image: "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
-                origin: "Brésil / International",
-                ref: "CCS-GINGEMBRE-01",
-                cond: "Cartons de 10 kg / 22 lbs environ",
-                qual: "Gingembre frais - Origine Brésil - Best Foods",
-                log: "Ligne de tri et conditionnement / Palettisation avant export",
-                extra: "Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport. Trié et emballé sur ligne dédiée avant palettisation et export.",
-                videoLoop: "videos/gingembre.mp4",
-                images: [
-                    "WhatsApp_Image_2026-08-24_at_05_11_27.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__2_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__3_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__4_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__5_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_29.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_27.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__2_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__3_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__4_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28__5_.jpeg",
-                    "WhatsApp_Image_2026-08-24_at_05_11_28.jpeg"
-                ]
-            }
-        ];
-
-        // --- APPARITION PROGRESSIVE DES ÉLÉMENTS AU SCROLL (réutilisable pour le contenu généré en JS) ---
-        const revealObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        function observeReveals() {
-            document.querySelectorAll('.reveal:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed)').forEach(el => {
-                revealObserver.observe(el);
-            });
-        }
-
-        // --- GÉNÉRATION AUTOMATIQUE DES LISTES DE PRODUITS (papeterie séparée + catalogue général avec recherche/filtre) ---
-        const productsGridContainer = document.getElementById('productsGridContainer');
-        const productsEmptyMsg = document.getElementById('productsEmptyMsg');
-        const paperGridContainer = document.getElementById('paperGridContainer');
-        let currentOriginFilter = 'all';
-        let currentSearchTerm = '';
-
-        function buildProductRowHTML(prod, index, i) {
-            return `
-                <div class="product-row ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}" style="transition-delay:${Math.min(i * 0.08, 0.4)}s" onclick="openProductModal(${index})">
-                    <div class="product-row-img-wrap">
-                        <span class="product-row-badge">${prod.origin}</span>
-                        <img src="${prod.image}" class="product-row-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
-                    </div>
-                    <div class="product-row-body">
-                        <h3 class="product-row-title">${prod.name}</h3>
-                        <p class="product-row-desc">${prod.extra.substring(0, 150)}${prod.extra.length > 150 ? '...' : ''}</p>
-                        <div class="product-row-btn">Voir les détails & Chargements</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // --- EFFET DE TILT 3D AU SURVOL DES CARDS PRODUIT ---
-        function attachTiltEffect(container) {
-            container.querySelectorAll('.product-row').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -4;
-                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
-            });
-        }
-
-        function renderProductsGrid(list) {
-            if (!list.length) {
-                productsGridContainer.innerHTML = '';
-                productsEmptyMsg.style.display = 'block';
-                return;
-            }
-            productsEmptyMsg.style.display = 'none';
-            productsGridContainer.innerHTML = list.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
-            observeReveals();
-            attachTiltEffect(productsGridContainer);
-        }
-
-        function renderPaperGrid() {
-            const paperList = productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category === 'papier');
-            paperGridContainer.innerHTML = paperList.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
-            observeReveals();
-            attachTiltEffect(paperGridContainer);
-        }
-
-        function getFilteredProducts() {
-            return productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category !== 'papier')
-                .filter(({ prod }) => {
-                    const matchesSearch = !currentSearchTerm || prod.name.toLowerCase().includes(currentSearchTerm) || prod.extra.toLowerCase().includes(currentSearchTerm);
-                    const matchesOrigin = currentOriginFilter === 'all' || prod.origin.toLowerCase().includes(currentOriginFilter);
-                    return matchesSearch && matchesOrigin;
-                });
-        }
-
-        function filterProducts() {
-            currentSearchTerm = document.getElementById('productSearchInput').value.trim().toLowerCase();
-            renderProductsGrid(getFilteredProducts());
-        }
-
-        function setOriginFilter(origin, btn) {
-            currentOriginFilter = origin;
-            document.querySelectorAll('.filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderProductsGrid(getFilteredProducts());
-        }
-
-        renderPaperGrid();
-        renderProductsGrid(getFilteredProducts());
-
-        // --- GALERIE : PHOTOS DE NOS CONTENEURS (empotage / chargement) ---
-        const containerGalleryImages = [
-            "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32__1_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_09_16_28.jpeg",
-            "WhatsApp_Image_2026-09-02_at_09_16_14__1_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_09_16_15.jpeg",
-            "WhatsApp_Image_2026-09-02_at_09_16_28__1_.jpeg",
-            "WhatsApp_Image_2026-09-02_at_09_16_31.jpeg"
-        ];
-
-        const containerGalleryGrid = document.getElementById('containerGalleryGrid');
-        containerGalleryGrid.innerHTML = containerGalleryImages.map((img, idx) => `
-                <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})">
-                    <img src="${img}" alt="Conteneur CCS ${idx + 1}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=Conteneur+CCS'">
-                </div>
-            `).join('');
-
-        let galleryLightboxIndex = 0;
-
-        function openGalleryLightbox(idx) {
-            galleryLightboxIndex = idx;
-            updateGalleryLightbox();
-            document.getElementById('galleryLightbox').classList.add('active');
-        }
-
-        function closeGalleryLightbox() {
-            document.getElementById('galleryLightbox').classList.remove('active');
-        }
-
-        function galleryLightboxNav(direction) {
-            galleryLightboxIndex = (galleryLightboxIndex + direction + containerGalleryImages.length) % containerGalleryImages.length;
-            updateGalleryLightbox();
-        }
-
-        function updateGalleryLightbox() {
-            document.getElementById('galleryLightboxImg').src = containerGalleryImages[galleryLightboxIndex];
-            document.getElementById('galleryLightboxCounter').innerText = `${galleryLightboxIndex + 1} / ${containerGalleryImages.length}`;
-        }
-
-        document.getElementById('galleryLightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'galleryLightbox') {
-                closeGalleryLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('galleryLightbox');
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeGalleryLightbox();
-            if (e.key === 'ArrowRight') galleryLightboxNav(1);
-            if (e.key === 'ArrowLeft') galleryLightboxNav(-1);
-        });
-
-        let currentProductIndex = 0;
-        let currentSlideIndex = 0;
-        let activeProductImages = [];
-        let sliderInterval = null;
-        let isPlaying = true;
-
-        function openProductModal(index) {
-            currentProductIndex = index;
-            currentSlideIndex = 0;
-            isPlaying = true;
-            const prod = productsDatabase[index];
-
-            activeProductImages = prod.images;
-
-            document.getElementById('modalProductName').innerText = prod.name;
-            document.getElementById('specOrigin').innerText = prod.origin;
-            document.getElementById('specRef').innerText = prod.ref;
-            document.getElementById('specCond').innerText = prod.cond;
-            document.getElementById('specQual').innerText = prod.qual;
-            document.getElementById('specLog').innerText = prod.log;
-            document.getElementById('modalProductExtra').innerHTML = `<strong>Informations Complémentaires :</strong> ${prod.extra}`;
-            
-            const videoElem = document.getElementById('modalProductVideo');
-            videoElem.src = prod.videoLoop;
-            videoElem.load();
-
-            updateSlideImage();
-            const hint = document.querySelector('.slider-controls-hint');
-            hint.innerText = "(Défilement automatique • Cliquez sur l'image pour arrêter)";
-            hint.style.color = "#64748b";
-            startAutoPlay();
-            document.getElementById('productModal').classList.add('active');
-        }
-
-        function closeProductModal() {
-            stopAutoPlay();
-            document.getElementById('productModal').classList.remove('active');
-            const videoElem = document.getElementById('modalProductVideo');
-            videoElem.pause();
-            videoElem.src = "";
-        }
-
-        function updateSlideImage() {
-            document.getElementById('sliderImg').src = activeProductImages[currentSlideIndex];
-            document.getElementById('sliderCounter').innerText = `${currentSlideIndex + 1} / ${activeProductImages.length}`;
-        }
-
-        function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % activeProductImages.length;
-            updateSlideImage();
-        }
-
-        function prevSlide() {
-            currentSlideIndex = (currentSlideIndex - 1 + activeProductImages.length) % activeProductImages.length;
-            updateSlideImage();
-        }
-
-        function startAutoPlay() {
-            stopAutoPlay();
-            sliderInterval = setInterval(() => {
-                if (isPlaying) {
-                    nextSlide();
-                }
-            }, 3000);
-        }
-
-        function stopAutoPlay() {
-            if (sliderInterval) {
-                clearInterval(sliderInterval);
-                sliderInterval = null;
-            }
-        }
-
-        function toggleAutoPlay() {
-            isPlaying = !isPlaying;
-            const hint = document.querySelector('.slider-controls-hint');
-            if (isPlaying) {
-                hint.innerText = "(Défilement automatique • Cliquez sur l'image pour arrêter)";
-                hint.style.color = "#64748b";
-            } else {
-                hint.innerText = "(En pause • Cliquez sur l'image pour reprendre)";
-                hint.style.color = "#0ea5e9";
-            }
-        }
-
-        // --- SÉLECTEUR DE LANGUE (FR / EN) ---
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
 
@@ -2354,14 +794,15 @@
 
             const translatableElements = document.querySelectorAll('[data-fr][data-en]');
             translatableElements.forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (text) {
-                    element.textContent = text;
-                }
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+
+            const placeholderElements = document.querySelectorAll('[data-fr-ph][data-en-ph]');
+            placeholderElements.forEach(element => {
+                element.setAttribute('placeholder', element.getAttribute(`data-${lang}-ph`));
             });
         }
 
-        // --- INDICATEUR ACTIF DE LA NAVIGATION (POINT ROUGE) ---
         const navLinks = document.querySelectorAll('.nav-link');
         const redDot = document.getElementById('redDot');
 
@@ -2391,102 +832,54 @@
             }
         });
 
-        // --- MENU BURGER (NAVIGATION MOBILE) ---
-        function toggleNavMenu() {
-            const links = document.getElementById('navLinks');
-            const toggle = document.getElementById('navToggle');
-            const isOpen = links.classList.toggle('open');
-            toggle.textContent = isOpen ? '✕' : '☰';
-            toggle.setAttribute('aria-expanded', isOpen);
-        }
+        /* ===== Cascade au scroll (apparition progressive des cards) ===== */
+        const jobCards = document.querySelectorAll('.job-card');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transitionDelay = `${entry.target.dataset.delay || 0}ms`;
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('navToggle').textContent = '☰';
-                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+        jobCards.forEach((card, index) => {
+            card.dataset.delay = index * 120;
+            revealObserver.observe(card);
+        });
+
+        /* ===== Tilt 3D des cards au survol de la souris ===== */
+        jobCards.forEach((card) => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform = `translateY(-8px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
             });
         });
 
-        // --- COMPTEURS ANIMÉS (SECTION "CCS EN CHIFFRES") ---
-        function animateCounter(el) {
-            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            const duration = 1400;
-            const startTime = performance.now();
-
-            function step(now) {
-                const progress = Math.min((now - startTime) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.round(eased * target);
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                }
-            }
-            requestAnimationFrame(step);
-        }
-
-        const counterEls = document.querySelectorAll('.counter');
-        if (counterEls.length) {
-            const counterObserver = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counterEls.forEach(el => counterObserver.observe(el));
-        }
-
-        // --- FAQ ACCORDÉON ---
-        function toggleFaq(btn) {
-            const item = btn.closest('.faq-item');
-            const answer = item.querySelector('.faq-answer');
-            const isOpen = item.classList.contains('open');
-
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) {
-                    openItem.classList.remove('open');
-                    openItem.querySelector('.faq-answer').style.maxHeight = null;
-                }
+        /* ===== Envoi du formulaire de candidature ===== */
+        const applicationForm = document.getElementById('applicationForm');
+        if (applicationForm) {
+            applicationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const lang = document.documentElement.getAttribute('lang') || 'fr';
+                const message = lang === 'fr'
+                    ? 'Merci ! Votre candidature a bien été enregistrée.'
+                    : 'Thank you! Your application has been received.';
+                alert(message);
+                applicationForm.reset();
             });
-
-            if (isOpen) {
-                item.classList.remove('open');
-                answer.style.maxHeight = null;
-            } else {
-                item.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
         }
-
-        // --- FORMULAIRE NEWSLETTER (CÔTÉ CLIENT, SANS BACKEND) ---
-        function handleNewsletterSubmit(event) {
-            event.preventDefault();
-            const emailInput = document.getElementById('newsletterEmail');
-            const msg = document.getElementById('newsletterMsg');
-            const email = emailInput.value.trim();
-
-            if (!email || !email.includes('@')) {
-                msg.textContent = "Merci de saisir une adresse email valide.";
-                msg.style.color = '#0ea5e9';
-                return;
-            }
-
-            // NOTE : aucune inscription n'est réellement envoyée ici, il n'y a pas de backend branché.
-            // À connecter à un service (Mailchimp, Google Sheets, votre propre API, etc.) pour un usage réel.
-            msg.textContent = `Merci ! ${email} a été enregistré pour nos actualités.`;
-            msg.style.color = '#002664';
-            document.getElementById('newsletterForm').reset();
-        }
-
-        // --- BOUTON RETOUR EN HAUT ---
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
-        });
-
-        observeReveals();
     </script>
 </body>
 </html>
