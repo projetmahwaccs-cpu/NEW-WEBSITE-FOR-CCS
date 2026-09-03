@@ -799,32 +799,365 @@
 </head>
 <body>
 
-    <section class="hero-video-section">
-        <video autoplay muted loop playsinline>
-            <source src="inloop.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture de vidéos.
-        </video>
+   
+     <style>
+        :root {
+            --ccs-blue: #001f5b; 
+            --ccs-gold: #cfa965; 
+            --text-light: #ffffff;
+            --font-main: 'Montserrat', sans-serif;
+        }
 
-        <div class="hero-overlay"></div>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        <div class="hero-content">
-            <!-- Chaque mot est enveloppé séparément pour se déposer un par un -->
-            <h1 class="hero-title">
-                <span class="word">WE</span>
-                <span class="word">ARE</span>
-                <span class="word">COMPTOIR</span>
-                <span class="word">COMMERCIAL</span>
-                <span class="word">SOURANG</span>
-                <span class="word">CCS</span>
-            </h1>
-            <div class="hero-separator"></div>
-            <p class="hero-description">
-            
-            </p>
+        body {
+            font-family: var(--font-main);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .ccs-header {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: var(--ccs-blue);
+        }
+
+        /* --- Diaporama d'arrière-plan --- */
+        .ccs-bg-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .ccs-bg-media img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+        }
+
+        .ccs-bg-media img.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Superposition (Overlay) --- */
+        .ccs-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(0, 31, 91, 0.65) 0%,   
+                rgba(0, 31, 91, 0.9) 100% 
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 0;
+            z-index: 1;
+        }
+
+        .ccs-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* --- Haut : Logo et Titres --- */
+        .ccs-hero-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 30px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .ccs-logo-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .ccs-logo {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+        }
+
+        .ccs-logo-subtitle {
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-top: -5px;
+            color: var(--ccs-gold);
+            font-weight: 600;
+        }
+
+        .ccs-main-titles { max-width: 800px; }
+
+        .ccs-brand-name {
+            font-size: 44px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .ccs-tagline {
+            font-size: 22px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--ccs-gold);
+            margin-bottom: 10px;
+        }
+
+        .ccs-sub-tagline {
+            font-size: 15px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* --- Bas : Vignette dynamique et Navigation --- */
+        .ccs-hero-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        /* Carte Miniature Synchronisée */
+        .ccs-location-card {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 300px;
+            transition: all 0.5s ease;
+        }
+
+        .ccs-location-img {
+            width: 65px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 12px;
+            border: 1px solid var(--ccs-gold);
+        }
+
+        .ccs-location-text h4 {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--ccs-gold);
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .ccs-location-text p { 
+            font-size: 13px; 
+            opacity: 0.95; 
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 190px;
+        }
+
+        .ccs-contact-nav { display: flex; flex-direction: column; align-items: flex-end; }
+
+        .ccs-contact-nav nav { display: flex; gap: 25px; margin-bottom: 10px; }
+
+        .ccs-contact-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .ccs-contact-nav a:hover { color: var(--ccs-gold); }
+
+        .ccs-social-icons { display: flex; gap: 12px; }
+
+        .ccs-social-icons a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .ccs-social-icons a:hover { transform: scale(1.1); }
+
+        .ccs-icon-whatsapp { background-color: #25d366; color: white; }
+        .ccs-icon-cart { background-color: var(--text-light); color: var(--ccs-blue); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .ccs-hero-bottom { flex-direction: column; align-items: center; gap: 20px; }
+            .ccs-contact-nav { align-items: center; width: 100%; }
+            .ccs-contact-nav nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .ccs-brand-name { font-size: 26px; }
+            .ccs-tagline { font-size: 16px; }
+            .ccs-location-card { width: 100%; justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="ccs-header">
+
+        <!-- 15 IMAGES D'ARRIÈRE-PLAN -->
+        <div class="ccs-bg-media" id="bg-slideshow">
+            <!-- Les images seront injectées et gérées dynamiquement via le script ci-dessous -->
         </div>
+        
+        <div class="ccs-hero-overlay">
+            <div class="ccs-container">
+                
+                <!-- Haut : Logo et Slogan -->
+                <div class="ccs-hero-top">
+                    <div class="ccs-logo-wrapper">
+                        <img src="logo.png" alt="Logo Capital" class="ccs-logo" onerror="this.src='https://via.placeholder.com/180x80?text=LOGO.PNG'">
+                        <p class="ccs-logo-subtitle">LE COMMERCE COMMERCE ACCESSIBLE AU NIVEAU DE TOUTE L'AFRIQUE</p>
+                    </div>
+                    
+                    <div class="ccs-main-titles">
+                        <h1 class="ccs-brand-name">COMPTOIR COMMERCIAL SOURANG</h1>
+                        <p class="ccs-tagline">La qualité qui valorise chaque document</p>
+                        <p class="ccs-sub-tagline">Des performances supérieures. Une qualité durable.</p>
+                    </div>
+                </div>
 
-        <div class="hero-bottom-line"></div>
-    </section>
+                <!-- Bas : Vignette dynamique et Navigation -->
+                <div class="ccs-hero-bottom">
+                    <!-- CARTE MINIATURE SYNCHRONISÉE -->
+                    <div class="ccs-location-card" id="thumb-card">
+                        <img src="" alt="Miniature" class="ccs-location-img" id="thumb-img">
+                        <div class="ccs-location-text">
+                            <h4 id="thumb-title">CHARGEMENT...</h4>
+                            <p id="thumb-desc">Synchronisation en cours</p>
+                        </div>
+                    </div>
+
+                    <div class="ccs-contact-nav">
+                        <nav>
+                            <a href="#">NOTRE MAGASIN</a>
+                            <a href="#">NOTRE SIÈGE</a>
+                            <a href="#">NOTRE ÉQUIPE</a>
+                            <a href="#">NOTRE FLOTTE</a>
+                        </nav>
+                        <div class="ccs-social-icons">
+                            <a href="#" class="ccs-icon-whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="ccs-icon-cart" aria-label="Boutique en ligne"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // TABLEAU DES 15 IMAGES AVEC LEUR TITRE ET DESCRIPTION ASSOCIÉS
+        const slidesData = [
+            { img: 'img1.png', title: 'NOTRE FLOTTE', desc: 'Distribution nationale rapide' },
+            { img: 'img2.png', title: 'NOTRE SIÈGE', desc: 'Hann Mariste, Dakar' },
+            { img: 'img3.png', title: 'NOTRE ÉQUIPE', desc: 'Professionnels engagés' },
+            { img: 'img4.png', title: 'PAPIER CAPITAL', desc: 'Qualité supérieure garantie' },
+            { img: 'img5.png', title: 'MAGASIN CCS', desc: 'Espace de vente dédié' },
+            { img: 'img6.png', title: 'STOCKAGE', desc: 'Grands volumes disponibles' },
+            { img: 'img7.png', title: 'LIVRAISON', desc: 'Service logistique performant' },
+            { img: 'img8.png', title: 'BEST FOODS', desc: 'Produits alimentaires de choix' },
+            { img: 'img9.png', title: 'DOUBLE A', desc: 'Exclusivité et partenariat' },
+            { img: 'img10.png', title: 'SMART COPY', desc: 'Accessibilité et grand public' },
+            { img11.png', title: 'PARTENAIRES', desc: 'Réseau de distribution étendu' },
+            { img12.png', title: 'ESPACE CLIENT', desc: 'Proche de vos besoins' },
+            { img13.png', title: 'ENTREPÔT', desc: 'Sécurité et organisation' },
+            { img14.png', title: 'EXPANSION', desc: 'Développement régional' },
+            { img15.png', title: 'ENGAGEMENT', desc: 'La qualité au bon prix' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideshowContainer = document.getElementById('bg-slideshow');
+            const thumbImg = document.getElementById('thumb-img');
+            const thumbTitle = document.getElementById('thumb-title');
+            const thumbDesc = document.getElementById('thumb-desc');
+            
+            let currentIndex = 0;
+            const slideInterval = 5000; // 5 secondes par image
+
+            // 1. Générer dynamiquement les balises images dans le fond
+            slidesData.forEach((slide, index) => {
+                const imgElement = document.createElement('img');
+                // Utilisation de placeholders si les images locales n'existent pas encore
+                imgElement.src = slide.img;
+                imgElement.alt = slide.title;
+                if (index === 0) imgElement.classList.add('active');
+                
+                // Gestion d'erreur visuelle si le fichier image png n'est pas encore présent
+                imgElement.onerror = function() {
+                    this.src = `https://via.placeholder.com/1920x1080?text=CCS+Image+${index + 1}`;
+                };
+                
+                slideshowContainer.appendChild(imgElement);
+            });
+
+            const bgImages = slideshowContainer.querySelectorAll('img');
+
+            // 2. Fonction de mise à jour de la diapositive active et de la vignette
+            function updateSlide() {
+                // Retirer la classe active de l'ancienne image de fond
+                bgImages[currentIndex].classList.remove('active');
+
+                // Passer à l'index suivant (boucle sur 15)
+                currentIndex = (currentIndex + 1) % slidesData.length;
+
+                // Activer la nouvelle image de fond
+                bgImages[currentIndex].classList.add('active');
+
+                // Mettre à jour la carte miniature en bas à gauche
+                const currentData = slidesData[currentIndex];
+                thumbImg.src = currentData.img;
+                thumbImg.onerror = function() {
+                    this.src = `https://via.placeholder.com/80x60?text=Vignette`;
+                };
+                thumbTitle.textContent = currentData.title;
+                thumbDesc.textContent = currentData.desc;
+            }
+
+            // Initialiser la première vignette au chargement
+            thumbImg.src = slidesData[0].img;
+            thumbImg.onerror = function() { this.src = 'https://via.placeholder.com/80x60?text=Vignette'; };
+            thumbTitle.textContent = slidesData[0].title;
+            thumbDesc.textContent = slidesData[0].desc;
+
+            // 3. Lancer l'intervalle automatique
+            setInterval(updateSlide, slideInterval);
+        });
+    </script>
 
 
     <!-- SECTION 2 : QUI SOMMES-NOUS / ORIGINE (Parallaxe) -->
@@ -1073,6 +1406,7 @@ Créée en 2019, CCS est une entreprise sénégalaise née avec une ambition sim
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
                    Le Comptoir Commercial Sourang (CCS) a franchi une étape clé dans son développement en procédant à la création de ses propres marques, avec notamment le lancement de sa marque de papier <STRONG>« Capital » </STRONG> ainsi que de sa gamme de produits alimentaires sous la marque  <STRONG>« Best Foods »</STRONG>.
+                    Pour asseoir notre position sur le marché et garantir l'authenticité de nos produits, l'ensemble de nos marques propres — notamment « Capital » et « Best Foods » — sont officiellement reconnues et protégées juridiquement. Cette protection juridique sécurise notre propriété exclusive, renforce la confiance de notre clientèle et garantit à tous nos partenaires des produits originaux d'une qualité irréprochable.
                 </p>
                 <ul class="ccs-list">
                     <li>Gamme variée de produit <strong> BEST FOODS</strong>: Poivre noir, piment rouge sec, petits pois, lentilles.</li>
