@@ -597,7 +597,7 @@
                 <li class="nav-item"><a href="index.html" class="nav-link active" data-fr="Home" data-en="Home">Home</a></li>
                 
                 
-                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Products</a></li>
                
              <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
              
@@ -776,6 +776,17 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                width: 100%;
+                    overflow-x: hidden;
+            }
+                .container,
+                    section,
+            .hero,
+            .content {
+                width:100%
+                    max-width: 100%
+            }
             .hero-title {
                 font-size: 26px;
                 gap: 8px;
