@@ -1020,37 +1020,7 @@
 
         <div class="ccs-bottom-line"></div>
     </section>
-
-    <!-- SECTION 3 : NOS PÔLES D'ACTIVITÉS (Parallaxe) -->
-    <section class="parallax-section poles-parallax">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                <h2 class="section-title" data-fr="Nos Pôles d'Activités" data-en="Our Business Poles">Nos Pôles d'Activités</h2>
-                <div class="poles-grid">
-                    <div class="pole-card">
-                        <h3 data-fr="Pôle Papeterie" data-en="Stationery Pole">Pôle Papeterie</h3>
-                        <p data-fr="Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper." data-en="Historical pillar of CCS since 2019. Official representation of the premium Double A brand, distribution of Smart Copy and launch of our own brand: Capital Paper.">
-                            Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper.
-                        </p>
-                    </div>
-                    <div class="pole-card">
-                        <h3 data-fr="Import-Export Alimentaire" data-en="Food Import-Export">Import-Export Alimentaire</h3>
-                        <p data-fr="Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore." data-en="Import of quality food items from various global markets (India, Brazil, etc.): spices (pepper, chili), pulses (lentils, peas), dairy products and more.">
-                            Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore.
-                        </p>
-                    </div>
-                    <div class="pole-card">
-                        <h3 data-fr="Commerce Général" data-en="General Trade">Commerce Général</h3>
-                        <p data-fr="Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients." data-en="A versatile and flexible activity, open to market opportunities to efficiently meet the specific demands of our clients.">
-                            Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION : DIVERSIFICATION & PRODUITS ALIMENTAIRES (Parallaxe) -->
+     <!-- SECTION : DIVERSIFICATION & PRODUITS ALIMENTAIRES (Parallaxe) -->
     <section class="parallax-section food-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
@@ -1112,6 +1082,392 @@
             </div>
         </div>
     </section>
+
+
+    <!-- SECTION 3 : NOS PÔLES D'ACTIVITÉS (Parallaxe) -->
+    <section class="parallax-section poles-parallax">
+        <div class="parallax-overlay light-overlay">
+            <div class="section-container">
+                <h2 class="section-title" data-fr="Nos Pôles d'Activités" data-en="Our Business Poles">Nos Pôles d'Activités</h2>
+                <div class="poles-grid">
+                    <div class="pole-card">
+                        <h3 data-fr="Pôle Papeterie" data-en="Stationery Pole">Pôle Papeterie</h3>
+                        <p data-fr="Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper." data-en="Historical pillar of CCS since 2019. Official representation of the premium Double A brand, distribution of Smart Copy and launch of our own brand: Capital Paper.">
+                            Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper.
+                        </p>
+                    </div>
+                    <div class="pole-card">
+                        <h3 data-fr="Import-Export Alimentaire" data-en="Food Import-Export">Import-Export Alimentaire</h3>
+                        <p data-fr="Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore." data-en="Import of quality food items from various global markets (India, Brazil, etc.): spices (pepper, chili), pulses (lentils, peas), dairy products and more.">
+                            Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore.
+                        </p>
+                    </div>
+                    <div class="pole-card">
+                        <h3 data-fr="Commerce Général" data-en="General Trade">Commerce Général</h3>
+                        <p data-fr="Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients." data-en="A versatile and flexible activity, open to market opportunities to efficiently meet the specific demands of our clients.">
+                            Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ----
+<style>
+        :root {
+            --gold-color: #cfa965; 
+            --accent-blue: #0ea5e9; 
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: #ffffff;
+        }
+
+        .management-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .management-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 15, 40, 0.55);
+            z-index: -1;
+        }
+
+        .management-container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .management-header {
+            margin-bottom: 40px;
+        }
+
+        .management-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--gold-color);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .management-line {
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold-color);
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* --- Effet Glassmorphism & Lueur interactive --- */
+        .management-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .management-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+        }
+
+        /* Élément gérant la lueur dynamique sous la carte */
+        .card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: radial-gradient(
+                600px circle at var(--mouse-x) var(--mouse-y),
+                rgba(14, 165, 233, 0.45),
+                transparent 60%
+            );
+        }
+
+        .management-card:hover .card-glow {
+            opacity: 1;
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            background-color: rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border-bottom: 2px solid var(--gold-color);
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .card-number {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold-color);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-role {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--gold-color);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .card-position {
+            font-size: 11px;
+            font-weight: 600;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #d0d0d0;
+        }
+
+        .card-accent-dot {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 8px var(--accent-blue);
+        }
+
+        @media (max-width: 992px) {
+            .management-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .management-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="management-section">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="inloop.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+
+        <div class="management-overlay"></div>
+
+        <div class="management-container">
+            <div class="management-header">
+                <h2 class="management-title">Management</h2>
+                <div class="management-line"></div>
+            </div>
+
+            <div class="management-grid">
+                
+                <!-- Carte 1 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Jean C. Faye">
+                        <span class="card-number">01</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Ingénierie Financière & Financement Structuré</span>
+                        <h3 class="card-name">Jean C. Faye</h3>
+                        <p class="card-position">Co-Founder & Managing Director</p>
+                        <p class="card-desc">Spécialiste en ingénierie financière et financement structuré, il pilote la structuration d'opérations complexes.</p>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Modou F. Sourang">
+                        <span class="card-number">02</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Commerce International & FX</span>
+                        <h3 class="card-name">Modou F. Sourang</h3>
+                        <p class="card-position">Directeur Associé</p>
+                        <p class="card-desc">Expert en commerce international et marchés de change, il structure les flux transfrontaliers.</p>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Adji Fatou Seck Ndjira Faye">
+                        <span class="card-number">03</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Communication & Positionnement</span>
+                        <h3 class="card-name">Adji Fatou Seck Ndjira Faye</h3>
+                        <p class="card-position">Public Relations Manager</p>
+                        <p class="card-desc">Spécialiste des relations publiques, elle pilote la communication institutionnelle.</p>
+                    </div>
+                </div>
+
+                <!-- Carte 4 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Amina Diop">
+                        <span class="card-number">04</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Opérations & Logistique</span>
+                        <h3 class="card-name">Amina Diop</h3>
+                        <p class="card-position">Directrice des Opérations</p>
+                        <p class="card-desc">Supervise l'ensemble de la chaîne logistique, de l'approvisionnement à la distribution nationale.</p>
+                    </div>
+                </div>
+
+                <!-- Carte 5 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Cheikh Ndiaye">
+                        <span class="card-number">05</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Stratégie & Développement</span>
+                        <h3 class="card-name">Cheikh Ndiaye</h3>
+                        <p class="card-position">Directeur du Développement</p>
+                        <p class="card-desc">Pilote l'expansion régionale de la structure et l'intégration de nouvelles gammes.</p>
+                    </div>
+                </div>
+
+                <!-- Carte 6 -->
+                <div class="management-card">
+                    <div class="card-glow"></div>
+                    <div class="card-accent-dot"></div>
+                    <div class="card-image-container">
+                        <img src="nom1.png" alt="Fatou Sow">
+                        <span class="card-number">06</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-role">Administration & Finances</span>
+                        <h3 class="card-name">Fatou Sow</h3>
+                        <p class="card-position">Directrice Administrative</p>
+                        <p class="card-desc">Gère la conformité juridique, la gestion financière et le suivi administratif des partenaires.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Script JavaScript pour suivre les mouvements de la souris -->
+    <script>
+        const cards = document.querySelectorAll('.management-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // Position X par rapport à la carte
+                const y = e.clientY - rect.top;  // Position Y par rapport à la carte
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+    --
+
+   
 
     <!-- SECTION 4 : NOS ENGAGEMENTS (Parallaxe) -->
     <section class="parallax-section engagements-parallax">
