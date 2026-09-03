@@ -41,12 +41,59 @@
             gap: 30px; 
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
         }
 
         .logo img {
             height: 60px;
             width: auto;
             display: block;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 2px solid #002664;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: auto;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: #002664;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex: 1;
         }
 
         .nav-links {
@@ -72,28 +119,28 @@
             position: relative;
             display: inline-block;
             padding: 8px 12px;
-            border: 2px solid #1565c0;
+            border: 2px solid #0ea5e9;
             border-radius: 4px;
             background-color: #fff;
         }
 
         .nav-link:hover {
             color: white;
-            background-color: #1565c0;
+            background-color: #0ea5e9;
         }
 
         .red-dot {
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #1565c0;
+            background-color: #0ea5e9;
             border-radius: 50%;
             transition: left 0.3s ease-in-out;
             top: -15px; 
         }
         
         .nav-item .nav-link.active {
-            color: #1565c0;
+            color: #0ea5e9;
             background-color: #fff;
         }
 
@@ -156,7 +203,7 @@
             color: white;
             padding: 100px 20px;
             text-align: center;
-            border-top: 4px solid #1565c0;
+            border-top: 4px solid #0ea5e9;
         }
 
         .hero-banner .parallax-overlay {
@@ -192,54 +239,8 @@
             display: block;
             width: 60px;
             height: 3px;
-            background-color: #1565c0;
+            background-color: #0ea5e9;
             margin: 10px auto 0;
-        }
-
-        .career-parallax {
-            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1920&auto=format&fit=crop');
-        }
-
-        .career-box {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 4px solid #002664;
-        }
-
-        .career-box h3 {
-            color: #002664;
-            font-size: 22px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .career-box p {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-apply {
-            display: inline-block;
-            background-color: #1565c0;
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            border-radius: 4px;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-apply:hover {
-            background-color: #002664;
         }
 
         .footer {
@@ -247,7 +248,7 @@
             color: white;
             width: 100%;
             padding: 50px 20px 20px 20px;
-            border-top: 4px solid #1565c0;
+            border-top: 4px solid #0ea5e9;
         }
 
         .footer-content {
@@ -260,7 +261,7 @@
         }
 
         .footer-col h4 {
-            color: #1565c0;
+            color: #0ea5e9;
             font-size: 16px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -277,7 +278,7 @@
         }
 
         .footer-col a:hover {
-            color: #1565c0;
+            color: #0ea5e9;
         }
 
         .footer-bottom {
@@ -296,187 +297,130 @@
             }
         }
 
-        /* ===== Galerie (parties images manquantes) ===== */
-        .gallery-parallax {
-            background-image: url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1920&auto=format&fit=crop');
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            aspect-ratio: 4 / 3;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 12px 15px;
-            background: linear-gradient(0deg, rgba(0,38,100,0.85), transparent);
-            color: white;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        @media(max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
+        /* ===== Menu burger (mobile) ===== */
+        @media (max-width: 860px) {
+            .navbar {
+                justify-content: space-between;
+                padding: 12px 20px;
             }
-        }
 
-        /* ===== Cards postes (mouvance / tilt / cascade) ===== */
-        .job-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .job-card {
-            position: relative;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.3s ease;
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        .job-card.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .job-card:hover {
-            box-shadow: 0 20px 35px rgba(0,38,100,0.25);
-        }
-
-        .job-card-banner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #1565c0, #4fa8ff);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: height 0.35s ease, transform 0.35s ease;
-            z-index: 2;
-        }
-
-        .job-card:hover .job-card-banner {
-            transform: scaleX(1);
-            height: 8px;
-        }
-
-        .job-card-media {
-            width: 100%;
-            height: 170px;
-            overflow: hidden;
-        }
-
-        .job-card-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .job-card:hover .job-card-media img {
-            transform: scale(1.12);
-        }
-
-        .job-card-body {
-            padding: 25px;
-        }
-
-        .job-card-body h3 {
-            color: #002664;
-            font-size: 18px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .job-card-body p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .job-card-tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #1565c0;
-            border: 1px solid #1565c0;
-            border-radius: 3px;
-            padding: 3px 8px;
-            margin-bottom: 12px;
-        }
-
-        .job-card-link {
-            display: inline-block;
-            color: #1565c0;
-            font-weight: bold;
-            font-size: 13px;
-            text-decoration: none;
-            text-transform: uppercase;
-            border-bottom: 2px solid #1565c0;
-            padding-bottom: 2px;
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .job-card-link:hover {
-            color: #002664;
-            border-color: #002664;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .job-card, .gallery-item img, .job-card-media img, .job-card-banner {
-                transition: none !important;
-                transform: none !important;
+            .nav-content {
+                justify-content: space-between;
+                gap: 0;
             }
-            .job-card {
-                opacity: 1;
-                transform: none;
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 0;
+                order: 3;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease;
+            }
+
+            .nav-menu.open {
+                display: flex;
+                max-height: 500px;
+                margin-top: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .red-dot {
+                display: none;
+            }
+
+            .nav-item {
+                width: 100%;
+                padding: 0;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .lang-buttons {
+                margin: 15px 0 0 0;
+                justify-content: center;
             }
         }
 
         /* ===== Formulaire "glass" ===== */
         .form-parallax {
-            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1920&auto=format&fit=crop');
+            background-image: url('formbackground.png');
+            background-color: #002664;
+            position: relative;
+            overflow: hidden;
         }
 
         .form-parallax .parallax-overlay {
             background-color: rgba(0, 38, 100, 0.78);
+            position: relative;
+            perspective: 1400px;
+        }
+
+        .float-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .float-shape-1 {
+            width: 260px;
+            height: 260px;
+            top: -60px;
+            left: 6%;
+            background: rgba(14, 165, 233, 0.45);
+            animation: floatMove1 9s ease-in-out infinite;
+        }
+
+        .float-shape-2 {
+            width: 180px;
+            height: 180px;
+            bottom: -40px;
+            right: 8%;
+            background: rgba(79, 168, 255, 0.4);
+            animation: floatMove2 11s ease-in-out infinite;
+        }
+
+        .float-shape-3 {
+            width: 130px;
+            height: 130px;
+            top: 30%;
+            right: 20%;
+            background: rgba(255, 255, 255, 0.25);
+            animation: floatMove3 7s ease-in-out infinite;
+        }
+
+        @keyframes floatMove1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 25px) scale(1.12); }
+        }
+
+        @keyframes floatMove2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-25px, -20px) scale(1.08); }
+        }
+
+        @keyframes floatMove3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-18px, 22px) scale(0.9); }
         }
 
         .glass-form {
@@ -489,6 +433,22 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.25);
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: transform 0.25s ease, box-shadow 0.4s ease;
+            animation: formBreathe 6s ease-in-out infinite;
+        }
+
+        @keyframes formBreathe {
+            0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 0 rgba(14,165,233,0); }
+            50% { box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 0 45px rgba(14,165,233,0.25); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glass-form { animation: none; }
+            .float-shape { animation: none; }
         }
 
         .glass-form .form-row {
@@ -543,6 +503,7 @@
             outline: none;
             border-color: #4fa8ff;
             background: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 0 0 3px rgba(79, 168, 255, 0.25);
         }
 
         .glass-form textarea {
@@ -550,9 +511,42 @@
             min-height: 100px;
         }
 
+        .glass-form .form-group.valid input,
+        .glass-form .form-group.valid textarea {
+            border-color: #4ade80;
+        }
+
+        .glass-form .form-group.invalid input,
+        .glass-form .form-group.invalid textarea {
+            border-color: #f87171;
+            box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2);
+        }
+
+        .field-error {
+            display: none;
+            color: #ffd7d7;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .glass-form .form-group.invalid .field-error {
+            display: block;
+        }
+
+        .char-counter {
+            align-self: flex-end;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
         .glass-form .btn-submit {
-            display: inline-block;
-            background-color: #1565c0;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #0ea5e9;
             color: white;
             border: none;
             padding: 12px 35px;
@@ -561,17 +555,80 @@
             border-radius: 4px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .glass-form .btn-submit:hover {
             background-color: #002664;
         }
 
+        .glass-form .btn-submit:active {
+            transform: scale(0.97);
+        }
+
+        .glass-form .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-spinner {
+            display: none;
+            width: 15px;
+            height: 15px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .btn-submit.loading .btn-spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-status.show {
+            display: block;
+            animation: statusIn 0.4s ease;
+        }
+
+        .form-status.success {
+            background: rgba(74, 222, 128, 0.2);
+            border: 1px solid #4ade80;
+            color: #ecfdf5;
+        }
+
+        .form-status.error {
+            background: rgba(248, 113, 113, 0.2);
+            border: 1px solid #f87171;
+            color: #fef2f2;
+        }
+
+        @keyframes statusIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .form-note {
             color: rgba(255,255,255,0.85);
             font-size: 12px;
             margin-top: 12px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-spinner { animation: none; }
+            .form-status.show { animation: none; }
         }
 
         @media(max-width: 600px) {
@@ -591,22 +648,30 @@
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
-            
-            <ul class="nav-links" id="navLinks">
-                <div class="red-dot" id="redDot"></div>
-                <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Home" data-en="Home">Home</a></li>
-                <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Our Story</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">About Us</a></li>
-                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
-              
-                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
-                
-                <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
-            </ul>
 
-            <div class="lang-buttons">
-                <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
-                <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links" id="navLinks">
+                    <div class="red-dot" id="redDot"></div>
+                    <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Home" data-en="Home">Home</a></li>
+                    <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Our Story</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">About Us</a></li>
+                    <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
+                  
+                    <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
+                    
+                    <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+                </ul>
+
+                <div class="lang-buttons">
+                    <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
+                    <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+                </div>
             </div>
         </div>
     </header>
@@ -618,133 +683,60 @@
         </div>
     </section>
 
-    <section class="parallax-section career-parallax">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                <h2 class="section-title" data-fr="Offres d'Emploi & Stages" data-en="Job Offers & Internships">Offres d'Emploi & Stages</h2>
-                <div class="career-box">
-                    <h3 data-fr="Envie de faire partie de l'aventure ?" data-en="Want to be part of the adventure?">Envie de faire partie de l'aventure ?</h3>
-                    <p data-fr="Nous sommes toujours à la recherche de talents motivés, rigoureux et passionnés par le commerce, la logistique et l'excellence opérationnelle. Envoyez-nous votre candidature spontanée !" data-en="We are always looking for motivated, rigorous talents passionate about commerce, logistics, and operational excellence. Send us your spontaneous application!">
-                        Nous sommes toujours à la recherche de talents motivés, rigoureux et passionnés par le commerce, la logistique et l'excellence opérationnelle. Envoyez-nous votre candidature spontanée !
-                    </p>
-                    <a href="contact.html" class="btn-apply" data-fr="Postuler Maintenant" data-en="Apply Now">Postuler Maintenant</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="parallax-section gallery-parallax">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                <h2 class="section-title" data-fr="La Vie Chez CCS" data-en="Life at CCS">La Vie Chez CCS</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop" alt="Équipe CCS au travail" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        <span class="gallery-caption" data-fr="L'équipe au bureau" data-en="The team at the office">L'équipe au bureau</span>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Entrepôt et logistique CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        <span class="gallery-caption" data-fr="Entrepôt & logistique" data-en="Warehouse & logistics">Entrepôt & logistique</span>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=800&auto=format&fit=crop" alt="Réunion d'équipe CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        <span class="gallery-caption" data-fr="Réunions & échanges" data-en="Meetings & exchanges">Réunions & échanges</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="parallax-section career-parallax">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                <h2 class="section-title" data-fr="Postes Ouverts" data-en="Open Positions">Postes Ouverts</h2>
-                <div class="job-cards" id="jobCards">
-                    <div class="job-card">
-                        <div class="job-card-banner"></div>
-                        <div class="job-card-media">
-                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Chargé de commerce international" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        </div>
-                        <div class="job-card-body">
-                            <span class="job-card-tag" data-fr="CDI" data-en="Full-time">CDI</span>
-                            <h3 data-fr="Chargé(e) de Commerce International" data-en="International Trade Officer">Chargé(e) de Commerce International</h3>
-                            <p data-fr="Gérez les opérations d'import-export et développez notre réseau de fournisseurs et clients." data-en="Manage import-export operations and grow our network of suppliers and clients.">Gérez les opérations d'import-export et développez notre réseau de fournisseurs et clients.</p>
-                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
-                        </div>
-                    </div>
-                    <div class="job-card">
-                        <div class="job-card-banner"></div>
-                        <div class="job-card-media">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Responsable logistique" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        </div>
-                        <div class="job-card-body">
-                            <span class="job-card-tag" data-fr="CDI" data-en="Full-time">CDI</span>
-                            <h3 data-fr="Responsable Logistique" data-en="Logistics Manager">Responsable Logistique</h3>
-                            <p data-fr="Supervisez la réception, le stockage et l'expédition des marchandises dans nos entrepôts." data-en="Oversee receiving, storage, and shipping of goods in our warehouses.">Supervisez la réception, le stockage et l'expédition des marchandises dans nos entrepôts.</p>
-                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
-                        </div>
-                    </div>
-                    <div class="job-card">
-                        <div class="job-card-banner"></div>
-                        <div class="job-card-media">
-                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=800&auto=format&fit=crop" alt="Assistant comptable" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=CCS';">
-                        </div>
-                        <div class="job-card-body">
-                            <span class="job-card-tag" data-fr="Stage" data-en="Internship">Stage</span>
-                            <h3 data-fr="Assistant(e) Comptable" data-en="Accounting Assistant">Assistant(e) Comptable</h3>
-                            <p data-fr="Participez à la tenue des comptes et au suivi de la trésorerie aux côtés de notre équipe finance." data-en="Support bookkeeping and cash-flow tracking alongside our finance team.">Participez à la tenue des comptes et au suivi de la trésorerie aux côtés de notre équipe finance.</p>
-                            <a href="#candidature" class="job-card-link" data-fr="Postuler →" data-en="Apply →">Postuler →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="parallax-section form-parallax" id="candidature">
+    <section class="parallax-section form-parallax" id="contact">
         <div class="parallax-overlay">
+            <div class="float-shape float-shape-1"></div>
+            <div class="float-shape float-shape-2"></div>
+            <div class="float-shape float-shape-3"></div>
             <div class="section-container">
-                <h2 class="section-title" data-fr="Candidature Spontanée" data-en="Spontaneous Application" style="color: white;">Candidature Spontanée</h2>
-                <form class="glass-form" id="applicationForm">
+                <h2 class="section-title" data-fr="Contactez-nous" data-en="Contact Us" style="color: white;">Contactez-nous</h2>
+                <form class="glass-form" id="contactForm" action="https://formsubmit.co/comptoircommercialsourang@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nouveau message depuis le site CCS">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group" data-field="fullname">
                             <label data-fr="Nom complet" data-en="Full name">Nom complet</label>
-                            <input type="text" name="fullname" data-fr-ph="Votre nom" data-en-ph="Your name" placeholder="Votre nom" required>
+                            <input type="text" name="fullname" data-fr-ph="Votre nom" data-en-ph="Your name" placeholder="Votre nom" required minlength="2">
+                            <span class="field-error" data-fr="Merci d'indiquer votre nom (2 caractères min.)." data-en="Please enter your name (min. 2 characters).">Merci d'indiquer votre nom (2 caractères min.).</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" data-field="email">
                             <label data-fr="Email" data-en="Email">Email</label>
                             <input type="email" name="email" data-fr-ph="vous@exemple.com" data-en-ph="you@example.com" placeholder="vous@exemple.com" required>
+                            <span class="field-error" data-fr="Merci d'indiquer un email valide." data-en="Please enter a valid email.">Merci d'indiquer un email valide.</span>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group" data-field="phone">
                             <label data-fr="Téléphone" data-en="Phone">Téléphone</label>
                             <input type="tel" name="phone" data-fr-ph="+221 77 000 00 00" data-en-ph="+221 77 000 00 00" placeholder="+221 77 000 00 00">
                         </div>
-                        <div class="form-group">
-                            <label data-fr="Poste souhaité" data-en="Desired position">Poste souhaité</label>
-                            <select name="position">
-                                <option data-fr="Chargé(e) de Commerce International" data-en="International Trade Officer">Chargé(e) de Commerce International</option>
-                                <option data-fr="Responsable Logistique" data-en="Logistics Manager">Responsable Logistique</option>
-                                <option data-fr="Assistant(e) Comptable" data-en="Accounting Assistant">Assistant(e) Comptable</option>
-                                <option data-fr="Candidature libre" data-en="Open application">Candidature libre</option>
+                        <div class="form-group" data-field="subject">
+                            <label data-fr="Sujet" data-en="Subject">Sujet</label>
+                            <select name="subject">
+                                <option data-fr="Demande d'information" data-en="Information request">Demande d'information</option>
+                                <option data-fr="Demande de devis" data-en="Quote request">Demande de devis</option>
+                                <option data-fr="Partenariat" data-en="Partnership">Partenariat</option>
+                                <option data-fr="Autre" data-en="Other">Autre</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group full">
-                            <label data-fr="CV (PDF)" data-en="Resume (PDF)">CV (PDF)</label>
-                            <input type="file" name="cv" accept=".pdf">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full">
+                        <div class="form-group full" data-field="message">
                             <label data-fr="Message" data-en="Message">Message</label>
-                            <textarea name="message" data-fr-ph="Parlez-nous de vous et de votre motivation..." data-en-ph="Tell us about yourself and your motivation..." placeholder="Parlez-nous de vous et de votre motivation..."></textarea>
+                            <textarea name="message" data-fr-ph="Écrivez votre message ici..." data-en-ph="Write your message here..." placeholder="Écrivez votre message ici..." required minlength="10" maxlength="600"></textarea>
+                            <span class="char-counter"><span id="charCount">0</span>/600</span>
+                            <span class="field-error" data-fr="Merci d'écrire un message (10 caractères min.)." data-en="Please write a message (min. 10 characters).">Merci d'écrire un message (10 caractères min.).</span>
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit" data-fr="Envoyer ma candidature" data-en="Send my application">Envoyer ma candidature</button>
-                    <p class="form-note" data-fr="Nous répondons généralement sous 5 jours ouvrés." data-en="We usually respond within 5 business days.">Nous répondons généralement sous 5 jours ouvrés.</p>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-spinner"></span>
+                        <span data-fr="Envoyer le message" data-en="Send message">Envoyer le message</span>
+                    </button>
+                    <div class="form-status" id="formStatus"></div>
+                    <p class="form-note" data-fr="Nous répondons généralement sous 48h." data-en="We usually respond within 48 hours.">Nous répondons généralement sous 48h.</p>
                 </form>
             </div>
         </div>
@@ -803,6 +795,32 @@
             });
         }
 
+        /* ===== Menu burger (mobile) ===== */
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        function closeMobileMenu() {
+            navToggle.classList.remove('open');
+            navMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.classList.toggle('open', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.nav-link').forEach((link) => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 860) {
+                closeMobileMenu();
+            }
+        });
+
         const navLinks = document.querySelectorAll('.nav-link');
         const redDot = document.getElementById('redDot');
 
@@ -832,52 +850,111 @@
             }
         });
 
-        /* ===== Cascade au scroll (apparition progressive des cards) ===== */
-        const jobCards = document.querySelectorAll('.job-card');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.transitionDelay = `${entry.target.dataset.delay || 0}ms`;
-                    entry.target.classList.add('in-view');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        jobCards.forEach((card, index) => {
-            card.dataset.delay = index * 120;
-            revealObserver.observe(card);
-        });
-
-        /* ===== Tilt 3D des cards au survol de la souris ===== */
-        jobCards.forEach((card) => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
+        /* ===== Tilt 3D du formulaire au survol ===== */
+        const formSection = document.querySelector('.form-parallax .parallax-overlay');
+        const glassForm = document.querySelector('.glass-form');
+        if (formSection && glassForm && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+            formSection.addEventListener('mousemove', (e) => {
+                const rect = glassForm.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -6;
-                const rotateY = ((x - centerX) / centerX) * 6;
-                card.style.transform = `translateY(-8px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                const rotateX = ((y - centerY) / centerY) * -4;
+                const rotateY = ((x - centerX) / centerX) * 4;
+                glassForm.style.transform = `perspective(1400px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
+            formSection.addEventListener('mouseleave', () => {
+                glassForm.style.transform = 'perspective(1400px) rotateX(0deg) rotateY(0deg)';
             });
-        });
+        }
 
-        /* ===== Envoi du formulaire de candidature ===== */
-        const applicationForm = document.getElementById('applicationForm');
-        if (applicationForm) {
-            applicationForm.addEventListener('submit', (e) => {
+        /* ===== Formulaire de contact interactif (envoi réel par email) ===== */
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            const messageField = contactForm.querySelector('textarea[name="message"]');
+            const charCount = document.getElementById('charCount');
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+
+            function currentLang() {
+                return document.documentElement.getAttribute('lang') || 'fr';
+            }
+
+            function validateField(group) {
+                const field = group.querySelector('input, textarea, select');
+                if (!field || !field.hasAttribute('required')) return true;
+                const valid = field.checkValidity();
+                group.classList.toggle('invalid', !valid);
+                group.classList.toggle('valid', valid);
+                return valid;
+            }
+
+            contactForm.querySelectorAll('.form-group').forEach((group) => {
+                const field = group.querySelector('input, textarea, select');
+                if (!field) return;
+                field.addEventListener('blur', () => validateField(group));
+                field.addEventListener('input', () => {
+                    if (group.classList.contains('invalid')) validateField(group);
+                });
+            });
+
+            if (messageField && charCount) {
+                messageField.addEventListener('input', () => {
+                    charCount.textContent = messageField.value.length;
+                });
+            }
+
+            function showStatus(type, textFr, textEn) {
+                formStatus.textContent = currentLang() === 'fr' ? textFr : textEn;
+                formStatus.className = `form-status show ${type}`;
+            }
+
+            contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const lang = document.documentElement.getAttribute('lang') || 'fr';
-                const message = lang === 'fr'
-                    ? 'Merci ! Votre candidature a bien été enregistrée.'
-                    : 'Thank you! Your application has been received.';
-                alert(message);
-                applicationForm.reset();
+
+                let allValid = true;
+                contactForm.querySelectorAll('.form-group').forEach((group) => {
+                    if (!validateField(group)) allValid = false;
+                });
+
+                if (!allValid) {
+                    showStatus('error',
+                        'Merci de corriger les champs en rouge avant d\'envoyer.',
+                        'Please fix the highlighted fields before sending.');
+                    return;
+                }
+
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                formStatus.className = 'form-status';
+
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(contactForm)
+                })
+                    .then((response) => {
+                        if (!response.ok) throw new Error('network');
+                        showStatus('success',
+                            'Merci ! Votre message a bien été envoyé à comptoircommercialsourang@gmail.com.',
+                            'Thank you! Your message has been sent to comptoircommercialsourang@gmail.com.');
+                        contactForm.reset();
+                        if (charCount) charCount.textContent = '0';
+                        contactForm.querySelectorAll('.form-group').forEach((group) => {
+                            group.classList.remove('valid', 'invalid');
+                        });
+                    })
+                    .catch(() => {
+                        showStatus('error',
+                            'Une erreur est survenue. Réessayez ou écrivez-nous directement à comptoircommercialsourang@gmail.com.',
+                            'Something went wrong. Please retry or email us directly at comptoircommercialsourang@gmail.com.');
+                    })
+                    .finally(() => {
+                        submitBtn.classList.remove('loading');
+                        submitBtn.disabled = false;
+                    });
             });
         }
     </script>
