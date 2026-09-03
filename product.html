@@ -574,6 +574,127 @@
             box-shadow: 0 5px 15px rgba(228, 30, 43, 0.1);
         }
 
+        /* --- SECTION GALERIE CONTENEURS --- */
+        .container-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .container-gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            background-color: #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .container-gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(0, 38, 100, 0.18);
+        }
+
+        .container-gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .container-gallery-item::after {
+            content: "🔍";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 38, 100, 0.75);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .container-gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-lightbox {
+            display: none;
+            position: fixed;
+            z-index: 100000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .gallery-lightbox.active {
+            display: flex;
+        }
+
+        .gallery-lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .gallery-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 38px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .gallery-lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            padding: 10px 18px;
+            user-select: none;
+            background-color: rgba(255,255,255,0.08);
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .gallery-lightbox-nav:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .gallery-lightbox-prev { left: 20px; }
+        .gallery-lightbox-next { right: 20px; }
+
+        .gallery-lightbox-counter {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #cbd5e1;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
 
         /* --- MINI-PAGE MODAL PRODUIT (GRANDE & SPACIEUSE) --- */
         .product-modal {
@@ -819,7 +940,7 @@
 
                     <div class="product-card" onclick="openProductModal(1)">
                         <div class="product-img">
-                            <img src="produit_papier-smart-copy-2.jpg" alt="Rame Papier Smart Copy 2" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Papier+Smart+Copy+2';">
+                            <img src="WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg" alt="Rame Papier Smart Copy 2" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Papier+Smart+Copy+2';">
                         </div>
                         <div class="product-content">
                             <span class="product-badge" data-fr="Papeterie" data-en="Stationery">Papeterie</span>
@@ -870,6 +991,25 @@
             </div>
         </div>
     </section>
+
+    <section class="catalog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Galerie de nos Conteneurs</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Un aperçu réel de nos opérations d'empotage et de chargement en conteneurs, à chaque expédition.</p>
+            </div>
+            <div class="container-gallery-grid" id="containerGalleryGrid"></div>
+        </div>
+    </section>
+
+    <div class="gallery-lightbox" id="galleryLightbox">
+        <span class="gallery-lightbox-close" onclick="closeGalleryLightbox()">&times;</span>
+        <span class="gallery-lightbox-nav gallery-lightbox-prev" onclick="galleryLightboxNav(-1)">&#10094;</span>
+        <img id="galleryLightboxImg" src="" alt="Conteneur CCS">
+        <span class="gallery-lightbox-nav gallery-lightbox-next" onclick="galleryLightboxNav(1)">&#10095;</span>
+        <span class="gallery-lightbox-counter" id="galleryLightboxCounter"></span>
+    </div>
 
     <section class="catalog-section">
         <div class="container">
@@ -975,27 +1115,59 @@
         const productsDatabase = [
             {
                 name: "Rame Papier Double A",
-                image: "doublea.png",
+                image: "WhatsApp_Image_2026-09-02_at_14_31_32__2_.jpeg",
                 origin: "International",
                 ref: "CCS-PAPIER-DOUBLE-A",
                 cond: "Rame standard",
                 qual: "Excellente blancheur, format standard",
                 log: "Empotage carton / palette",
-                extra: "Papier de bureau de haute qualité pour une impression fluide et sans bourrage.",
+                extra: "Papier de bureau Double A de haute qualité pour une impression fluide et sans bourrage, chargé et empoté avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "videos/papier-double-a.mp4",
-                images: Array(15).fill("doublea.png")
+                images: [
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__4_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__4_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg"
+                ]
             },
             {
                 name: "Rame Papier Smart Copy (2)",
-                image: "produit_papier-smart-copy-2.jpg",
+                image: "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
                 origin: "International",
                 ref: "CCS-PAPIER-SMART-COPY-2",
                 cond: "Conditionnement en rame",
                 qual: "Grammage optimisé pour photocopies et impressions",
                 log: "Empotage carton / palette",
-                extra: "Conditionnement en rame pour impression professionnelle, idéal pour les impressions quotidiennes.",
+                extra: "Conditionnement en rame pour impression professionnelle, idéal pour les impressions quotidiennes. Chargement et empotage réalisés avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "videos/papier-smart-copy-2.mp4",
-                images: Array(15).fill("produit_papier-smart-copy-2.jpg")
+                images: [
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg"
+                ]
             },
             {
                 name: "Sucre Crystal Blanc",
@@ -1055,15 +1227,31 @@
             },
             {
                 name: "Poivre Noir",
-                image: "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                image: "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
                 origin: "Brésil / International",
                 ref: "CCS-POIVRE-03",
                 cond: "Sacs de 25 kg / Cartons",
                 qual: "Grade A Premium - Best Foods",
                 log: "Empotage conteneur sécurisé",
-                extra: "Poivre noir Best Foods de qualité supérieure, récolté et conditionné avec soin.",
+                extra: "Poivre noir Best Foods de qualité supérieure (Black Pepper), récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
                 videoLoop: "videos/poivre-noir.mp4",
-                images: Array(15).fill("WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg")
+                images: [
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg",
+                    "WhatsApp Image 2026-09-02 at 12.21.46 (3).jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_33__1_.jpeg"
+                ]
             },
             {
                 name: "Ananas Sarama",
@@ -1191,15 +1379,31 @@
             },
             {
                 name: "Papier Smart Copy",
-                image: "produit_papier-smart-copy-1.jpg",
+                image: "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
                 origin: "Papeterie Internationale",
                 ref: "CCS-PAPIER-10",
                 cond: "Rames de 500 feuilles (A4/A3)",
                 qual: "80g/m² Haute Blancheur",
                 log: "Film étanche anti-humidité",
-                extra: "Papier de photocopie Smart Copy haut de gamme.",
+                extra: "Papier de photocopie Smart Copy haut de gamme, chargé et empoté avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "videos/papier-smart-copy.mp4",
-                images: Array(15).fill("produit_papier-smart-copy-1.jpg")
+                images: [
+                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16__3_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_16.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg"
+                ]
             },
             {
                 name: "Pâte de Tomate Sarama",
@@ -1320,6 +1524,62 @@
                     "WhatsApp Image 2026-09-02 at 12.27.38 (3).jpeg",
                     "WhatsApp Image 2026-09-02 at 12.27.38.jpeg"
                 ]
+            },
+            {
+                name: "Ail (Garlic)",
+                image: "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
+                origin: "Chine / International",
+                ref: "CCS-AIL-01",
+                cond: "Cartons de 10 kg (Poids Net)",
+                qual: "Cat. 1 Premium - Calibres 50-55/55-60/60-65/65-70mm - Best Foods",
+                log: "Stockage en chambre froide / Empotage conteneur réfrigéré",
+                extra: "Ail frais Best Foods de qualité supérieure (Cat. 1), disponible en plusieurs calibres (50 à 70mm). Conditionné en filets puis en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
+                videoLoop: "videos/ail.mp4",
+                images: [
+                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_48.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_49.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
+                    "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg"
+                ]
+            },
+            {
+                name: "Gingembre (Ginger)",
+                image: "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
+                origin: "Brésil / International",
+                ref: "CCS-GINGEMBRE-01",
+                cond: "Cartons de 10 kg / 22 lbs environ",
+                qual: "Gingembre frais - Origine Brésil - Best Foods",
+                log: "Ligne de tri et conditionnement / Palettisation avant export",
+                extra: "Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport. Trié et emballé sur ligne dédiée avant palettisation et export.",
+                videoLoop: "videos/gingembre.mp4",
+                images: [
+                    "WhatsApp_Image_2026-08-24_at_05_11_27.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__2_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__3_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__4_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__5_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_29.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_27.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__1_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__2_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__3_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__4_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28__5_.jpeg",
+                    "WhatsApp_Image_2026-08-24_at_05_11_28.jpeg"
+                ]
             }
         ];
 
@@ -1337,6 +1597,67 @@
                     </div>
                 </div>
             `).join('');
+
+        // --- GALERIE : PHOTOS DE NOS CONTENEURS (empotage / chargement) ---
+        const containerGalleryImages = [
+            "WhatsApp_Image_2026-09-02_at_17_35_50__1_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_17_35_55.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32__7_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31__1_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31__3_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31__5_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31__6_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32__1_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg",
+            "WhatsApp_Image_2026-09-02_at_14_31_32__6_.jpeg"
+        ];
+
+        const containerGalleryGrid = document.getElementById('containerGalleryGrid');
+        containerGalleryGrid.innerHTML = containerGalleryImages.map((img, idx) => `
+                <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})">
+                    <img src="${img}" alt="Conteneur CCS ${idx + 1}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=Conteneur+CCS'">
+                </div>
+            `).join('');
+
+        let galleryLightboxIndex = 0;
+
+        function openGalleryLightbox(idx) {
+            galleryLightboxIndex = idx;
+            updateGalleryLightbox();
+            document.getElementById('galleryLightbox').classList.add('active');
+        }
+
+        function closeGalleryLightbox() {
+            document.getElementById('galleryLightbox').classList.remove('active');
+        }
+
+        function galleryLightboxNav(direction) {
+            galleryLightboxIndex = (galleryLightboxIndex + direction + containerGalleryImages.length) % containerGalleryImages.length;
+            updateGalleryLightbox();
+        }
+
+        function updateGalleryLightbox() {
+            document.getElementById('galleryLightboxImg').src = containerGalleryImages[galleryLightboxIndex];
+            document.getElementById('galleryLightboxCounter').innerText = `${galleryLightboxIndex + 1} / ${containerGalleryImages.length}`;
+        }
+
+        document.getElementById('galleryLightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'galleryLightbox') {
+                closeGalleryLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('galleryLightbox');
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeGalleryLightbox();
+            if (e.key === 'ArrowRight') galleryLightboxNav(1);
+            if (e.key === 'ArrowLeft') galleryLightboxNav(-1);
+        });
 
         let currentProductIndex = 0;
         let currentSlideIndex = 0;
