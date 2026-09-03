@@ -74,28 +74,28 @@
             position: relative;
             display: inline-block;
             padding: 8px 12px;
-            border: 2px solid #e41e2b;
+            border: 2px solid #0ea5e9;
             border-radius: 4px;
             background-color: #fff;
         }
 
         .nav-link:hover {
             color: white;
-            background-color: #e41e2b;
+            background-color: #0ea5e9;
         }
 
         .red-dot {
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #e41e2b;
+            background-color: #0ea5e9;
             border-radius: 50%;
             transition: left 0.3s ease-in-out;
             top: -15px; 
         }
         
         .nav-item .nav-link.active {
-            color: #e41e2b;
+            color: #0ea5e9;
             background-color: #fff;
         }
 
@@ -209,7 +209,7 @@
             color: white;
             padding: 100px 20px;
             text-align: center;
-            border-top: 4px solid #e41e2b;
+            border-top: 4px solid #0ea5e9;
         }
 
         .hero-banner .parallax-overlay {
@@ -236,7 +236,7 @@
             font-size: 22px;
             text-transform: uppercase;
             margin: 40px 0 20px 0;
-            border-bottom: 2px solid #e41e2b;
+            border-bottom: 2px solid #0ea5e9;
             padding-bottom: 8px;
             display: inline-block;
         }
@@ -308,7 +308,7 @@
 
         .product-badge {
             display: inline-block;
-            background-color: #e41e2b;
+            background-color: #0ea5e9;
             color: white;
             font-size: 10px;
             font-weight: bold;
@@ -335,7 +335,7 @@
             color: white;
             width: 100%;
             padding: 50px 20px 20px 20px;
-            border-top: 4px solid #e41e2b;
+            border-top: 4px solid #0ea5e9;
         }
 
         .footer-content {
@@ -348,7 +348,7 @@
         }
 
         .footer-col h4 {
-            color: #e41e2b;
+            color: #0ea5e9;
             font-size: 16px;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -365,7 +365,7 @@
         }
 
         .footer-col a:hover {
-            color: #e41e2b;
+            color: #0ea5e9;
         }
 
         .footer-bottom {
@@ -421,7 +421,7 @@
         .section-separator {
             width: 60px;
             height: 3px;
-            background-color: #e41e2b;
+            background-color: #0ea5e9;
             margin: 0 auto 20px auto;
         }
 
@@ -434,74 +434,145 @@
             text-align: center;
         }
 
-        /* --- CATALOGUE DES PRODUITS : Cartes côte à côte (Grid fluide) --- */
-        .catalog-products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            justify-content: center;
-        }
-
-        .catalog-product-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            cursor: pointer;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
+        /* --- CATALOGUE DES PRODUITS : chaque produit = image + petit paragraphe à côté --- */
+        .products-list {
             display: flex;
             flex-direction: column;
+            gap: 30px;
         }
 
-        .catalog-product-card:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
-            box-shadow: 0 10px 25px rgba(0, 38, 100, 0.1);
+        .product-row {
+            position: relative;
+            background: #fff;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 38, 100, 0.08);
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
+            display: flex;
+            align-items: stretch;
+            transform-style: preserve-3d;
+            will-change: transform;
         }
 
-        .product-card-img {
+        .product-row::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #002664);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .product-row:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-row:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 22px 40px rgba(0, 38, 100, 0.18);
+        }
+
+        .product-row-img-wrap {
+            position: relative;
+            width: 320px;
+            min-width: 320px;
+            overflow: hidden;
+        }
+
+        .product-row-img {
             width: 100%;
-            height: 200px;
+            height: 100%;
+            min-height: 260px;
             object-fit: cover;
             background-color: #cbd5e1;
+            display: block;
+            transition: transform 0.6s cubic-bezier(.22,1,.36,1);
         }
 
-        .product-card-body {
-            padding: 20px;
+        .product-row:hover .product-row-img {
+            transform: scale(1.12) rotate(0.3deg);
+        }
+
+        .product-row-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(0, 38, 100, 0.72);
+            backdrop-filter: blur(3px);
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .product-row-body {
+            padding: 32px 36px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .product-card-title {
+        .product-row-title {
             color: #002664;
-            font-size: 16px;
+            font-size: 21px;
             font-weight: bold;
-            margin-bottom: 8px;
+            transition: color 0.3s ease;
         }
 
-        .product-card-desc {
+        .product-row:hover .product-row-title {
+            color: #0ea5e9;
+        }
+
+        .product-row-desc {
             color: #64748b;
-            font-size: 13px;
-            line-height: 1.4;
-            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 680px;
         }
 
-        .product-card-btn {
+        .product-row-btn {
             background-color: #002664;
             color: #fff;
             text-align: center;
-            padding: 8px;
+            padding: 10px 22px;
             font-size: 13px;
             font-weight: bold;
             border-radius: 5px;
-            transition: background-color 0.2s;
+            align-self: flex-start;
+            margin-top: 8px;
+            transition: background-color 0.2s, transform 0.3s ease;
         }
 
-        .catalog-product-card:hover .product-card-btn {
-            background-color: #e41e2b;
+        .product-row:hover .product-row-btn {
+            background-color: #0ea5e9;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 640px) {
+            .product-row {
+                flex-direction: column;
+            }
+            .product-row-img-wrap {
+                width: 100%;
+            }
+            .product-row-img {
+                min-height: 220px;
+                height: 220px;
+            }
+            .product-row-body {
+                padding: 22px;
+            }
         }
 
         /* --- SECTION PREUVE & ENGAGEMENTS --- */
@@ -528,7 +599,7 @@
 
         .proof-icon {
             font-size: 40px;
-            color: #e41e2b;
+            color: #0ea5e9;
             margin-bottom: 20px;
         }
 
@@ -570,8 +641,8 @@
         }
 
         .partner-logo-box:hover {
-            border-color: #e41e2b;
-            box-shadow: 0 5px 15px rgba(228, 30, 43, 0.1);
+            border-color: #0ea5e9;
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1);
         }
 
         /* --- SECTION GALERIE CONTENEURS --- */
@@ -759,7 +830,7 @@
         .slider-section-title {
             font-size: 15px;
             text-transform: uppercase;
-            color: #e41e2b;
+            color: #0ea5e9;
             font-weight: bold;
             margin-bottom: 12px;
             letter-spacing: 0.5px;
@@ -814,7 +885,7 @@
             transition: background 0.2s;
             z-index: 10;
         }
-        .slider-btn:hover { background: #e41e2b; }
+        .slider-btn:hover { background: #0ea5e9; }
         .slider-prev { left: 20px; }
         .slider-next { right: 20px; }
 
@@ -881,6 +952,313 @@
             color: #475569;
             line-height: 1.6;
         }
+
+        /* --- ANIMATION D'APPARITION AU SCROLL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-48px);
+            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(48px);
+            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right.revealed.product-row,
+        .reveal-left.revealed.product-row {
+            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .reveal-left, .reveal-right {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* --- BARRE DE RECHERCHE / FILTRE PRODUITS --- */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .filter-input {
+            flex: 1 1 260px;
+            max-width: 320px;
+            padding: 10px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0f172a;
+        }
+
+        .filter-input:focus {
+            outline: 2px solid #002664;
+            outline-offset: 1px;
+        }
+
+        .filter-btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            color: #002664;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding: 9px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #002664;
+        }
+
+        .filter-btn.active {
+            background-color: #002664;
+            border-color: #002664;
+            color: #fff;
+        }
+
+        .filter-empty {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            padding: 30px 10px;
+            display: none;
+        }
+
+        /* --- SECTION CHIFFRES CLÉS --- */
+        .stats-section {
+            background-color: #002664;
+            background-image: linear-gradient(135deg, #002664 0%, #013a8f 100%);
+        }
+
+        .stats-section .section-title,
+        .stats-section .section-subtitle {
+            color: #fff;
+        }
+
+        .stats-section .section-separator {
+            background-color: #ffffff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 20px 10px;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-suffix {
+            font-size: 32px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .stat-label {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- SECTION TÉMOIGNAGES --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .testimonial-quote {
+            color: #334155;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .testimonial-author {
+            color: #002664;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .testimonial-role {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* --- SECTION FAQ --- */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #002664;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            font-size: 20px;
+            color: #0ea5e9;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 5px 20px 5px;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* --- SECTION NEWSLETTER / CONTACT RAPIDE --- */
+        .newsletter-section {
+            background-color: #f1f5f9;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1 1 260px;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .newsletter-btn {
+            background-color: #0ea5e9;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #0369a1;
+        }
+
+        .newsletter-msg {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #002664;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        /* --- BOUTON RETOUR EN HAUT --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background-color: #002664;
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+            z-index: 500;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: #0ea5e9;
+        }
     </style>
 </head>
 <body>
@@ -896,8 +1274,8 @@
             <ul class="nav-links" id="navLinks">
                 <div class="red-dot" id="redDot"></div>
                 <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-                
-                
+                <li class="nav-item"><a href="story.html" class="nav-link" data-fr="Notre Histoire" data-en="Our Story">Notre Histoire</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-fr="À Propos" data-en="About Us">À Propos</a></li>
                 <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Produits</a></li>
                
                 <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">Actualités</a></li>
@@ -919,60 +1297,49 @@
         </div>
     </section>
 
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1920&auto=format&fit=crop');">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                
-              <!-- CATÉGORIE 1 : PAPIERS -->
-                <h2 class="category-title" data-fr="1. Pôles Papeterie & Papiers" data-en="1. Stationery & Paper Poles">1. Pôles Papeterie & Papiers</h2>
-                <div class="products-grid">
-                    <div class="product-card" onclick="openProductModal(0)">
-                        <div class="product-img">
-                            <img src="doublea.png" alt="Rame Papier " onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Papier+Smart+Copy+1';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Papeterie" data-en="Stationery">Papeterie</span>
-                            <h3 data-fr="Rame Papier DOUBLE AA " data-en="DOUBLE A Paper Ream">Rame Papier  DOUBLE A </h3>
-                            <p data-fr="Papier de bureau haute performance." data-en="High performance office paper.">Papier de bureau haute performance.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
-
-                    <div class="product-card" onclick="openProductModal(1)">
-                        <div class="product-img">
-                            <img src="WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg" alt="Rame Papier Smart Copy 2" onerror="this.onerror=null;this.src='https://via.placeholder.com/800x600?text=Papier+Smart+Copy+2';">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-badge" data-fr="Papeterie" data-en="Stationery">Papeterie</span>
-                            <h3 data-fr="Rame Papier Smart Copy " data-en="Smart Copy Paper Ream ">Rame Papier Smart Copy (2)</h3>
-                            <p data-fr="Idéal pour les impressions quotidiennes." data-en="Ideal for daily printing.">Idéal pour les impressions quotidiennes.</p>
-                            <span class="click-hint" data-fr="Cliquez pour détails +" data-en="Click for details +">Cliquez pour détails +</span>
-                        </div>
-                    </div>
-                </div>
-
-    <!-- ================= SECTION : CATALOGUE DES PRODUITS UNIQUES ================= -->
-    <section class="catalog-section ccs-products-section">
+    <!-- ================= SECTION : PAPETERIE (SÉPARÉE DU CATALOGUE GÉNÉRAL) ================= -->
+    <section class="catalog-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Catalogue de nos Produits</h2>
+            <div class="section-header reveal">
+                <h2 class="section-title">Notre Gamme Papeterie</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Cliquez sur un produit pour afficher sa grande mini-page interactive.</p>
+                <p class="section-subtitle">Nos marques de papier bureautique, sélectionnées pour leur qualité d'impression.</p>
             </div>
-            <div class="catalog-products-grid" id="productsGridContainer">
+            <div class="products-list" id="paperGridContainer">
                 <!-- Généré dynamiquement par JavaScript -->
             </div>
         </div>
     </section>
 
+    <!-- ================= SECTION : CATALOGUE DES PRODUITS UNIQUES ================= -->
+    <section class="catalog-section ccs-products-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Catalogue de nos Produits</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Cliquez sur un produit pour afficher sa grande mini-page interactive.</p>
+            </div>
+            <div class="filter-bar reveal">
+                <input type="text" class="filter-input" id="productSearchInput" placeholder="Rechercher un produit (ex: riz, ail, papier...)" oninput="filterProducts()">
+                <button class="filter-btn active" data-origin="all" onclick="setOriginFilter('all', this)">Toutes origines</button>
+                <button class="filter-btn" data-origin="afrique" onclick="setOriginFilter('afrique', this)">Afrique</button>
+                <button class="filter-btn" data-origin="international" onclick="setOriginFilter('international', this)">International</button>
+            </div>
+            <div class="products-list" id="productsGridContainer">
+                <!-- Généré dynamiquement par JavaScript -->
+            </div>
+            <p class="filter-empty" id="productsEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
+        </div>
+    </section>
+
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Nos Preuves & Engagements Qualité</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Une traçabilité totale et des contrôles rigoureux à chaque étape logistique.</p>
             </div>
-            <div class="proof-grid">
+            <div class="proof-grid reveal">
                 <div class="proof-card">
                     <div class="proof-icon">✔</div>
                     <h3 class="proof-title">Traçabilité Certifiée</h3>
@@ -994,12 +1361,12 @@
 
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Galerie de nos Conteneurs</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Un aperçu réel de nos opérations d'empotage et de chargement en conteneurs, à chaque expédition.</p>
             </div>
-            <div class="container-gallery-grid" id="containerGalleryGrid"></div>
+            <div class="container-gallery-grid reveal" id="containerGalleryGrid"></div>
         </div>
     </section>
 
@@ -1011,14 +1378,69 @@
         <span class="gallery-lightbox-counter" id="galleryLightboxCounter"></span>
     </div>
 
+    <section class="catalog-section stats-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">CCS en Chiffres</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Des années de présence sur le terrain, à Dakar et à l'international.</p>
+            </div>
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-number"><span class="counter" data-target="6">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Années d'expérience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number"><span class="counter" data-target="5">0</span></div>
+                    <div class="stat-label">Pays d'origine des produits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number"><span class="counter" data-target="7">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Produits au catalogue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number"><span class="counter" data-target="100">0</span><span class="stat-suffix">%</span></div>
+                    <div class="stat-label">Traçabilité des chargements</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">La confiance de nos partenaires, bâtie chargement après chargement.</p>
+            </div>
+            <div class="testimonials-grid reveal">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">« Les délais sont respectés à chaque commande et la qualité de l'ail et du gingembre est constante. Un partenaire fiable pour nos imports. »</p>
+                    <div class="testimonial-author">Grupo Bazan</div>
+                    <div class="testimonial-role">Partenaire import-export</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">« La traçabilité des conteneurs et les photos d'empotage nous rassurent avant chaque expédition. Communication claire du début à la fin. »</p>
+                    <div class="testimonial-author">Sarama</div>
+                    <div class="testimonial-role">Partenaire distribution</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">« Le papier Double A et Smart Copy arrive toujours en bon état, bien conditionné. Un fournisseur sérieux pour notre réseau de points de vente. »</p>
+                    <div class="testimonial-author">Touba International</div>
+                    <div class="testimonial-role">Partenaire distribution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="container">
+            <div class="section-header reveal">
                 <h2 class="section-title">Nos Partenaires de Confiance</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Ils collaborent avec CCS pour l'exportation et la distribution internationale.</p>
             </div>
-            <div class="partners-grid">
+            <div class="partners-grid reveal">
                 <div class="partner-logo-box">Grupo Bazan</div>
                 <div class="partner-logo-box">Best Foods</div>
                 <div class="partner-logo-box">Sarama</div>
@@ -1027,6 +1449,71 @@
             </div>
         </div>
     </section>
+
+    <section class="catalog-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Questions Fréquentes</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Tout ce qu'il faut savoir avant de commander auprès de CCS.</p>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Quels sont vos délais de chargement et d'expédition ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui, disponibles dès la fin du chargement.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Proposez-vous des échantillons avant commande ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits alimentaires comme le riz, le tamarin, l'ail ou le gingembre.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Quels modes de conditionnement utilisez-vous ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Selon le produit : cartons de 10 à 25 kg, sacs de 25/50 kg, ou conditionnement en vrac. Les fiches produits détaillent le conditionnement exact de chaque référence.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Comment vous contacter pour une demande de devis ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Par téléphone, email, ou via notre page Contact — nous répondons habituellement sous 24 à 48 heures ouvrées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-section newsletter-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Restez Informé</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Recevez nos actualités produits et nos disponibilités par email.</p>
+            </div>
+            <form class="newsletter-form reveal" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Votre adresse email" required>
+                <button type="submit" class="newsletter-btn">S'inscrire</button>
+            </form>
+            <p class="newsletter-msg" id="newsletterMsg"></p>
+        </div>
+    </section>
+
+    <button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
 
     <footer class="footer">
         <div class="footer-content">
@@ -1115,6 +1602,7 @@
         const productsDatabase = [
             {
                 name: "Rame Papier Double A",
+                category: "papier",
                 image: "WhatsApp_Image_2026-09-02_at_14_31_32__2_.jpeg",
                 origin: "International",
                 ref: "CCS-PAPIER-DOUBLE-A",
@@ -1143,6 +1631,7 @@
             },
             {
                 name: "Rame Papier Smart Copy (2)",
+                category: "papier",
                 image: "WhatsApp_Image_2026-09-02_at_14_31_16__1_.jpeg",
                 origin: "International",
                 ref: "CCS-PAPIER-SMART-COPY-2",
@@ -1380,6 +1869,7 @@
             },
             {
                 name: "Papier Smart Copy",
+                category: "papier",
                 image: "WhatsApp_Image_2026-09-02_at_14_31_31.jpeg",
                 origin: "Papeterie Internationale",
                 ref: "CCS-PAPIER-10",
@@ -1404,6 +1894,23 @@
                     "WhatsApp_Image_2026-09-02_at_14_31_31__2_.jpeg",
                     "WhatsApp_Image_2026-09-02_at_14_31_32__4_.jpeg",
                     "WhatsApp_Image_2026-09-02_at_14_31_32__5_.jpeg"
+                ]
+            },
+            {
+                name: "Rame Papier Capital",
+                category: "papier",
+                image: "papier-capital.jpg",
+                origin: "International",
+                ref: "CCS-PAPIER-CAPITAL",
+                cond: "Rames de 500 feuilles (A4)",
+                qual: "80g/m² - Haute blancheur, format standard",
+                log: "Empotage carton / palette",
+                extra: "Papier de bureau Capital, nouvelle marque de notre gamme papeterie, au grammage optimisé pour les impressions et photocopies quotidiennes. Chargé et empoté avec soin dans nos conteneurs pour l'export.",
+                videoLoop: "videos/papier-capital.mp4",
+                images: [
+                    "papier-capital.jpg",
+                    "papier-capital-2.jpg",
+                    "papier-capital-3.jpg"
                 ]
             },
             {
@@ -1584,20 +2091,108 @@
             }
         ];
 
-        // --- GÉNÉRATION AUTOMATIQUE DE LA GRILLE DES PRODUITS ---
+        // --- APPARITION PROGRESSIVE DES ÉLÉMENTS AU SCROLL (réutilisable pour le contenu généré en JS) ---
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        function observeReveals() {
+            document.querySelectorAll('.reveal:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed)').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+
+        // --- GÉNÉRATION AUTOMATIQUE DES LISTES DE PRODUITS (papeterie séparée + catalogue général avec recherche/filtre) ---
         const productsGridContainer = document.getElementById('productsGridContainer');
-        productsGridContainer.innerHTML = productsDatabase.map((prod, index) => `
-                <div class="catalog-product-card" onclick="openProductModal(${index})">
-                    <img src="${prod.image}" class="product-card-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
-                    <div class="product-card-body">
-                        <div>
-                            <h3 class="product-card-title">${prod.name}</h3>
-                            <p class="product-card-desc">${prod.extra.substring(0, 90)}...</p>
-                        </div>
-                        <div class="product-card-btn">Voir les détails & Chargements</div>
+        const productsEmptyMsg = document.getElementById('productsEmptyMsg');
+        const paperGridContainer = document.getElementById('paperGridContainer');
+        let currentOriginFilter = 'all';
+        let currentSearchTerm = '';
+
+        function buildProductRowHTML(prod, index, i) {
+            return `
+                <div class="product-row ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}" style="transition-delay:${Math.min(i * 0.08, 0.4)}s" onclick="openProductModal(${index})">
+                    <div class="product-row-img-wrap">
+                        <span class="product-row-badge">${prod.origin}</span>
+                        <img src="${prod.image}" class="product-row-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
+                    </div>
+                    <div class="product-row-body">
+                        <h3 class="product-row-title">${prod.name}</h3>
+                        <p class="product-row-desc">${prod.extra.substring(0, 150)}${prod.extra.length > 150 ? '...' : ''}</p>
+                        <div class="product-row-btn">Voir les détails & Chargements</div>
                     </div>
                 </div>
-            `).join('');
+            `;
+        }
+
+        // --- EFFET DE TILT 3D AU SURVOL DES CARDS PRODUIT ---
+        function attachTiltEffect(container) {
+            container.querySelectorAll('.product-row').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -4;
+                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
+        function renderProductsGrid(list) {
+            if (!list.length) {
+                productsGridContainer.innerHTML = '';
+                productsEmptyMsg.style.display = 'block';
+                return;
+            }
+            productsEmptyMsg.style.display = 'none';
+            productsGridContainer.innerHTML = list.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
+            observeReveals();
+            attachTiltEffect(productsGridContainer);
+        }
+
+        function renderPaperGrid() {
+            const paperList = productsDatabase
+                .map((prod, index) => ({ prod, index }))
+                .filter(({ prod }) => prod.category === 'papier');
+            paperGridContainer.innerHTML = paperList.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
+            observeReveals();
+            attachTiltEffect(paperGridContainer);
+        }
+
+        function getFilteredProducts() {
+            return productsDatabase
+                .map((prod, index) => ({ prod, index }))
+                .filter(({ prod }) => prod.category !== 'papier')
+                .filter(({ prod }) => {
+                    const matchesSearch = !currentSearchTerm || prod.name.toLowerCase().includes(currentSearchTerm) || prod.extra.toLowerCase().includes(currentSearchTerm);
+                    const matchesOrigin = currentOriginFilter === 'all' || prod.origin.toLowerCase().includes(currentOriginFilter);
+                    return matchesSearch && matchesOrigin;
+                });
+        }
+
+        function filterProducts() {
+            currentSearchTerm = document.getElementById('productSearchInput').value.trim().toLowerCase();
+            renderProductsGrid(getFilteredProducts());
+        }
+
+        function setOriginFilter(origin, btn) {
+            currentOriginFilter = origin;
+            document.querySelectorAll('.filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProductsGrid(getFilteredProducts());
+        }
+
+        renderPaperGrid();
+        renderProductsGrid(getFilteredProducts());
 
         // --- GALERIE : PHOTOS DE NOS CONTENEURS (empotage / chargement) ---
         const containerGalleryImages = [
@@ -1746,7 +2341,7 @@
                 hint.style.color = "#64748b";
             } else {
                 hint.innerText = "(En pause • Cliquez sur l'image pour reprendre)";
-                hint.style.color = "#e41e2b";
+                hint.style.color = "#0ea5e9";
             }
         }
 
@@ -1812,6 +2407,86 @@
                 document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
             });
         });
+
+        // --- COMPTEURS ANIMÉS (SECTION "CCS EN CHIFFRES") ---
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            const duration = 1400;
+            const startTime = performance.now();
+
+            function step(now) {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        const counterEls = document.querySelectorAll('.counter');
+        if (counterEls.length) {
+            const counterObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counterEls.forEach(el => counterObserver.observe(el));
+        }
+
+        // --- FAQ ACCORDÉON ---
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                if (openItem !== item) {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            if (isOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = null;
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
+
+        // --- FORMULAIRE NEWSLETTER (CÔTÉ CLIENT, SANS BACKEND) ---
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('newsletterEmail');
+            const msg = document.getElementById('newsletterMsg');
+            const email = emailInput.value.trim();
+
+            if (!email || !email.includes('@')) {
+                msg.textContent = "Merci de saisir une adresse email valide.";
+                msg.style.color = '#0ea5e9';
+                return;
+            }
+
+            // NOTE : aucune inscription n'est réellement envoyée ici, il n'y a pas de backend branché.
+            // À connecter à un service (Mailchimp, Google Sheets, votre propre API, etc.) pour un usage réel.
+            msg.textContent = `Merci ! ${email} a été enregistré pour nos actualités.`;
+            msg.style.color = '#002664';
+            document.getElementById('newsletterForm').reset();
+        }
+
+        // --- BOUTON RETOUR EN HAUT ---
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        observeReveals();
     </script>
 </body>
 </html>
