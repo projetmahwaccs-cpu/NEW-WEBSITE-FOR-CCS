@@ -1512,25 +1512,153 @@
     </section>
 
     <!-- SECTION 5 : LOCALISATION & CARTE (Parallaxe) -->
-    <section class="parallax-section geo-parallax">
-        <div class="parallax-overlay light-overlay">
-            <div class="section-container">
-                <h2 class="section-title" data-fr="Où nous trouver" data-en="Where to find us">Où nous trouver</h2>
-                <div class="geo-grid">
-                    <div class="geo-info">
-                        <h3 data-fr="Nous sommes :" data-en="Headquarters & Offices">Siège Social & Bureaux</h3>
-                        <p data-fr="Contactez-nous pour toute demande de partenariat, de distribution ou de renseignements sur nos gammes de produits." data-en="Contact us for any partnership, distribution inquiry, or information on our product ranges.">
-                            <br>HANN MARISTE EN FACE CORIS BANK</br>
-                        </p>
-                        <a href="contact.html" class="btn-see-more" style="display: inline-block; margin-top: 10px;" data-fr="Venir Chez CCS" data-en="Contact us">Nous contacter</a>
-                    </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.9553755452296!2d-17.4676878240445!3d14.692780574347732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec17326b48a4747%3A0xc39f8f413ff7ea5!2sDakar%2C%20Senegal!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
+       <section class="locations-section">
+  <div class="locations-container">
+    <h2>Nos Agences</h2>
+    
+    <div class="locations-grid">
+      
+      <div class="location-card">
+        <div class="location-info">
+          <h3>Sénégal</h3>
+          <p><strong>Adresse :</strong> Hann Mariste, en face de la Coris Bank</p>
+          <a href="https://maps.google.com/?q=Hann+Mariste+Coris+Bank+Dakar" target="_blank" class="map-link">
+            Voir sur Google Maps
+          </a>
         </div>
-    </section>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.0!2d-17.43!3d14.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSFNOTiBNQVJJU1RF!5e0!3m2!1sfr!2ssn!4v1" 
+            width="100%" 
+            height="220" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="location-info">
+          <h3>Mali</h3>
+          <p><strong>Adresse :</strong> Bamako - Hamdallaye ACI 2000, Building Mamadou Yara</p>
+          <a href="https://maps.google.com/?q=Hamdallaye+ACI+2000+Building+Mamadou+Yara+Bamako" target="_blank" class="map-link">
+            Voir sur Google Maps
+          </a>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.5!2d-8.02!3d12.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQUNJIDIwMDAgQmFtYWtv!5e0!3m2!1sfr!2sml!4v1" 
+            width="100%" 
+            height="220" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <div class="location-info">
+          <h3>Guinée</h3>
+          <p><strong>Adresse :</strong> Marché Madina, Conakry</p>
+          <a href="https://maps.google.com/?q=Marche+Madina+Conakry+Guinee" target="_blank" class="map-link">
+            Voir sur Google Maps
+          </a>
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.5!2d-13.68!3d9.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFyY2jDqSBNYWRpbmE!5e0!3m2!1sfr!2sgn!4v1" 
+            width="100%" 
+            height="220" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<STYLE>
+.locations-section {
+  padding: 60px 20px;
+  background-color: #f4f7f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.locations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.locations-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2c3e50;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.location-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.location-card:hover {
+  transform: translateY(-5px);
+}
+
+.location-info h3 {
+  color: #007bff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.location-info p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.map-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #007bff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.map-link:hover {
+  background-color: #0056b3;
+}
+
+.map-container {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+}
+</STYLE>
 
     <!-- FOOTER -->
     <footer class="footer">
