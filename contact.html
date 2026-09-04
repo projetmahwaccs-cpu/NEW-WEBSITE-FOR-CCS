@@ -1,11 +1,9 @@
-html
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCS - Comptoir Commercial Sourang | Carrières</title>
+    <title>CCS - Comptoir Commercial Sourang | Contact</title>
     <style>
         * {
             margin: 0;
@@ -192,7 +190,7 @@ html
         }
 
         .parallax-overlay.light-overlay {
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(255, 255, 255, 0.94);
         }
 
         .section-container {
@@ -200,9 +198,79 @@ html
             max-width: 1200px;
         }
 
-        /* ===== Style de la nouvelle section en cercles / bulles ===== */
+        /* ===== Style des "poches" (Accordéons par pays) ===== */
         .info-parallax {
             background-image: url('ccs2.png');
+        }
+
+        .country-accordion {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #e1eaf5;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .country-accordion:hover {
+            box-shadow: 0 6px 20px rgba(14,165,233,0.15);
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 25px;
+            background: #f4f8fc;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .country-header:hover {
+            background: #eaf2fb;
+        }
+
+        .country-title {
+            color: #002664;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .accordion-icon {
+            width: 28px;
+            height: 28px;
+            background: #0ea5e9;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .country-accordion.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .country-content-wrap {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            padding: 0 25px;
+        }
+
+        .country-accordion.active .country-content-wrap {
+            max-height: 1000px; /* Assez grand pour contenir les cartes */
+            padding: 10px 25px 35px 25px;
         }
 
         .circular-team-grid {
@@ -210,15 +278,16 @@ html
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
             justify-content: center;
-            padding-top: 20px;
+            padding-top: 25px;
         }
 
         .team-circle-card {
-            background: white;
+            background: #fcfdfe;
+            border: 1px solid #e8eff7;
             border-radius: 16px;
             padding: 30px 20px 25px 20px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -229,7 +298,7 @@ html
 
         .team-circle-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,38,100,0.15);
+            box-shadow: 0 12px 30px rgba(0,38,100,0.12);
         }
 
         .team-avatar.floating-bubble {
@@ -366,7 +435,7 @@ html
         .section-title {
             text-align: center;
             color: #002664;
-            font-size: 24px;
+            font-size: 26px;
             text-transform: uppercase;
             margin-bottom: 40px;
             position: relative;
@@ -375,10 +444,10 @@ html
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
             height: 3px;
             background-color: #0ea5e9;
-            margin: 10px auto 0;
+            margin: 12px auto 0;
         }
 
         .footer {
@@ -821,79 +890,110 @@ html
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
                 <h2 class="section-title" data-fr="Nos Contacts & Équipe" data-en="Our Contacts & Team">Nos Contacts & Équipe</h2>
-                <div class="circular-team-grid">
 
-                    <!-- Modou - Directeur Général -->
-                    <div class="team-circle-card">
-                        <div class="team-avatar floating-bubble">
-                            <img src="modou.jpg" alt="Modou" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Modou';">
-                        </div>
-                        <div class="team-content">
-                            <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
-                            <h3>Modou</h3>
-                            <span class="team-role" data-fr="Directeur Général" data-en="General Manager">Directeur Général</span>
-                            <div class="team-phones">
-                                <a href="tel:+221776990000">+221 77 699 00 00</a>
-                                <a href="tel:+221776220000">+221 77 622 00 00</a>
-                                <a href="tel:+221773360000">+221 77 336 00 00</a>
-                            </div>
-                            <a class="team-whatsapp" href="https://wa.me/221776990000" target="_blank" rel="noopener">
-                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
-                            </a>
-                        </div>
+                <!-- POCHE SÉNÉGAL (Ouverte par défaut) -->
+                <div class="country-accordion active">
+                    <div class="country-header" onclick="toggleAccordion(this)">
+                        <h3 class="country-title" data-fr="🇸🇳 Sénégal (Siège Dakar)" data-en="🇸🇳 Senegal (Dakar HQ)">🇸🇳 Sénégal (Siège Dakar)</h3>
+                        <div class="accordion-icon">⌄</div>
                     </div>
-
-                    <!-- Addji - Secrétaire -->
-                    <div class="team-circle-card">
-                        <div class="team-avatar floating-bubble">
-                            <img src="addji.jpg" alt="Addji" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Addji';">
-                        </div>
-                        <div class="team-content">
-                            <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
-                            <h3>Addji</h3>
-                            <span class="team-role" data-fr="Secrétaire" data-en="Secretary">Secrétaire</span>
-                            <div class="team-phones">
-                                <a href="tel:+221785309736">+221 78 530 97 36</a>
+                    <div class="country-content-wrap">
+                        <div class="circular-team-grid">
+                            <!-- Modou - Directeur Général -->
+                            <div class="team-circle-card">
+                                <div class="team-avatar floating-bubble">
+                                    <img src="modou.png" alt="Modou" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Modou';">
+                                </div>
+                                <div class="team-content">
+                                    <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
+                                    <h3>Modou</h3>
+                                    <span class="team-role" data-fr="Directeur Général" data-en="General Manager">Directeur Général</span>
+                                    <div class="team-phones">
+                                        <a href="tel:+221776990000">+221 77 699 00 00</a>
+                                        <a href="tel:+221776220000">+221 77 622 00 00</a>
+                                        <a href="tel:+221773360000">+221 77 336 00 00</a>
+                                    </div>
+                                    <a class="team-whatsapp" href="https://wa.me/221776990000" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
+                                    </a>
+                                </div>
                             </div>
-                            <a class="team-whatsapp" href="https://wa.me/221785309736" target="_blank" rel="noopener">
-                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
-                            </a>
-                        </div>
-                    </div>
 
-                    <!-- Moussa Faye - Mali -->
-                    <div class="team-circle-card">
-                        <div class="team-avatar floating-bubble">
-                            <img src="moussafaye.jpg" alt="Moussa Faye" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Moussa';">
-                        </div>
-                        <div class="team-content">
-                            <span class="team-country" data-fr="Mali" data-en="Mali">Mali</span>
-                            <h3>Moussa Faye</h3>
-                            <span class="team-role" data-fr="Représentant" data-en="Representative">Représentant</span>
-                            <div class="team-phones">
-                                <a href="tel:+22300000000">+223 00 00 00 00</a>
-                                <a href="tel:+22300222000">+223 00 22 20 00</a>
+                            <!-- adji - Secrétaire -->
+                            <div class="team-circle-card">
+                                <div class="team-avatar floating-bubble">
+                                    <img src="adji.png" alt="adji" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=adji';">
+                                </div>
+                                <div class="team-content">
+                                    <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
+                                    <h3>adji</h3>
+                                    <span class="team-role" data-fr="Secrétaire" data-en="Secretary">Secrétaire</span>
+                                    <div class="team-phones">
+                                        <a href="tel:+221785309736">+221 78 530 97 36</a>
+                                    </div>
+                                    <a class="team-whatsapp" href="https://wa.me/221785309736" target="_blank" rel="noopener">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Guinée Conakry -->
-                    <div class="team-circle-card">
-                        <div class="team-avatar floating-bubble">
-                            <img src="guinee.jpg" alt="Guinée Conakry" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Guinee';">
-                        </div>
-                        <div class="team-content">
-                            <span class="team-country" data-fr="Guinée Conakry" data-en="Guinea Conakry">Guinée Conakry</span>
-                            <h3>Bureau</h3>
-                            <span class="team-role" data-fr="Contact Commercial" data-en="Commercial Contact">Contact Commercial</span>
-                            <div class="team-phones">
-                                <a href="tel:+224614086262">+224 614 08 62 62</a>
-                                <a href="tel:+224620393970">+224 620 39 39 70</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- POCHE MALI -->
+                <div class="country-accordion">
+                    <div class="country-header" onclick="toggleAccordion(this)">
+                        <h3 class="country-title" data-fr="🇲🇱 Mali" data-en="🇲🇱 Mali">🇲🇱 Mali</h3>
+                        <div class="accordion-icon">⌄</div>
+                    </div>
+                    <div class="country-content-wrap">
+                        <div class="circular-team-grid">
+                            <!-- Moussa SENE - Mali -->
+                            <div class="team-circle-card">
+                                <div class="team-avatar floating-bubble">
+                                    <img src="moussa.png" alt="Moussa SENE" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Moussa';">
+                                </div>
+                                <div class="team-content">
+                                    <span class="team-country" data-fr="Mali" data-en="Mali">Mali</span>
+                                    <h3>Moussa SENE</h3>
+                                    <span class="team-role" data-fr="Représentant" data-en="Representative">Représentant</span>
+                                    <div class="team-phones">
+                                        <a href="tel:+22300000000">+223 00 00 00 00</a>
+                                        <a href="tel:+22300222000">+223 00 22 20 00</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POCHE GUINÉE CONAKRY -->
+                <div class="country-accordion">
+                    <div class="country-header" onclick="toggleAccordion(this)">
+                        <h3 class="country-title" data-fr="🇬🇳 Guinée Conakry" data-en="🇬🇳 Guinea Conakry">🇬🇳 Guinée Conakry</h3>
+                        <div class="accordion-icon">⌄</div>
+                    </div>
+                    <div class="country-content-wrap">
+                        <div class="circular-team-grid">
+                            <!-- Guinée Conakry -->
+                            <div class="team-circle-card">
+                                <div class="team-avatar floating-bubble">
+                                    <img src="guinea.png" alt="Guinée Conakry" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Guinee';">
+                                </div>
+                                <div class="team-content">
+                                    <span class="team-country" data-fr="Guinée Conakry" data-en="Guinea Conakry">Guinée Conakry</span>
+                                    <h3>Bureau</h3>
+                                    <span class="team-role" data-fr="Contact Commercial" data-en="Commercial Contact">Contact Commercial</span>
+                                    <div class="team-phones">
+                                        <a href="tel:+224614086262">+224 614 08 62 62</a>
+                                        <a href="tel:+224620393970">+224 620 39 39 70</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -992,6 +1092,12 @@ html
     </footer>
 
     <script>
+        /* ===== Fonction pour ouvrir/fermer les "poches" (accordéons) ===== */
+        function toggleAccordion(header) {
+            const accordion = header.parentElement;
+            accordion.classList.toggle('active');
+        }
+
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
 
@@ -1084,7 +1190,7 @@ html
             });
         }
 
-        /* ===== Formulaire de contact interactif (envoi réel par email) ===== */
+        /* ===== Formulaire de contact interactif ===== */
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             const messageField = contactForm.querySelector('textarea[name="message"]');
@@ -1174,5 +1280,3 @@ html
     </script>
 </body>
 </html>
-
-```
