@@ -1,3 +1,6 @@
+Voici le code complet et mis à jour de ta page **`contact.html`**. J'ai remplacé l'ancienne section des coordonnées par ta nouvelle grille en cercles/bulles flottantes et j'ai ajouté tout le CSS correspondant directement dans la balise `<style>`.
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -198,133 +201,139 @@
             max-width: 1200px;
         }
 
-        /* ===== Nos Coordonnées (téléphone / whatsapp / bureau / entrepôt) ===== */
+        /* ===== Style de la nouvelle section en cercles / bulles ===== */
         .info-parallax {
             background-image: url('ccs2.png');
         }
 
-        .info-grid {
+        .circular-team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
+            justify-content: center;
+            padding-top: 20px;
         }
 
-        .info-card {
+        .team-circle-card {
             background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: left;
+            border-radius: 16px;
+            padding: 30px 20px 25px 20px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
-            flex-direction: row;
-            align-items: stretch;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-top: 45px;
         }
 
-        .info-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0,38,100,0.2);
+        .team-circle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,38,100,0.15);
         }
 
-        .info-card-media {
-            flex: 0 0 150px;
-            width: 150px;
+        .team-avatar.floating-bubble {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
             overflow: hidden;
+            position: absolute;
+            top: -45px;
             background-color: #eef4fb;
+            border: 4px solid #0ea5e9;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
+            animation: bubbleFloat 4s ease-in-out infinite;
         }
 
-        .info-card-media img {
+        .team-avatar.floating-bubble img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            object-position: center top;
             transition: transform 0.5s ease;
         }
 
-        .info-card:hover .info-card-media img {
-            transform: scale(1.08);
+        .team-circle-card:hover .team-avatar.floating-bubble img {
+            transform: scale(1.12);
         }
 
-        .info-card-icon {
-            flex: 0 0 150px;
-            width: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0ea5e9, #002664);
+        @keyframes bubbleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        .info-card-icon svg {
-            width: 46px;
-            height: 46px;
-            fill: white;
+        .team-content {
+            margin-top: 35px;
+            width: 100%;
         }
 
-        .info-card-body {
-            padding: 25px 20px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .info-card-label {
-            display: block;
+        .team-country {
+            display: inline-block;
             color: #0ea5e9;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            background: rgba(14, 165, 233, 0.1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
         }
 
-        .info-card-value {
+        .team-circle-card h3 {
             color: #002664;
-            font-size: 22px;
-            font-weight: bold;
-            line-height: 1.5;
-            word-break: break-word;
+            font-size: 20px;
+            margin-bottom: 2px;
         }
 
-        .info-card-value a {
-            color: #002664;
-            text-decoration: none;
+        .team-role {
             display: block;
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
-        .info-card-value a:hover {
+        .team-phones {
+            margin-bottom: 15px;
+        }
+
+        .team-phones a {
+            display: block;
+            color: #002664;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+
+        .team-phones a:hover {
             color: #0ea5e9;
         }
 
-        .info-card-note {
-            color: #888;
-            font-size: 13px;
-            font-weight: normal;
-            font-style: italic;
-            margin-top: 6px;
-        }
-
-        .info-card-link {
+        .team-whatsapp {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 16px;
-            background-color: #0ea5e9;
+            justify-content: center;
+            gap: 6px;
+            background-color: #25d366;
             color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
             text-decoration: none;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .info-card-link:hover {
-            background-color: #002664;
+        .team-whatsapp:hover {
+            opacity: 0.9;
         }
 
-        .info-card-link svg {
-            width: 16px;
-            height: 16px;
+        .team-whatsapp svg {
+            width: 14px;
+            height: 14px;
             fill: white;
         }
 
@@ -424,17 +433,6 @@
         @media(max-width: 768px) {
             .parallax-section {
                 background-attachment: scroll;
-            }
-
-            .info-card {
-                flex-direction: column;
-            }
-
-            .info-card-media,
-            .info-card-icon {
-                width: 100%;
-                height: 140px;
-                flex: none;
             }
         }
 
@@ -800,12 +798,8 @@
                 <ul class="nav-links" id="navLinks">
                     <div class="red-dot" id="redDot"></div>
                     <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Home" data-en="Home">Home</a></li>
-                   
-                  
                     <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
-                  
                     <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
-                    
                     <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
                 </ul>
 
@@ -827,60 +821,76 @@
     <section class="parallax-section info-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
-                <h2 class="section-title" data-fr="Nos Coordonnées" data-en="Our Contact Details">Nos Coordonnées</h2>
-                <div class="info-grid">
+                <h2 class="section-title" data-fr="Nos Contacts & Équipe" data-en="Our Contacts & Team">Nos Contacts & Équipe</h2>
+                <div class="circular-team-grid">
 
-                    <div class="info-card">
-                        <div class="info-card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4.5A1 1 0 0 1 4 3.5h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>
+                    <!-- Modou - Directeur Général -->
+                    <div class="team-circle-card">
+                        <div class="team-avatar floating-bubble">
+                            <img src="modou.jpg" alt="Modou" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Modou';">
                         </div>
-                        <div class="info-card-body">
-                            <span class="info-card-label" data-fr="Téléphone" data-en="Phone">Téléphone</span>
-                            <div class="info-card-value">
+                        <div class="team-content">
+                            <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
+                            <h3>Modou</h3>
+                            <span class="team-role" data-fr="Directeur Général" data-en="General Manager">Directeur Général</span>
+                            <div class="team-phones">
                                 <a href="tel:+221776990000">+221 77 699 00 00</a>
                                 <a href="tel:+221776220000">+221 77 622 00 00</a>
                                 <a href="tel:+221773360000">+221 77 336 00 00</a>
                             </div>
+                            <a class="team-whatsapp" href="https://wa.me/221776990000" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
+                            </a>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <div class="info-card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2zm0 18.06a8 8 0 0 1-4.08-1.11l-.29-.17-3.03.8.81-2.95-.19-.3A8.06 8.06 0 1 1 12 20.06zm4.42-5.99c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4-.14 0-.3-.02-.46-.02-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+                    <!-- Addji - Secrétaire -->
+                    <div class="team-circle-card">
+                        <div class="team-avatar floating-bubble">
+                            <img src="addji.jpg" alt="Addji" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Addji';">
                         </div>
-                        <div class="info-card-body">
-                            <span class="info-card-label" data-fr="WhatsApp" data-en="WhatsApp">WhatsApp</span>
-                            <div class="info-card-value">
-                                <a href="https://wa.me/221776990000" target="_blank" rel="noopener" data-fr="+221 77 699 00 00" data-en="+221 77 699 00 00">+221 77 699 00 00</a>
+                        <div class="team-content">
+                            <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
+                            <h3>Addji</h3>
+                            <span class="team-role" data-fr="Secrétaire" data-en="Secretary">Secrétaire</span>
+                            <div class="team-phones">
+                                <a href="tel:+221785309736">+221 78 530 97 36</a>
                             </div>
-                            <a class="info-card-link" href="https://wa.me/221776990000" target="_blank" rel="noopener">
-                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg>
-                                <span data-fr="Discuter maintenant" data-en="Chat now">Discuter maintenant</span>
+                            <a class="team-whatsapp" href="https://wa.me/221785309736" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.63 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2z"/></svg> WhatsApp
                             </a>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <div class="info-card-media">
-                            <img src="bureau.jpg" alt="Bureau CCS - Hann Mariste" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Notre+Bureau';">
+                    <!-- Moussa Faye - Mali -->
+                    <div class="team-circle-card">
+                        <div class="team-avatar floating-bubble">
+                            <img src="moussafaye.jpg" alt="Moussa Faye" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Moussa';">
                         </div>
-                        <div class="info-card-body">
-                            <span class="info-card-label" data-fr="Notre Bureau" data-en="Our Office">Notre Bureau</span>
-                            <div class="info-card-value" style="font-size: 16px;" data-fr="Hann Mariste, en face Coris Bank, Dakar, Sénégal" data-en="Hann Mariste, opposite Coris Bank, Dakar, Senegal">Hann Mariste, en face Coris Bank, Dakar, Sénégal</div>
-                            <a class="info-card-link" href="https://www.google.com/maps/search/?api=1&query=Hann+Mariste+en+face+Coris+Bank+Dakar+Senegal" target="_blank" rel="noopener">
-                                <svg viewBox="0 0 24 24"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-                                <span data-fr="Voir sur la carte" data-en="View on map">Voir sur la carte</span>
-                            </a>
+                        <div class="team-content">
+                            <span class="team-country" data-fr="Mali" data-en="Mali">Mali</span>
+                            <h3>Moussa Faye</h3>
+                            <span class="team-role" data-fr="Représentant" data-en="Representative">Représentant</span>
+                            <div class="team-phones">
+                                <a href="tel:+22300000000">+223 00 00 00 00</a>
+                                <a href="tel:+22300222000">+223 00 22 20 00</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <div class="info-card-media">
-                            <img src="ccs2.png" alt="Entrepôt CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Notre+Entrepot';">
+                    <!-- Guinée Conakry -->
+                    <div class="team-circle-card">
+                        <div class="team-avatar floating-bubble">
+                            <img src="guinee.jpg" alt="Guinée Conakry" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Guinee';">
                         </div>
-                        <div class="info-card-body">
-                            <span class="info-card-label" data-fr="Notre Entrepôt" data-en="Our Warehouse">Notre Entrepôt</span>
-                            <div class="info-card-value" style="font-size: 16px;" data-fr="Adresse à préciser, Dakar, Sénégal" data-en="Address to be confirmed, Dakar, Senegal">Adresse à préciser, Dakar, Sénégal<span class="info-card-note" data-fr="(à compléter)" data-en="(to be completed)">(à compléter)</span></div>
+                        <div class="team-content">
+                            <span class="team-country" data-fr="Guinée Conakry" data-en="Guinea Conakry">Guinée Conakry</span>
+                            <h3>Bureau</h3>
+                            <span class="team-role" data-fr="Contact Commercial" data-en="Commercial Contact">Contact Commercial</span>
+                            <div class="team-phones">
+                                <a href="tel:+224614086262">+224 614 08 62 62</a>
+                                <a href="tel:+224620393970">+224 620 39 39 70</a>
+                            </div>
                         </div>
                     </div>
 
@@ -952,14 +962,13 @@
         <div class="footer-content">
             <div class="footer-col">
                 <h4 data-fr="À propos de CCS" data-en="About CCS">À propos de CCS</h4>
-                <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export specialise dans la  papeterie et les produits alimentaires" data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
+                <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export specialise dans la papeterie et les produits alimentaires" data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
                     Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019.
                 </p>
             </div>
             <div class="footer-col">
                 <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
                 <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-               
                 <a href="product.html" data-fr="Produits" data-en="Products">Produits</a>
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
@@ -971,7 +980,7 @@
             </div>
             <div class="footer-col">
                 <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
-                <p data-fr=" HAnN MaristE en face Coris BANK Dakar, Sénégal" data-en=" Hann Mariste,Dakar, Senegal">Dakar, Sénégal</p>
+                <p data-fr=" Hann Mariste en face Coris Bank Dakar, Sénégal" data-en=" Hann Mariste, Dakar, Senegal">Hann Mariste, Dakar, Sénégal</p>
                 <p>Email : comptoircommercialsourang@gmail.com</p>
                 <p>Tél : +221 77 699 00 00 / +221 77 622 00 00 / +221 77 336 00 00</p>
             </div>
@@ -1166,3 +1175,5 @@
     </script>
 </body>
 </html>
+
+```
