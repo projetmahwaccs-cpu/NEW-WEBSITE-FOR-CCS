@@ -1512,13 +1512,16 @@
     </section>
 
     <!-- SECTION 5 : LOCALISATION & CARTE (Parallaxe) -->
- <section class="locations-section">
+<section class="locations-section">
   <div class="locations-container">
     <h2>Nos Agences</h2>
     
     <div class="locations-grid">
       
       <div class="location-card">
+        <div class="location-image-container">
+          <img src="URL_IMAGE_SENEGAL" alt="Agence Sénégal">
+        </div>
         <div class="location-info">
           <h3>Sénégal</h3>
           <p><strong>Adresse :</strong> Hann Mariste, en face de la Coris Bank</p>
@@ -1530,7 +1533,7 @@
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.0!2d-17.43!3d14.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSFNOTiBNQVJJU1RF!5e0!3m2!1sfr!2ssn!4v1" 
             width="100%" 
-            height="220" 
+            height="200" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
@@ -1540,6 +1543,9 @@
       </div>
 
       <div class="location-card">
+        <div class="location-image-container">
+          <img src="URL_IMAGE_MALI" alt="Agence Mali">
+        </div>
         <div class="location-info">
           <h3>Mali</h3>
           <p><strong>Adresse :</strong> Bamako - Hamdallaye ACI 2000, Building Mamadou Yara</p>
@@ -1551,7 +1557,7 @@
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.5!2d-8.02!3d12.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQUNJIDIwMDAgQmFtYWtv!5e0!3m2!1sfr!2sml!4v1" 
             width="100%" 
-            height="220" 
+            height="200" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
@@ -1561,6 +1567,9 @@
       </div>
 
       <div class="location-card">
+        <div class="location-image-container">
+          <img src="URL_IMAGE_GUINEE" alt="Agence Guinée">
+        </div>
         <div class="location-info">
           <h3>Guinée</h3>
           <p><strong>Adresse :</strong> Marché Madina, Conakry</p>
@@ -1572,7 +1581,7 @@
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.5!2d-13.68!3d9.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFyY2jDqSBNYWRpbmE!5e0!3m2!1sfr!2sgn!4v1" 
             width="100%" 
-            height="220" 
+            height="200" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
@@ -1606,22 +1615,23 @@
 
 .locations-grid {
   display: flex;
-  flex-direction: row; /* Force l'affichage horizontal */
+  flex-direction: row;
   justify-content: space-between;
   gap: 30px;
-  flex-wrap: nowrap; /* Empêche le retour à la ligne si l'écran est grand */
+  flex-wrap: nowrap;
 }
 
 .location-card {
   background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  border: 2px solid #2c3e50; /* Bordure simple et visible */
+  border-radius: 0px; /* Coins pointus (suppression des arrondis) */
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1); /* Optionnel : style un peu brut/design */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1; /* Permet aux trois cartes de se partager l'espace équitablement */
-  min-width: 0; /* Évite les dépassements avec les flexbox */
+  flex: 1;
+  min-width: 0;
   transition: transform 0.3s ease;
 }
 
@@ -1629,27 +1639,45 @@
   transform: translateY(-5px);
 }
 
+/* Style pour l'emplacement de l'image d'illustration */
+.location-image-container {
+  width: 100%;
+  height: 160px;
+  background-color: #e0e0e0; /* Fond gris par défaut si l'image tarde à charger */
+  border: 1px solid #ccc;
+  border-radius: 0px; /* Coins pointus aussi pour l'image */
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.location-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Permet à l'image de bien remplir l'espace sans se déformer */
+}
+
 .location-info h3 {
   color: #007bff;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 1.5rem;
 }
 
 .location-info p {
   color: #555;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
 }
 
 .map-link {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #ffffff;
   background-color: #007bff;
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 0px; /* Coins pointus sur le bouton */
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
 }
@@ -1659,12 +1687,12 @@
 }
 
 .map-container {
-  border-radius: 8px;
+  border-radius: 0px; /* Coins pointus pour la map */
   overflow: hidden;
-  border: 1px solid #eaeaea;
+  border: 1px solid #ccc;
 }
 
-/* Version responsive : repasse en colonne sur les petits écrans (tablettes/mobiles) */
+/* Responsive : passage en colonne sur les petits écrans */
 @media (max-width: 992px) {
   .locations-grid {
     flex-direction: column;
