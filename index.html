@@ -1512,7 +1512,7 @@
     </section>
 
     <!-- SECTION 5 : LOCALISATION & CARTE (Parallaxe) -->
-       <section class="locations-section">
+ <section class="locations-section">
   <div class="locations-container">
     <h2>Nos Agences</h2>
     
@@ -1584,7 +1584,8 @@
     </div>
   </div>
 </section>
-<STYLE>
+
+<style>
 .locations-section {
   padding: 60px 20px;
   background-color: #f4f7f6;
@@ -1592,7 +1593,7 @@
 }
 
 .locations-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -1604,9 +1605,11 @@
 }
 
 .locations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
+  flex-direction: row; /* Force l'affichage horizontal */
+  justify-content: space-between;
   gap: 30px;
+  flex-wrap: nowrap; /* Empêche le retour à la ligne si l'écran est grand */
 }
 
 .location-card {
@@ -1617,6 +1620,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1; /* Permet aux trois cartes de se partager l'espace équitablement */
+  min-width: 0; /* Évite les dépassements avec les flexbox */
   transition: transform 0.3s ease;
 }
 
@@ -1658,7 +1663,14 @@
   overflow: hidden;
   border: 1px solid #eaeaea;
 }
-</STYLE>
+
+/* Version responsive : repasse en colonne sur les petits écrans (tablettes/mobiles) */
+@media (max-width: 992px) {
+  .locations-grid {
+    flex-direction: column;
+  }
+}
+</style>
 
     <!-- FOOTER -->
     <footer class="footer">
