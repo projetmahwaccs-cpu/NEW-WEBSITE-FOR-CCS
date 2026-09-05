@@ -1335,6 +1335,223 @@
         </div>
     </section>
 
+    ----
+    <!-- SECTION CONDITIONNEMENT TYPE INSTAGRAM -->
+<section class="conditioning-section">
+    <div class="section-header">
+        <h2>Conditionnement</h2>
+        <p class="section-subtitle">Découvrez nos formats de conditionnement</p>
+    </div>
+    
+    <div class="conditioning-carousel-container" id="conditioningCarousel">
+        <div class="conditioning-carousel-track">
+            <!-- Répétez ou remplacez selon vos besoins (20 cartes) -->
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_1" alt="Conditionnement 1">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_2" alt="Conditionnement 2">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_3" alt="Conditionnement 3">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_4" alt="Conditionnement 4">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_5" alt="Conditionnement 5">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_6" alt="Conditionnement 6">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_7" alt="Conditionnement 7">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_8" alt="Conditionnement 8">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_9" alt="Conditionnement 9">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_10" alt="Conditionnement 10">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_11" alt="Conditionnement 11">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_12" alt="Conditionnement 12">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_13" alt="Conditionnement 13">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_14" alt="Conditionnement 14">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_15" alt="Conditionnement 15">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_16" alt="Conditionnement 16">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_17" alt="Conditionnement 17">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_18" alt="Conditionnement 18"></div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_19" alt="Conditionnement 19">
+            </div>
+            <div class="conditioning-card">
+                <div class="card-badge">Best Foods</div>
+                <img src="URL_IMAGE_20" alt="Conditionnement 20">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STYLES CSS -->
+<style>
+    .conditioning-section {
+        width: 100%;
+        padding: 50px 0;
+        background-color: #ffffff;
+        overflow: hidden;
+    }
+
+    .conditioning-section .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .conditioning-section .section-header h2 {
+        font-size: 26px;
+        color: #002664;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .conditioning-section .section-subtitle {
+        font-size: 14px;
+        color: #64748b;
+    }
+
+    .conditioning-carousel-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        cursor: grab;
+        padding: 10px 20px;
+    }
+
+    .conditioning-carousel-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .conditioning-carousel-container:active {
+        cursor: grabbing;
+    }
+
+    .conditioning-carousel-track {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+    }
+
+    /* Style format Instagram (carré) */
+    .conditioning-card {
+        position: relative;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        width: 300px;
+        height: 300px; /* Format carré style Insta */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .conditioning-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .conditioning-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Badge "Best Foods" positionné en haut à gauche */
+    .card-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(0, 38, 100, 0.85);
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+        backdrop-filter: blur(4px);
+        z-index: 5;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+</style>
+
+<!-- CODE JAVASCRIPT -->
+<script>
+    const condSlider = document.getElementById('conditioningCarousel');
+    let isCondAutoScrolling = true;
+    let condSpeed = 1;
+
+    function startCondAutoScroll() {
+        if (isCondAutoScrolling) {
+            condSlider.scrollLeft += condSpeed;
+            if (condSlider.scrollLeft >= (condSlider.scrollWidth - condSlider.clientWidth)) {
+                condSlider.scrollLeft = 0; 
+            }
+        }
+        requestAnimationFrame(startCondAutoScroll);
+    }
+
+    condSlider.addEventListener('mouseenter', () => { isCondAutoScrolling = false; });
+    condSlider.addEventListener('mouseleave', () => { isCondAutoScrolling = true; });
+
+    condSlider.addEventListener('touchstart', () => { isCondAutoScrolling = false; });
+    condSlider.addEventListener('touchend', () => { 
+        setTimeout(() => { isCondAutoScrolling = true; }, 2500); 
+    });
+
+    requestAnimationFrame(startCondAutoScroll);
+</script>
+    ---
+
     <!-- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE -->
     <section class="catalog-section">
         <div class="container">
