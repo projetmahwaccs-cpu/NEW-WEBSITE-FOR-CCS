@@ -326,53 +326,6 @@
             text-align: center;
         }
 
-        /* --- BANNIERES THÉMATIQUES --- */
-        .brand-banner-section {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            margin: 40px 0 25px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .brand-banner-section .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .brand-banner-section .content-overlay {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            color: #ffffff;
-            text-align: center;
-            background: rgba(0, 38, 100, 0.7);
-            padding: 0 20px;
-        }
-
-        .brand-banner-section .content-overlay h3 {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
-            color: #38bdf8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
-        .brand-banner-section .content-overlay p {
-            font-size: 1.1rem;
-        }
-
         .category-subheading {
             font-size: 22px;
             color: #002664;
@@ -383,7 +336,97 @@
             padding-left: 12px;
         }
 
-        /* --- UNE SEULE BASE DE RECHERCHE GLOBALE --- */
+        /* --- SECTION UNIFIÉE PRODUITS ALIMENTAIRES AVEC BACKGROUND DÉFILANT & TEXTE ANIMÉ --- */
+        .food-unified-hero {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .food-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            animation: slideFoodBg 32s linear infinite;
+            width: max-content;
+        }
+
+        .food-bg-slider img {
+            width: 100vw;
+            max-width: 1400px;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            filter: brightness(0.65);
+        }
+
+        @keyframes slideFoodBg {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .food-hero-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+            background: rgba(0, 38, 100, 0.55);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .animated-typing-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #38bdf8;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 1000px;
+        }
+
+        .animated-typing-text span {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: wordAppear 0.6s forwards;
+        }
+
+        @keyframes wordAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .animated-typing-text {
+                font-size: 1.6rem;
+            }
+            .food-unified-hero {
+                height: 240px;
+            }
+        }
+
+        /* --- BASE DE RECHERCHE GLOBALE (POUR LES PRODUITS ALIMENTAIRES) --- */
         .global-search-container {
             max-width: 600px;
             margin: 0 auto 40px auto;
@@ -424,7 +467,7 @@
             border-color: #0ea5e9;
         }
 
-        /* --- CATALOGUE DES PRODUITS (CARTES VERTICALES SIMILAIRES À L'IMAGE) --- */
+        /* --- CATALOGUE DES PRODUITS --- */
         .products-grid-horizontal {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -464,12 +507,11 @@
             transform: translateY(-4px);
         }
 
-        /* Styles pour les badges sur les bordures des cards */
         .product-row.agro-card {
-            border: 3px solid #0284c7; /* Bordure spécifique agro-alimentaire */
+            border: 3px solid #0284c7;
         }
         .product-row.paper-card {
-            border: 3px solid #10b981; /* Bordure spécifique papeterie */
+            border: 3px solid #10b981;
         }
 
         .card-border-badge {
@@ -544,7 +586,7 @@
         }
 
         .product-row-btn {
-            background-color: #0ea5e9; /* Vert style "VIEW MORE" de l'image */
+            background-color: #0ea5e9;
             color: #fff;
             text-align: center;
             padding: 8px 16px;
@@ -555,10 +597,6 @@
             align-self: flex-start;
             letter-spacing: 0.5px;
             transition: background-color 0.2s, transform 0.2s;
-        }
-
-        .product-row:hover .product-row-btn {
-            background-color: #0ea5e9;
         }
 
         .category-empty-msg {
@@ -939,7 +977,7 @@
             line-height: 1.6;
         }
 
-        /* --- ANIMATION D'APPARITION AU SCROLL (EFFET DÉPÔT GAUCHE / DROITE) --- */
+        /* --- ANIMATION D'APPARITION AU SCROLL --- */
         .reveal-left {
             opacity: 0;
             transform: translateX(-60px) translateY(30px);
@@ -956,7 +994,6 @@
             transform: translateX(0) translateY(0);
         }
 
-        /* Garder l'ancienne classe reveal simple si utilisée ailleurs */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -1218,61 +1255,56 @@
             <div class="section-header reveal">
                 <h2 class="section-title">Catalogue Global des Produits</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Recherchez instantanément dans l'ensemble de notre catalogue et explorez nos gammes par catégorie.</p>
-            </div>
-
-            <!-- Une seule base de recherche unique pour tout filtrer -->
-            <div class="global-search-container reveal">
-                <div class="search-box-group">
-                    <label for="globalSearchInput"> Recherche un Produits </label>
-                    <input type="text" id="globalSearchInput" class="category-engine-input" placeholder="Tapez un mot-clé (ex: riz, lait, papier, épices...)" oninput="filterGlobalProducts()">
-                </div>
+                <p class="section-subtitle">Découvrez notre papeterie et l'intégralité de nos gammes de produits alimentaires de qualité supérieure.</p>
             </div>
 
             <!-- ================= SOUS-SECTION : PAPETERIE ================= -->
-            <div class="section-header reveal" style="margin-top: 40px; margin-bottom: 20px;">
+            <div class="section-header reveal" style="margin-top: 20px; margin-bottom: 20px;">
                 <h3 class="category-subheading" style="margin: 0; border: none; padding: 0;">Papeterie</h3>
             </div>
             <div class="products-grid-horizontal" id="paperGridContainer">
                 <!-- Généré dynamiquement par JavaScript -->
             </div>
-            <p class="category-empty-msg" id="paperEmptyMsg">Aucun produit de papeterie ne correspond à votre recherche.</p>
 
-
-            <!-- ================= SOUS-SECTION ÉPICES (BEST FOODS SPICES) ================= -->
-            <div class="brand-banner-section reveal">
-                <img src="bestfoods.png" alt="Best Foods Spices showcase" class="bg-image">
-                <div class="content-overlay">
-                    <h3>Best Foods Spices</h3>
-                    <p>Nos sélections d'épices d'exception de qualité supérieure</p>
+            <!-- ================= SECTION UNIQUE UNIFIÉE : PRODUITS ALIMENTAIRES AVEC BACKGROUND DÉFILANT 8 IMAGES & TEXTE ANIMÉ ================= -->
+            <div class="food-unified-hero reveal" style="margin-top: 60px;">
+                <div class="food-bg-slider" id="foodBgSlider">
+                    <img src="bestfoods.png" alt="Alimentation CCS 1">
+                    <img src="lg.png" alt="Alimentation CCS 2">
+                    <img src="produit_piment.jpg" alt="Alimentation CCS 3" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+3'">
+                    <img src="produit_poivre.jpg" alt="Alimentation CCS 4" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+4'">
+                    <img src="WhatsApp_Image_2026-09-02_at_17_35_50.jpeg" alt="Alimentation CCS 5">
+                    <img src="sucre.png" alt="Alimentation CCS 6">
+                    <img src="huile.png" alt="Alimentation CCS 7">
+                    <img src="tomato.png" alt="Alimentation CCS 8">
+                    <!-- Duplication pour boucle infinie fluide -->
+                    <img src="bestfoods.png" alt="Alimentation CCS 1">
+                    <img src="lg.png" alt="Alimentation CCS 2">
+                    <img src="produit_piment.jpg" alt="Alimentation CCS 3">
+                    <img src="produit_poivre.jpg" alt="Alimentation CCS 4">
+                    <img src="WhatsApp_Image_2026-09-02_at_17_35_50.jpeg" alt="Alimentation CCS 5">
+                    <img src="sucre.png" alt="Alimentation CCS 6">
+                    <img src="huile.png" alt="Alimentation CCS 7">
+                    <img src="tomato.png" alt="Alimentation CCS 8">
+                </div>
+                <div class="food-hero-overlay">
+                    <div class="animated-typing-text" id="typingTextContainer">
+                        <!-- Généré dynamiquement par script pour effet d'apparition mot à mot -->
+                    </div>
                 </div>
             </div>
-            <div class="products-grid-horizontal" id="spicesGridContainer"></div>
-            <p class="category-empty-msg" id="spicesEmptyMsg">Aucune épice ne correspond à votre recherche.</p>
 
-
-            <!-- ================= SOUS-SECTION LÉGUMINEUSES & PRODUITS AGRICOLES ================= -->
-            <div class="brand-banner-section reveal" style="margin-top: 50px;">
-                <img src="lg.png" alt="Best Foods Legumes showcase" class="bg-image">
-                <div class="content-overlay">
-                    <h3>Best Foods & Légumineuses</h3>
-                    <p>Sélection rigoureuse de produits agricoles et légumineuses de premier choix</p>
+            <!-- ================= BASE DE RECHERCHE GLOBALE UNIQUE ================= -->
+            <div class="global-search-container reveal">
+                <div class="search-box-group">
+                    <label for="globalSearchInput">Recherche un Produit Alimentaire</label>
+                    <input type="text" id="globalSearchInput" class="category-engine-input" placeholder="Tapez un mot-clé (ex: riz, lait, piment, sucre...)" oninput="filterGlobalProducts()">
                 </div>
             </div>
-            <div class="products-grid-horizontal" id="legumesGridContainer"></div>
-            <p class="category-empty-msg" id="legumesEmptyMsg">Aucune légumineuse ou produit de cette catégorie ne correspond à votre recherche.</p>
 
-
-            <!-- ================= SOUS-SECTION PRODUITS LAITIERS ================= -->
-            <h3 class="category-subheading reveal">Produits Laitiers</h3>
-            <div class="products-grid-horizontal" id="dairyGridContainer"></div>
-            <p class="category-empty-msg" id="dairyEmptyMsg">Aucun produit laitier ne correspond à votre recherche.</p>
-
-
-            <!-- ================= SOUS-SECTION PRODUITS DIVERS ================= -->
-            <h3 class="category-subheading reveal">Produits Divers & Autres Marques CCS</h3>
-            <div class="products-grid-horizontal" id="diversGridContainer"></div>
-            <p class="category-empty-msg" id="diversEmptyMsg">Aucun produit divers ne correspond à votre recherche.</p>
+            <!-- TOUS LES PRODUITS ALIMENTAIRES RÉUNIS DANS CETTE MÊME GRILLE SANS SÉPARATION -->
+            <div class="products-grid-horizontal" id="unifiedFoodGridContainer" style="grid-template-columns: repeat(3, 1fr);"></div>
+            <p class="category-empty-msg" id="foodEmptyMsg">Aucun produit alimentaire ne correspond à votre recherche.</p>
 
         </div>
     </section>
@@ -1575,10 +1607,10 @@
                 images: ["cap1.png", "cap2.png", "cap3.png", "cap4.png", "cap5.png", "cap6.png", "cap7.png", "cap8.png", "cap9.png", "cap10.png", "cap11.png", "cap12.png", "cap13.png", "cap14.png", "cap15.png", "cap16.png", "cap17.png"]
             },
 
-            // 1. ÉPICES (Best Foods Spices)
+            // PRODUITS ALIMENTAIRES (Toutes catégories unifiées)
             {
                 name: "Piment Sec Rouge",
-                category: "spices",
+                category: "alimentaire",
                 image: "piment.png",
                 origin: "Inde / International",
                 ref: "CCS-PIMENT-ROUGE",
@@ -1591,7 +1623,7 @@
             },
             {
                 name: "Poivre Noir",
-                category: "spices",
+                category: "alimentaire",
                 image: "poivre.png",
                 origin: "Brésil / International",
                 ref: "CCS-POIVRE-03",
@@ -1604,7 +1636,7 @@
             },
             {
                 name: "Clous de Girofle",
-                category: "spices",
+                category: "alimentaire",
                 image: "produit_clous-de-girofle.jpg",
                 origin: "Madagascar / International",
                 ref: "CCS-GIROFLE-03",
@@ -1617,7 +1649,7 @@
             },
             {
                 name: "Feuilles de Laurier",
-                category: "spices",
+                category: "alimentaire",
                 image: "produit_feuilles-laurier.jpg",
                 origin: "Bassin Méditerranéen",
                 ref: "CCS-LAURIER-04",
@@ -1628,11 +1660,9 @@
                 videoLoop: "laurier.mp4",
                 images: ["laur1.png", "laur2.png", "laur3.png", "laur4.png", "laur5.png", "laur6.png", "laur7.png", "laur8.png", "laur9.png", "laur10.png", "laur11.png", "laur12.png", "laur13.png", "laur14.png", "laur15.png", "laur16.png", "laur17.png"]
             },
-
-            // 2. LÉGUMINEUSES & PRODUITS AGRICOLES
             {
                 name: "Ail (Garlic)",
-                category: "legumes",
+                category: "alimentaire",
                 image: "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
                 origin: "Chine / International",
                 ref: "CCS-AIL-01",
@@ -1645,7 +1675,7 @@
             },
             {
                 name: "Gingembre (Ginger)",
-                category: "legumes",
+                category: "alimentaire",
                 image: "ginger.png",
                 origin: "Brésil / International",
                 ref: "GINGEMBRE MATURE",
@@ -1658,7 +1688,7 @@
             },
             {
                 name: "Petits Pois en Conserve",
-                category: "legumes",
+                category: "alimentaire",
                 image: "produit_petits-pois.jpg",
                 origin: "International",
                 ref: "CCS-POIS-12",
@@ -1669,11 +1699,9 @@
                 videoLoop: "pp.mp4",
                 images: ["pois1.png", "pois2.png", "pois3.png", "pois4.png", "pois5.png", "pois6.png", "pois7.png", "pois8.png", "pois9.png", "pois10.png", "pois11.png", "pois12.png", "pois13.png", "pois14.png", "pois15.png", "pois16.png", "pois17.png"]
             },
-
-            // 3. PRODUITS LAITIERS
             {
                 name: "Lait Concentré Touba",
-                category: "dairy",
+                category: "alimentaire",
                 image: "produit_lait-concentre-touba.jpg",
                 origin: "Sénégal / International",
                 ref: "CCS-LAIT-CONC-07",
@@ -1686,7 +1714,7 @@
             },
             {
                 name: "Lait Évaporé Touba",
-                category: "dairy",
+                category: "alimentaire",
                 image: "produit_lait-evapore-touba.jpg",
                 origin: "Sénégal / International",
                 ref: "CCS-LAIT-EVAP-08",
@@ -1699,7 +1727,7 @@
             },
             {
                 name: "Lait en Poudre Victoria",
-                category: "dairy",
+                category: "alimentaire",
                 image: "produit_lait-poudre-victoria.jpg",
                 origin: "International",
                 ref: "CCS-LAIT-POUD-09",
@@ -1710,11 +1738,9 @@
                 videoLoop: "letpv.mp4",
                 images: ["vletpv1.png", "vletpv2.png", "vletpv3.png", "vletpv4.png", "vletpv5.png", "vletpv6.png", "vletpv7.png", "vletpv8.png", "vletpv9.png", "vletpv10.png", "vletpv11.png", "vletpv12.png", "vletpv13.png", "vletpv14.png", "vletpv15.png", "vletpv16.png", "vletpv17.png"]
             },
-
-            // 4. PRODUITS DIVERS
             {
                 name: "Sucre Crystal Blanc",
-                category: "divers",
+                category: "alimentaire",
                 image: "sucre.png",
                 origin: "Brésil / Grupo Bazan",
                 ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
@@ -1727,7 +1753,7 @@
             },
             {
                 name: "Ananas Sarama",
-                category: "divers",
+                category: "alimentaire",
                 image: "produit_ananas-sarama-1.jpg",
                 origin: "Côte d'Ivoire / International",
                 ref: "CCS-ANANAS-01",
@@ -1740,7 +1766,7 @@
             },
             {
                 name: "Café Sélection CCS",
-                category: "divers",
+                category: "alimentaire",
                 image: "cafe.png",
                 origin: "Afrique de l'Ouest / Amériques",
                 ref: "CCS-CAFE-02",
@@ -1753,7 +1779,7 @@
             },
             {
                 name: "Huiles",
-                category: "divers",
+                category: "alimentaire",
                 image: "huile.png",
                 origin: "Malaisie / International",
                 ref: "CCS-HUILE-RAFFINEE",
@@ -1766,7 +1792,7 @@
             },
             {
                 name: "Jus d'Orange Trois Continental",
-                category: "divers",
+                category: "alimentaire",
                 image: "produit_jus-orange-trois.jpg",
                 origin: "International",
                 ref: "CCS-JUS-06",
@@ -1779,7 +1805,7 @@
             },
             {
                 name: "Pâte de Tomate Sarama",
-                category: "divers",
+                category: "alimentaire",
                 image: "tomato.png",
                 origin: "International",
                 ref: "CCS-TOMATE-11",
@@ -1792,7 +1818,7 @@
             },
             {
                 name: "Raisins Secs",
-                category: "divers",
+                category: "alimentaire",
                 image: "produit_raisins-secs.jpg",
                 origin: "International",
                 ref: "CCS-RAISIN-14",
@@ -1805,7 +1831,7 @@
             },
             {
                 name: "Riz Moba (100% Brisure)",
-                category: "divers",
+                category: "alimentaire",
                 image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
                 origin: "Asie / International",
                 ref: "CCS-RIZ-MOBA",
@@ -1818,7 +1844,7 @@
             },
             {
                 name: "Riz Oriba",
-                category: "divers",
+                category: "alimentaire",
                 image: "produit_riz-oriba.jpg",
                 origin: "International",
                 ref: "CCS-RIZ-ORIBA",
@@ -1831,7 +1857,7 @@
             },
             {
                 name: "Tamarin",
-                category: "divers",
+                category: "alimentaire",
                 image: "tamarin.png",
                 origin: "Afrique / International",
                 ref: "CCS-TAMARIN-17",
@@ -1861,17 +1887,12 @@
         }
 
         const paperGridContainer = document.getElementById('paperGridContainer');
-        const spicesGridContainer = document.getElementById('spicesGridContainer');
-        const legumesGridContainer = document.getElementById('legumesGridContainer');
-        const dairyGridContainer = document.getElementById('dairyGridContainer');
-        const diversGridContainer = document.getElementById('diversGridContainer');
+        const unifiedFoodGridContainer = document.getElementById('unifiedFoodGridContainer');
 
         function buildProductCardHTML(prod, index, i) {
-            // Alternance automatique gauche / droite selon l'index
             const revealClass = (i % 2 === 0) ? 'reveal-left' : 'reveal-right';
             const delay = Math.min((i % 3) * 0.15, 0.4);
 
-            // Détermination du badge et de la classe CSS selon la catégorie
             let badgeHtml = '';
             let cardCategoryClass = '';
 
@@ -1879,7 +1900,6 @@
                 cardCategoryClass = 'paper-card';
                 badgeHtml = `<img src="lobr.png.png" alt="Badge Papeterie CCS" class="card-border-badge">`;
             } else {
-                // Pour les autres catégories considérées comme agro-alimentaires (spices, legumes, dairy, divers)
                 cardCategoryClass = 'agro-card';
                 badgeHtml = `<img src="bg.png" alt="Badge Best Foods" class="card-border-badge">`;
             }
@@ -1900,43 +1920,53 @@
             `;
         }
 
-        // --- FONCTION DE FILTRAGE UNIQUE (BASE DE RECHERCHE GLOBALE) ---
-        function filterCategoryGrid(categoryKey, containerEl, emptyMsgEl, query) {
+        // --- AFFICHAGE DE LA PAPETERIE ---
+        function renderPaperGrid() {
             const items = productsDatabase
                 .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category === categoryKey)
+                .filter(({ prod }) => prod.category === 'papier');
+
+            paperGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
+            observeReveals();
+        }
+
+        // --- AFFICHAGE ET FILTRAGE DE LA SECTION UNIFIÉE DES PRODUITS ALIMENTAIRES ---
+        function renderFoodGrid(query = '') {
+            const items = productsDatabase
+                .map((prod, index) => ({ prod, index }))
+                .filter(({ prod }) => prod.category === 'alimentaire')
                 .filter(({ prod }) => !query || prod.name.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query));
 
+            const emptyMsgEl = document.getElementById('foodEmptyMsg');
             if (!items.length) {
-                containerEl.innerHTML = '';
+                unifiedFoodGridContainer.innerHTML = '';
                 if (emptyMsgEl) emptyMsgEl.style.display = 'block';
                 return;
             }
             if (emptyMsgEl) emptyMsgEl.style.display = 'none';
-            containerEl.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
+            unifiedFoodGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
             observeReveals();
         }
 
         function filterGlobalProducts() {
             const query = document.getElementById('globalSearchInput').value.trim().toLowerCase();
-
-            filterCategoryGrid('papier', paperGridContainer, document.getElementById('paperEmptyMsg'), query);
-            filterCategoryGrid('spices', spicesGridContainer, document.getElementById('spicesEmptyMsg'), query);
-            filterCategoryGrid('legumes', legumesGridContainer, document.getElementById('legumesEmptyMsg'), query);
-            filterCategoryGrid('dairy', dairyGridContainer, document.getElementById('dairyEmptyMsg'), query);
-            filterCategoryGrid('divers', diversGridContainer, document.getElementById('diversEmptyMsg'), query);
+            renderFoodGrid(query);
         }
 
-        // Initialisation de l'affichage complet
+        // Initialisation complète
         function renderAllGrids() {
-            filterCategoryGrid('papier', paperGridContainer, document.getElementById('paperEmptyMsg'), '');
-            filterCategoryGrid('spices', spicesGridContainer, document.getElementById('spicesEmptyMsg'), '');
-            filterCategoryGrid('legumes', legumesGridContainer, document.getElementById('legumesEmptyMsg'), '');
-            filterCategoryGrid('dairy', dairyGridContainer, document.getElementById('dairyEmptyMsg'), '');
-            filterCategoryGrid('divers', diversGridContainer, document.getElementById('diversEmptyMsg'), '');
+            renderPaperGrid();
+            renderFoodGrid('');
         }
 
         renderAllGrids();
+
+        // --- TEXTE ANIMÉ MOT PAR MOT (FRANÇAIS) ---
+        const typingTextContainer = document.getElementById('typingTextContainer');
+        const sentenceToType = "Nous apportons la santé et la saveur à vos tables";
+        const words = sentenceToType.split(' ');
+        
+        typingTextContainer.innerHTML = words.map((word, idx) => `<span style="animation-delay: ${idx * 0.25}s">${word}</span>`).join(' ');
 
         // --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE ---
         const containerGalleryImages = [
