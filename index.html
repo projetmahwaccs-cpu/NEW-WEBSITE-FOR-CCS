@@ -1779,5 +1779,237 @@
             }
         });
     </script>
+    <!-- --- INTRO ROYALE AVEC VIDÉO ET ANIMATION DU LOGO --- -->
+<div id="royalIntroOverlay" class="royal-intro-container">
+    <video autoplay muted loop playsinline class="intro-bg-video">
+        <source src="inloop.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+    <div class="intro-dark-filter"></div>
+
+    <div class="intro-content-wrapper">
+        <!-- Logo qui s'agrandit en tournant sur lui-même -->
+        <div class="intro-logo-box">
+            <img src="lobr.png" alt="CCS Logo" class="rotating-growing-logo">
+        </div>
+
+        <!-- Message de bienvenue -->
+        <h2 class="intro-welcome-text">Bienvenue chez</h2>
+
+        <!-- Apparition séquentielle et royale -->
+        <div class="royal-text-sequence">
+            <span class="word-comptoir">COMPTOIR</span>
+            <span class="word-commercial">COMMERCIAL</span>
+            <span class="word-sourang">SOURANG</span>
+            <span class="word-sourang">SARL</span>
+        </div>
+    </div>
+
+    <!-- Bouton pour passer l'intro si l'utilisateur le souhaite -->
+    <button class="skip-intro-btn" onclick="closeIntro()">Entrer sur le site</button>
+</div>
+
+<style>
+    /* --- Styles de l'Intro Royale --- */
+    .royal-intro-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #000;
+        animation: fadeOutIntro 0.8s ease 5.5s forwards; /* Disparaît après 5.5 secondes */
+    }
+
+    .intro-bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+    }
+
+    .intro-dark-filter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 10, 30, 0.75);
+        z-index: -1;
+    }
+
+    .intro-content-wrapper {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Animation du Logo : Zoom avant + Rotation sur lui-même */
+    @keyframes logoSpinZoom {
+        0% {
+            transform: scale(0.2) rotate(0deg);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    .intro-logo-box img {
+        width: 140px;
+        height: auto;
+        object-fit: contain;
+        animation: logoSpinZoom 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    /* Texte de bienvenue */
+    .intro-welcome-text {
+        color: #38bdf8;
+        font-size: 22px;
+        font-family: Georgia, serif;
+        font-style: italic;
+        letter-spacing: 2px;
+        opacity: 0;
+        animation: fadeInText 1s ease 1.5s forwards;
+    }
+
+    /* Séquence des mots de manière royale */
+    .royal-text-sequence {
+        display: flex;
+        gap: 15px;
+        font-size: 38px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: Arial, sans-serif;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* 1. COMPTOIR se dépose en premier */
+    .word-comptoir {
+        color: #ffffff;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: dropRoyal 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) 2.2s forwards;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    /* 2. COMMERCIAL vient ensuite */
+    .word-commercial {
+        color: #38bdf8;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: dropRoyal 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) 2.9s forwards;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    /* 3. SOURANG arrive par la suite */
+    .word-sourang {
+        color: #ffffff;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: dropRoyal 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) 3.6s forwards;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Effet de dépôt royal (glissement fluide vers le bas avec rebond léger) */
+    @keyframes dropRoyal {
+        0% {
+            opacity: 0;
+            transform: translateY(-40px) scale(0.9);
+        }
+        70% {
+            opacity: 1;
+            transform: translateY(8px) scale(1.02);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes fadeInText {
+        to { opacity: 1; }
+    }
+
+    /* Bouton pour fermer l'intro */
+    .skip-intro-btn {
+        position: absolute;
+        bottom: 30px;
+        background: transparent;
+        border: 2px solid #38bdf8;
+        color: #38bdf8;
+        padding: 10px 25px;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInText 1s ease 4.2s forwards;
+    }
+
+    .skip-intro-btn:hover {
+        background-color: #38bdf8;
+        color: #000;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Disparition globale de l'intro */
+    @keyframes fadeOutIntro {
+        to {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+
+    /* Responsive mobile */
+    @media (max-width: 768px) {
+        .royal-text-sequence {
+            font-size: 24px;
+            gap: 8px;
+        }
+        .intro-logo-box img {
+            width: 100px;
+        }
+    }
+</style>
+
+<script>
+    // Fonction pour fermer l'intro manuellement ou automatiquement
+    function closeIntro() {
+        const intro = document.getElementById('royalIntroOverlay');
+        if (intro) {
+            intro.style.transition = "opacity 0.5s ease";
+            intro.style.opacity = "0";
+            setTimeout(() => {
+                intro.remove();
+            }, 500);
+        }
+    }
+
+    // Suppression automatique après la fin de l'animation (5.8 secondes)
+    setTimeout(() => {
+        closeIntro();
+    }, 5800);
+</script>
 </body>
 </html>
