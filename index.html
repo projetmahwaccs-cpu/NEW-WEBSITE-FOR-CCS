@@ -930,45 +930,382 @@
     </section>
 
     <!-- SECTION DE PRÉSENTATION DÉTAILLÉE (Split-Screen) -->
-    <section class="ccs-about-section">
-        <!-- Block 1 -->
+
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- Barre de Navigation --- */
+        .navbar {
+            background-color: white;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 12px;
+        }
+
+        .nav-item {
+            margin: 0;
+            padding: 5px; 
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #002664;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            display: inline-block;
+            padding: 8px 12px;
+            border: 2px solid #0ea5e9;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background-color: #0ea5e9;
+        }
+
+        .red-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #0ea5e9;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
+            top: -15px; 
+        }
+        
+        .nav-item .nav-link.active {
+            color: #0ea5e9;
+            background-color: #fff;
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #0ea5e9;
+            margin: 10px auto 0;
+        }
+
+        /* --- STYLE HISTORIQUE CCS : VIDÉO EN ARRIÈRE-PLAN & EFFET HEURTOIR --- */
+        .ccs-about-section {
+            width: 100%;
+            position: relative;
+            padding: 80px 20px;
+            overflow: hidden;
+            background-color: #001226; /* Fallback couleur si la vidéo met du temps à charger */
+        }
+
+        /* Vidéo en arrière-plan */
+        .ccs-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.55; /* Ajuste la transparence de la vidéo */
+        }
+
+        /* Superbe overlay sombre pour garder la lisibilité du texte par-dessus la vidéo */
+        .ccs-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 38, 100, 0.85), rgba(0, 18, 38, 0.9));
+            z-index: 1;
+        }
+
+        .ccs-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto 90px auto;
+            position: relative;
+            z-index: 2;
+            min-height: 420px;
+        }
+
+        .ccs-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Card de Texte Indépendante (Arrive de la gauche) */
+        .ccs-text-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            width: 58%;
+            z-index: 4; /* Au-dessus de l'image */
+            position: relative;
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1.2s ease;
+            opacity: 0;
+            transform: translateX(-150px);
+        }
+
+        .ccs-row.reverse .ccs-text-card {
+            transform: translateX(150px);
+        }
+
+        /* Card d'Image Indépendante (Arrive de la droite, légèrement en dessous et enchevêtrée) */
+        .ccs-image-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            width: 48%;
+            position: relative;
+            margin-left: -80px; /* Chevauchement horizontal sur la carte texte */
+            margin-top: -20px;  /* Légèrement décalée pour que le texte soit au-dessus */
+            z-index: 3;
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1.2s ease;
+            opacity: 0;
+            transform: translateX(150px);
+        }
+
+        .ccs-row.reverse .ccs-image-card {
+            margin-left: 0;
+            margin-right: -80px;
+            transform: translateX(-150px);
+        }
+
+        /* Déclenchement de l'animation au scroll (Effet "heurtoir" / collision au centre) */
+        .ccs-row.active .ccs-text-card,
+        .ccs-row.active .ccs-image-card {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ccs-image-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ccs-title {
+            color: #002664;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.3;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .ccs-separator {
+            width: 50px;
+            height: 3px;
+            background-color: #0ea5e9;
+            margin-bottom: 15px;
+        }
+
+        .ccs-description {
+            color: #444444;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .ccs-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .ccs-list li {
+            position: relative;
+            padding-left: 18px;
+            color: #444;
+            font-size: 13px;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .ccs-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 16px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+        }
+
+        .ccs-badge-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 38, 100, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .ccs-badge-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
+
+        /* --- Responsive Design Mobile --- */
+        @media(max-width: 900px) {
+            .ccs-row, .ccs-row.reverse {
+                flex-direction: column;
+            }
+            .ccs-text-card, .ccs-image-card {
+                width: 100%;
+                margin: 0 0 20px 0 !important;
+                transform: translateY(50px) !important;
+            }
+            .ccs-row.active .ccs-text-card,
+            .ccs-row.active .ccs-image-card {
+                transform: translateY(0) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation -->
+    <header class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <div class="red-dot" id="redDot"></div>
+                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- SECTION HISTORIQUE CCS AVEC VIDÉO EN ARRIÈRE-PLAN & EFFET HEURTOIR -->
+    <section class="ccs-about-section" id="historySection">
+        <!-- Vidéo MP4 en fond (remplacez 'votre-video.mp4' par le lien de votre fichier vidéo) -->
+        <video autoplay muted loop playsinline class="ccs-video-background">
+            <source src="votre-video.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos HTML5.
+        </video>
+        <div class="ccs-video-overlay"></div>
+
+       
+
+        <!-- Bloc 1 -->
         <div class="ccs-row">
-            <div class="ccs-text-side">
+            <div class="ccs-text-card">
                 <h2 class="ccs-title">CCS : une entreprise axée sur le papier à la base</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
                     CCS a débuté son activité commerciale en se concentrant exclusivement sur la vente de papier Double A, une marque premium de haute qualité au Sénégal.<br>
-                    Par la suite, face à la nécessité de s'adapter aux différents budgets puisque tout le monde ne pouvait pas s'offrir cette gamme supérieure, l'entreprise a diversifié son offre en intégrant la commercialisation du papier Smart Copy.</>
+                    Par la suite, face à la nécessité de s'adapter aux différents budgets, l'entreprise a diversifié son offre en intégrant la commercialisation du papier Smart Copy.
                 </p>
                 <p class="ccs-description">
-                    C'est dans cette dynamique que nous avons non seulement signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais de haute qualité (A grade),</> mais nous avons aussi su adapter notre offre pour toucher tous les segments du marché — incluant les grandes structures, les particuliers, ainsi que les détaillants des marchés locaux.
+                    C'est dans cette dynamique que nous avons signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais (A grade), touchant tous les segments du marché.
                 </p>
             </div>
-            <div class="ccs-image-side">
-                <img src="doublea.jpg" alt="Expansion" onerror="this.src='doublea.jpg';">
+            <div class="ccs-image-card">
+                <img src="doublea.jpg" alt="Expansion papier" onerror="this.src='https://via.placeholder.com/600x400?text=Double+A';">
                 <div class="ccs-badge-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 </div>
             </div>
         </div>
         
-        <!-- Bloc 2 -->
+        <!-- Bloc 2 (Inversé) -->
         <div class="ccs-row reverse">
-            <div class="ccs-text-side">
+            <div class="ccs-text-card">
                 <h2 class="ccs-title">La création de nos propres marques "Capital" et "Best Foods"</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
-                    Le Comptoir Commercial Sourang (CCS) a franchi une étape clé dans son développement en procédant à la création de ses propres marques, avec notamment le lancement de sa marque de papier « Capital »</> ainsi que de sa gamme de produits alimentaires sous la marque « Best Foods »</>.
-                    Pour asseoir notre position sur le marché et garantir l'authenticité de nos produits, l'ensemble de nos marques propres sont officiellement reconnues et protégées juridiquement.
+                    Le Comptoir Commercial Sourang (CCS) a franchi une étape clé en créant ses propres marques : le papier « Capital » et la gamme alimentaire « Best Foods ». Toutes nos marques sont juridiquement protégées.
                 </p>
                 <ul class="ccs-list">
-                    <li>Gamme variée de produits BEST FOODS</> : Poivre noir, piment rouge sec, petits pois, lentilles.</li>
-                    <li>Produits du quotidien : Huiles, laits, feuilles de laurier, raisins secs, clous de girofle.</li>
-                    <li>Cible élargie : Détaillants, grossistes, hôtels, restaurants et structures de restauration collective.</li>
+                    <li>Gamme BEST FOODS : Poivre noir, piment rouge sec, petits pois, lentilles.</li>
+                    <li>Produits du quotidien : Huiles, laits, feuilles de laurier, raisins secs.</li>
+                    <li>Cible élargie : Détaillants, grossistes, hôtels, restaurants.</li>
                 </ul>
             </div>
-            <div class="ccs-image-side">
-                <img src="capbests.png" alt="Diversification alimentaire" onerror="this.src='capbest.png';">
+            <div class="ccs-image-card">
+                <img src="capbests.png" alt="Diversification alimentaire" onerror="this.src='https://via.placeholder.com/600x400?text=Best+Foods';">
                 <div class="ccs-badge-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 </div>
@@ -977,49 +1314,72 @@
 
         <!-- Bloc 3 -->
         <div class="ccs-row">
-            <div class="ccs-text-side">
+            <div class="ccs-text-card">
                 <h2 class="ccs-title">Une entreprise en expansion en Afrique de l’Ouest</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
-                    Depuis 2026, CCS franchit une nouvelle étape majeure en amorçant son expansion régionale avec le démarrage officiel de ses opérations en Guinée</> et au Mali</>.
+                    Depuis 2026, CCS amorce son expansion régionale avec le démarrage officiel de ses opérations en Guinée et au Mali.
                 </p>
                 <p class="ccs-description">
-                    Cette dynamique s'appuie sur une croissance maîtrisée, un réseau logistique renforcé et une vision claire : devenir la référence ouest-africaine de la distribution multi-produits.
+                    Cette dynamique s'appuie sur une croissance maîtrisée, un réseau logistique renforcé et l'ambition de devenir la référence ouest-africaine.
                 </p>
             </div>
-            <div class="ccs-image-side">
-                <img src="afriou.png" alt="Expansion Afrique de l'Ouest" onerror="afriou.png';">
+            <div class="ccs-image-card">
+                <img src="afriou.png" alt="Expansion Afrique de l'Ouest" onerror="this.src='https://via.placeholder.com/600x400?text=Expansion';">
                 <div class="ccs-badge-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 </div>
             </div>
         </div>
 
-        <!-- Bloc 4 -->
+        <!-- Bloc 4 (Inversé) -->
         <div class="ccs-row reverse">
-            <div class="ccs-text-side">
+            <div class="ccs-text-card">
                 <h2 class="ccs-title">Nos Missions & Nos Valeurs</h2>
                 <div class="ccs-separator"></div>
                 <p class="ccs-description">
-                    Mission :</> Fournir des produits essentiels de qualité constante à prix compétitifs, simplifier l'approvisionnement des professionnels et accompagner la croissance en Afrique de l'Ouest.
+                    <strong>Mission :</strong> Fournir des produits essentiels de qualité constante à prix compétitifs et simplifier l'approvisionnement des professionnels.
                 </p>
                 <ul class="ccs-list">
-                    <li>Qualité :</> Sélection rigoureuse et contrôle strict des lots.</li>
-                    <li>Fiabilité :</> Respect des délais et disponibilité permanente des stocks.</li>
-                    <li>Proximité :</> Écoute active et flexibilité face aux réalités locales.</li>
-                    <li>Responsabilité :</> Gestion sérieuse et respect de nos partenaires.</li>
+                    <li><strong>Qualité :</strong> Sélection rigoureuse et contrôle strict.</li>
+                    <li><strong>Fiabilité :</strong> Respect des délais et stock permanent.</li>
+                    <li><strong>Proximité :</strong> Écoute active et flexibilité.</li>
                 </ul>
             </div>
-            <div class="ccs-image-side">
-                <img src="office.png" alt="Missions et Valeurs CCS" onerror="this.src='office.png';">
+            <div class="ccs-image-card">
+                <img src="office.png" alt="Missions et Valeurs CCS" onerror="this.src='https://via.placeholder.com/600x400?text=Valeurs';">
                 <div class="ccs-badge-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
                 </div>
             </div>
         </div>
-
-        <div class="ccs-bottom-line"></div>
     </section>
+
+    <!-- Script JavaScript Intersection Observer pour animer les cartes au scroll -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll(".ccs-row");
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, {
+                threshold: 0.2 // Déclenche l'animation quand 20% de la ligne entre dans l'écran
+            });
+
+            rows.forEach(row => {
+                observer.observe(row);
+            });
+        });
+    </script>
+</body>
+</html>
+Note : Pensez à remplacer "votre-video.mp4" dans la balise <source> par le chemin ou le lien vers votre propre fichier vidéo MP4 d'arrière-plan.
+
+    
      <!-- SECTION : DIVERSIFICATION & PRODUITS ALIMENTAIRES (Parallaxe) -->
     <section class="parallax-section food-parallax">
         <div class="parallax-overlay light-overlay">
