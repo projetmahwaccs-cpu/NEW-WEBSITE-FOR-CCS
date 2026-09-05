@@ -195,15 +195,6 @@
             background-color: rgba(0, 38, 100, 0.85);
         }
 
-        .parallax-overlay.light-overlay {
-            background-color: rgba(255, 255, 255, 0.95);
-        }
-
-        .section-container {
-            width: 100%;
-            max-width: 1200px;
-        }
-
         .hero-banner {
             background-image: url('produithero.png');
             color: white;
@@ -230,105 +221,6 @@
             margin: 0 auto;
             line-height: 1.5;
         }
-
-        .category-title {
-            color: #002664;
-            font-size: 22px;
-            text-transform: uppercase;
-            margin: 40px 0 20px 0;
-            border-bottom: 2px solid #0ea5e9;
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .product-img {
-            height: 190px;
-            width: 100%;
-            overflow: hidden;
-            border-bottom: 2px solid #002664;
-            background: #eee;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-content h3 {
-            color: #002664;
-            font-size: 17px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .product-content p {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-
-        .product-badge {
-            display: inline-block;
-            background-color: #0ea5e9;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            align-self: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .click-hint {
-            font-size: 11px;
-            color: #002664;
-            font-weight: bold;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
 
         .footer {
             background-color: #00193d;
@@ -405,7 +297,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .section-title {
@@ -434,145 +326,248 @@
             text-align: center;
         }
 
-        /* --- CATALOGUE DES PRODUITS : chaque produit = image + petit paragraphe à côté --- */
-        .products-list {
+        /* --- BANNIERES THÉMATIQUES --- */
+        .brand-banner-section {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            margin: 40px 0 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .brand-banner-section .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .brand-banner-section .content-overlay {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #ffffff;
+            text-align: center;
+            background: rgba(0, 38, 100, 0.7);
+            padding: 0 20px;
+        }
+
+        .brand-banner-section .content-overlay h3 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .brand-banner-section .content-overlay p {
+            font-size: 1.1rem;
+        }
+
+        .category-subheading {
+            font-size: 22px;
+            color: #002664;
+            margin: 40px 0 20px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 12px;
+        }
+
+        /* --- UNE SEULE BASE DE RECHERCHE GLOBALE --- */
+        .global-search-container {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .search-box-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .search-box-group label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #002664;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .category-engine-input {
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            background: #fff;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .category-engine-input:focus {
+            outline: 2px solid #0ea5e9;
+            outline-offset: 1px;
+            border-color: #0ea5e9;
+        }
+
+        /* --- CATALOGUE DES PRODUITS (CARTES VERTICALES SIMILAIRES À L'IMAGE) --- */
+        .products-grid-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid-horizontal {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .products-grid-horizontal {
+                grid-template-columns: 1fr;
+            }
         }
 
         .product-row {
             position: relative;
             background: #fff;
-            border-radius: 0;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0, 38, 100, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 38, 100, 0.08);
             cursor: pointer;
             border: 1px solid #e2e8f0;
-            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
-            align-items: stretch;
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        .product-row::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #002664);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-            z-index: 2;
-        }
-
-        .product-row:hover::before {
-            transform: scaleX(1);
+            flex-direction: column;
+            height: 100%;
         }
 
         .product-row:hover {
             border-color: #0ea5e9;
-            box-shadow: 0 22px 40px rgba(0, 38, 100, 0.18);
+            box-shadow: 0 10px 25px rgba(0, 38, 100, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Styles pour les badges sur les bordures des cards */
+        .product-row.agro-card {
+            border: 3px solid #0284c7; /* Bordure spécifique agro-alimentaire */
+        }
+        .product-row.paper-card {
+            border: 3px solid #10b981; /* Bordure spécifique papeterie */
+        }
+
+        .card-border-badge {
+            position: absolute;
+            top: -12px;
+            right: 15px;
+            height: 35px;
+            width: auto;
+            object-fit: contain;
+            z-index: 10;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .product-row-title {
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px 20px 15px 20px;
+            background: #fff;
         }
 
         .product-row-img-wrap {
             position: relative;
-            width: 320px;
-            min-width: 320px;
+            width: 100%;
+            height: 220px;
             overflow: hidden;
+            background-color: #f1f5f9;
         }
 
         .product-row-img {
             width: 100%;
             height: 100%;
-            min-height: 260px;
             object-fit: cover;
-            background-color: #cbd5e1;
             display: block;
-            transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+            transition: transform 0.5s ease;
         }
 
         .product-row:hover .product-row-img {
-            transform: scale(1.12) rotate(0.3deg);
+            transform: scale(1.05);
         }
 
         .product-row-badge {
             position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(0, 38, 100, 0.72);
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 38, 100, 0.75);
             backdrop-filter: blur(3px);
             color: #fff;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.4px;
-            padding: 5px 12px;
+            padding: 4px 8px;
             border-radius: 20px;
             z-index: 2;
         }
 
         .product-row-body {
-            padding: 32px 36px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .product-row-title {
-            color: #002664;
-            font-size: 21px;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .product-row:hover .product-row-title {
-            color: #0ea5e9;
+            justify-content: space-between;
+            gap: 15px;
+            background: #fff;
         }
 
         .product-row-desc {
             color: #64748b;
-            font-size: 15px;
-            line-height: 1.7;
-            max-width: 680px;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         .product-row-btn {
-            background-color: #002664;
+            background-color: #0ea5e9; /* Vert style "VIEW MORE" de l'image */
             color: #fff;
             text-align: center;
-            padding: 10px 22px;
-            font-size: 13px;
+            padding: 8px 16px;
+            font-size: 11px;
             font-weight: bold;
-            border-radius: 5px;
+            text-transform: uppercase;
+            border-radius: 20px;
             align-self: flex-start;
-            margin-top: 8px;
-            transition: background-color 0.2s, transform 0.3s ease;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         .product-row:hover .product-row-btn {
-            background-color: #0ea5e9;
-            transform: translateX(4px);
+            background-color: #65a30d;
         }
 
-        @media (max-width: 640px) {
-            .product-row {
-                flex-direction: column;
-            }
-            .product-row-img-wrap {
-                width: 100%;
-            }
-            .product-row-img {
-                min-height: 220px;
-                height: 220px;
-            }
-            .product-row-body {
-                padding: 22px;
-            }
+        .category-empty-msg {
+            font-size: 14px;
+            color: #94a3b8;
+            font-style: italic;
+            text-align: center;
+            padding: 20px 0;
+            display: none;
         }
 
         /* --- SECTION PREUVE & ENGAGEMENTS --- */
@@ -616,50 +611,44 @@
             line-height: 1.6;
         }
 
-        /* --- SECTION PARTENAIRES --- */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            align-items: center;
-        }
-
-        .partner-logo-box {
-            background: #ffffff;
+        /* --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE --- */
+        .marquee-gallery-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            background: #f1f5f9;
+            border-radius: 12px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            height: 100px;
+        }
+
+        .marquee-track {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            font-weight: bold;
-            color: #002664;
-            font-size: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
+            gap: 20px;
+            width: max-content;
+            animation: scrollMarquee 45s linear infinite;
         }
 
-        .partner-logo-box:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1);
+        .marquee-gallery-wrapper:hover .marquee-track,
+        .marquee-track.paused {
+            animation-play-state: paused;
         }
 
-        /* --- SECTION GALERIE CONTENEURS --- */
-        .container-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .container-gallery-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            aspect-ratio: 4 / 3;
-            background-color: #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            width: 260px;
+            height: 195px;
+            background-color: #cbd5e1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            flex-shrink: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -672,28 +661,26 @@
         }
 
         .container-gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 22px rgba(0, 38, 100, 0.18);
+            transform: scale(1.06);
+            box-shadow: 0 12px 25px rgba(0, 38, 100, 0.25);
+            z-index: 10;
         }
 
         .container-gallery-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.12);
         }
 
         .container-gallery-item::after {
-            content: "🔍";
+            content: "🔍 Loupe";
             position: absolute;
             bottom: 10px;
             right: 10px;
-            background: rgba(0, 38, 100, 0.75);
+            background: rgba(0, 38, 100, 0.8);
             color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -766,8 +753,7 @@
             letter-spacing: 1px;
         }
 
-
-        /* --- MINI-PAGE MODAL PRODUIT (GRANDE & SPACIEUSE) --- */
+        /* --- MINI-PAGE MODAL PRODUIT --- */
         .product-modal {
             display: none;
             position: fixed;
@@ -953,7 +939,24 @@
             line-height: 1.6;
         }
 
-        /* --- ANIMATION D'APPARITION AU SCROLL --- */
+        /* --- ANIMATION D'APPARITION AU SCROLL (EFFET DÉPÔT GAUCHE / DROITE) --- */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px) translateY(30px);
+            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px) translateY(30px);
+            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal-left.revealed,
+        .reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        /* Garder l'ancienne classe reveal simple si utilisée ailleurs */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -962,90 +965,6 @@
         .reveal.revealed {
             opacity: 1;
             transform: translateY(0);
-        }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-48px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(48px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right.revealed.product-row,
-        .reveal-left.revealed.product-row {
-            transition: transform 0.45s cubic-bezier(.22,1,.36,1), box-shadow 0.45s ease, border-color 0.4s ease;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal, .reveal-left, .reveal-right {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        /* --- BARRE DE RECHERCHE / FILTRE PRODUITS --- */
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 35px;
-        }
-
-        .filter-input {
-            flex: 1 1 260px;
-            max-width: 320px;
-            padding: 10px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #0f172a;
-        }
-
-        .filter-input:focus {
-            outline: 2px solid #002664;
-            outline-offset: 1px;
-        }
-
-        .filter-btn {
-            background: #fff;
-            border: 1px solid #cbd5e1;
-            color: #002664;
-            font-weight: bold;
-            font-size: 13px;
-            text-transform: uppercase;
-            padding: 9px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
-
-        .filter-btn:hover {
-            border-color: #002664;
-        }
-
-        .filter-btn.active {
-            background-color: #002664;
-            border-color: #002664;
-            color: #fff;
-        }
-
-        .filter-empty {
-            text-align: center;
-            color: #64748b;
-            font-size: 14px;
-            padding: 30px 10px;
-            display: none;
         }
 
         /* --- SECTION CHIFFRES CLÉS --- */
@@ -1179,7 +1098,7 @@
             line-height: 1.7;
         }
 
-        /* --- SECTION NEWSLETTER / CONTACT RAPIDE --- */
+        /* --- SECTION NEWSLETTER --- */
         .newsletter-section {
             background-color: #f1f5f9;
             text-align: center;
@@ -1274,12 +1193,8 @@
             <ul class="nav-links" id="navLinks">
                 <div class="red-dot" id="redDot"></div>
                 <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-           
-                
                 <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Produits</a></li>
-               
                 <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">Actualités</a></li>
-               
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
 
@@ -1297,88 +1212,68 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : PAPETERIE (SÉPARÉE DU CATALOGUE GÉNÉRAL) ================= -->
-    <section class="catalog-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Notre Gamme Papeterie</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Nos marques de papier bureautique, sélectionnées pour leur qualité d'impression.</p>
-            </div>
-            <div class="products-list" id="paperGridContainer">
-                <!-- Généré dynamiquement par JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= SECTION : CATALOGUE DES PRODUITS UNIQUES ================= -->
+    <!-- ================= SECTION : CATALOGUE GLOBAL & BASE DE RECHERCHE UNIQUE ================= -->
     <section class="catalog-section ccs-products-section">
-   <section class="best-foods-section">
-    <img src="bestfoods.png" alt="Best foods showcase" class="bg-image">
-    <div class="content-overlay">
-        <h2>Best Foods</h2>
-       
-    </div>
-</section>
-
-<style>
-    .best-foods-section {
-        position: relative;
-        width: 100%;
-        height: 400px; /* Ajustez la hauteur selon vos besoins */
-        overflow: hidden;
-    }
-    
-    .bg-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 150%;
-        object-fit: cover;
-    }
-    
-    .content-overlay {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        color: #ffffff;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.4); /* Optionnel : assombrit l'image pour mieux lire le texte */
-        padding: 0 20px;
-    }
-
-    .content-overlay h2 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        color: green;
-    }
-
-    .content-overlay p {
-        font-size: 1.2rem;
-    }
-</style>
-    
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Catalogue de nos Produits</h2>
+                <h2 class="section-title">Catalogue Global des Produits</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Cliquez sur un produit pour afficher sa grande mini-page interactive.</p>
+                <p class="section-subtitle">Recherchez instantanément dans l'ensemble de notre catalogue et explorez nos gammes par catégorie.</p>
             </div>
-            <div class="filter-bar reveal">
-                <input type="text" class="filter-input" id="productSearchInput" placeholder="Rechercher un produit (ex: riz, ail, papier...)" oninput="filterProducts()">
-                <button class="filter-btn active" data-origin="all" onclick="setOriginFilter('all', this)">Toutes origines</button>
-                <button class="filter-btn" data-origin="afrique" onclick="setOriginFilter('afrique', this)">Afrique</button>
-                <button class="filter-btn" data-origin="international" onclick="setOriginFilter('international', this)">International</button>
+
+            <!-- Une seule base de recherche unique pour tout filtrer -->
+            <div class="global-search-container reveal">
+                <div class="search-box-group">
+                    <label for="globalSearchInput">🔍 Recherche Globale de Produits</label>
+                    <input type="text" id="globalSearchInput" class="category-engine-input" placeholder="Tapez un mot-clé (ex: riz, lait, papier, épices...)" oninput="filterGlobalProducts()">
+                </div>
             </div>
-            <div class="products-list" id="productsGridContainer">
+
+            <!-- ================= SOUS-SECTION : PAPETERIE ================= -->
+            <div class="section-header reveal" style="margin-top: 40px; margin-bottom: 20px;">
+                <h3 class="category-subheading" style="margin: 0; border: none; padding: 0;">Papeterie</h3>
+            </div>
+            <div class="products-grid-horizontal" id="paperGridContainer">
                 <!-- Généré dynamiquement par JavaScript -->
             </div>
-            <p class="filter-empty" id="productsEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
+            <p class="category-empty-msg" id="paperEmptyMsg">Aucun produit de papeterie ne correspond à votre recherche.</p>
+
+
+            <!-- ================= SOUS-SECTION ÉPICES (BEST FOODS SPICES) ================= -->
+            <div class="brand-banner-section reveal">
+                <img src="bestfoods.png" alt="Best Foods Spices showcase" class="bg-image">
+                <div class="content-overlay">
+                    <h3>Best Foods Spices</h3>
+                    <p>Nos sélections d'épices d'exception de qualité supérieure</p>
+                </div>
+            </div>
+            <div class="products-grid-horizontal" id="spicesGridContainer"></div>
+            <p class="category-empty-msg" id="spicesEmptyMsg">Aucune épice ne correspond à votre recherche.</p>
+
+
+            <!-- ================= SOUS-SECTION LÉGUMINEUSES & PRODUITS AGRICOLES ================= -->
+            <div class="brand-banner-section reveal" style="margin-top: 50px;">
+                <img src="produithero.png" alt="Best Foods Legumes showcase" class="bg-image">
+                <div class="content-overlay">
+                    <h3>Best Foods & Légumineuses</h3>
+                    <p>Sélection rigoureuse de produits agricoles et légumineuses de premier choix</p>
+                </div>
+            </div>
+            <div class="products-grid-horizontal" id="legumesGridContainer"></div>
+            <p class="category-empty-msg" id="legumesEmptyMsg">Aucune légumineuse ou produit de cette catégorie ne correspond à votre recherche.</p>
+
+
+            <!-- ================= SOUS-SECTION PRODUITS LAITIERS ================= -->
+            <h3 class="category-subheading reveal">Produits Laitiers</h3>
+            <div class="products-grid-horizontal" id="dairyGridContainer"></div>
+            <p class="category-empty-msg" id="dairyEmptyMsg">Aucun produit laitier ne correspond à votre recherche.</p>
+
+
+            <!-- ================= SOUS-SECTION PRODUITS DIVERS ================= -->
+            <h3 class="category-subheading reveal">Produits Divers & Autres Marques CCS</h3>
+            <div class="products-grid-horizontal" id="diversGridContainer"></div>
+            <p class="category-empty-msg" id="diversEmptyMsg">Aucun produit divers ne correspond à votre recherche.</p>
+
         </div>
     </section>
 
@@ -1409,14 +1304,20 @@
         </div>
     </section>
 
+    <!-- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Galerie de nos Conteneurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Un aperçu réel de nos opérations d'empotage et de chargement en conteneurs, à chaque expédition.</p>
+                <p class="section-subtitle">Défilement continu de nos opérations. Touchez ou cliquez sur une image pour faire une pause et zoomer pour inspecter de plus près.</p>
             </div>
-            <div class="container-gallery-grid reveal" id="containerGalleryGrid"></div>
+            
+            <div class="marquee-gallery-wrapper reveal" id="marqueeWrapper">
+                <div class="marquee-track" id="marqueeTrack">
+                    <!-- Injecté par JS -->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1444,7 +1345,6 @@
                     <div class="stat-number"><span class="counter" data-target="15">0</span></div>
                     <div class="stat-label">Pays d'origine des produits</div>
                 </div>
-
                 <div class="stat-card">
                     <div class="stat-number"><span class="counter" data-target="200">0</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label">Full Container Loaded / Mois</div>
@@ -1464,32 +1364,29 @@
     <section class="catalog-section">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Ce Que Disent Nos Colaborateurs</h2>
+                <h2 class="section-title">Ce Que Disent Nos Collaborateurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Ils ont fait  confiance a Comptoir Commercial Sourang,et sont la pluspart dans notre base de donnees depuis des annees.</p>
+                <p class="section-subtitle">Ils ont fait confiance au Comptoir Commercial Sourang, et sont pour la plupart dans notre base de données depuis des années.</p>
             </div>
             <div class="testimonials-grid reveal">
                 <div class="testimonial-card">
                     <p class="testimonial-quote">« Le papier Double A et Smart Copy arrive toujours en bon état, bien conditionné. Un fournisseur sérieux pour notre réseau de points de vente. »</p>
                     <div class="testimonial-author">THIES DISTRIBUTION</div>
-                    <div class="testimonial-role">Partenaire distribution Papetiere</div>
+                    <div class="testimonial-role">Partenaire distribution Papeterie</div>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-quote">«  Communication claire du début à la fin. »</p>
-                    <div class="testimonial-author"> LALA  </div>
-                    <div class="testimonial-role">Colaborateur GROSSISTE</div>
+                    <p class="testimonial-quote">« Communication claire du début à la fin. »</p>
+                    <div class="testimonial-author">LALA</div>
+                    <div class="testimonial-role">Collaborateur GROSSISTE</div>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-quote">« Les délais sont respectés à chaque commande et la qualité des produit impecable et constante.  CCS vraiment, un partenaire fiable. »</p>
+                    <p class="testimonial-quote">« Les délais sont respectés à chaque commande et la qualité des produits impeccable et constante. CCS vraiment, un partenaire fiable. »</p>
                     <div class="testimonial-author">18 SAFAR GROSSISTE</div>
-                    <div class="testimonial-role">Colaborateur GROSSITE</div>
+                    <div class="testimonial-role">Collaborateur GROSSISTE</div>
                 </div>
-                
-            
             </div>
         </div>
     </section>
-
 
     <section class="catalog-section">
         <div class="container">
@@ -1505,7 +1402,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui, disponibles dès la fin du chargement.</p>
+                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui, dès la fin du chargement.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1561,13 +1458,12 @@
             <div class="footer-col">
                 <h4 data-fr="À propos de CCS" data-en="About CCS">À propos de CCS</h4>
                 <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019." data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
-                    Comptoir Commercial Sourang (CCS) est une entreprise d'import-export specialise  dans la  papeterie et les produits agro alimentaire .
+                    Comptoir Commercial Sourang (CCS) est une entreprise d'import-export spécialisée dans la papeterie et les produits agro-alimentaires.
                 </p>
             </div>
             <div class="footer-col">
                 <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
                 <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-                <
                 <a href="product.html" data-fr="Produits" data-en="Products">Produits</a>
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
@@ -1598,12 +1494,10 @@
                 <span class="product-modal-close" onclick="closeProductModal()">&times;</span>
             </div>
             <div class="product-modal-body">
-                
                 <div class="slider-section-title">
-                    <span>  Phototeque d' Images de Chargement & Opérations</span>
+                    <span>Photothèque d'Images de Chargement & Opérations</span>
                     <span class="slider-controls-hint">(Défilement automatique • Cliquez sur l'image pour arrêter/reprendre)</span>
                 </div>
-                <!-- Zone cliquable pour commuter pause / lecture du slider -->
                 <div class="product-slider-container" onclick="toggleAutoPlay()" title="Cliquez pour arrêter ou reprendre le défilement">
                     <button class="slider-btn slider-prev" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
                     <img id="sliderImg" src="" class="product-slider-img" alt="Image Chargement">
@@ -1633,14 +1527,14 @@
                 <div class="product-extra-text" id="modalProductExtra">
                     <strong>Informations Complémentaires :</strong> -
                 </div>
-
             </div>
         </div>
     </div>
 
     <script>
-        // --- BASE DE DONNÉES DES PRODUITS AVEC LES 15 IMAGES INTÉGRÉES ---
+        // --- BASE DE DONNÉES DES PRODUITS ---
         const productsDatabase = [
+            // Papeterie
             {
                 name: "Rame Papier Double A",
                 category: "papier",
@@ -1648,421 +1542,24 @@
                 origin: "International",
                 ref: "PAPIER-DOUBLE-A 80 gsm",
                 cond: "Rame standard",
-                qual: "Excellente blancheur,  PREMIUM QUALITY ",
+                qual: "Excellente blancheur, PREMIUM QUALITY",
                 log: "Empotage carton / palette",
                 extra: "Papier de bureau Double A de haute qualité pour une impression fluide et sans bourrage, chargé et empoté avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "da.mp4",
-                images: [
-                   "papd1.png",
-"papd2.png",
-"papd3.png",
-"papd4.png",
-"papd5.png",
-"papd6.png",
-"papd7.png",
-"papd8.png",
-"papd9.png",
-"papd10.png",
-"papd11.png",
-"papd12.png",
-"papd13.png",
-"papd14.png",
-"papd15.png",
-"papd16.png",
-"papd17.png"
-                ]
-            },
-           
-            {
-                name: "Sucre Crystal Blanc",
-                image: "sucre.png",
-                origin: "Brésil / Grupo Bazan",
-                ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
-                cond: "Sacs de 50 kg (Poids Net)",
-                qual: "Açúcar Cristal White - Grade A",
-                log: "Empotage conteneur sécurisé",
-                extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
-                videoLoop: "sucre.mp4",
-                images: [
-                   "suc1.png",
-"suc2.png",
-"suc3.png",
-"suc4.png",
-"suc5.png",
-"suc6.png",
-"suc7.png",
-"suc8.png",
-"suc9.png",
-"suc10.png",
-"suc11.png",
-"suc12.png",
-"suc13.png",
-"suc14.png",
-"suc15.png",
-"suc16.png",
-"suc17.png"
-                ]
-            },
-            {
-                name: "Piment Sec Rouge",
-                image: "piment.png",
-                origin: "Inde / International",
-                ref: "CCS-PIMENT-ROUGE",
-                cond: "Sacs de 10 kg (Poids Net)",
-                qual: "Grade A Premium - Best Foods",
-                log: "Empotage conteneur sécurisé",
-                extra: "Piment rouge entier de qualité supérieure Best Foods, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
-                videoLoop: "piment.mp4",
-                images: [
-                    "pim1.png",
-"pim2.png",
-"pim3.png",
-"pim4.png",
-"pim5.png",
-"pim6.png",
-"pim7.png",
-"pim8.png",
-"pim9.png",
-"pim10.png",
-"pim11.png",
-"pim12.png",
-"pim13.png",
-"pim14.png",
-"pim15.png",
-"pim16.png",
-"pim17.png"
-                ]
-            },
-            {
-                name: "Poivre Noir",
-                image: "poivre.png",
-                origin: "Brésil / International",
-                ref: "CCS-POIVRE-03",
-                cond: "Sacs de 25 kg / Cartons",
-                qual: "Grade A Premium - Best Foods",
-                log: "Empotage conteneur sécurisé",
-                extra: "Poivre noir Best Foods de qualité supérieure (Black Pepper), origine Brésil, récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
-                videoLoop: "poivre.mp4",
-                images: [
-                    "poi1.png",
-"poi2.png",
-"poi3.png",
-"poi4.png",
-"poi5.png",
-"poi6.png",
-"poi7.png",
-"poi8.png",
-"poi9.png",
-"poi10.png",
-"poi11.png",
-"poi12.png",
-"poi13.png",
-"poi14.png",
-"poi15.png",
-"poi16.png",
-"poi17.png"
-                ]
-            },
-            {
-                name: "Ananas Sarama",
-                image: "produit_ananas-sarama-1.jpg",
-                origin: "Côte d'Ivoire / International",
-                ref: "CCS-ANANAS-01",
-                cond: "Carton / Palette",
-                qual: "Extra Frais / Conserve",
-                log: "Optimisé frigo & conteneur",
-                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
-                videoLoop: "nanasram.mp4",
-                images:  [
-                   "ar1.png",
-"ar2.png",
-"ar3.png",
-"ar4.png",
-"ar5.png",
-"ar6.png",
-"ar7.png",
-"ar8.png",
-"ar9.png",
-"ar10.png",
-"ar11.png",
-"ar12.png",
-"ar13.png",
-"ar14.png",
-"ar15.png",
-"ar16.png",
-"ar17.png"
-                ]
-            },
-            {
-                name: "Café Sélection CCS",
-                image: "cafe.png",
-                origin: "Afrique de l'Ouest / Amériques",
-                ref: "CCS-CAFE-02",
-                cond: "Sacs / Paquets étanches",
-                qual: "100% Pur Arabica / Robusta",
-                log: "Stockage en milieu sec ventilé",
-                extra: "Café d'exception torréfié et emballé sous vide.",
-                videoLoop: "cafe.mp4",
-                images:  [
-                  "caf1.png",
-"caf2.png",
-"caf3.png",
-"caf4.png",
-"caf5.png",
-"caf6.png",
-"caf7.png",
-"caf8.png",
-"caf9.png",
-"caf10.png",
-"caf11.png",
-"caf12.png",
-"caf13.png",
-"caf14.png",
-"caf15.png",
-"caf16.png",
-"caf17.png"
-                ]
-            },
-            {
-                name: "Clous de Girofle",
-                image: "produit_clous-de-girofle.jpg",
-                origin: "Madagascar / International",
-                ref: "CCS-GIROFLE-03",
-                cond: "Sacs de jute / Cartons",
-                qual: "Grade A Premium",
-                log: "Protection contre l'humidité",
-                extra: "Clous de girofle aux notes intenses, récoltés à maturité.",
-                videoLoop: "girofle.mp4",
-                images:  [ "gir1.png",
-"gir2.png",
-"gir3.png",
-"gir4.png",
-"gir5.png",
-"gir6.png",
-"gir7.png",
-"gir8.png",
-"gir9.png",
-"gir10.png",
-"gir11.png",
-"gir12.png",
-"gir13.png",
-"gir14.png",
-"gir15.png",
-"gir16.png",
-"gir17.png"  
-            ]
-            },
-            {
-                name: "Feuilles de Laurier",
-                image: "produit_feuilles-laurier.jpg",
-                origin: "Bassin Méditerranéen",
-                ref: "CCS-LAURIER-04",
-                cond: "Sachets protecteurs / Cartons",
-                qual: "Séchées naturellement",
-                log: "Empotage rigoureux en conteneur",
-                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
-                videoLoop: "laurier.mp4",
-                images: [ 
-                    "laur1.png",
-"laur2.png",
-"laur3.png",
-"laur4.png",
-"laur5.png",
-"laur6.png",
-"laur7.png",
-"laur8.png",
-"laur9.png",
-"laur10.png",
-"laur11.png",
-"laur12.png",
-"laur13.png",
-"laur14.png",
-"laur15.png",
-"laur16.png",
-"laur17.png"
-            ]
-            },
-            {
-                name: "Huiles ",
-                image: "huile.png",
-                origin: "Malaisie / International",
-                ref: "CCS-HUILE-RAFFINEE",
-                cond: "Bidons de 20 Litres",
-                qual: "100% pure huile végétale pour la cuisine",
-                log: "Palettisation et empotage sécurisé",
-                extra: "Huile végétale pure Sarama / Trois Continental de qualité supérieure, conditionnée en bidons de 20 litres. Richesse et stabilité garanties pour toutes les cuissons.",
-                videoLoop: "huile.mp4",
-                images: [
-                    "huil1.png",
-"huil2.png",
-"huil3.png",
-"huil4.png",
-"huil5.png",
-"huil6.png",
-"huil7.png",
-"huil8.png",
-"huil9.png",
-"huil10.png",
-"huil11.png",
-"huil12.png",
-"huil13.png",
-"huil14.png",
-"huil15.png",
-"huil16.png",
-"huil17.png"
-                ]
-            },
-            {
-                name: "Jus d'Orange Trois Continental",
-                image: "produit_jus-orange-trois.jpg",
-                origin: "International",
-                ref: "CCS-JUS-06",
-                cond: "Briques / Bouteilles PET",
-                qual: "Pur jus / Nectar",
-                log: "Chaîne du froid respectée",
-                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
-                videoLoop: "juo.mp4",
-                images: [
-                    "juo1.png",
-"juo2.png",
-"juo3.png",
-"juo4.png",
-"juo5.png",
-"juo6.png",
-"juo7.png",
-"juo8.png",
-"juo9.png",
-"juo10.png",
-"juo11.png",
-"juo12.png",
-"juo13.png",
-"juo14.png",
-"juo15.png",
-"juo16.png",
-"juo17.png"
-                ]
-            },
-            {
-                name: "Lait Concentré Touba",
-                image: "produit_lait-concentre-touba.jpg",
-                origin: "Sénégal / International",
-                ref: "CCS-LAIT-CONC-07",
-                cond: "Boîtes métalliques / Cartons",
-                qual: "Onctueux et riche",
-                log: "Stockage longue conservation",
-                extra: "Lait concentré sucré de marque Touba.",
-                videoLoop: "letouba.mp4",
-                images: [
-                    "let1.png",
-"let2.png",
-"let3.png",
-"let4.png",
-"let5.png",
-"let6.png",
-"let7.png",
-"let8.png",
-"let9.png",
-"let10.png",
-"let11.png",
-"let12.png",
-"let13.png",
-"let14.png",
-"let15.png",
-"let16.png",
-"let17.png"
-                ]
-            },
-            {
-                name: "Lait Évaporé Touba",
-                image: "produit_lait-evapore-touba.jpg",
-                origin: "Sénégal / International",
-                ref: "CCS-LAIT-EVAP-08",
-                cond: "Boîtes de conserve étanches",
-                qual: "Standard professionnel",
-                log: "Empilage sécurisé sur palettes",
-                extra: "Lait évaporé Touba pour préparations culinaires.",
-                videoLoop: "letev.mp4",
-                images: [
-
-                    "letevt1.png",
-"letevt2.png",
-"letevt3.png",
-"letevt4.png",
-"letevt5.png",
-"letevt6.png",
-"letevt7.png",
-"letevt8.png",
-"letevt9.png",
-"letevt10.png",
-"letevt11.png",
-"letevt12.png",
-"letevt13.png",
-"letevt14.png",
-"letevt15.png",
-"letevt16.png",
-"letevt17.png"
-                 ]
-            },
-            {
-                name: "Lait en Poudre Victoria",
-                image: "produit_lait-poudre-victoria.jpg",
-                origin: "International",
-                ref: "CCS-LAIT-POUD-09",
-                cond: "Sachets / Boîtes hermétiques",
-                qual: "Enrichi en vitamines",
-                log: "Protection anti-humidité",
-                extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
-                videoLoop: "letpv.mp4",
-                images: [
-                    "vletpv1.png",
-"vletpv2.png",
-"vletpv3.png",
-"vletpv4.png",
-"vletpv5.png",
-"vletpv6.png",
-"vletpv7.png",
-"vletpv8.png",
-"vletpv9.png",
-"vletpv10.png",
-"vletpv11.png",
-"vletpv12.png",
-"vletpv13.png",
-"vletpv14.png",
-"vletpv15.png",
-"vletpv16.png",
-"vletpv17.png"
-                     ]
+                images: ["papd1.png", "papd2.png", "papd3.png", "papd4.png", "papd5.png", "papd6.png", "papd7.png", "papd8.png", "papd9.png", "papd10.png", "papd11.png", "papd12.png", "papd13.png", "papd14.png", "papd15.png", "papd16.png", "papd17.png"]
             },
             {
                 name: "Papier Smart Copy",
                 category: "papier",
                 image: "smartcopy.png",
                 origin: "Papeterie Internationale",
-                ref: "80 gsm ",
+                ref: "80 gsm",
                 cond: "Rames de 500 feuilles (A4/A3)",
                 qual: "80g/m² Haute Blancheur",
                 log: "Film étanche anti-humidité",
                 extra: "Papier de photocopie Smart Copy haut de gamme, chargé et empoté avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "sc.mp4",
-                images: [
-                    "papsc1.png",
-"papsc2.png",
-"papsc3.png",
-"papsc4.png",
-"papsc5.png",
-"papsc6.png",
-"papsc7.png",
-"papsc8.png",
-"papsc9.png",
-"papsc10.png",
-"papsc11.png",
-"papsc12.png",
-"papsc13.png",
-"papsc14.png",
-"papsc15.png",
-"papsc16.png",
-"papsc17.png"
-                ]
+                images: ["papsc1.png", "papsc2.png", "papsc3.png", "papsc4.png", "papsc5.png", "papsc6.png", "papsc7.png", "papsc8.png", "papsc9.png", "papsc10.png", "papsc11.png", "papsc12.png", "papsc13.png", "papsc14.png", "papsc15.png", "papsc16.png", "papsc17.png"]
             },
             {
                 name: "Rame Papier Capital",
@@ -2075,28 +1572,214 @@
                 log: "Empotage carton / palette",
                 extra: "Papier de bureau Capital, nouvelle marque de notre gamme papeterie, au grammage optimisé pour les impressions et photocopies quotidiennes. Chargé et empoté avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "capital.mp4",
-                images: [
-                   "cap1.png",
-"cap2.png",
-"cap3.png",
-"cap4.png",
-"cap5.png",
-"cap6.png",
-"cap7.png",
-"cap8.png",
-"cap9.png",
-"cap10.png",
-"cap11.png",
-"cap12.png",
-"cap13.png",
-"cap14.png",
-"cap15.png",
-"cap16.png",
-"cap17.png"
-                ]
+                images: ["cap1.png", "cap2.png", "cap3.png", "cap4.png", "cap5.png", "cap6.png", "cap7.png", "cap8.png", "cap9.png", "cap10.png", "cap11.png", "cap12.png", "cap13.png", "cap14.png", "cap15.png", "cap16.png", "cap17.png"]
+            },
+
+            // 1. ÉPICES (Best Foods Spices)
+            {
+                name: "Piment Sec Rouge",
+                category: "spices",
+                image: "piment.png",
+                origin: "Inde / International",
+                ref: "CCS-PIMENT-ROUGE",
+                cond: "Sacs de 10 kg (Poids Net)",
+                qual: "Grade A Premium - Best Foods Spices",
+                log: "Empotage conteneur sécurisé",
+                extra: "Piment rouge entier de qualité supérieure Best Foods Spices, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
+                videoLoop: "piment.mp4",
+                images: ["pim1.png", "pim2.png", "pim3.png", "pim4.png", "pim5.png", "pim6.png", "pim7.png", "pim8.png", "pim9.png", "pim10.png", "pim11.png", "pim12.png", "pim13.png", "pim14.png", "pim15.png", "pim16.png", "pim17.png"]
+            },
+            {
+                name: "Poivre Noir",
+                category: "spices",
+                image: "poivre.png",
+                origin: "Brésil / International",
+                ref: "CCS-POIVRE-03",
+                cond: "Sacs de 25 kg / Cartons",
+                qual: "Grade A Premium - Best Foods Spices",
+                log: "Empotage conteneur sécurisé",
+                extra: "Poivre noir Best Foods Spices de qualité supérieure (Black Pepper), origine Brésil, récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
+                videoLoop: "poivre.mp4",
+                images: ["poi1.png", "poi2.png", "poi3.png", "poi4.png", "poi5.png", "poi6.png", "poi7.png", "poi8.png", "poi9.png", "poi10.png", "poi11.png", "poi12.png", "poi13.png", "poi14.png", "poi15.png", "poi16.png", "poi17.png"]
+            },
+            {
+                name: "Clous de Girofle",
+                category: "spices",
+                image: "produit_clous-de-girofle.jpg",
+                origin: "Madagascar / International",
+                ref: "CCS-GIROFLE-03",
+                cond: "Sacs de jute / Cartons",
+                qual: "Grade A Premium - Best Foods Spices",
+                log: "Protection contre l'humidité",
+                extra: "Clous de girofle aux notes intenses, récoltés à maturité, de la gamme Best Foods Spices.",
+                videoLoop: "girofle.mp4",
+                images: ["gir1.png", "gir2.png", "gir3.png", "gir4.png", "gir5.png", "gir6.png", "gir7.png", "gir8.png", "gir9.png", "gir10.png", "gir11.png", "gir12.png", "gir13.png", "gir14.png", "gir15.png", "gir16.png", "gir17.png"]
+            },
+            {
+                name: "Feuilles de Laurier",
+                category: "spices",
+                image: "produit_feuilles-laurier.jpg",
+                origin: "Bassin Méditerranéen",
+                ref: "CCS-LAURIER-04",
+                cond: "Sachets protecteurs / Cartons",
+                qual: "Séchées naturellement - Best Foods Spices",
+                log: "Empotage rigoureux en conteneur",
+                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
+                videoLoop: "laurier.mp4",
+                images: ["laur1.png", "laur2.png", "laur3.png", "laur4.png", "laur5.png", "laur6.png", "laur7.png", "laur8.png", "laur9.png", "laur10.png", "laur11.png", "laur12.png", "laur13.png", "laur14.png", "laur15.png", "laur16.png", "laur17.png"]
+            },
+
+            // 2. LÉGUMINEUSES & PRODUITS AGRICOLES
+            {
+                name: "Ail (Garlic)",
+                category: "legumes",
+                image: "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
+                origin: "Chine / International",
+                ref: "CCS-AIL-01",
+                cond: "Cartons de 10 kg (Poids Net)",
+                qual: "Cat. 1 Premium - Calibres 50-70mm - Best Foods",
+                log: "Stockage en chambre froide / Empotage conteneur réfrigéré",
+                extra: "Ail frais Best Foods de qualité supérieure (Cat. 1), disponible en plusieurs calibres. Conditionné en filets puis en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
+                videoLoop: "ail.mp4",
+                images: ["ail1.png", "ail2.png", "ail3.png", "ail4.png", "ail5.png", "ail6.png", "ail7.png", "ail8.png", "ail9.png", "ail10.png", "ail11.png", "ail12.png", "ail13.png", "ail14.png", "ail15.png", "ail16.png", "ail17.png"]
+            },
+            {
+                name: "Gingembre (Ginger)",
+                category: "legumes",
+                image: "ginger.png",
+                origin: "Brésil / International",
+                ref: "GINGEMBRE MATURE",
+                cond: "Cartons de 10 kg / 22 lbs environ",
+                qual: "Gingembre frais - Origine Brésil - Best Foods",
+                log: "Ligne de tri et conditionnement / Palettisation avant export",
+                extra: "Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport.",
+                videoLoop: "gingembre.mp4",
+                images: ["ging1.png", "ging2.png", "ging3.png", "ging4.png", "ging5.png", "ging6.png", "ging7.png", "ging8.png", "ging9.png", "ging10.png", "ging11.png", "ging12.png", "ging13.png", "ging14.png", "ging15.png", "ging16.png", "ging17.png"]
+            },
+            {
+                name: "Petits Pois en Conserve",
+                category: "legumes",
+                image: "produit_petits-pois.jpg",
+                origin: "International",
+                ref: "CCS-POIS-12",
+                cond: "Boîtes métalliques",
+                qual: "Tendres et savoureux - Best Foods",
+                log: "Stockage tempéré",
+                extra: "Petits pois sélectionnés mis en conserve le jour même.",
+                videoLoop: "pp.mp4",
+                images: ["pois1.png", "pois2.png", "pois3.png", "pois4.png", "pois5.png", "pois6.png", "pois7.png", "pois8.png", "pois9.png", "pois10.png", "pois11.png", "pois12.png", "pois13.png", "pois14.png", "pois15.png", "pois16.png", "pois17.png"]
+            },
+
+            // 3. PRODUITS LAITIERS
+            {
+                name: "Lait Concentré Touba",
+                category: "dairy",
+                image: "produit_lait-concentre-touba.jpg",
+                origin: "Sénégal / International",
+                ref: "CCS-LAIT-CONC-07",
+                cond: "Boîtes métalliques / Cartons",
+                qual: "Onctueux et riche",
+                log: "Stockage longue conservation",
+                extra: "Lait concentré sucré de marque Touba.",
+                videoLoop: "letouba.mp4",
+                images: ["let1.png", "let2.png", "let3.png", "let4.png", "let5.png", "let6.png", "let7.png", "let8.png", "let9.png", "let10.png", "let11.png", "let12.png", "let13.png", "let14.png", "let15.png", "let16.png", "let17.png"]
+            },
+            {
+                name: "Lait Évaporé Touba",
+                category: "dairy",
+                image: "produit_lait-evapore-touba.jpg",
+                origin: "Sénégal / International",
+                ref: "CCS-LAIT-EVAP-08",
+                cond: "Boîtes de conserve étanches",
+                qual: "Standard professionnel",
+                log: "Empilage sécurisé sur palettes",
+                extra: "Lait évaporé Touba pour préparations culinaires.",
+                videoLoop: "letev.mp4",
+                images: ["letevt1.png", "letevt2.png", "letevt3.png", "letevt4.png", "letevt5.png", "letevt6.png", "letevt7.png", "letevt8.png", "letevt9.png", "letevt10.png", "letevt11.png", "letevt12.png", "letevt13.png", "letevt14.png", "letevt15.png", "letevt16.png", "letevt17.png"]
+            },
+            {
+                name: "Lait en Poudre Victoria",
+                category: "dairy",
+                image: "produit_lait-poudre-victoria.jpg",
+                origin: "International",
+                ref: "CCS-LAIT-POUD-09",
+                cond: "Sachets / Boîtes hermétiques",
+                qual: "Enrichi en vitamines",
+                log: "Protection anti-humidité",
+                extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
+                videoLoop: "letpv.mp4",
+                images: ["vletpv1.png", "vletpv2.png", "vletpv3.png", "vletpv4.png", "vletpv5.png", "vletpv6.png", "vletpv7.png", "vletpv8.png", "vletpv9.png", "vletpv10.png", "vletpv11.png", "vletpv12.png", "vletpv13.png", "vletpv14.png", "vletpv15.png", "vletpv16.png", "vletpv17.png"]
+            },
+
+            // 4. PRODUITS DIVERS
+            {
+                name: "Sucre Crystal Blanc",
+                category: "divers",
+                image: "sucre.png",
+                origin: "Brésil / Grupo Bazan",
+                ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
+                cond: "Sacs de 50 kg (Poids Net)",
+                qual: "Açúcar Cristal White - Grade A",
+                log: "Empotage conteneur sécurisé",
+                extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
+                videoLoop: "sucre.mp4",
+                images: ["suc1.png", "suc2.png", "suc3.png", "suc4.png", "suc5.png", "suc6.png", "suc7.png", "suc8.png", "suc9.png", "suc10.png", "suc11.png", "suc12.png", "suc13.png", "suc14.png", "suc15.png", "suc16.png", "suc17.png"]
+            },
+            {
+                name: "Ananas Sarama",
+                category: "divers",
+                image: "produit_ananas-sarama-1.jpg",
+                origin: "Côte d'Ivoire / International",
+                ref: "CCS-ANANAS-01",
+                cond: "Carton / Palette",
+                qual: "Extra Frais / Conserve",
+                log: "Optimisé frigo & conteneur",
+                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
+                videoLoop: "nanasram.mp4",
+                images: ["ar1.png", "ar2.png", "ar3.png", "ar4.png", "ar5.png", "ar6.png", "ar7.png", "ar8.png", "ar9.png", "ar10.png", "ar11.png", "ar12.png", "ar13.png", "ar14.png", "ar15.png", "ar16.png", "ar17.png"]
+            },
+            {
+                name: "Café Sélection CCS",
+                category: "divers",
+                image: "cafe.png",
+                origin: "Afrique de l'Ouest / Amériques",
+                ref: "CCS-CAFE-02",
+                cond: "Sacs / Paquets étanches",
+                qual: "100% Pur Arabica / Robusta",
+                log: "Stockage en milieu sec ventilé",
+                extra: "Café d'exception torréfié et emballé sous vide.",
+                videoLoop: "cafe.mp4",
+                images: ["caf1.png", "caf2.png", "caf3.png", "caf4.png", "caf5.png", "caf6.png", "caf7.png", "caf8.png", "caf9.png", "caf10.png", "caf11.png", "caf12.png", "caf13.png", "caf14.png", "caf15.png", "caf16.png", "caf17.png"]
+            },
+            {
+                name: "Huiles",
+                category: "divers",
+                image: "huile.png",
+                origin: "Malaisie / International",
+                ref: "CCS-HUILE-RAFFINEE",
+                cond: "Bidons de 20 Litres",
+                qual: "100% pure huile végétale pour la cuisine",
+                log: "Palettisation et empotage sécurisé",
+                extra: "Huile végétale pure Sarama / Trois Continental de qualité supérieure, conditionnée en bidons de 20 litres.",
+                videoLoop: "huile.mp4",
+                images: ["huil1.png", "huil2.png", "huil3.png", "huil4.png", "huil5.png", "huil6.png", "huil7.png", "huil8.png", "huil9.png", "huil10.png", "huil11.png", "huil12.png", "huil13.png", "huil14.png", "huil15.png", "huil16.png", "huil17.png"]
+            },
+            {
+                name: "Jus d'Orange Trois Continental",
+                category: "divers",
+                image: "produit_jus-orange-trois.jpg",
+                origin: "International",
+                ref: "CCS-JUS-06",
+                cond: "Briques / Bouteilles PET",
+                qual: "Pur jus / Nectar",
+                log: "Chaîne du froid respectée",
+                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
+                videoLoop: "juo.mp4",
+                images: ["juo1.png", "juo2.png", "juo3.png", "juo4.png", "juo5.png", "juo6.png", "juo7.png", "juo8.png", "juo9.png", "juo10.png", "juo11.png", "juo12.png", "juo13.png", "juo14.png", "juo15.png", "juo16.png", "juo17.png"]
             },
             {
                 name: "Pâte de Tomate Sarama",
+                category: "divers",
                 image: "tomato.png",
                 origin: "International",
                 ref: "CCS-TOMATE-11",
@@ -2105,59 +1788,11 @@
                 log: "Conditionnement antichoc",
                 extra: "Pâte de tomate Sarama riche en goût, chargée et empotée avec soin dans nos conteneurs pour l'export.",
                 videoLoop: "tomato.mp4",
-                images:  [
-
-                    "tom1.png",
-"tom2.png",
-"tom3.png",
-"tom4.png",
-"tom5.png",
-"tom6.png",
-"tom7.png",
-"tom8.png",
-"tom9.png",
-"tom10.png",
-"tom11.png",
-"tom12.png",
-"tom13.png",
-"tom14.png",
-"tom15.png",
-"tom16.png",
-"tom17.png"
-                     ]
-            },
-            {
-                name: "Petits Pois en Conserve",
-                image: "produit_petits-pois.jpg",
-                origin: "International",
-                ref: "CCS-POIS-12",
-                cond: "Boîtes métalliques",
-                qual: "Tendres et savoureux",
-                log: "Stockage tempéré",
-                extra: "Petits pois sélectionnés mis en conserve le jour même.",
-                videoLoop: "pp.mp4",
-                images:  [
-                    "pois1.png",
-"pois2.png",
-"pois3.png",
-"pois4.png",
-"pois5.png",
-"pois6.png",
-"pois7.png",
-"pois8.png",
-"pois9.png",
-"pois10.png",
-"pois11.png",
-"pois12.png",
-"pois13.png",
-"pois14.png",
-"pois15.png",
-"pois16.png",
-"pois17.png"
-                ]
+                images: ["tom1.png", "tom2.png", "tom3.png", "tom4.png", "tom5.png", "tom6.png", "tom7.png", "tom8.png", "tom9.png", "tom10.png", "tom11.png", "tom12.png", "tom13.png", "tom14.png", "tom15.png", "tom16.png", "tom17.png"]
             },
             {
                 name: "Raisins Secs",
+                category: "divers",
                 image: "produit_raisins-secs.jpg",
                 origin: "International",
                 ref: "CCS-RAISIN-14",
@@ -2166,28 +1801,11 @@
                 log: "Atmosphère contrôlée",
                 extra: "Raisins secs sélectionnés, riches en énergie.",
                 videoLoop: "raisin.mp4",
-                images:  [
-                    "raisin1.png",
-"raisin2.png",
-"raisin3.png",
-"raisin4.png",
-"raisin5.png",
-"raisin6.png",
-"raisin7.png",
-"raisin8.png",
-"raisin9.png",
-"raisin10.png",
-"raisin11.png",
-"raisin12.png",
-"raisin13.png",
-"raisin14.png",
-"raisin15.png",
-"raisin16.png",
-"raisin17.png"
-                ]
+                images: ["raisin1.png", "raisin2.png", "raisin3.png", "raisin4.png", "raisin5.png", "raisin6.png", "raisin7.png", "raisin8.png", "raisin9.png", "raisin10.png", "raisin11.png", "raisin12.png", "raisin13.png", "raisin14.png", "raisin15.png", "raisin16.png", "raisin17.png"]
             },
             {
                 name: "Riz Moba (100% Brisure)",
+                category: "divers",
                 image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
                 origin: "Asie / International",
                 ref: "CCS-RIZ-MOBA",
@@ -2196,28 +1814,11 @@
                 log: "Empotage conteneur lourd",
                 extra: "Riz Moba 100% brisure, cuisson rapide homogène, stocké en entrepôt et empoté en conteneur pour l'export.",
                 videoLoop: "moba.mp4",
-                images: [
-                    "rim1.png",
-"rim2.png",
-"rim3.png",
-"rim4.png",
-"rim5.png",
-"rim6.png",
-"rim7.png",
-"rim8.png",
-"rim9.png",
-"rim10.png",
-"rim11.png",
-"rim12.png",
-"rim13.png",
-"rim14.png",
-"rim15.png",
-"rim16.png",
-"rim17.png"
-                ]
+                images: ["rim1.png", "rim2.png", "rim3.png", "rim4.png", "rim5.png", "rim6.png", "rim7.png", "rim8.png", "rim9.png", "rim10.png", "rim11.png", "rim12.png", "rim13.png", "rim14.png", "rim15.png", "rim16.png", "rim17.png"]
             },
             {
                 name: "Riz Oriba",
+                category: "divers",
                 image: "produit_riz-oriba.jpg",
                 origin: "International",
                 ref: "CCS-RIZ-ORIBA",
@@ -2226,119 +1827,24 @@
                 log: "Stockage entrepôt sec",
                 extra: "Riz Oriba de premier choix, grains entiers parfumés.",
                 videoLoop: "rio.mp4",
-                images: [
-                    "rio1.png",
-"rio2.png",
-"rio3.png",
-"rio4.png",
-"rio5.png",
-"rio6.png",
-"rio7.png",
-"rio8.png",
-"rio9.png",
-"rio10.png",
-"rio11.png",
-"rio12.png",
-"rio13.png",
-"rio14.png",
-"rio15.png",
-"rio16.png",
-"rio17.png"
-                ]
+                images: ["rio1.png", "rio2.png", "rio3.png", "rio4.png", "rio5.png", "rio6.png", "rio7.png", "rio8.png", "rio9.png", "rio10.png", "rio11.png", "rio12.png", "rio13.png", "rio14.png", "rio15.png", "rio16.png", "rio17.png"]
             },
             {
                 name: "Tamarin",
+                category: "divers",
                 image: "tamarin.png",
                 origin: "Afrique / International",
                 ref: "CCS-TAMARIN-17",
                 cond: "Vrac / Cartons / Sachets",
                 qual: "Pulpe naturelle sélectionnée",
                 log: "Conditionnement étanche",
-                extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg. Idéal pour la cuisine, les boissons et les préparations traditionnelles.",
+                extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg.",
                 videoLoop: "tamarin.mp4",
-                images: [
-                   "tam1.png",
-"tam2.png",
-"tam3.png",
-"tam4.png",
-"tam5.png",
-"tam6.png",
-"tam7.png",
-"tam8.png",
-"tam9.png",
-"tam10.png",
-"tam11.png",
-"tam12.png",
-"tam13.png",
-"tam14.png",
-"tam15.png",
-"tam16.png",
-"tam17.png"
-                ]
-            },
-            {
-                name: "Ail (Garlic)",
-                image: "WhatsApp_Image_2026-09-02_at_17_35_50.jpeg",
-                origin: "Chine / International",
-                ref: "CCS-AIL-01",
-                cond: "Cartons de 10 kg (Poids Net)",
-                qual: "Cat. 1 Premium - Calibres 50-55/55-60/60-65/65-70mm - Best Foods",
-                log: "Stockage en chambre froide / Empotage conteneur réfrigéré",
-                extra: "Ail frais Best Foods de qualité supérieure (Cat. 1), disponible en plusieurs calibres (50 à 70mm). Conditionné en filets puis en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
-                videoLoop: "ail.mp4",
-                images: [
-                    "ail1.png",
-"ail2.png",
-"ail3.png",
-"ail4.png",
-"ail5.png",
-"ail6.png",
-"ail7.png",
-"ail8.png",
-"ail9.png",
-"ail10.png",
-"ail11.png",
-"ail12.png",
-"ail13.png",
-"ail14.png",
-"ail15.png",
-"ail16.png",
-"ail17.png"
-                ]
-            },
-            {
-                name: "Gingembre (Ginger)",
-                image: "ginger.png",
-                origin: "Brésil / International",
-                ref: "GINGEMBRE MATURE",
-                cond: "Cartons de 10 kg / 22 lbs environ",
-                qual: "Gingembre frais - Origine Brésil - Best Foods",
-                log: "Ligne de tri et conditionnement / Palettisation avant export",
-                extra: "Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport. Trié et emballé sur ligne dédiée avant palettisation et export.",
-                videoLoop: "gingembre.mp4",
-                images: [
-                    "ging1.png",
-"ging2.png",
-"ging3.png",
-"ging4.png",
-"ging5.png",
-"ging6.png",
-"ging7.png",
-"ging8.png",
-"ging9.png",
-"ging10.png",
-"ging11.png",
-"ging12.png",
-"ging13.png",
-"ging14.png",
-"ging15.png",
-"ging16.png",
-"ging17.png"
-                ]
+                images: ["tam1.png", "tam2.png", "tam3.png", "tam4.png", "tam5.png", "tam6.png", "tam7.png", "tam8.png", "tam9.png", "tam10.png", "tam11.png", "tam12.png", "tam13.png", "tam14.png", "tam15.png", "tam16.png", "tam17.png"]
             }
         ];
 
-        // --- APPARITION PROGRESSIVE DES ÉLÉMENTS AU SCROLL (réutilisable pour le contenu généré en JS) ---
+        // --- OBSERVATEUR D'INTERSECTION ---
         const revealObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2354,151 +1860,121 @@
             });
         }
 
-        // --- GÉNÉRATION AUTOMATIQUE DES LISTES DE PRODUITS (papeterie séparée + catalogue général avec recherche/filtre) ---
-        const productsGridContainer = document.getElementById('productsGridContainer');
-        const productsEmptyMsg = document.getElementById('productsEmptyMsg');
         const paperGridContainer = document.getElementById('paperGridContainer');
-        let currentOriginFilter = 'all';
-        let currentSearchTerm = '';
+        const spicesGridContainer = document.getElementById('spicesGridContainer');
+        const legumesGridContainer = document.getElementById('legumesGridContainer');
+        const dairyGridContainer = document.getElementById('dairyGridContainer');
+        const diversGridContainer = document.getElementById('diversGridContainer');
 
-        function buildProductRowHTML(prod, index, i) {
+        function buildProductCardHTML(prod, index, i) {
+            // Alternance automatique gauche / droite selon l'index
+            const revealClass = (i % 2 === 0) ? 'reveal-left' : 'reveal-right';
+            const delay = Math.min((i % 3) * 0.15, 0.4);
+
+            // Détermination du badge et de la classe CSS selon la catégorie
+            let badgeHtml = '';
+            let cardCategoryClass = '';
+
+            if (prod.category === 'papier') {
+                cardCategoryClass = 'paper-card';
+                badgeHtml = `<img src="ccbadge.png" alt="Badge Papeterie CCS" class="card-border-badge">`;
+            } else {
+                // Pour les autres catégories considérées comme agro-alimentaires (spices, legumes, dairy, divers)
+                cardCategoryClass = 'agro-card';
+                badgeHtml = `<img src="badgbesstfoods.png" alt="Badge Best Foods" class="card-border-badge">`;
+            }
+
             return `
-                <div class="product-row ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}" style="transition-delay:${Math.min(i * 0.08, 0.4)}s" onclick="openProductModal(${index})">
+                <div class="product-row ${cardCategoryClass} ${revealClass}" style="transition-delay:${delay}s" onclick="openProductModal(${index})">
+                    ${badgeHtml}
+                    <h3 class="product-row-title">${prod.name}</h3>
                     <div class="product-row-img-wrap">
                         <span class="product-row-badge">${prod.origin}</span>
                         <img src="${prod.image}" class="product-row-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
                     </div>
                     <div class="product-row-body">
-                        <h3 class="product-row-title">${prod.name}</h3>
-                        <p class="product-row-desc">${prod.extra.substring(0, 150)}${prod.extra.length > 150 ? '...' : ''}</p>
-                        <div class="product-row-btn">Voir les détails & Chargements</div>
+                        <p class="product-row-desc">${prod.extra.substring(0, 90)}${prod.extra.length > 90 ? '...' : ''}</p>
+                        <div class="product-row-btn">View More</div>
                     </div>
                 </div>
             `;
         }
 
-        // --- EFFET DE TILT 3D AU SURVOL DES CARDS PRODUIT ---
-        function attachTiltEffect(container) {
-            container.querySelectorAll('.product-row').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -4;
-                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 4;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
-            });
-        }
+        // --- FONCTION DE FILTRAGE UNIQUE (BASE DE RECHERCHE GLOBALE) ---
+        function filterCategoryGrid(categoryKey, containerEl, emptyMsgEl, query) {
+            const items = productsDatabase
+                .map((prod, index) => ({ prod, index }))
+                .filter(({ prod }) => prod.category === categoryKey)
+                .filter(({ prod }) => !query || prod.name.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query));
 
-        function renderProductsGrid(list) {
-            if (!list.length) {
-                productsGridContainer.innerHTML = '';
-                productsEmptyMsg.style.display = 'block';
+            if (!items.length) {
+                containerEl.innerHTML = '';
+                if (emptyMsgEl) emptyMsgEl.style.display = 'block';
                 return;
             }
-            productsEmptyMsg.style.display = 'none';
-            productsGridContainer.innerHTML = list.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
+            if (emptyMsgEl) emptyMsgEl.style.display = 'none';
+            containerEl.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
             observeReveals();
-            attachTiltEffect(productsGridContainer);
         }
 
-        function renderPaperGrid() {
-            const paperList = productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category === 'papier');
-            paperGridContainer.innerHTML = paperList.map(({ prod, index }, i) => buildProductRowHTML(prod, index, i)).join('');
-            observeReveals();
-            attachTiltEffect(paperGridContainer);
+        function filterGlobalProducts() {
+            const query = document.getElementById('globalSearchInput').value.trim().toLowerCase();
+
+            filterCategoryGrid('papier', paperGridContainer, document.getElementById('paperEmptyMsg'), query);
+            filterCategoryGrid('spices', spicesGridContainer, document.getElementById('spicesEmptyMsg'), query);
+            filterCategoryGrid('legumes', legumesGridContainer, document.getElementById('legumesEmptyMsg'), query);
+            filterCategoryGrid('dairy', dairyGridContainer, document.getElementById('dairyEmptyMsg'), query);
+            filterCategoryGrid('divers', diversGridContainer, document.getElementById('diversEmptyMsg'), query);
         }
 
-        function getFilteredProducts() {
-            return productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category !== 'papier')
-                .filter(({ prod }) => {
-                    const matchesSearch = !currentSearchTerm || prod.name.toLowerCase().includes(currentSearchTerm) || prod.extra.toLowerCase().includes(currentSearchTerm);
-                    const matchesOrigin = currentOriginFilter === 'all' || prod.origin.toLowerCase().includes(currentOriginFilter);
-                    return matchesSearch && matchesOrigin;
-                });
+        // Initialisation de l'affichage complet
+        function renderAllGrids() {
+            filterCategoryGrid('papier', paperGridContainer, document.getElementById('paperEmptyMsg'), '');
+            filterCategoryGrid('spices', spicesGridContainer, document.getElementById('spicesEmptyMsg'), '');
+            filterCategoryGrid('legumes', legumesGridContainer, document.getElementById('legumesEmptyMsg'), '');
+            filterCategoryGrid('dairy', dairyGridContainer, document.getElementById('dairyEmptyMsg'), '');
+            filterCategoryGrid('divers', diversGridContainer, document.getElementById('diversEmptyMsg'), '');
         }
 
-        function filterProducts() {
-            currentSearchTerm = document.getElementById('productSearchInput').value.trim().toLowerCase();
-            renderProductsGrid(getFilteredProducts());
-        }
+        renderAllGrids();
 
-        function setOriginFilter(origin, btn) {
-            currentOriginFilter = origin;
-            document.querySelectorAll('.filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderProductsGrid(getFilteredProducts());
-        }
-
-        renderPaperGrid();
-        renderProductsGrid(getFilteredProducts());
-
-        // --- GALERIE : PHOTOS DE NOS CONTENEURS (empotage / chargement) ---
+        // --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE ---
         const containerGalleryImages = [
-           "cnt.1.png",
-"cnt.2.png",
-"cnt.3.png",
-"cnt.4.png",
-"cnt.6.png",
-"cnt.7.png",
-
-"cnt.9.png",
-"cnt.10.png",
-"cnt.11.png",
-"cnt.12.png",
-"cnt.13.png",
-"cnt.15.png",
-"cnt.16.png",
-"cnt.17.png",
-"cnt.19.png",
-"cnt.20.png",
-           
-"cnt.22.png",
-"cnt.23.png",
-"cnt.24.png",
-
-"cnt.26.png",
-"cnt.27.png",
-"cnt.28.png",
-"cnt.29.png",
-"cnt.30.png",
-"cnt.31.png",
-"cnt.32.png",
-"cnt.33.png",
-"cnt.34.png",
-"cnt.35.png",
-"cnt.36.png",
-"cnt.37.png",
-"cnt.38.png",
-"cnt.39.png",
-"cnt.40.png",
-"cnt.41.png",
-"cnt.42.png",
-"cnt.43.png",
-"cnt.44.png",
-"cnt.45.png",
-"cnt.46.png",
-"cnt.47.png",
-"cnt.48.png",
-"cnt.49.png",
-"cnt.50.png"
-            
+            "cnt.1.png", "cnt.2.png", "cnt.3.png", "cnt.4.png", "cnt.6.png", "cnt.7.png",
+            "cnt.9.png", "cnt.10.png", "cnt.11.png", "cnt.12.png", "cnt.13.png", "cnt.15.png",
+            "cnt.16.png", "cnt.17.png", "cnt.19.png", "cnt.20.png", "cnt.22.png", "cnt.23.png",
+            "cnt.24.png", "cnt.26.png", "cnt.27.png", "cnt.28.png", "cnt.29.png", "cnt.30.png",
+            "cnt.31.png", "cnt.32.png", "cnt.33.png", "cnt.34.png", "cnt.35.png", "cnt.36.png",
+            "cnt.37.png", "cnt.38.png", "cnt.39.png", "cnt.40.png", "cnt.41.png", "cnt.42.png",
+            "cnt.43.png", "cnt.44.png", "cnt.45.png", "cnt.46.png", "cnt.47.png", "cnt.48.png",
+            "cnt.49.png", "cnt.50.png"
         ];
 
-        const containerGalleryGrid = document.getElementById('containerGalleryGrid');
-        containerGalleryGrid.innerHTML = containerGalleryImages.map((img, idx) => `
-                <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})">
-                    <img src="${img}" alt="Conteneur CCS ${idx + 1}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=Conteneur+CCS'">
-                </div>
-            `).join('');
+        const marqueeTrack = document.getElementById('marqueeTrack');
+        const marqueeWrapper = document.getElementById('marqueeWrapper');
+
+        const galleryHTMLContent = containerGalleryImages.map((img, idx) => `
+            <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})" title="Cliquez pour zoomer">
+                <img src="${img}" alt="Conteneur CCS ${idx + 1}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=Conteneur+CCS'">
+            </div>
+        `).join('');
+
+        marqueeTrack.innerHTML = galleryHTMLContent + galleryHTMLContent;
+
+        const marqueeTrackElem = document.getElementById('marqueeTrack');
+
+        function pauseMarquee() {
+            marqueeTrackElem.classList.add('paused');
+        }
+
+        function resumeMarquee() {
+            marqueeTrackElem.classList.remove('paused');
+        }
+
+        marqueeWrapper.addEventListener('mouseenter', pauseMarquee);
+        marqueeWrapper.addEventListener('mouseleave', resumeMarquee);
+        marqueeWrapper.addEventListener('touchstart', pauseMarquee, {passive: true});
+        marqueeWrapper.addEventListener('touchend', resumeMarquee, {passive: true});
 
         let galleryLightboxIndex = 0;
 
@@ -2621,7 +2097,7 @@
             }
         }
 
-        // --- SÉLECTEUR DE LANGUE (FR / EN) ---
+        // --- SÉLECTEUR DE LANGUE ---
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
 
@@ -2637,7 +2113,7 @@
             });
         }
 
-        // --- INDICATEUR ACTIF DE LA NAVIGATION (POINT ROUGE) ---
+        // --- INDICATEUR ACTIF DE NAVIGATION ---
         const navLinks = document.querySelectorAll('.nav-link');
         const redDot = document.getElementById('redDot');
 
@@ -2667,7 +2143,7 @@
             }
         });
 
-        // --- MENU BURGER (NAVIGATION MOBILE) ---
+        // --- MENU BURGER ---
         function toggleNavMenu() {
             const links = document.getElementById('navLinks');
             const toggle = document.getElementById('navToggle');
@@ -2684,7 +2160,7 @@
             });
         });
 
-        // --- COMPTEURS ANIMÉS (SECTION "CCS EN CHIFFRES") ---
+        // --- COMPTEURS ANIMÉS ---
         function animateCounter(el) {
             const target = parseInt(el.getAttribute('data-target'), 10) || 0;
             const duration = 1400;
@@ -2736,7 +2212,7 @@
             }
         }
 
-        // --- FORMULAIRE NEWSLETTER (CÔTÉ CLIENT, SANS BACKEND) ---
+        // --- NEWSLETTER ---
         function handleNewsletterSubmit(event) {
             event.preventDefault();
             const emailInput = document.getElementById('newsletterEmail');
@@ -2749,15 +2225,13 @@
                 return;
             }
 
-            // NOTE : aucune inscription n'est réellement envoyée ici, il n'y a pas de backend branché.
-            // À connecter à un service (Mailchimp, Google Sheets, votre propre API, etc.) pour un usage réel.
             msg.textContent = `Merci ! ${email} a été enregistré pour nos actualités.`;
             msg.style.color = '#002664';
             document.getElementById('newsletterForm').reset();
         }
 
         // --- BOUTON RETOUR EN HAUT ---
-        const backToTopBtn = document.getElementById('backToTopBtn');
+        const backToTopBtn = document.getElementById('backToTestTop') || document.getElementById('backToTopBtn');
         window.addEventListener('scroll', () => {
             backToTopBtn.classList.toggle('visible', window.scrollY > 500);
         });
