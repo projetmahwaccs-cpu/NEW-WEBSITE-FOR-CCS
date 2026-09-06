@@ -336,6 +336,104 @@
             text-align: center;
         }
 
+        /* --- STYLES TABLEAUX PRODUITS --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .product-table th {
+            background-color: #002664;
+            color: #ffffff;
+            padding: 14px 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-table th.table-header-mali,
+        .product-table th.table-header-guinee {
+            background-color: #b48a00;
+            color: #ffffff;
+            text-align: center;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        .product-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        .product-table tbody tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .product-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- STYLES SECTION ADRESSES --- */
+        .address-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .address-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .address-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .address-card:hover {
+            transform: translateY(-5px);
+            border-color: #0ea5e9;
+        }
+
+        .address-card h3 {
+            color: #002664;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .address-card p {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
         /* --- STYLES SPÉCIFIQUES ACTUALITÉS --- */
         .news-featured-grid {
             display: grid;
@@ -663,8 +761,8 @@
             
             <ul class="nav-links" id="navLinks">
                 <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produits" data-en="Products">Produits</a></li>
-                <li class="nav-item"><a href="news.html" class="nav-link active" data-fr="Actualités" data-en="News">Actualités</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Produits</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">Actualités</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
         </div>
@@ -672,8 +770,164 @@
 
     <section class="parallax-section hero-banner">
         <div class="parallax-overlay">
-            <h1 class="hero-title">Actualités & Annonces Officielles CCS</h1>
-            <p class="hero-subtitle">Suivez nos derniers arrivages de conteneurs, nos nouveaux partenariats internationaux et l'évolution de nos activités à Dakar et dans la sous-région.</p>
+            <h1 class="hero-title">Disponibilité de nos Produits</h1>
+            <p class="hero-subtitle">Consultez la liste de nos produits disponibles pour le Mali et la Guinée Conakry.</p>
+        </div>
+    </section>
+
+    <!-- SECTION PRODUITS DISPONIBLES POUR LE MALI ET LA GUINÉE CONAKRY -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Catalogue par Destination</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Retrouvez ci-dessous les gammes de produits dédiées à nos marchés partenaires[cite: 4].</p>
+            </div>
+
+            <!-- SECTION PRODUITS DISPONIBLES AU MALI -->
+            <div class="reveal" style="margin-bottom: 60px;">
+                <div class="table-responsive">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th colspan="4" class="table-header-mali">LISTE DES PRODUITS POUR LE MALI</th>
+                            </tr>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Emballage</th>
+                                <th>Contenance</th>
+                                <th>Origine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Poivre</td>
+                                <td>Sac</td>
+                                <td>25 kg</td>
+                                <td>Brésil</td>
+                            </tr>
+                            <tr>
+                                <td>Laurier</td>
+                                <td>Sac</td>
+                                <td>25 kg</td>
+                                <td>Argentine</td>
+                            </tr>
+                            <tr>
+                                <td>Ailles</td>
+                                <td>Carton</td>
+                                <td>10 kg</td>
+                                <td>Argentine</td>
+                            </tr>
+                            <tr>
+                                <td>Rame papier A4 80 gsm</td>
+                                <td>Carton</td>
+                                <td>5 rames</td>
+                                <td>Thaïlande</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION PRODUITS DISPONIBLES À LA GUINÉE CONAKRY -->
+            <div class="reveal">
+                <div class="table-responsive">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th colspan="4" class="table-header-guinee">LISTE DE NOS PRODUITS POUR LA GUINÉE CONAKRY</th>
+                            </tr>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Emballage</th>
+                                <th>Contenance</th>
+                                <th>Origine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>POIVRE</td>
+                                <td>Sac</td>
+                                <td>25 kg</td>
+                                <td>Brésil</td>
+                            </tr>
+                            <tr>
+                                <td>PETIS POIS</td>
+                                <td>Sac</td>
+                                <td>20 kg</td>
+                                <td>Argentine</td>
+                            </tr>
+                            <tr>
+                                <td>LENTILLES</td>
+                                <td>Sac</td>
+                                <td>15 kg</td>
+                                <td>Canada</td>
+                            </tr>
+                            <tr>
+                                <td>Brazilian White Crystal Sugar - colour up to ICUMSA 150 - Bags of 50KG</td>
+                                <td>Sac</td>
+                                <td>50 kg</td>
+                                <td>Brésil</td>
+                            </tr>
+                            <tr>
+                                <td>PREMIUM QUALITY INDIAN PARBOILED RICE LONG GRAIN 5% BROKEN SELECTED QUALITY</td>
+                                <td>Sac</td>
+                                <td>25 kg</td>
+                                <td>Inde</td>
+                            </tr>
+                            <tr>
+                                <td>GIGEMBRE MATURE</td>
+                                <td>Carton</td>
+                                <td>10 kg</td>
+                                <td>Brésil</td>
+                            </tr>
+                            <tr>
+                                <td>LAIT CONCENTRE</td>
+                                <td>Carton</td>
+                                <td>1 kg</td>
+                                <td>Malaisie</td>
+                            </tr>
+                            <tr>
+                                <td>HUILE</td>
+                                <td>bidon</td>
+                                <td>20 litres</td>
+                                <td>Malaisie</td>
+                            </tr>
+                            <tr>
+                                <td>Rame papier A4 80 gsm</td>
+                                <td>Carton</td>
+                                <td>5 rames</td>
+                                <td>Thaïlande</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION: NOS ADRESSES -->
+    <section class="catalog-section" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Nos Adresses</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Retrouvez nos implantations et points de contact au Mali et en Guinée-Bissau.</p>
+            </div>
+
+            <div class="address-grid reveal">
+                <div class="address-card">
+                    <h3>📍 Adresse au Mali</h3>
+                    <p><strong>Comptoir Commercial Sourang - Mali</strong></p>
+                    <p>Hamdallaye ACI 2000, Immeuble Mamadou Diarra</p>
+                </div>
+                <div class="address-card">
+                    <h3>📍 Adresse en Guinée-Bissau / Guinée Conakry</h3>
+                    <p><strong>Comptoir Commercial Sourang - Guinée</strong></p>
+                    <p>Marché Madina de Guinée</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -719,54 +973,6 @@
                         <span class="sidebar-news-date">02 Août 2026</span>
                         <h4 class="sidebar-news-title">Nouvelle gamme de papeterie "Capital" disponible</h4>
                         <p style="font-size:12px; color:#64748b; line-height:1.5;">Découvrez nos rames de papier 80g/m² spécialement conçues pour répondre aux besoins accrus des bureaux et imprimeries[cite: 4].</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="catalog-section" style="background-color: #f8fafc;">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Toutes nos Actualités & Articles</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Retrouvez l'historique de nos annonces, conseils et points logistiques.</p>
-            </div>
-
-            <div class="news-grid-standard reveal">
-                <div class="standard-news-card">
-                    <div class="standard-img-wrap">
-                        <img src="produithero.png" alt="Arrivage Alimentaire" onerror="this.src='https://via.placeholder.com/400x200?text=CCS'">
-                    </div>
-                    <div class="standard-content">
-                        <span class="sidebar-news-date">20 Juillet 2026</span>
-                        <h3 class="standard-title">Contrôle qualité rigoureux : de l'origine à la livraison</h3>
-                        <p class="standard-desc">Comment CCS assure une traçabilité totale sur chaque conteneur de denrées alimentaires et produits de papeterie importés[cite: 4].</p>
-                        <a href="product.html" class="news-btn" style="padding: 6px 12px; font-size:11px;">Voir le catalogue</a>
-                    </div>
-                </div>
-
-                <div class="standard-news-card">
-                    <div class="standard-img-wrap">
-                        <img src="bgi.png" alt="Conditionnement" onerror="this.src='https://via.placeholder.com/400x200?text=CCS'">
-                    </div>
-                    <div class="standard-content">
-                        <span class="sidebar-news-date">10 Juin 2026</span>
-                        <h3 class="standard-title">Optimisation des emballages et formats de conditionnement</h3>
-                        <p class="standard-desc">Présentation de nos nouveaux formats de sacs et cartons de 10kg à 50kg pour faciliter le stockage et la distribution de gros[cite: 4].</p>
-                        <a href="product.html" class="news-btn" style="padding: 6px 12px; font-size:11px;">Découvrir</a>
-                    </div>
-                </div>
-
-                <div class="standard-news-card">
-                    <div class="standard-img-wrap">
-                        <img src="doublea.jpg" alt="Papeterie" onerror="this.src='https://via.placeholder.com/400x200?text=CCS'">
-                    </div>
-                    <div class="standard-content">
-                        <span class="sidebar-news-date">18 Mai 2026</span>
-                        <h3 class="standard-title">Pourquoi le papier Double A reste la référence des bureaux</h3>
-                        <p class="standard-desc">Analyse des performances d'impression et de la blancheur supérieure de notre papeterie importée de Thaïlande[cite: 4].</p>
-                        <a href="product.html" class="news-btn" style="padding: 6px 12px; font-size:11px;">En savoir plus</a>
                     </div>
                 </div>
             </div>
