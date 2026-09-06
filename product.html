@@ -336,7 +336,7 @@
             padding-left: 12px;
         }
 
-        /* --- SECTION UNIFIÉE PRODUITS ALIMENTAIRES AVEC BACKGROUND DÉFILANT & TEXTE ANIMÉ --- */
+        /* --- SECTION UNIFIÉE PRODUITS ALIMENTAIRES --- */
         .food-unified-hero {
             position: relative;
             width: 100%;
@@ -354,7 +354,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
             height: 100%;
             display: flex;
             animation: slideFoodBg 32s linear infinite;
@@ -426,7 +425,7 @@
             }
         }
 
-        /* --- BASE DE RECHERCHE GLOBALE (POUR LES PRODUITS ALIMENTAIRES) --- */
+        /* --- BASE DE RECHERCHE GLOBALE --- */
         .global-search-container {
             max-width: 600px;
             margin: 0 auto 40px auto;
@@ -649,7 +648,7 @@
             line-height: 1.6;
         }
 
-        /* --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE --- */
+        /* --- GALERIE CONTENEURS --- */
         .marquee-gallery-wrapper {
             position: relative;
             width: 100%;
@@ -790,7 +789,8 @@
             font-size: 14px;
             letter-spacing: 1px;
         }
-/* --- MINI-PAGE MODAL PRODUIT --- */
+
+        /* --- MINI-PAGE MODAL PRODUIT --- */
         .product-modal {
             display: none;
             position: fixed;
@@ -976,7 +976,7 @@
             line-height: 1.5;
         }
 
-        /* --- ANIMATION D'APPARITION AU SCROLL --- */
+        /* --- ANIMATION SCROLL --- */
         .reveal-left {
             opacity: 0;
             transform: translateX(-60px) translateY(30px);
@@ -1182,6 +1182,97 @@
             min-height: 20px;
         }
 
+        /* --- SECTION CONDITIONNEMENT --- */
+        .conditioning-section {
+            width: 100%;
+            padding: 50px 0;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        .conditioning-section .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .conditioning-section .section-header h2 {
+            font-size: 26px;
+            color: #002664;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .conditioning-section .section-subtitle {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .conditioning-carousel-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+            padding: 10px 20px;
+        }
+
+        .conditioning-carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .conditioning-carousel-container:active {
+            cursor: grabbing;
+        }
+
+        .conditioning-carousel-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+        }
+
+        .conditioning-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .conditioning-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .conditioning-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 38, 100, 0.85);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
         /* --- BOUTON RETOUR EN HAUT --- */
         .back-to-top {
             position: fixed;
@@ -1248,7 +1339,7 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : CATALOGUE GLOBAL & BASE DE RECHERCHE UNIQUE ================= -->
+    <!-- SECTION CATALOGUE GLOBAL & BASE DE RECHERCHE -->
     <section class="catalog-section ccs-products-section">
         <div class="container">
             <div class="section-header reveal">
@@ -1257,39 +1348,27 @@
                 <p class="section-subtitle">Découvrez notre papeterie et l'intégralité de nos gammes de produits alimentaires de qualité supérieure.</p>
             </div>
 
-            <!-- ================= SOUS-SECTION : PAPETERIE ================= -->
             <div class="section-header reveal" style="margin-top: 20px; margin-bottom: 20px;">
                 <h3 class="category-subheading" style="margin: 0; border: none; padding: 0;">Papeterie</h3>
             </div>
-            <div class="products-grid-horizontal" id="paperGridContainer">
-                <!-- Généré dynamiquement par JavaScript -->
-            </div>
+            <div class="products-grid-horizontal" id="paperGridContainer"></div>
 
-            <!-- ================= SECTION UNIQUE UNIFIÉE : PRODUITS ALIMENTAIRES AVEC BACKGROUND DÉFILANT 8 IMAGES & TEXTE ANIMÉ ================= -->
-            <div class="food-unified-hero reveal" style="margin-top: 100%;">
+            <div class="food-unified-hero reveal" style="margin-top: 40px;">
                 <div class="food-bg-slider" id="foodBgSlider">
                     <img src="bgi.png" alt="Alimentation CCS 1">
                     <img src="bs.png" alt="Alimentation CCS 2">
                     <img src="ni.png" alt="Alimentation CCS 3" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+3'">
                     <img src="mi.png" alt="Alimentation CCS 4" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+4'">
-                   
-                    
-                    <!-- Duplication pour boucle infinie fluide -->
                     <img src="bgi.png" alt="Alimentation CCS 1">
                     <img src="bs.png" alt="Alimentation CCS 2">
                     <img src="ni.png" alt="Alimentation CCS 3">
                     <img src="mi.png" alt="Alimentation CCS 4">
-                  
-                    
                 </div>
                 <div class="food-hero-overlay">
-                    <div class="animated-typing-text" id="typingTextContainer">
-                        <!-- Généré dynamiquement par script pour effet d'apparition mot à mot -->
-                    </div>
+                    <div class="animated-typing-text" id="typingTextContainer"></div>
                 </div>
             </div>
 
-            <!-- ================= BASE DE RECHERCHE GLOBALE UNIQUE ================= -->
             <div class="global-search-container reveal">
                 <div class="search-box-group">
                     <label for="globalSearchInput">Recherche un Produit Alimentaire</label>
@@ -1297,10 +1376,8 @@
                 </div>
             </div>
 
-            <!-- TOUS LES PRODUITS ALIMENTAIRES RÉUNIS DANS CETTE MÊME GRILLE SANS SÉPARATION -->
             <div class="products-grid-horizontal" id="unifiedFoodGridContainer" style="grid-template-columns: repeat(3, 1fr);"></div>
             <p class="category-empty-msg" id="foodEmptyMsg">Aucun produit alimentaire ne correspond à votre recherche.</p>
-
         </div>
     </section>
 
@@ -1331,236 +1408,40 @@
         </div>
     </section>
 
-    ----
-    <!-- SECTION CONDITIONNEMENT TYPE INSTAGRAM -->
-<section class="conditioning-section">
-    <div class="section-header">
-        <h2>Faites vous livre das de bref delai</h2>
-        <p class="section-subtitle">Découvrez nos formats de conditionnement</p>
-    </div>
-    
-    <div class="conditioning-carousel-container" id="conditioningCarousel">
-        <div class="conditioning-carousel-track">
-            <!-- Répétez ou remplacez selon vos besoins (20 cartes) -->
-            <div class="conditioning-card">
-                <div class="card-badge">CCS</div>
-                <img src="1..png" alt="Conditionnement 1">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">CCS</div>
-                <img src="2.png" alt="Conditionnement 2">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">CCS</div>
-                <img src="3.png" alt="Conditionnement 3">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="4.png" alt="Conditionnement 4">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="5.png" alt="Conditionnement 5">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="6.png" alt="Conditionnement 6">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="7.png" alt="Conditionnement 7">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="8.png" alt="Conditionnement 8">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="9.png" alt="Conditionnement 9">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="10.png" alt="Conditionnement 10">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="11.png" alt="Conditionnement 11">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="12.png" alt="Conditionnement 12">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="13.png" alt="Conditionnement 13">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="14.png" alt="Conditionnement 14">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="15.png" alt="Conditionnement 15">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="16.png" alt="Conditionnement 16">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="17.png" alt="Conditionnement 17">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="18.png" alt="Conditionnement 18"></div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="19.png" alt="Conditionnement 19">
-            </div>
-            <div class="conditioning-card">
-                <div class="card-badge">Best Foods</div>
-                <img src="20.png" alt="Conditionnement 20">
+    <!-- SECTION CONDITIONNEMENT -->
+    <section class="conditioning-section">
+        <div class="section-header">
+            <h2>Faites vous livrer dans de brefs délais</h2>
+            <p class="section-subtitle">Découvrez nos formats de conditionnement</p>
+        </div>
+        
+        <div class="conditioning-carousel-container" id="conditioningCarousel">
+            <div class="conditioning-carousel-track">
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="1.png" alt="Conditionnement 1" onerror="this.src='https://via.placeholder.com/300x300?text=CCS'"></div>
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="2.png" alt="Conditionnement 2"></div>
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="3.png" alt="Conditionnement 3"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="4.png" alt="Conditionnement 4"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="5.png" alt="Conditionnement 5"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="6.png" alt="Conditionnement 6"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="7.png" alt="Conditionnement 7"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="8.png" alt="Conditionnement 8"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="9.png" alt="Conditionnement 9"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="10.png" alt="Conditionnement 10"></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- STYLES CSS -->
-<style>
-    .conditioning-section {
-        width: 100%;
-        padding: 50px 0;
-        background-color: #ffffff;
-        overflow: hidden;
-    }
-
-    .conditioning-section .section-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .conditioning-section .section-header h2 {
-        font-size: 26px;
-        color: #002664;
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    .conditioning-section .section-subtitle {
-        font-size: 14px;
-        color: #64748b;
-    }
-
-    .conditioning-carousel-container {
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        cursor: grab;
-        padding: 10px 20px;
-    }
-
-    .conditioning-carousel-container::-webkit-scrollbar {
-        display: none;
-    }
-
-    .conditioning-carousel-container:active {
-        cursor: grabbing;
-    }
-
-    .conditioning-carousel-track {
-        display: flex;
-        gap: 20px;
-        width: max-content;
-    }
-
-    /* Style format Instagram (carré) */
-    .conditioning-card {
-        position: relative;
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        width: 300px;
-        height: 300px; /* Format carré style Insta */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e2e8f0;
-        flex-shrink: 0;
-        transition: transform 0.3s ease;
-    }
-
-    .conditioning-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .conditioning-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    /* Badge "Best Foods" positionné en haut à gauche */
-    .card-badge {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        background: rgba(0, 38, 100, 0.85);
-        color: #ffffff;
-        font-size: 11px;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: 5px 12px;
-        border-radius: 20px;
-        letter-spacing: 0.5px;
-        backdrop-filter: blur(4px);
-        z-index: 5;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-</style>
-
-<!-- CODE JAVASCRIPT -->
-<script>
-    const condSlider = document.getElementById('conditioningCarousel');
-    let isCondAutoScrolling = true;
-    let condSpeed = 1;
-
-    function startCondAutoScroll() {
-        if (isCondAutoScrolling) {
-            condSlider.scrollLeft += condSpeed;
-            if (condSlider.scrollLeft >= (condSlider.scrollWidth - condSlider.clientWidth)) {
-                condSlider.scrollLeft = 0; 
-            }
-        }
-        requestAnimationFrame(startCondAutoScroll);
-    }
-
-    condSlider.addEventListener('mouseenter', () => { isCondAutoScrolling = false; });
-    condSlider.addEventListener('mouseleave', () => { isCondAutoScrolling = true; });
-
-    condSlider.addEventListener('touchstart', () => { isCondAutoScrolling = false; });
-    condSlider.addEventListener('touchend', () => { 
-        setTimeout(() => { isCondAutoScrolling = true; }, 2500); 
-    });
-
-    requestAnimationFrame(startCondAutoScroll);
-</script>
-    ---
-
-    <!-- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE -->
+    <!-- GALERIE CONTENEURS -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Galerie de nos Conteneurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Défilement continu de nos opérations. Touchez ou cliquez sur une image pour faire une pause et zoomer pour inspecter de plus près.</p>
+                <p class="section-subtitle">Défilement continu de nos opérations. Touchez ou cliquez sur une image pour faire une pause et zoomer.</p>
             </div>
             
             <div class="marquee-gallery-wrapper reveal" id="marqueeWrapper">
-                <div class="marquee-track" id="marqueeTrack">
-                    <!-- Injecté par JS -->
-                </div>
+                <div class="marquee-track" id="marqueeTrack"></div>
             </div>
         </div>
     </section>
@@ -1610,7 +1491,7 @@
             <div class="section-header reveal">
                 <h2 class="section-title">Ce Que Disent Nos Collaborateurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Ils ont fait confiance au Comptoir Commercial Sourang, et sont pour la plupart dans notre base de données depuis des années.</p>
+                <p class="section-subtitle">Ils ont fait confiance au Comptoir Commercial Sourang.</p>
             </div>
             <div class="testimonials-grid reveal">
                 <div class="testimonial-card">
@@ -1646,7 +1527,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui, dès la fin du chargement.</p>
+                        <p>Les délais varient selon le produit et la destination, mais chaque conteneur est empoté sous contrôle qualité avec photos et vidéos à l'appui.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1655,25 +1536,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits alimentaires comme le riz, le tamarin, l'ail ou le gingembre.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Quels modes de conditionnement utilisez-vous ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Selon le produit : cartons de 10 à 25 kg, sacs de 25/50 kg, ou conditionnement en vrac. Les fiches produits détaillent le conditionnement exact de chaque référence.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Comment vous contacter pour une demande de devis ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Par téléphone, email, ou via notre page Contact — nous répondons habituellement sous 24 à 48 heures ouvrées.</p>
+                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits alimentaires.</p>
                     </div>
                 </div>
             </div>
@@ -1712,25 +1575,18 @@
                 <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Nos Pôles" data-en="Nos Pôles">Nos Pôles</h4>
-                <a href="product.html" data-fr="Papeterie (Double A, Rame A4)" data-en="Stationery (Double A, A4 Paper)">Papeterie (Double A, Rame A4)</a>
-                <a href="product.html" data-fr="Import-Export Alimentaire & Vrac" data-en="Food Import-Export & Bulk">Import-Export Alimentaire & Vrac</a>
-                <a href="product.html" data-fr="Preuves & Chargements" data-en="Evidence & Loading">Preuves & Chargements</a>
-            </div>
-            <div class="footer-col">
                 <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
-                <p data-fr="Hann Mariste en Face Coris Bank, Dakar, Sénégal" data-en="Hann Mariste en face Coris Bank, Dakar, Senegal">Dakar, Sénégal</p>
+                <p>Dakar, Sénégal</p>
                 <p>Email : comptoircommercialsourang@gmail.com</p>
-                <p>Tél : +221 77 699 00 00 / 77 622 00 22 / 77 336 00 00</p>
+                <p>Tél : +221 77 699 00 00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-fr="© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés." data-en="© 2019 - 2026 CCS (Comptoir Commercial Sourang). All rights reserved.">
-                © 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.
-            </p>
+            <p>© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.</p>
         </div>
     </footer>
 
+    <!-- MODAL PRODUIT -->
     <div class="product-modal" id="productModal">
         <div class="product-modal-content">
             <div class="product-modal-header">
@@ -1740,7 +1596,7 @@
             <div class="product-modal-body">
                 <div class="slider-section-title">
                     <span>Photothèque d'Images de Chargement & Opérations</span>
-                    <span class="slider-controls-hint">(Défilement automatique • Cliquez sur l'image pour arrêter/reprendre)</span>
+                    <span class="slider-controls-hint"></span>
                 </div>
                 <div class="product-slider-container" onclick="toggleAutoPlay()" title="Cliquez pour arrêter ou reprendre le défilement">
                     <button class="slider-btn slider-prev" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
@@ -1776,356 +1632,87 @@
     </div>
 
     <script>
-        // --- BASE DE DONNÉES DES PRODUITS ---
         const productsDatabase = [
-            // Papeterie
-        
-        
-    {
-        name: "Rame Papier Double A",
-        category: "papier",
-        image: "doublea.jpg",
-        origin: "Thaïlande",
-        ref: "PAPIER-DOUBLE-A 80 gsm",
-        cond: "Carton de 5 rames",
-        qual: "Excellente blancheur, PREMIUM QUALITY",
-        log: "Conteneur 20 pieds (1 500 cartons)",
-        extra: "Papier de bureau Double A de haute qualité pour une impression fluide et sans bourrage, chargé et empoté avec soin dans nos conteneurs pour l'export.",
-        videoLoop: "da.mp4",
-        images: ["papd1.png", "papd2.png", "papd3.png", "papd4.png", "papd5.png", "papd6.png", "papd7.png", "papd8.png", "papd9.png", "papd10.png"]
-    },
-    {
-        name: "Papier Smart Copy",
-        category: "papier",
-        image: "smartcopy.png",
-        origin: "Thaïlande",
-        ref: "80 gsm",
-        cond: "Carton de 5 rames",
-        qual: "80g/m² Haute Blancheur",
-        log: "Conteneur 20 pieds (1 500 cartons)",
-        extra: "Papier de photocopie Smart Copy haut de gamme, chargé et empoté avec soin dans nos conteneurs pour l'export.",
-        videoLoop: "sc.mp4",
-        images: ["papsc1.png", "papsc2.png", "papsc3.png", "papsc4.png", "papsc5.png", "papsc6.png", "papsc7.png", "papsc8.png", "papsc9.png", "papsc10.png"]
-    },
-    {
-        name: "Rame Papier Capital",
-        category: "papier",
-        image: "capital.png",
-        origin: "Thaïlande",
-        ref: "CCS-PAPIER-CAPITAL",
-        cond: "Carton de 5 rames",
-        qual: "80g/m² - Haute blancheur, format standard",
-        log: "Conteneur 20 pieds (1 500 cartons)",
-        extra: "Papier de bureau Capital, nouvelle marque de notre gamme papeterie, au grammage optimisé pour les impressions et photocopies quotidiennes. Chargé et empoté avec soin dans nos conteneurs pour l'export.",
-        videoLoop: "capital.mp4",
-        images: ["cap1.png", "cap2.png", "cap3.png", "cap4.png", "cap5.png", "cap6.png", "cap7.png", "cap8.png", "cap9.png", "cap10.png"]
-    },
-
-    // PRODUITS ALIMENTAIRES
-    {
-        name: "Piment Sec Rouge",
-        category: "alimentaire",
-        image: "piment.png",
-        origin: "Inde",
-        ref: "CCS-PIMENT-ROUGE",
-        cond: "Sacs de 10 kg (Poids Net)",
-        qual: "Grade A Premium - Best Foods Spices",
-        log: "Empotage conteneur sécurisé",
-        extra: "Piment rouge entier de qualité supérieure Best Foods Spices, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
-        videoLoop: "piment.mp4",
-        images: ["pim1.png", "pim2.png", "pim3.png", "pim4.png", "pim5.png", "pim6.png", "pim7.png", "pim8.png", "pim9.png", "pim10.png"]
-    },
-    {
-        name: "Poivre Noir",
-        category: "alimentaire",
-        image: "poivre.png",
-        origin: "Brésil",
-        ref: "CCS-POIVRE-03",
-        cond: "Sacs de 25 kg (1 120 sacs / 28 tonnes)",
-        qual: "Grade A Premium - Best Foods Spices",
-        log: "Empotage conteneur 40 pieds",
-        extra: "Poivre noir Best Foods Spices de qualité supérieure (Black Pepper), origine Brésil, récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
-        videoLoop: "poivre.mp4",
-        images: ["poi1.png", "poi2.png", "poi3.png", "poi4.png", "poi5.png", "poi6.png", "poi7.png", "poi8.png", "poi9.png", "poi10.png"]
-    },
-    {
-        name: "Clous de Girofle",
-        category: "alimentaire",
-        image: "produit_clous-de-girofle.jpg",
-        origin: "Argentine",
-        ref: "CCS-GIROFLE-03",
-        cond: "Sacs de 25 kg (800 sacs / 20 tonnes)",
-        qual: "Grade A Premium - Best Foods Spices",
-        log: "Conteneur 40 pieds, protection contre l'humidité",
-        extra: "Clous de girofle aux notes intenses, récoltés à maturité, de la gamme Best Foods Spices.",
-        videoLoop: "girofle.mp4",
-        images: ["gir1.png", "gir2.png", "gir3.png", "gir4.png", "gir5.png", "gir6.png", "gir7.png", "gir8.png", "gir9.png", "gir10.png"]
-    },
-    {
-        name: "Feuilles de Laurier",
-        category: "alimentaire",
-        image: "produit_feuilles-laurier.jpg",
-        origin: "Argentine",
-        ref: "CCS-LAURIER-04",
-        cond: "Sacs de 25 kg (800 sacs / 20 tonnes)",
-        qual: "Séchées naturellement - Best Foods Spices",
-        log: "Conteneur 40 pieds",
-        extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
-        videoLoop: "laurier.mp4",
-        images: ["laur1.png", "laur2.png", "laur3.png", "laur4.png", "laur5.png", "laur6.png", "laur7.png", "laur8.png", "laur9.png", "laur10.png"]
-    },
-    {
-        name: "Ail (Garlic)",
-        category: "alimentaire",
-        image: "ail.png",
-        origin: "Argentine",
-        ref: "CCS-AIL-01",
-        cond: "Cartons de 10 kg (2 700 cartons / 20 tonnes)",
-        qual: "Cat. 1 Premium - Calibres 50-70mm - Best Foods",
-        log: "Conteneur 40 pieds / Chambre froide",
-        extra: "Ail frais Best Foods de qualité supérieure (Cat. 1), disponible en plusieurs calibres. Conditionné en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
-        videoLoop: "ail.mp4",
-        images: ["ail1.png", "ail2.png", "ail3.png", "ail4.png", "ail5.png", "ail6.png", "ail7.png", "ail8.png", "ail9.png", "ail10.png"]
-    },
-    {
-        name: "Gingembre (Ginger)",
-        category: "alimentaire",
-        image: "ginger.png",
-        origin: "Brésil",
-        ref: "GINGEMBRE MATURE",
-        cond: "Cartons de 10 kg (1 800 cartons / 18 tonnes)",
-        qual: "Gingembre frais - Origine Brésil - Best Foods",
-        log: "Conteneur 40 pieds",
-        extra: "Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport.",
-        videoLoop: "gingembre.mp4",
-        images: ["ging1.png", "ging2.png", "ging3.png", "ging4.png", "ging5.png", "ging6.png", "ging7.png", "ging8.png", "ging9.png", "ging10.png"]
-    },
-    {
-        name: "Tamarin",
-        category: "alimentaire",
-        image: "tamarin.png",
-        origin: "Afrique / International",
-        ref: "CCS-TAMARIN-17",
-        cond: "Cartons de 10 kg",
-        qual: "Pulpe naturelle sélectionnée",
-        log: "Conditionnement étanche",
-        extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg.",
-        videoLoop: "tamarin.mp4",
-        images: ["tam1.png", "tam2.png", "tam3.png", "tam4.png", "tam5.png", "tam6.png", "tam7.png", "tam8.png", "tam9.png", "tam10.png"]
-    },
-    {
-        name: "Petits Pois en Conserve",
-        category: "alimentaire",
-        image: "produit_petits-pois.jpg",
-        origin: "Argentine",
-        ref: "CCS-POIS-12",
-        cond: "Sacs de 20 kg (1 200 sacs / 28 tonnes)",
-        qual: "Best Foods",
-        log: "Conteneur 20 pieds",
-        extra: "Petits pois sélectionnés mis en conserve le jour même.",
-        videoLoop: "pp.mp4",
-        images: ["pois1.png", "pois2.png", "pois3.png", "pois4.png", "pois5.png", "pois6.png", "pois7.png", "pois8.png", "pois9.png", "pois10.png"]
-    },
-    {
-        name: "Lentilles Vertes",
-        category: "alimentaire",
-        image: "produit_lentilles.jpg",
-        origin: "Canada",
-        ref: "CCS-LENT-13",
-        cond: "Sacs de 15 kg (1 667 sacs / 25 tonnes)",
-        qual: "Calibre trié et sélectionné - Best Foods",
-        log: "Conteneur 20 pieds",
-        extra: "Lentilles riches en protéines et en fer, idéales pour de multiples préparations culinaires.",
-        videoLoop: "lentilles.mp4",
-        images: ["lentilles1.png", "lentilles2.png", "lentilles3.png", "lentilles4.png", "lentilles5.png", "lentilles6.png", "lentilles7.png", "lentilles8.png", "lentilles9.png", "lentilles10.png"]
-    },
-             {
-        name: "Pâte de Tomate Sarama",
-        category: "alimentaire",
-        image: "tomato.png",
-        origin: "International",
-        ref: "CCS-TOMATE-11",
-        cond: "Boîtes / Sachets doypack",
-        qual: "Concentré 28-30% Brix",
-        log: "Conditionnement antichoc",
-        extra: "Pâte de tomate Sarama riche en goût, chargée et empotée avec soin dans nos conteneurs pour l'export.",
-        videoLoop: "tomato.mp4",
-        images: ["tom1.png", "tom2.png", "tom3.png", "tom4.png", "tom5.png", "tom6.png", "tom7.png", "tom8.png", "tom9.png"]
-    },
-            
-    {
-        name: "Huiles",
-        category: "alimentaire",
-        image: "huile.png",
-        origin: "Malaisie",
-        ref: "CCS-HUILE-RAFFINEE",
-        cond: "Bidons de 20 Litres (1 342 bidons / 26 tonnes)",
-        qual: "100% pure huile végétale pour la cuisine",
-        log: "Conteneur 20 pieds",
-        extra: "Huile végétale pure Sarama / Trois Continental de qualité supérieure, conditionnée en bidons de 20 litres.",
-        videoLoop: "huile.mp4",
-        images: ["huil1.png", "huil2.png", "huil3.png", "huil4.png", "huil5.png", "huil6.png", "huil7.png", "huil8.png", "huil9.png", "huil10.png"]
-    },
-    {
-        name: "Lait Concentré Touba",
-        category: "alimentaire",
-        image: "produit_lait-concentre-touba.jpg",
-        origin: "Malaisie",
-        ref: "CCS-LAIT-CONC-07",
-        cond: "Cartons de 1 kg (24 pièces / 24 tonnes)",
-        qual: "Onctueux et riche",
-        log: "Conteneur 20 pieds",
-        extra: "Lait concentré sucré de marque Touba.",
-        videoLoop: "letouba.mp4",
-        images: ["let1.png", "let2.png", "let3.png", "let4.png", "let5.png", "let6.png", "let7.png", "let8.png", "let9.png", "let10.png"]
-    },
-    {
-        name: "Lait Évaporé Touba",
-        category: "alimentaire",
-        image: "produit_lait-evapore-touba.jpg",
-        origin: "Sénégal / International",
-        ref: "CCS-LAIT-EVAP-08",
-        cond: "Boîtes de conserve étanches",
-        qual: "Standard professionnel",
-        log: "Empilage sécurisé sur palettes",
-        extra: "Lait évaporé Touba pour préparations culinaires.",
-        videoLoop: "letev.mp4",
-        images: ["letevt1.png", "letevt2.png", "letevt3.png", "letevt4.png", "letevt5.png", "letevt6.png", "letevt7.png", "letevt8.png", "letevt9.png", "letevt10.png"]
-    },
-    {
-        name: "Lait en Poudre Victoria",
-        category: "alimentaire",
-        image: "produit_lait-poudre-victoria.jpg",
-        origin: "International",
-        ref: "CCS-LAIT-POUD-09",
-        cond: "Sachets / Boîtes hermétiques",
-        qual: "Enrichi en vitamines",
-        log: "Protection anti-humidité",
-        extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
-        videoLoop: "letpv.mp4",
-        images: ["vletpv1.png", "vletpv2.png", "vletpv3.png", "vletpv4.png", "vletpv5.png", "vletpv6.png", "vletpv7.png", "vletpv8.png", "vletpv9.png", "vletpv10.png"]
-    },
-    {
-        name: "Lait en Poudre Ornua",
-        category: "alimentaire",
-        image: "produit_lait-poudre-ornua.jpg",
-        origin: "International",
-        ref: "CCS-LAIT-16",
-        cond: "Sacs / Boîtes",
-        qual: "Qualité supérieure - Ornua",
-        log: "Stockage sec et tempéré",
-        extra: "Lait en poudre Ornua de premier choix, riche en nutriments et parfait pour diverses applications.",
-        videoLoop: "lait_ornua.mp4",
-        images: ["lait_ornua1.png", "lait_ornua2.png", "lait_ornua3.png", "lait_ornua4.png", "lait_ornua5.png", "lait_ornua6.png", "lait_ornua7.png", "lait_ornua8.png", "lait_ornua9.png"]
-    },
-    {
-        name: "Sucre Crystal Blanc",
-        category: "alimentaire",
-        image: "sucre.png",
-        origin: "Brésil",
-        ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
-        cond: "Sacs de 50 kg (540 sacs / 27 tonnes)",
-        qual: "Açúcar Cristal White - ICUMSA 150 - Grade A",
-        log: "Conteneur 20 pieds",
-        extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
-        videoLoop: "sucre.mp4",
-        images: ["suc1.png", "suc2.png", "suc3.png", "suc4.png", "suc5.png", "suc6.png", "suc7.png", "suc8.png", "suc9.png", "suc10.png"]
-    },
-    {
-        name: "Café Sélection CCS",
-        category: "alimentaire",
-        image: "cafe.png",
-        origin: "Afrique de l'Ouest / Amériques",
-        ref: "CCS-CAFE-02",
-        cond: "Sacs / Paquets étanches",
-        qual: "100% Pur Arabica / Robusta",
-        log: "Stockage en milieu sec ventilé",
-        extra: "Café d'exception torréfié et emballé sous vide.",
-        videoLoop: "cafe.mp4",
-        images: ["caf1.png", "caf2.png", "caf3.png", "caf4.png", "caf5.png", "caf6.png", "caf7.png", "caf8.png", "caf9.png", "caf10.png", "caf11.png", "caf12.png"]
-    },
-    {
-        name: "Ananas Sarama",
-        category: "alimentaire",
-        image: "produit_ananas-sarama-1.jpg",
-        origin: "Côte d'Ivoire / International",
-        ref: "CCS-ANANAS-01",
-        cond: "Carton / Palette",
-        qual: "Extra Frais / Conserve",
-        log: "Optimisé frigo & conteneur",
-        extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
-        videoLoop: "nanasram.mp4",
-        images: ["ar1.png", "ar2.png", "ar3.png", "ar4.png", "ar5.png", "ar6.png", "ar7.png", "ar8.png", "ar9.png", "ar10.png"]
-    },
-    {
-        name: "Jus d'Orange Trois Continental",
-        category: "alimentaire",
-        image: "produit_jus-orange-trois.jpg",
-        origin: "International",
-        ref: "CCS-JUS-06",
-        cond: "Briques / Bouteilles PET",
-        qual: "Pur jus / Nectar",
-        log: "Chaîne du froid respectée",
-        extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
-        videoLoop: "juo.mp4",
-        images: ["juo1.png", "juo2.png", "juo3.png", "juo4.png", "juo5.png", "juo6.png", "juo7.png", "juo8.png", "juo9.png", "juo10.png"]
-    },
-    {
-        name: "Muscade",
-        category: "alimentaire",
-        image: "muscade.png",
-        origin: "International",
-        ref: "CCS-MUSCADE-18",
-        cond: "Sacs / Cartons",
-        qual: "Grade A Premium - Best Foods Spices",
-        log: "",
-        extra: "Noix de muscade de qualité supérieure aux arômes riches et chaleureux, sélectionnée par Best Foods Spices.",
-        videoLoop: "muscade.mp4",
-        images: ["mus1.png", "mus2.png", "mus3.png", "mus4.png", "mus5.png", "mus6.png", "mus7.png", "mus8.png", "mus9.png"]
-    },
-    {
-        name: "Raisins Secs",
-        category: "alimentaire",
-        image: "produit_raisins-secs.jpg",
-        origin: "International",
-        ref: "CCS-RAISIN-14",
-        cond: "Cartons de 10 kg / Sachets",
-        qual: "Moelleux et sucrés",
-        log: "Atmosphère contrôlée",
-        extra: "Raisins secs sélectionnés, riches en énergie.",
-        videoLoop: "raisin.mp4",
-        images: ["raisin1.png", "raisin2.png", "raisin3.png", "raisin4.png", "raisin5.png", "raisin6.png", "raisin7.png", "raisin8.png", "raisin9.png", "raisin10.png"]
-    },
-    {
-        name: "Riz Moba (100% Brisure)",
-        category: "alimentaire",
-        image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
-        origin: "Inde",
-        ref: "CCS-RIZ-MOBA",
-        cond: "Sacs de 25 kg (2 000 sacs / 50 tonnes)",
-        qual: "Premium Quality Indian Parboiled Rice Long Grain 5% Broken Selected Quality",
-        log: "Transport par camion / Empotage conteneur lourd",
-        extra: "Riz Moba 100% brisure, cuisson rapide homogène, stocké en entrepôt et empoté pour l'export.",
-        videoLoop: "moba.mp4",
-        images: ["rim1.png", "rim2.png", "rim3.png", "rim4.png", "rim5.png", "rim6.png", "rim7.png", "rim8.png", "rim9.png", "rim10.png"]
-    },
-    {
-        name: "Riz Oriba",
-        category: "alimentaire",
-        image: "produit_riz-oriba.jpg",
-        origin: "International",
-        ref: "CCS-RIZ-ORIBA",
-        cond: "Sacs de 25kg / 50kg",
-        qual: "Grains longs sélectionnés",
-        log: "Stockage entresôt sec",
-        extra: "Riz Oriba de premier choix, grains entiers parfumés.",
-        videoLoop: "rio.mp4",
-        images: ["rio1.png", "rio2.png", "rio3.png", "rio4.png", "rio5.png", "rio6.png", "rio7.png", "rio8.png", "rio9.png", "rio10.png"]
-    }
-
+            {
+                name: "Rame Papier Double A",
+                category: "papier",
+                image: "doublea.jpg",
+                origin: "Thaïlande",
+                ref: "PAPIER-DOUBLE-A 80 gsm",
+                cond: "Carton de 5 rames",
+                qual: "Excellente blancheur, PREMIUM QUALITY",
+                log: "Conteneur 20 pieds (1 500 cartons)",
+                extra: "Papier de bureau Double A de haute qualité pour une impression fluide et sans bourrage.",
+                videoLoop: "da.mp4",
+                images: ["papd1.png", "papd2.png", "papd3.png"]
+            },
+            {
+                name: "Papier Smart Copy",
+                category: "papier",
+                image: "smartcopy.png",
+                origin: "Thaïlande",
+                ref: "80 gsm",
+                cond: "Carton de 5 rames",
+                qual: "80g/m² Haute Blancheur",
+                log: "Conteneur 20 pieds (1 500 cartons)",
+                extra: "Papier de photocopie Smart Copy haut de gamme.",
+                videoLoop: "sc.mp4",
+                images: ["papsc1.png", "papsc2.png", "papsc3.png"]
+            },
+            {
+                name: "Piment Sec Rouge",
+                category: "alimentaire",
+                image: "piment.png",
+                origin: "Inde",
+                ref: "CCS-PIMENT-ROUGE",
+                cond: "Sacs de 10 kg (Poids Net)",
+                qual: "Grade A Premium - Best Foods Spices",
+                log: "Empotage conteneur sécurisé",
+                extra: "Piment rouge entier de qualité supérieure Best Foods Spices.",
+                videoLoop: "piment.mp4",
+                images: ["pim1.png", "pim2.png", "pim3.png"]
+            },
+            {
+                name: "Poivre Noir",
+                category: "alimentaire",
+                image: "poivre.png",
+                origin: "Brésil",
+                ref: "CCS-POIVRE-03",
+                cond: "Sacs de 25 kg",
+                qual: "Grade A Premium",
+                log: "Empotage conteneur 40 pieds",
+                extra: "Poivre noir Best Foods Spices de qualité supérieure.",
+                videoLoop: "poivre.mp4",
+                images: ["poi1.png", "poi2.png", "poi3.png"]
+            },
+            {
+                name: "Sucre Crystal Blanc",
+                category: "alimentaire",
+                image: "sucre.png",
+                origin: "Brésil",
+                ref: "CCS-SUCRE-BLANC",
+                cond: "Sacs de 50 kg",
+                qual: "ICUMSA 150 - Grade A",
+                log: "Conteneur 20 pieds",
+                extra: "Sucre crystal blanc de qualité supérieure.",
+                videoLoop: "sucre.mp4",
+                images: ["suc1.png", "suc2.png", "suc3.png"]
+            },
+            {
+                name: "Riz Moba (100% Brisure)",
+                category: "alimentaire",
+                image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
+                origin: "Inde",
+                ref: "CCS-RIZ-MOBA",
+                cond: "Sacs de 25 kg",
+                qual: "Premium Quality Indian Parboiled Rice",
+                log: "Transport par camion / Empotage",
+                extra: "Riz Moba 100% brisure, cuisson rapide homogène.",
+                videoLoop: "moba.mp4",
+                images: ["rim1.png", "rim2.png", "rim3.png"]
+            }
         ];
 
-        // --- OBSERVATEUR D'INTERSECTION ---
         const revealObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2153,10 +1740,10 @@
 
             if (prod.category === 'papier') {
                 cardCategoryClass = 'paper-card';
-                badgeHtml = `<img src="lobr.png.png" alt="Badge Papeterie CCS" class="card-border-badge">`;
+                badgeHtml = `<span class="card-badge" style="background:#10b981;">Papeterie</span>`;
             } else {
                 cardCategoryClass = 'agro-card';
-                badgeHtml = `<img src="bg.png" alt="Badge Best Foods" class="card-border-badge">`;
+                badgeHtml = `<span class="card-badge" style="background:#0284c7;">Best Foods</span>`;
             }
 
             return `
@@ -2169,13 +1756,12 @@
                     </div>
                     <div class="product-row-body">
                         <p class="product-row-desc">${prod.extra.substring(0, 90)}${prod.extra.length > 90 ? '...' : ''}</p>
-                        <div class="product-row-btn">View More</div>
+                        <div class="product-row-btn">Voir plus</div>
                     </div>
                 </div>
             `;
         }
 
-        // --- AFFICHAGE DE LA PAPETERIE ---
         function renderPaperGrid() {
             const items = productsDatabase
                 .map((prod, index) => ({ prod, index }))
@@ -2185,7 +1771,6 @@
             observeReveals();
         }
 
-        // --- AFFICHAGE ET FILTRAGE DE LA SECTION UNIFIÉE DES PRODUITS ALIMENTAIRES ---
         function renderFoodGrid(query = '') {
             const items = productsDatabase
                 .map((prod, index) => ({ prod, index }))
@@ -2208,7 +1793,6 @@
             renderFoodGrid(query);
         }
 
-        // Initialisation complète
         function renderAllGrids() {
             renderPaperGrid();
             renderFoodGrid('');
@@ -2216,28 +1800,13 @@
 
         renderAllGrids();
 
-        // --- TEXTE ANIMÉ MOT PAR MOT  ---
-
-
-        
         const typingTextContainer = document.getElementById('typingTextContainer');
         const sentenceToType = "Nous apportons la santé et la saveur à vos tables";
         const words = sentenceToType.split(' ');
-        
         typingTextContainer.innerHTML = words.map((word, idx) => `<span style="animation-delay: ${idx * 0.25}s">${word}</span>`).join(' ');
 
-        // --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE ---
-        const containerGalleryImages = [
-            "cnt.1.png", "cnt.2.png", "cnt.3.png", "cnt.4.png", "cnt.6.png", "cnt.7.png",
-            "cnt.9.png", "cnt.10.png", "cnt.11.png", "cnt.12.png", "cnt.13.png", "cnt.15.png",
-            "cnt.16.png", "cnt.17.png", "cnt.19.png", "cnt.20.png", "cnt.22.png", "cnt.23.png",
-            "cnt.24.png", "cnt.26.png", "cnt.27.png", "cnt.28.png", "cnt.29.png", "cnt.30.png",
-            "cnt.31.png", "cnt.32.png", "cnt.33.png", "cnt.34.png", "cnt.35.png", "cnt.36.png",
-            "cnt.37.png", "cnt.38.png", "cnt.39.png", "cnt.40.png", "cnt.41.png", "cnt.42.png",
-            "cnt.43.png", "cnt.44.png", "cnt.45.png", "cnt.46.png", "cnt.47.png", "cnt.48.png",
-            "cnt.49.png", "cnt.50.png"
-        ];
-
+        // Galerie conteneurs
+        const containerGalleryImages = ["1.png", "2.png", "3.png", "4.png", "5.png"];
         const marqueeTrack = document.getElementById('marqueeTrack');
         const marqueeWrapper = document.getElementById('marqueeWrapper');
 
@@ -2249,23 +1818,7 @@
 
         marqueeTrack.innerHTML = galleryHTMLContent + galleryHTMLContent;
 
-        const marqueeTrackElem = document.getElementById('marqueeTrack');
-
-        function pauseMarquee() {
-            marqueeTrackElem.classList.add('paused');
-        }
-
-        function resumeMarquee() {
-            marqueeTrackElem.classList.remove('paused');
-        }
-
-        marqueeWrapper.addEventListener('mouseenter', pauseMarquee);
-        marqueeWrapper.addEventListener('mouseleave', resumeMarquee);
-        marqueeWrapper.addEventListener('touchstart', pauseMarquee, {passive: true});
-        marqueeWrapper.addEventListener('touchend', resumeMarquee, {passive: true});
-
         let galleryLightboxIndex = 0;
-
         function openGalleryLightbox(idx) {
             galleryLightboxIndex = idx;
             updateGalleryLightbox();
@@ -2285,20 +1838,6 @@
             document.getElementById('galleryLightboxImg').src = containerGalleryImages[galleryLightboxIndex];
             document.getElementById('galleryLightboxCounter').innerText = `${galleryLightboxIndex + 1} / ${containerGalleryImages.length}`;
         }
-
-        document.getElementById('galleryLightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'galleryLightbox') {
-                closeGalleryLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('galleryLightbox');
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeGalleryLightbox();
-            if (e.key === 'ArrowRight') galleryLightboxNav(1);
-            if (e.key === 'ArrowLeft') galleryLightboxNav(-1);
-        });
 
         let currentProductIndex = 0;
         let currentSlideIndex = 0;
@@ -2327,9 +1866,6 @@
             videoElem.load();
 
             updateSlideImage();
-            const hint = document.querySelector('.slider-controls-hint');
-            hint.innerText = "";
-            hint.style.color = "#64748b";
             startAutoPlay();
             document.getElementById('productModal').classList.add('active');
         }
@@ -2375,63 +1911,14 @@
 
         function toggleAutoPlay() {
             isPlaying = !isPlaying;
-            const hint = document.querySelector('.slider-controls-hint');
-            if (isPlaying) {
-                hint.innerText = "";
-                hint.style.color = "#64748b";
-            } else {
-                hint.innerText = "(En pause • Cliquez sur l'image pour reprendre)";
-                hint.style.color = "#0ea5e9";
-            }
         }
 
-        // --- SÉLECTEUR DE LANGUE ---
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
-
             document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
             document.getElementById('btnEn').classList.toggle('active', lang === 'en');
-
-            const translatableElements = document.querySelectorAll('[data-fr][data-en]');
-            translatableElements.forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (text) {
-                    element.textContent = text;
-                }
-            });
         }
 
-        // --- INDICATEUR ACTIF DE NAVIGATION ---
-        const navLinks = document.querySelectorAll('.nav-link');
-        const redDot = document.getElementById('redDot');
-
-        function moveDot(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navRect = document.getElementById('navLinks').getBoundingClientRect();
-            redDot.style.left = `${linkRect.left - navRect.left + (linkRect.width / 2) - 4}px`;
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                moveDot(activeLink);
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', (e) => {
-                moveDot(e.target);
-            });
-        });
-
-        document.getElementById('navLinks').addEventListener('mouseleave', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                moveDot(activeLink);
-            }
-        });
-
-        // --- MENU BURGER ---
         function toggleNavMenu() {
             const links = document.getElementById('navLinks');
             const toggle = document.getElementById('navToggle');
@@ -2440,15 +1927,6 @@
             toggle.setAttribute('aria-expanded', isOpen);
         }
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('open');
-                document.getElementById('navToggle').textContent = '☰';
-                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // --- COMPTEURS ANIMÉS ---
         function animateCounter(el) {
             const target = parseInt(el.getAttribute('data-target'), 10) || 0;
             const duration = 1400;
@@ -2478,7 +1956,6 @@
             counterEls.forEach(el => counterObserver.observe(el));
         }
 
-        // --- FAQ ACCORDÉON ---
         function toggleFaq(btn) {
             const item = btn.closest('.faq-item');
             const answer = item.querySelector('.faq-answer');
@@ -2500,7 +1977,6 @@
             }
         }
 
-        // --- NEWSLETTER ---
         function handleNewsletterSubmit(event) {
             event.preventDefault();
             const emailInput = document.getElementById('newsletterEmail');
@@ -2518,10 +1994,11 @@
             document.getElementById('newsletterForm').reset();
         }
 
-        // --- BOUTON RETOUR EN HAUT ---
-        const backToTopBtn = document.getElementById('backToTestTop') || document.getElementById('backToTopBtn');
+        const backToTopBtn = document.getElementById('backToTopBtn');
         window.addEventListener('scroll', () => {
-            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+            if (backToTopBtn) {
+                backToTopBtn.classList.toggle('visible', window.scrollY > 500);
+            }
         });
 
         observeReveals();
