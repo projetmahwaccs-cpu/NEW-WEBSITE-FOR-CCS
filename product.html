@@ -19,7 +19,7 @@
             align-items: center;
             min-height: 100vh;
             color: #0f172a;
-            overflow-x: hidden; /* Empêche le débordement horizontal global */
+            overflow-x: hidden;
         }
 
         .navbar {
@@ -28,7 +28,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px;
+            padding: 12px 20px;
             border-bottom: 2px solid #ddd;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
@@ -36,20 +36,150 @@
             z-index: 1000;
         }
 
+        /* --- CORRECTION NAVBAR & ESPACE RECHERCHE --- */
         .nav-content {
             display: flex;
             align-items: center;
-            gap: 30px; 
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 15px; 
+            flex-wrap: nowrap;
+            justify-content: space-between;
             width: 100%;
             max-width: 1400px;
         }
 
         .logo img {
-            height: 60px;
+            height: 45px;
             width: auto;
             display: block;
+        }
+
+        .global-nav-search-wrapper {
+            flex: 1 1 auto;
+            max-width: 450px;
+            position: relative;
+            margin: 0 10px;
+        }
+
+        .global-nav-search-input {
+            width: 100%;
+            padding: 8px 15px 8px 35px;
+            border: 2px solid #0ea5e9;
+            border-radius: 30px;
+            font-size: 13px;
+            background: #f8fafc;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .global-nav-search-input:focus {
+            background: #fff;
+            box-shadow: 0 0 8px rgba(14, 165, 233, 0.3);
+        }
+
+        .global-nav-search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0ea5e9;
+            font-size: 13px;
+        }
+
+        /* --- DROPDOWN DES RÉSULTATS DE RECHERCHE GLOBALE --- */
+        .global-search-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+            z-index: 2000;
+            max-height: 420px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .global-search-dropdown.active {
+            display: block;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #f8fafc;
+        }
+
+        .search-result-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #e2e8f0;
+        }
+
+        .search-result-info h4 {
+            font-size: 13px;
+            color: #002664;
+            font-weight: bold;
+        }
+
+        .search-result-info p {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .search-suggestions-box {
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .search-suggestions-title {
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #002664;
+            margin-bottom: 6px;
+        }
+
+        .search-suggestions-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .suggestion-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .suggestion-tag:hover {
+            background: #bae6fd;
+        }
+
+        .search-no-result {
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            font-style: italic;
         }
 
         .nav-links {
@@ -57,29 +187,29 @@
             display: flex;
             align-items: center;
             position: relative;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 8px;
+            flex-wrap: nowrap;
         }
 
         .nav-item {
             margin: 0;
-            padding: 5px; 
+            padding: 0; 
         }
 
         .nav-link {
             text-decoration: none;
             color: #002664;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 11px;
             text-transform: uppercase;
             transition: color 0.3s ease, background-color 0.3s ease;
             position: relative;
             display: inline-block;
-            padding: 8px 12px;
+            padding: 6px 8px;
             border: 2px solid #0ea5e9;
             border-radius: 4px;
             background-color: #fff;
+            white-space: nowrap;
         }
 
         .nav-link:hover {
@@ -94,7 +224,7 @@
             background-color: #0ea5e9;
             border-radius: 50%;
             transition: left 0.3s ease-in-out;
-            top: -15px; 
+            top: -12px; 
         }
         
         .nav-item .nav-link.active {
@@ -104,17 +234,17 @@
 
         .lang-buttons {
             display: flex;
-            gap: 10px;
-            margin-left: 15px;
+            gap: 6px;
+            margin-left: 5px;
         }
 
         .btn-lang {
             text-decoration: none;
-            padding: 5px 12px;
+            padding: 4px 8px;
             border: 1px solid #002664;
             color: #002664;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 12px;
             border-radius: 3px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -132,9 +262,9 @@
             border: 2px solid #002664;
             border-radius: 4px;
             color: #002664;
-            font-size: 22px;
+            font-size: 18px;
             line-height: 1;
-            padding: 6px 10px;
+            padding: 4px 6px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -144,20 +274,30 @@
             color: #fff;
         }
 
+        @media (max-width: 1100px) {
+            .nav-content {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .global-nav-search-wrapper {
+                order: 3;
+                max-width: 100%;
+                margin: 10px 0 0 0;
+                flex-basis: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-toggle {
                 display: inline-block;
-            }
-            .nav-content {
-                justify-content: space-between;
             }
             .nav-links {
                 display: none;
                 flex-basis: 100%;
                 flex-direction: column;
                 align-items: stretch;
-                gap: 0;
-                order: 3;
+                gap: 5px;
+                order: 4;
             }
             .nav-links.open {
                 display: flex;
@@ -170,10 +310,9 @@
                 text-align: center;
             }
             .lang-buttons {
-                flex-basis: 100%;
-                justify-content: center;
+                flex-basis: auto;
                 margin-left: 0;
-                order: 4;
+                order: 2;
             }
         }
 
@@ -330,67 +469,55 @@
             text-align: center;
         }
 
-        .category-subheading {
-            font-size: 22px;
-            color: #002664;
-            margin: 40px 0 20px 0;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-left: 4px solid #0ea5e9;
-            padding-left: 12px;
-        }
-
-        /* --- SECTION UNIFIÉE PRODUITS ALIMENTAIRES AVEC BACKGROUND DÉFILANT & TEXTE ANIMÉ --- */
-        .food-unified-hero {
+        .conditioning-section {
+            background-image: url('bgi.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             position: relative;
-            width: 100%;
-            height: 320px;
-            overflow: hidden;
-            margin: 40px 0;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        .food-bg-slider {
+        .conditioning-section::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            display: flex;
-            animation: slideFoodBg 32s linear infinite;
-            width: max-content;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
         }
-
-        .food-bg-slider img {
-            width: 100vw;
-            max-width: 1400px;
-            height: 100%;
-            object-fit: cover;
-            flex-shrink: 0;
-            filter: brightness(0.65);
-        }
-
-        @keyframes slideFoodBg {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .food-hero-overlay {
+        .conditioning-section > * {
             position: relative;
             z-index: 2;
-            text-align: center;
-            color: #ffffff;
-            padding: 0 20px;
-            background: rgba(0, 38, 100, 0.55);
+        }
+
+        .catalog-section.cards-bg-section {
+            background-image: url('bs.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .catalog-section.cards-bg-section > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- SECTION HORIZONTALE LIP.PNG REMPLACANT LES BACKGROUNDS ALIMENTAIRES --- */
+        .earth-food-section,
+        .transformed-food-section {
+            background-image: none;
+            position: relative;
+        }
+
+        .section-lip-banner {
             width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(2px);
+            height: 120px;
+            background-image: url('lip.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 40px 0;
+            border-top: 3px solid #0ea5e9;
+            border-bottom: 3px solid #0ea5e9;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
         }
 
         .animated-typing-text {
@@ -398,13 +525,14 @@
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #38bdf8;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            color: #002664;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.1);
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
             max-width: 1000px;
+            margin: 0 auto;
         }
 
         .animated-typing-text span {
@@ -424,53 +552,12 @@
             .animated-typing-text {
                 font-size: 1.6rem;
             }
-            .food-unified-hero {
-                height: 240px;
+            .section-lip-banner {
+                height: 80px;
+                margin: 20px 0;
             }
         }
 
-        /* --- BASE DE RECHERCHE GLOBALE --- */
-        .global-search-container {
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        .search-box-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .search-box-group label {
-            font-size: 13px;
-            font-weight: bold;
-            color: #002664;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .category-engine-input {
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 15px;
-            background: #fff;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .category-engine-input:focus {
-            outline: 2px solid #0ea5e9;
-            outline-offset: 1px;
-            border-color: #0ea5e9;
-        }
-
-        /* --- CATALOGUE DES PRODUITS --- */
         .products-grid-horizontal {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -487,62 +574,76 @@
 
         @media (max-width: 640px) {
             .products-grid-horizontal {
-                grid-template-columns: 1fr; /* 1 seule carte par ligne sur téléphone pour éviter les collages */
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
             }
         }
 
         .product-row {
             position: relative;
-            background: #fff;
-            border-radius: 8px;
+            background: #ffffff;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 38, 100, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
 
         .product-row:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 10px 25px rgba(0, 38, 100, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
             transform: translateY(-4px);
-        }
-
-        .product-row.agro-card {
-            border: 3px solid #0284c7;
-        }
-        .product-row.paper-card {
-            border: 3px solid #10b981;
+            border-color: #cbd5e1;
         }
 
         .card-border-badge {
             position: absolute;
-            top: -12px;
-            right: 15px;
-            height: 35px;
+            top: 10px;
+            right: 10px;
+            height: 30px;
             width: auto;
             object-fit: contain;
             z-index: 10;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @media (max-width: 640px) {
+            .card-border-badge {
+                height: 20px;
+                top: 6px;
+                right: 6px;
+            }
         }
 
         .product-row-title {
             color: #0f172a;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            padding: 20px 20px 15px 20px;
+            padding: 15px 15px 10px 15px;
             background: #fff;
+        }
+
+        @media (max-width: 640px) {
+            .product-row-title {
+                font-size: 11px;
+                padding: 8px 8px 4px 8px;
+            }
         }
 
         .product-row-img-wrap {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 200px;
             overflow: hidden;
             background-color: #f1f5f9;
+        }
+
+        @media (max-width: 640px) {
+            .product-row-img-wrap {
+                height: 100px;
+            }
         }
 
         .product-row-img {
@@ -561,46 +662,83 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 38, 100, 0.75);
-            backdrop-filter: blur(3px);
+            background: rgba(0, 38, 100, 0.85);
             color: #fff;
             font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.4px;
             padding: 4px 8px;
-            border-radius: 20px;
+            border-radius: 4px;
             z-index: 2;
         }
 
+        @media (max-width: 640px) {
+            .product-row-badge {
+                font-size: 8px;
+                padding: 2px 5px;
+                top: 5px;
+                left: 5px;
+            }
+        }
+
         .product-row-body {
-            padding: 20px;
+            padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 15px;
+            gap: 12px;
             background: #fff;
         }
 
+        @media (max-width: 640px) {
+            .product-row-body {
+                padding: 8px;
+                gap: 6px;
+            }
+        }
+
         .product-row-desc {
-            color: #64748b;
+            color: #475569;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .product-row-desc {
+                font-size: 10px;
+                line-height: 1.2;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
         }
 
         .product-row-btn {
-            background-color: #0ea5e9;
+            background-color: #002664;
             color: #fff;
             text-align: center;
             padding: 8px 16px;
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
-            border-radius: 20px;
+            border-radius: 4px;
             align-self: flex-start;
             letter-spacing: 0.5px;
-            transition: background-color 0.2s, transform 0.2s;
+            transition: background-color 0.2s;
+        }
+
+        .product-row-btn:hover {
+            background-color: #0ea5e9;
+        }
+
+        @media (max-width: 640px) {
+            .product-row-btn {
+                padding: 4px 8px;
+                font-size: 9px;
+            }
         }
 
         .category-empty-msg {
@@ -612,11 +750,22 @@
             display: none;
         }
 
-        /* --- SECTION PREUVE & ENGAGEMENTS --- */
         .proof-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .proof-card {
@@ -653,7 +802,6 @@
             line-height: 1.6;
         }
 
-        /* --- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE --- */
         .marquee-gallery-wrapper {
             position: relative;
             width: 100%;
@@ -795,195 +943,220 @@
             letter-spacing: 1px;
         }
 
-        /* --- MINI-PAGE MODAL PRODUIT --- */
-        .product-modal {
+        .side-drawer-overlay {
             display: none;
             position: fixed;
-            z-index: 99999;
+            z-index: 99998;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            overflow-y: auto;
-        }
-
-        .product-modal.active { display: flex; }
-
-        .product-modal-content {
-            background: #ffffff;
-            width: 90%;
-            max-width: 750px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            position: relative;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            animation: scaleUp 0.3s ease;
-        }
-
-        @keyframes scaleUp {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .product-modal-header {
-            background-color: #002664;
-            color: #ffffff;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-modal-title { font-size: 20px; font-weight: bold; }
-
-        .product-modal-close {
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .product-modal-close:hover { color: #38bdf8; }
-
-        .product-modal-body {
-            padding: 20px 25px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        .slider-section-title {
-            font-size: 13px;
-            text-transform: uppercase;
-            color: #0ea5e9;
-            font-weight: bold;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .slider-controls-hint {
-            font-size: 11px;
-            color: #64748b;
-            text-transform: none;
-            font-weight: normal;
-        }
-
-        .product-slider-container {
-            position: relative;
-            width: 100%;
-            height: 240px;
-            background: #0f172a;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .product-slider-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             transition: opacity 0.3s ease;
         }
 
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 38, 100, 0.8);
-            color: #fff;
-            border: none;
-            width: 35px; height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
+        .side-drawer-overlay.active {
+            display: block;
+        }
+
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            right: -650px;
+            width: 100%;
+            max-width: 620px;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 99999;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            z-index: 10;
+            flex-direction: column;
+            overflow: hidden;
         }
-        .slider-btn:hover { background: #0ea5e9; }
-        .slider-prev { left: 12px; }
-        .slider-next { right: 12px; }
 
-        .slider-counter {
-            position: absolute;
-            bottom: 10px; right: 15px;
-            background: rgba(0,0,0,0.7);
+        .side-drawer.active {
+            right: 0;
+        }
+
+        .side-drawer-header {
+            background-color: #002664;
+            color: #ffffff;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 3px solid #0ea5e9;
+        }
+
+        .side-drawer-title-group h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .side-drawer-title-group p {
+            font-size: 13px;
+            color: #38bdf8;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .side-drawer-close {
+            font-size: 32px;
             color: #fff;
-            font-size: 11px;
-            padding: 3px 10px;
-            border-radius: 12px;
+            cursor: pointer;
+            line-height: 1;
+            background: none;
+            border: none;
+            transition: color 0.2s;
         }
 
-        .product-info-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
+        .side-drawer-close:hover {
+            color: #38bdf8;
+        }
+
+        .side-drawer-body {
+            padding: 25px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
 
-        @media (max-width: 900px) {
-            .product-info-grid { grid-template-columns: 1fr; }
+        .drawer-media-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
-        .product-video-box {
+        @media (max-width: 640px) {
+            .drawer-media-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .drawer-media-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-media-label {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #002664;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drawer-loop-container {
+            position: relative;
             width: 100%;
-            height: 220px;
+            height: 200px;
+            background: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .drawer-loop-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .drawer-video-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
             background: #000;
             border-radius: 8px;
             overflow: hidden;
         }
 
-        .product-video-box video {
+        .drawer-video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .product-specs-box {
-            background: #f8fafc;
+        .drawer-loop-counter {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        .drawer-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .drawer-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .drawer-info-card {
+            background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 18px;
+            padding: 12px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .spec-item {
-            margin-bottom: 10px;
-            font-size: 13px;
-        }
-
-        .spec-label {
+        .drawer-info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #64748b;
             font-weight: bold;
-            color: #002664;
-            display: inline-block;
-            width: 130px;
         }
 
-        .spec-value { color: #334155; }
-
-        .product-extra-text {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #e2e8f0;
+        .drawer-info-value {
             font-size: 13px;
-            color: #475569;
-            line-height: 1.5;
+            color: #0f172a;
+            font-weight: 600;
         }
 
-        /* --- ANIMATION D'APPARITION AU SCROLL --- */
+        .drawer-extra-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .drawer-extra-box strong {
+            color: #002664;
+            display: block;
+            margin-bottom: 6px;
+        }
+
         .reveal-left {
             opacity: 0;
             transform: translateX(-60px) translateY(30px);
@@ -1010,7 +1183,6 @@
             transform: translateY(0);
         }
 
-        /* --- SECTION CHIFFRES CLÉS --- */
         .stats-section {
             background-color: #002664;
             background-image: linear-gradient(135deg, #002664 0%, #013a8f 100%);
@@ -1027,9 +1199,21 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 25px;
             text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .stat-card {
@@ -1057,11 +1241,22 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- SECTION TÉMOIGNAGES --- */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .testimonial-card {
@@ -1091,7 +1286,6 @@
             font-size: 13px;
         }
 
-        /* --- SECTION FAQ --- */
         .faq-list {
             max-width: 800px;
             margin: 0 auto;
@@ -1141,7 +1335,6 @@
             line-height: 1.7;
         }
 
-        /* --- SECTION NEWSLETTER --- */
         .newsletter-section {
             background-color: #f1f5f9;
             text-align: center;
@@ -1189,7 +1382,6 @@
             min-height: 20px;
         }
 
-        /* --- BOUTON RETOUR EN HAUT --- */
         .back-to-top {
             position: fixed;
             bottom: 25px;
@@ -1222,11 +1414,9 @@
             background-color: #0ea5e9;
         }
 
-        /* --- STYLES CORRIGÉS POUR LE CAROUSEL DE CONDITIONNEMENT SUR TÉLÉPHONE --- */
         .conditioning-section {
             width: 100%;
             padding: 50px 0;
-            background-color: #ffffff;
             overflow: hidden;
         }
 
@@ -1257,7 +1447,7 @@
             -ms-overflow-style: none;
             cursor: grab;
             padding: 10px 20px;
-            -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
+            -webkit-overflow-scrolling: touch;
         }
 
         .conditioning-carousel-container::-webkit-scrollbar {
@@ -1279,7 +1469,7 @@
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
-            width: 260px; /* Légèrement réduit pour mobile */
+            width: 260px;
             height: 260px; 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid #e2e8f0;
@@ -1331,6 +1521,14 @@
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
 
+            <!-- BARRE DE RECHERCHE GLOBALE -->
+            <div class="global-nav-search-wrapper">
+                <span class="global-nav-search-icon">🔍</span>
+                <input type="text" id="globalNavSearchInput" class="global-nav-search-input" placeholder="Rechercher un produit (ex: riz, piment, café...)" oninput="handleGlobalNavSearch()" autocomplete="off">
+                
+                <div class="global-search-dropdown" id="globalSearchDropdown"></div>
+            </div>
+
             <button class="nav-toggle" id="navToggle" onclick="toggleNavMenu()" aria-label="Menu" aria-expanded="false">☰</button>
             
             <ul class="nav-links" id="navLinks">
@@ -1355,49 +1553,51 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : CATALOGUE GLOBAL & BASE DE RECHERCHE UNIQUE ================= -->
-    <section class="catalog-section ccs-products-section">
+    <!-- ================= SECTION : PAPETERIE ================= -->
+    <section class="catalog-section">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Catalogue Global des Produits</h2>
+                <h2 class="section-title">Catalogue Papeterie</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Découvrez notre papeterie et l'intégralité de nos gammes de produits alimentaires de qualité supérieure.</p>
-            </div>
-
-            <!-- ================= SOUS-SECTION : PAPETERIE ================= -->
-            <div class="section-header reveal" style="margin-top: 20px; margin-bottom: 20px;">
-                <h3 class="category-subheading" style="margin: 0; border: none; padding: 0;">Papeterie</h3>
+                <p class="section-subtitle">Découvrez notre papeterie de qualité supérieure.</p>
             </div>
             <div class="products-grid-horizontal" id="paperGridContainer"></div>
+        </div>
+    </section>
 
-            <!-- ================= SECTION UNIQUE UNIFIÉE : PRODUITS ALIMENTAIRES ================= -->
-            <div class="food-unified-hero reveal" style="margin-top: 40px;">
-                <div class="food-bg-slider" id="foodBgSlider">
-                    <img src="bgi.png" alt="Alimentation CCS 1">
-                    <img src="bs.png" alt="Alimentation CCS 2">
-                    <img src="ni.png" alt="Alimentation CCS 3" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+3'">
-                    <img src="mi.png" alt="Alimentation CCS 4" onerror="this.src='https://via.placeholder.com/800x400/002664/ffffff?text=Alimentation+CCS+4'">
-                    <img src="bgi.png" alt="Alimentation CCS 1">
-                    <img src="bs.png" alt="Alimentation CCS 2">
-                    <img src="ni.png" alt="Alimentation CCS 3">
-                    <img src="mi.png" alt="Alimentation CCS 4">
-                </div>
-                <div class="food-hero-overlay">
-                    <div class="animated-typing-text" id="typingTextContainer"></div>
-                </div>
+    <!-- ================= SECTION : PRODUITS DE LA TERRE & AGRICULTURE ================= -->
+    <section class="catalog-section earth-food-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Produits de la Terre & Agriculture</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Découvrez nos produits issus de la terre : piment, poivre, lentilles, petits pois, épices et récoltes de premier choix.</p>
             </div>
 
-            <!-- ================= BASE DE RECHERCHE GLOBALE UNIQUE ================= -->
-            <div class="global-search-container reveal">
-                <div class="search-box-group">
-                    <label for="globalSearchInput">Recherche un Produit Alimentaire</label>
-                    <input type="text" id="globalSearchInput" class="category-engine-input" placeholder="Tapez un mot-clé (ex: riz, lait, piment, sucre...)" oninput="filterGlobalProducts()">
-                </div>
+            <!-- ANIMATED TEXT -->
+            <div class="reveal" style="text-align: center; margin-bottom: 30px;">
+                <div class="animated-typing-text" id="typingTextContainer"></div>
             </div>
 
-            <div class="products-grid-horizontal" id="unifiedFoodGridContainer"></div>
-            <p class="category-empty-msg" id="foodEmptyMsg">Aucun produit alimentaire ne correspond à votre recherche.</p>
+            <div class="products-grid-horizontal" id="earthGridContainer"></div>
+            <p class="category-empty-msg" id="earthEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
+        </div>
+    </section>
 
+    <!-- SECTION HORIZONTALE LIP.PNG -->
+    <div class="section-lip-banner"></div>
+
+    <!-- ================= SECTION : LAIT & PRODUITS TRANSFORMÉS ================= -->
+    <section class="catalog-section transformed-food-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Lait & Produits Transformés</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Découvrez notre sélection de lait (concentré, évaporé, en poudre), pâtes de tomate, huiles et produits transformés.</p>
+            </div>
+
+            <div class="products-grid-horizontal" id="transformedGridContainer"></div>
+            <p class="category-empty-msg" id="transformedEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
         </div>
     </section>
 
@@ -1428,7 +1628,6 @@
         </div>
     </section>
 
-    <!-- SECTION CONDITIONNEMENT TYPE INSTAGRAM -->
     <section class="conditioning-section">
         <div class="section-header">
             <h2>Faites vous livrer dans de brefs délais</h2>
@@ -1461,7 +1660,6 @@
         </div>
     </section>
 
-    <!-- GALERIE CONTENEURS DÉFILANTE AUTOMATIQUE -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header reveal">
@@ -1642,52 +1840,68 @@
         </div>
     </footer>
 
-    <div class="product-modal" id="productModal">
-        <div class="product-modal-content">
-            <div class="product-modal-header">
-                <span class="product-modal-title" id="modalProductName">Nom du Produit</span>
-                <span class="product-modal-close" onclick="closeProductModal()">&times;</span>
+    <div class="side-drawer-overlay" id="sideDrawerOverlay" onclick="closeSideDrawer()"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="side-drawer-header">
+            <div class="side-drawer-title-group">
+                <h2 id="drawerProductName">Nom du Produit</h2>
+                <p id="drawerProductRef">RÉFÉRENCE</p>
             </div>
-            <div class="product-modal-body">
-                <div class="slider-section-title">
-                    <span>Photothèque d'Images de Chargement & Opérations</span>
-                    <span class="slider-controls-hint">(Défilement automatique • Cliquez sur l'image pour arrêter/reprendre)</span>
-                </div>
-                <div class="product-slider-container" onclick="toggleAutoPlay()" title="Cliquez pour arrêter ou reprendre le défilement">
-                    <button class="slider-btn slider-prev" onclick="event.stopPropagation(); prevSlide();">&#10094;</button>
-                    <img id="sliderImg" src="" class="product-slider-img" alt="Image Chargement">
-                    <button class="slider-btn slider-next" onclick="event.stopPropagation(); nextSlide();">&#10095;</button>
-                    <div class="slider-counter" id="sliderCounter">1 / 15</div>
-                </div>
-
-                <div class="product-info-grid">
-                    <div>
-                        <div class="slider-section-title" style="margin-bottom: 12px;">Séquence produit immersive</div>
-                        <div class="product-video-box">
-                            <video id="modalProductVideo" autoplay muted loop playsinline>
-                                Votre navigateur ne prend pas en charge la lecture de vidéos.
-                            </video>
-                        </div>
+            <button class="side-drawer-close" onclick="closeSideDrawer()">&times;</button>
+        </div>
+        
+        <div class="side-drawer-body">
+            <div class="drawer-media-section">
+                <div class="drawer-media-box">
+                    <div class="drawer-media-label">
+                        <span>Images Produit (Loop)</span>
+                        <span id="drawerImgCounter" style="font-weight:normal; font-size:10px; color:#64748b;">1/10</span>
                     </div>
-                    <div class="product-specs-box">
-                        <div class="slider-section-title" style="margin-bottom: 18px;">Fiche Technique & Origine</div>
-                        <div class="spec-item"><span class="spec-label">Origine :</span><span class="spec-value" id="specOrigin">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Référence :</span><span class="spec-value" id="specRef">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Conditionnement :</span><span class="spec-value" id="specCond">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Qualité :</span><span class="spec-value" id="specQual">-</span></div>
-                        <div class="spec-item"><span class="spec-label">Logistique :</span><span class="spec-value" id="specLog">-</span></div>
+                    <div class="drawer-loop-container" onclick="nextDrawerImage()" title="Cliquez pour passer à l'image suivante">
+                        <img id="drawerLoopImg" src="" class="drawer-loop-img" alt="Loop produit">
+                        <div class="drawer-loop-counter">Cliquez ↻</div>
                     </div>
                 </div>
 
-                <div class="product-extra-text" id="modalProductExtra">
-                    <strong>Informations Complémentaires :</strong> -
+                <div class="drawer-media-box">
+                    <div class="drawer-media-label">
+                        <span>Vidéo Démo Produit</span>
+                    </div>
+                    <div class="drawer-video-container">
+                        <video id="drawerVideo" autoplay muted loop playsinline>
+                            Votre navigateur ne prend pas en charge la lecture de vidéos.
+                        </video>
+                    </div>
                 </div>
+            </div>
+
+            <div class="drawer-info-grid">
+                <div class="drawer-info-card">
+                    <span class="drawer-info-label">Origine</span>
+                    <span class="drawer-info-value" id="drawerOrigin">-</span>
+                </div>
+                <div class="drawer-info-card">
+                    <span class="drawer-info-label">Conditionnement</span>
+                    <span class="drawer-info-value" id="drawerCond">-</span>
+                </div>
+                <div class="drawer-info-card">
+                    <span class="drawer-info-label">Qualité</span>
+                    <span class="drawer-info-value" id="drawerQual">-</span>
+                </div>
+                <div class="drawer-info-card">
+                    <span class="drawer-info-label">Logistique / Conteneur</span>
+                    <span class="drawer-info-value" id="drawerLog">-</span>
+                </div>
+            </div>
+
+            <div class="drawer-extra-box" id="drawerExtraText">
+                <strong>Informations Complémentaires :</strong>
+                <p>-</p>
             </div>
         </div>
     </div>
 
     <script>
-        // --- BASE DE DONNÉES DES PRODUITS ---
         const productsDatabase = [
             {
                 name: "Rame Papier Double A",
@@ -1731,6 +1945,7 @@
             {
                 name: "Piment Sec Rouge",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "piment.png",
                 origin: "Inde",
                 ref: "CCS-PIMENT-ROUGE",
@@ -1744,6 +1959,7 @@
             {
                 name: "Poivre Noir",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "poivre.png",
                 origin: "Brésil",
                 ref: "CCS-POIVRE-03",
@@ -1757,6 +1973,7 @@
             {
                 name: "Clous de Girofle",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_clous-de-girofle.jpg",
                 origin: "Argentine",
                 ref: "CCS-GIROFLE-03",
@@ -1770,6 +1987,7 @@
             {
                 name: "Feuilles de Laurier",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_feuilles-laurier.jpg",
                 origin: "Argentine",
                 ref: "CCS-LAURIER-04",
@@ -1783,6 +2001,7 @@
             {
                 name: "Ail (Garlic)",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "ail.png",
                 origin: "Argentine",
                 ref: "CCS-AIL-01",
@@ -1796,6 +2015,7 @@
             {
                 name: "Gingembre (Ginger)",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "ginger.png",
                 origin: "Brésil",
                 ref: "GINGEMBRE MATURE",
@@ -1809,6 +2029,7 @@
             {
                 name: "Tamarin",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "tamarin.png",
                 origin: "Afrique / International",
                 ref: "CCS-TAMARIN-17",
@@ -1822,6 +2043,7 @@
             {
                 name: "Petits Pois en Conserve",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_petits-pois.jpg",
                 origin: "Argentine",
                 ref: "CCS-POIS-12",
@@ -1835,6 +2057,7 @@
             {
                 name: "Lentilles Vertes",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_lentilles.jpg",
                 origin: "Canada",
                 ref: "CCS-LENT-13",
@@ -1848,6 +2071,7 @@
             {
                 name: "Pâte de Tomate Sarama",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "tomato.png",
                 origin: "International",
                 ref: "CCS-TOMATE-11",
@@ -1861,6 +2085,7 @@
             {
                 name: "Huiles",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "huile.png",
                 origin: "Malaisie",
                 ref: "CCS-HUILE-RAFFINEE",
@@ -1874,6 +2099,7 @@
             {
                 name: "Lait Concentré Touba",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "produit_lait-concentre-touba.jpg",
                 origin: "Malaisie",
                 ref: "CCS-LAIT-CONC-07",
@@ -1887,6 +2113,7 @@
             {
                 name: "Lait Évaporé Touba",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "produit_lait-evapore-touba.jpg",
                 origin: "Sénégal / International",
                 ref: "CCS-LAIT-EVAP-08",
@@ -1900,6 +2127,7 @@
             {
                 name: "Lait en Poudre Victoria",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "produit_lait-poudre-victoria.jpg",
                 origin: "International",
                 ref: "CCS-LAIT-POUD-09",
@@ -1913,6 +2141,7 @@
             {
                 name: "Lait en Poudre Ornua",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "produit_lait-poudre-ornua.jpg",
                 origin: "International",
                 ref: "CCS-LAIT-16",
@@ -1926,6 +2155,7 @@
             {
                 name: "Sucre Crystal Blanc",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "sucre.png",
                 origin: "Brésil",
                 ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
@@ -1939,6 +2169,7 @@
             {
                 name: "Café Sélection CCS",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "cafe.png",
                 origin: "Afrique de l'Ouest / Amériques",
                 ref: "CCS-CAFE-02",
@@ -1952,6 +2183,7 @@
             {
                 name: "Ananas Sarama",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_ananas-sarama-1.jpg",
                 origin: "Côte d'Ivoire / International",
                 ref: "CCS-ANANAS-01",
@@ -1965,6 +2197,7 @@
             {
                 name: "Jus d'Orange Trois Continental",
                 category: "alimentaire",
+                subCategory: "transforme",
                 image: "produit_jus-orange-trois.jpg",
                 origin: "International",
                 ref: "CCS-JUS-06",
@@ -1978,6 +2211,7 @@
             {
                 name: "Muscade",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "muscade.png",
                 origin: "International",
                 ref: "CCS-MUSCADE-18",
@@ -1991,6 +2225,7 @@
             {
                 name: "Raisins Secs",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_raisins-secs.jpg",
                 origin: "International",
                 ref: "CCS-RAISIN-14",
@@ -2004,6 +2239,7 @@
             {
                 name: "Riz Moba (100% Brisure)",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
                 origin: "Inde",
                 ref: "CCS-RIZ-MOBA",
@@ -2017,6 +2253,7 @@
             {
                 name: "Riz Oriba",
                 category: "alimentaire",
+                subCategory: "terre",
                 image: "produit_riz-oriba.jpg",
                 origin: "International",
                 ref: "CCS-RIZ-ORIBA",
@@ -2029,7 +2266,6 @@
             }
         ];
 
-        // --- OBSERVATEUR D'INTERSECTION ---
         const revealObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2046,25 +2282,22 @@
         }
 
         const paperGridContainer = document.getElementById('paperGridContainer');
-        const unifiedFoodGridContainer = document.getElementById('unifiedFoodGridContainer');
+        const earthGridContainer = document.getElementById('earthGridContainer');
+        const transformedGridContainer = document.getElementById('transformedGridContainer');
 
         function buildProductCardHTML(prod, index, i) {
             const revealClass = (i % 2 === 0) ? 'reveal-left' : 'reveal-right';
             const delay = Math.min((i % 3) * 0.15, 0.4);
 
             let badgeHtml = '';
-            let cardCategoryClass = '';
-
             if (prod.category === 'papier') {
-                cardCategoryClass = 'paper-card';
                 badgeHtml = `<img src="lobr.png.png" alt="Badge Papeterie CCS" class="card-border-badge">`;
             } else {
-                cardCategoryClass = 'agro-card';
                 badgeHtml = `<img src="bg.png" alt="Badge Best Foods" class="card-border-badge">`;
             }
 
             return `
-                <div class="product-row ${cardCategoryClass} ${revealClass}" style="transition-delay:${delay}s" onclick="openProductModal(${index})">
+                <div class="product-row ${revealClass}" style="transition-delay:${delay}s" onclick="openSideDrawer(${index})">
                     ${badgeHtml}
                     <h3 class="product-row-title">${prod.name}</h3>
                     <div class="product-row-img-wrap">
@@ -2073,54 +2306,111 @@
                     </div>
                     <div class="product-row-body">
                         <p class="product-row-desc">${prod.extra.substring(0, 90)}${prod.extra.length > 90 ? '...' : ''}</p>
-                        <div class="product-row-btn">View More</div>
+                        <div class="product-row-btn">Détails</div>
                     </div>
                 </div>
             `;
         }
 
         function renderPaperGrid() {
-            const items = productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category === 'papier');
-
+            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'papier');
             paperGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
             observeReveals();
         }
 
-        function renderFoodGrid(query = '') {
-            const items = productsDatabase
-                .map((prod, index) => ({ prod, index }))
-                .filter(({ prod }) => prod.category === 'alimentaire')
-                .filter(({ prod }) => !query || prod.name.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query));
-
-            const emptyMsgEl = document.getElementById('foodEmptyMsg');
-            if (!items.length) {
-                unifiedFoodGridContainer.innerHTML = '';
-                if (emptyMsgEl) emptyMsgEl.style.display = 'block';
-                return;
-            }
-            if (emptyMsgEl) emptyMsgEl.style.display = 'none';
-            unifiedFoodGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
+        function renderEarthGrid() {
+            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'alimentaire' && prod.subCategory === 'terre');
+            earthGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
             observeReveals();
         }
 
-        function filterGlobalProducts() {
-            const query = document.getElementById('globalSearchInput').value.trim().toLowerCase();
-            renderFoodGrid(query);
+        function renderTransformedGrid() {
+            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'alimentaire' && prod.subCategory === 'transforme');
+            transformedGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
+            observeReveals();
         }
 
         function renderAllGrids() {
             renderPaperGrid();
-            renderFoodGrid('');
+            renderEarthGrid();
+            renderTransformedGrid();
         }
 
         renderAllGrids();
 
+        function handleGlobalNavSearch() {
+            const input = document.getElementById('globalNavSearchInput');
+            const dropdown = document.getElementById('globalSearchDropdown');
+            const query = input.value.trim().toLowerCase();
+
+            if (!query) {
+                dropdown.classList.remove('active');
+                dropdown.innerHTML = '';
+                return;
+            }
+
+            let matchedProducts = [];
+            if (query.includes('légumineuse') || query.includes('legumineuse')) {
+                matchedProducts = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => 
+                    prod.name.toLowerCase().includes('lentille') || prod.name.toLowerCase().includes('pois') || prod.extra.toLowerCase().includes('légumineuse')
+                );
+            } else {
+                matchedProducts = productsDatabase
+                    .map((prod, index) => ({ prod, index }))
+                    .filter(({ prod }) => prod.name.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query) || prod.category.toLowerCase().includes(query) || prod.origin.toLowerCase().includes(query));
+            }
+
+            let htmlContent = '';
+
+            if (matchedProducts.length > 0) {
+                htmlContent += matchedProducts.map(({ prod, index }) => `
+                    <div class="search-result-item" onclick="selectGlobalSearchResult(${index})">
+                        <img src="${prod.image}" class="search-result-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/40+x40?text=CCS'">
+                        <div class="search-result-info">
+                            <h4>${prod.name}</h4>
+                            <p>${prod.origin} • ${prod.cond}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                htmlContent += `<div class="search-no-result">Aucun produit correspondant disponible pour "${input.value}".</div>`;
+            }
+
+            const otherProducts = productsDatabase.filter((p, idx) => !matchedProducts.some(m => m.index === idx)).slice(0, 5);
+            if (otherProducts.length > 0) {
+                htmlContent += `
+                    <div class="search-suggestions-box">
+                        <div class="search-suggestions-title">Suggestions d'autres produits disponibles :</div>
+                        <div class="search-suggestions-tags">
+                            ${otherProducts.map(p => {
+                                const originalIdx = productsDatabase.findIndex(item => item.name === p.name);
+                                return `<span class="suggestion-tag" onclick="selectGlobalSearchResult(${originalIdx})">${p.name}</span>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            dropdown.innerHTML = htmlContent;
+            dropdown.classList.add('active');
+        }
+
+        function selectGlobalSearchResult(index) {
+            document.getElementById('globalSearchDropdown').classList.remove('active');
+            document.getElementById('globalNavSearchInput').value = '';
+            openSideDrawer(index);
+        }
+
+        document.addEventListener('click', (e) => {
+            const wrapper = document.querySelector('.global-nav-search-wrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                document.getElementById('globalSearchDropdown').classList.remove('active');
+            }
+        });
+
         const typingTextContainer = document.getElementById('typingTextContainer');
-        const sentenceToType = "Nous apportons la santé et la saveur à vos tables";
+        const sentenceToType = "our food products just for you";
         const words = sentenceToType.split(' ');
-        
         typingTextContainer.innerHTML = words.map((word, idx) => `<span style="animation-delay: ${idx * 0.25}s">${word}</span>`).join(' ');
 
         const containerGalleryImages = [
@@ -2144,7 +2434,6 @@
         `).join('');
 
         marqueeTrack.innerHTML = galleryHTMLContent + galleryHTMLContent;
-
         const marqueeTrackElem = document.getElementById('marqueeTrack');
 
         function pauseMarquee() { marqueeTrackElem.classList.add('paused'); }
@@ -2181,188 +2470,72 @@
             if (e.target.id === 'galleryLightbox') closeGalleryLightbox();
         });
 
-        let currentProductIndex = 0;
-        let currentSlideIndex = 0;
-        let activeProductImages = [];
-        let sliderInterval = null;
-        let isPlaying = true;
+        let currentDrawerIndex = 0;
+        let drawerImageIndex = 0;
+        let drawerImagesList = [];
+        let drawerLoopInterval = null;
 
-        function openProductModal(index) {
-            currentProductIndex = index;
-            currentSlideIndex = 0;
-            isPlaying = true;
+        function openSideDrawer(index) {
+            currentDrawerIndex = index;
+            drawerImageIndex = 0;
             const prod = productsDatabase[index];
+            drawerImagesList = prod.images && prod.images.length ? prod.images : [prod.image];
 
-            activeProductImages = prod.images;
-
-            document.getElementById('modalProductName').innerText = prod.name;
-            document.getElementById('specOrigin').innerText = prod.origin;
-            document.getElementById('specRef').innerText = prod.ref;
-            document.getElementById('specCond').innerText = prod.cond;
-            document.getElementById('specQual').innerText = prod.qual;
-            document.getElementById('specLog').innerText = prod.log;
-            document.getElementById('modalProductExtra').innerHTML = `<strong>Informations Complémentaires :</strong> ${prod.extra}`;
+            document.getElementById('drawerProductName').innerText = prod.name;
+            document.getElementById('drawerProductRef').innerText = `RÉF : ${prod.ref || 'N/A'} • ORIGINE : ${prod.origin}`;
             
-            const videoElem = document.getElementById('modalProductVideo');
+            document.getElementById('drawerOrigin').innerText = prod.origin;
+            document.getElementById('drawerCond').innerText = prod.cond;
+            document.getElementById('drawerQual').innerText = prod.qual;
+            document.getElementById('drawerLog').innerText = prod.log;
+            document.getElementById('drawerExtraText').innerHTML = `<strong>Informations Complémentaires :</strong><p>${prod.extra}</p>`;
+
+            const videoElem = document.getElementById('drawerVideo');
             videoElem.src = prod.videoLoop;
             videoElem.load();
+            videoElem.play().catch(e => console.log("Autoplay bloqué:", e));
 
-            updateSlideImage();
-            const hint = document.querySelector('.slider-controls-hint');
-            hint.innerText = "";
-            hint.style.color = "#64748b";
-            startAutoPlay();
-            document.getElementById('productModal').classList.add('active');
+            updateDrawerLoopImage();
+            startDrawerLoop();
+
+            document.getElementById('sideDrawerOverlay').classList.add('active');
+            document.getElementById('sideDrawer').classList.add('active');
         }
 
-        function closeProductModal() {
-            stopAutoPlay();
-            document.getElementById('productModal').classList.remove('active');
-            const videoElem = document.getElementById('modalProductVideo');
+        function closeSideDrawer() {
+            stopDrawerLoop();
+            document.getElementById('sideDrawerOverlay').classList.remove('active');
+            document.getElementById('sideDrawer').classList.remove('active');
+            const videoElem = document.getElementById('drawerVideo');
             videoElem.pause();
             videoElem.src = "";
         }
 
-        function updateSlideImage() {
-            document.getElementById('sliderImg').src = activeProductImages[currentSlideIndex];
-            document.getElementById('sliderCounter').innerText = `${currentSlideIndex + 1} / ${activeProductImages.length}`;
+        function updateDrawerLoopImage() {
+            const imgElem = document.getElementById('drawerLoopImg');
+            const counterElem = document.getElementById('drawerImgCounter');
+            imgElem.src = drawerImagesList[drawerImageIndex];
+            counterElem.innerText = `${drawerImageIndex + 1}/${drawerImagesList.length}`;
         }
 
-        function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % activeProductImages.length;
-            updateSlideImage();
+        function nextDrawerImage() {
+            drawerImageIndex = (drawerImageIndex + 1) % drawerImagesList.length;
+            updateDrawerLoopImage();
         }
 
-        function prevSlide() {
-            currentSlideIndex = (currentSlideIndex - 1 + activeProductImages.length) % activeProductImages.length;
-            updateSlideImage();
+        function startDrawerLoop() {
+            stopDrawerLoop();
+            drawerLoopInterval = setInterval(() => {
+                nextDrawerImage();
+            }, 2500);
         }
 
-        function startAutoPlay() {
-            stopAutoPlay();
-            sliderInterval = setInterval(() => {
-                if (isPlaying) nextSlide();
-            }, 3000);
-        }
-
-        function stopAutoPlay() {
-            if (sliderInterval) {
-                clearInterval(sliderInterval);
-                sliderInterval = null;
+        function stopDrawerLoop() {
+            if (drawerLoopInterval) {
+                clearInterval(drawerLoopInterval);
+                drawerLoopInterval = null;
             }
         }
-
-        function toggleAutoPlay() {
-            isPlaying = !isPlaying;
-            const hint = document.querySelector('.slider-controls-hint');
-            if (isPlaying) {
-                hint.innerText = "";
-                hint.style.color = "#64748b";
-            } else {
-                hint.innerText = "(En pause)";
-                hint.style.color = "#0ea5e9";
-            }
-        }
-
-        function changeLanguage(lang) {
-            document.documentElement.setAttribute('lang', lang);
-            document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
-            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
-        }
-
-        const navLinks = document.querySelectorAll('.nav-link');
-        const redDot = document.getElementById('redDot');
-
-        function moveDot(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navRect = document.getElementById('navLinks').getBoundingClientRect();
-            redDot.style.left = `${linkRect.left - navRect.left + (linkRect.width / 2) - 4}px`;
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) moveDot(activeLink);
-        });
-
-        function toggleNavMenu() {
-            const links = document.getElementById('navLinks');
-            const toggle = document.getElementById('navToggle');
-            const isOpen = links.classList.toggle('open');
-            toggle.textContent = isOpen ? '✕' : '☰';
-            toggle.setAttribute('aria-expanded', isOpen);
-        }
-
-        function animateCounter(el) {
-            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-            const duration = 1400;
-            const startTime = performance.now();
-
-            function step(now) {
-                const progress = Math.min((now - startTime) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.round(eased * target);
-                if (progress < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        }
-
-        const counterEls = document.querySelectorAll('.counter');
-        if (counterEls.length) {
-            const counterObserver = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counterEls.forEach(el => counterObserver.observe(el));
-        }
-
-        function toggleFaq(btn) {
-            const item = btn.closest('.faq-item');
-            const answer = item.querySelector('.faq-answer');
-            const isOpen = item.classList.contains('open');
-
-            document.querySelectorAll('.faq-item.open').forEach(openItem => {
-                if (openItem !== item) {
-                    openItem.classList.remove('open');
-                    openItem.querySelector('.faq-answer').style.maxHeight = null;
-                }
-            });
-
-            if (isOpen) {
-                item.classList.remove('open');
-                answer.style.maxHeight = null;
-            } else {
-                item.classList.add('open');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        }
-
-        function handleNewsletterSubmit(event) {
-            event.preventDefault();
-            const emailInput = document.getElementById('newsletterEmail');
-            const msg = document.getElementById('newsletterMsg');
-            const email = emailInput.value.trim();
-
-            if (!email || !email.includes('@')) {
-                msg.textContent = "Merci de saisir une adresse email valide.";
-                msg.style.color = '#0ea5e9';
-                return;
-            }
-
-            msg.textContent = `Merci ! ${email} a été enregistré pour nos actualités.`;
-            msg.style.color = '#002664';
-            document.getElementById('newsletterForm').reset();
-        }
-
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (backToTopBtn) backToTopBtn.classList.toggle('visible', window.scrollY > 500);
-        });
-
-        observeReveals();
     </script>
 </body>
 </html>
