@@ -2,35 +2,63 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">f
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCS - Comptoir Commercial Sourang | Accueil</title>
+    
+    <!-- Police Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-blue: #002664;
+            --dark-blue: #001226;
+            --accent-cyan: #0ea5e9;
+            --light-cyan: #38bdf8;
+            --bg-light: #f8fafc;
+            --text-dark: #333333;
+            --text-muted: #64748b;
+            --font-main: 'Montserrat', Arial, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: var(--font-main);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f9f9f9;
+            background-color: var(--bg-light);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            color: #333;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            width: 100%;
         }
 
-        /* --- Barre de Navigation --- */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- BARRE DE NAVIGATION RESPONSIVE --- */
         .navbar {
-            background-color: white;
+            background-color: #ffffff;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px;
-            border-bottom: 2px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 12px 20px;
+            border-bottom: 2px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -39,13 +67,15 @@
         .nav-content {
             display: flex;
             align-items: center;
-            gap: 30px; 
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1250px;
+            gap: 20px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .logo img {
-            height: 72px;
+            height: 60px;
             width: auto;
             display: block;
         }
@@ -55,584 +85,73 @@
             display: flex;
             align-items: center;
             position: relative;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-item {
             margin: 0;
-            padding: 5px; 
         }
 
         .nav-link {
             text-decoration: none;
-            color: #002664;
-            font-weight: bold;
+            color: var(--primary-blue);
+            font-weight: 700;
             font-size: 13px;
             text-transform: uppercase;
-            transition: color 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
             display: inline-block;
-            padding: 8px 12px;
-            border: 2px solid #0ea5e9;
-            border-radius: 4px;
+            padding: 8px 14px;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 6px;
             background-color: #fff;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-item .nav-link.active {
             color: white;
-            background-color: #0ea5e9;
+            background-color: var(--accent-cyan);
         }
 
         .red-dot {
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #0ea5e9;
+            background-color: var(--accent-cyan);
             border-radius: 50%;
             transition: left 0.3s ease-in-out;
-            top: -15px; 
-        }
-        
-        .nav-item .nav-link.active {
-            color: #0ea5e9;
-            background-color: #fff;
+            top: -12px;
+            display: none; /* Activable sur écran large */
         }
 
         .lang-buttons {
             display: flex;
-            gap: 10px;
-            margin-left: 15px;
+            gap: 8px;
         }
 
         .btn-lang {
-            text-decoration: none;
-            padding: 5px 12px;
-            border: 1px solid #002664;
-            color: #002664;
+            padding: 6px 12px;
+            border: 1.5px solid var(--primary-blue);
+            color: var(--primary-blue);
             font-weight: bold;
-            font-size: 14px;
-            border-radius: 3px;
+            font-size: 13px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.3s ease;
             background: white;
         }
 
         .btn-lang:hover, .btn-lang.active {
-            background-color: #002664;
+            background-color: var(--primary-blue);
             color: white;
         }
 
-        /* --- Effet Parallaxe Global --- */
-        .parallax-section {
-            position: relative;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .parallax-overlay {
-            width: 100%;
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(0, 38, 100, 0.85);
-        }
-
-        .parallax-overlay.light-overlay {
-            background-color: rgba(255, 255, 255, 0.92);
-        }
-
-        .section-container {
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #002664;
-            font-size: 24px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #0ea5e9;
-            margin: 10px auto 0;
-        }
-
-        /* Qui sommes-nous Parallaxe */
-        .about-parallax {
-            background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1920&auto=format&fit=crop');
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-text p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .about-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-left: 5px solid #002664;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Style des blocs de présentation (CCS About Section) */
-        .ccs-about-section {
-            width: 100%;
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .ccs-row {
-            display: flex;
-            width: 100%;
-            min-height: 480px;
-        }
-
-        .ccs-row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .ccs-text-side {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 80px;
-            background-color: #ffffff;
-            z-index: 2;
-        }
-
-        .ccs-title {
-            color: #002664;
-            font-size: 28px;
-            font-weight: bold;
-            line-height: 1.3;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .ccs-separator {
-            width: 50px;
-            height: 3px;
-            background-color: #0ea5e9;
-            margin-bottom: 20px;
-        }
-
-        .ccs-description {
-            color: #444444;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .ccs-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .ccs-list li {
-            position: relative;
-            padding-left: 20px;
-            color: #444;
-            font-size: 14px;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .ccs-list li::before {
-            content: "•";
-            color: #0ea5e9;
-            font-weight: bold;
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            top: -1px;
-        }
-
-        .ccs-image-side {
-            flex: 1;
-            position: relative;
-            background-color: #e0e0e0;
-            overflow: hidden;
-            min-height: 350px;
-        }
-
-        .ccs-image-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .ccs-badge-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 38, 100, 0.3);
-            backdrop-filter: blur(4px);
-        }
-
-        .ccs-badge-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: #ffffff;
-        }
-
-        .ccs-bottom-line {
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
-        }
-
-        /* Pôles d'Activités Parallaxe */
-        .poles-parallax {
-            background-image: url('activites.png');
-        }
-
-        .poles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .pole-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-top: 3px solid #0ea5e9;
-            transition: transform 0.3s;
-        }
-
-        .pole-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pole-card h3 {
-            color: #002664;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .pole-card p {
-            color: #666;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-
-        /* Alimentaire Parallaxe */
-        .food-parallax {
-            background-image: url('bgin.png');
-        }
-
-        .food-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .food-card {
-            background: #fff;
-            border: 2px solid #002664;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .food-card-img {
-            width: 100%;
-            height: 200px;
-            background-color: #f1f1f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid #ddd;
-            overflow: hidden;
-        }
-
-        .food-card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .food-card-content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .food-badge {
-            display: inline-block;
-            background-color: #0ea5e9;
-            color: white;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            align-self: flex-start;
-        }
-
-        .food-card-content h3 {
-            color: #002664;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .food-card-content p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .see-more-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .btn-see-more {
-            display: inline-block;
-            background-color: #002664;
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            font-size: 14px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            border: 2px solid #002664;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-        }
-
-        .btn-see-more:hover {
-            background-color: #0ea5e9;
-            border-color: #0ea5e9;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* Engagements Parallaxe */
-        .engagements-parallax {
-            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1920&auto=format&fit=crop');
-            color: white;
-        }
-
-        .engagements-parallax .parallax-overlay {
-            background-color: rgba(0, 38, 100, 0.9);
-        }
-
-        .engagements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .engagement-item h3 {
-            color: #0ea5e9;
-            font-size: 20px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .engagement-item p {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #f1f1f1;
-        }
-
-        /* Localisation Parallaxe */
-        .geo-parallax {
-            background-image: url('https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=1920&auto=format&fit=crop');
-        }
-
-        .geo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .geo-info {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .geo-info h3 {
-            color: #002664;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .geo-info p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 350px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 2px solid #002664;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            background-color: #00193d;
-            color: white;
-            width: 100%;
-            padding: 50px 20px 20px 20px;
-            border-top: 4px solid #0ea5e9;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            color: #0ea5e9;
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .footer-col p, .footer-col a {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.8;
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: #0ea5e9;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            font-size: 13px;
-            color: #aaa;
-        }
-
-        @media(max-width: 900px) {
-            .about-grid, .geo-grid, .ccs-row, .ccs-row.reverse {
-                grid-template-columns: 1fr;
-                flex-direction: column;
-            }
-            .parallax-section {
-                background-attachment: scroll;
-            }
-            .ccs-text-side {
-                padding: 40px 20px;
-            }
-            .ccs-image-side {
-                min-height: 300px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Barre de Navigation -->
-    <header class="navbar">
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
-            </a>
-            
-            <ul class="nav-links" id="navLinks">
-                <div class="red-dot" id="redDot"></div>
-                <li class="nav-item"><a href="index.html" class="nav-link active" data-fr="ACCUEIL " data-en="ACCUEIL ">ACCUEIL </a></li>
-                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">PRODUITS</a></li>
-                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="ACTUALITÉS ">ACTUALITÉS </a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
-            </ul>
-
-            <div class="lang-buttons">
-                <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
-                <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
-            </div>
-        </div>
-    </header>
-
-     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        /* --- HERO SECTION STYLÉE --- */
+        /* --- HERO SECTION --- */
         .hero-section {
             position: relative;
             width: 100%;
-            height: 85vh;
-            min-height: 550px;
+            min-height: 85vh;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -644,22 +163,19 @@
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 15, 35, 0.85) 0%, rgba(0, 38, 100, 0.7) 100%);
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 15, 38, 0.9) 0%, rgba(0, 38, 100, 0.75) 100%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px 60px;
+            padding: 40px 20px;
         }
 
         .hero-top-tag {
             text-align: center;
             color: #a5f3fc;
-            font-size: 14px;
-            letter-spacing: 4px;
+            font-size: clamp(11px, 2vw, 14px);
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
         }
@@ -670,61 +186,54 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin: auto;
+            max-width: 950px;
+            padding: 20px 0;
         }
 
-        /* --- LOGO CENTRÉ ET AGRANDI --- */
         .hero-logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 5px;
         }
 
         .hero-logo-container img {
-            height: 120px; /* Agrandit la hauteur du logo */
+            height: clamp(70px, 12vw, 110px);
             width: auto;
             object-fit: contain;
         }
 
         .hero-brand-text {
             color: #ffffff;
-            font-size: 52px;
+            font-size: clamp(32px, 6vw, 54px);
             font-weight: 800;
             letter-spacing: 3px;
-            text-transform: uppercase;
         }
 
         .hero-brand-sub {
-            color: #38bdf8;
-            font-size: 18px;
-            letter-spacing: 5px;
+            color: var(--light-cyan);
+            font-size: clamp(13px, 2.5vw, 18px);
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-top: -5px;
-            margin-bottom: 10px;
         }
 
         .hero-tagline {
             font-family: Georgia, serif;
             font-style: italic;
-            color: #e2e8f0;
-            font-size: 36px;
+            color: #f1f5f9;
+            font-size: clamp(20px, 4vw, 36px);
             font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .hero-tagline span {
-            color: #38bdf8;
+            line-height: 1.3;
         }
 
         .hero-bottom-slogan {
-            font-size: 14px;
+            font-size: clamp(11px, 2vw, 13px);
             letter-spacing: 2px;
             color: #94a3b8;
             text-transform: uppercase;
-            margin-top: 15px;
             font-weight: bold;
         }
 
@@ -733,24 +242,28 @@
             justify-content: space-between;
             align-items: flex-end;
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .hero-mini-card {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 8px;
-            border-radius: 4px;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 8px 12px;
+            border-radius: 8px;
             display: flex;
             gap: 12px;
             align-items: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
         }
 
         .hero-mini-card img {
-            width: 80px;
-            height: 50px;
+            width: 70px;
+            height: 46px;
             object-fit: cover;
-            border-radius: 2px;
+            border-radius: 4px;
         }
 
         .hero-mini-info {
@@ -758,13 +271,12 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding-right: 10px;
             font-weight: bold;
         }
 
         .hero-mini-info span {
             display: block;
-            color: #38bdf8;
+            color: var(--light-cyan);
             font-size: 11px;
         }
 
@@ -785,21 +297,869 @@
 
         .hero-presences ul {
             list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .hero-presences li {
-            margin-bottom: 4px;
             transition: color 0.3s;
             cursor: pointer;
+            font-size: 11px;
         }
 
         .hero-presences li.active, .hero-presences li:hover {
-            color: #38bdf8;
+            color: var(--light-cyan);
             font-weight: bold;
+        }
+
+        /* --- PARALLAX GLOBAL & SECTIONS COMMUNES --- */
+        .parallax-section {
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .parallax-overlay {
+            width: 100%;
+            padding: 70px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 38, 100, 0.85);
+        }
+
+        .parallax-overlay.light-overlay {
+            background-color: rgba(255, 255, 255, 0.94);
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-blue);
+            font-size: clamp(22px, 3.5vw, 28px);
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .about-parallax {
+            background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-text p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: clamp(14px, 1.8vw, 16px);
+            color: #334155;
+        }
+
+        .about-card {
+            background: #ffffff;
+            padding: 30px;
+            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ========================================================= */
+        /* --- SECTION HISTORIQUE CCS AVEC BOUTONS FLOTTANTS --- */
+        /* ========================================================= */
+        .ccs-about-section {
+            width: 100%;
+            position: relative;
+            padding: 90px 20px;
+            overflow: hidden;
+            background-color: var(--dark-blue);
+        }
+
+        .ccs-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.35;
+        }
+
+        .ccs-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(0, 38, 100, 0.8) 0%, rgba(0, 15, 35, 0.95) 100%);
+            z-index: 1;
+        }
+
+        /* Chaque étape (row) est un conteneur relatif pour ancrer les boutons flottants */
+        .ccs-row-wrapper {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto 100px auto;
+            z-index: 3;
+        }
+
+        .ccs-row-wrapper:last-child {
+            margin-bottom: 20px;
+        }
+
+        .ccs-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 400px;
+            width: 100%;
+        }
+
+        .ccs-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .ccs-text-card {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            padding: clamp(25px, 4vw, 40px);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 58%;
+            z-index: 4;
+            position: relative;
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+
+        .ccs-row.reverse .ccs-text-card {
+            transform: translateX(60px);
+        }
+
+        .ccs-image-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+            width: 48%;
+            position: relative;
+            margin-left: -70px;
+            z-index: 3;
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateX(60px);
+        }
+
+        .ccs-row.reverse .ccs-image-card {
+            margin-left: 0;
+            margin-right: -70px;
+            transform: translateX(-60px);
+        }
+
+        /* Animation d'activation de la rangée */
+        .ccs-row-wrapper.active .ccs-text-card,
+        .ccs-row-wrapper.active .ccs-image-card {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ccs-image-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ccs-title {
+            color: var(--primary-blue);
+            font-size: clamp(20px, 2.8vw, 24px);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .ccs-separator {
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+
+        .ccs-description {
+            color: #475569;
+            font-size: clamp(13px, 1.6vw, 14.5px);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .ccs-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .ccs-list li {
+            position: relative;
+            padding-left: 18px;
+            color: #334155;
+            font-size: clamp(12px, 1.5vw, 13.5px);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .ccs-list li::before {
+            content: "•";
+            color: var(--accent-cyan);
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* --- STYLES DES 2 BOUTONS FLOTTANTS CIRCULAIRES --- */
+        .floating-circle-btn {
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid var(--light-cyan);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(14, 165, 233, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 10;
+            cursor: pointer;
+            pointer-events: auto;
+            
+            /* État caché par défaut : fondu et réduit */
+            opacity: 0;
+            transform: scale(0.4) translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.3s ease;
+        }
+
+        .floating-circle-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+
+        .floating-circle-btn:hover {
+            box-shadow: 0 14px 30px rgba(14, 165, 233, 0.6);
+        }
+
+        .floating-circle-btn:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Positionnement des 2 boutons flottants par défaut */
+        .floating-btn-1 {
+            top: -25px;
+            left: -35px;
+        }
+
+        .floating-btn-2 {
+            bottom: -25px;
+            right: -25px;
+        }
+
+        /* Animation de lévitation (flottement dans les airs) quand la section est active */
+        .ccs-row-wrapper.active .floating-btn-1 {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            animation: floatingBobbing1 4s ease-in-out infinite 0.6s;
+        }
+
+        .ccs-row-wrapper.active .floating-btn-2 {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            animation: floatingBobbing2 4.5s ease-in-out infinite 0.8s;
+        }
+
+        @keyframes floatingBobbing1 {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-14px) rotate(4deg);
+            }
+        }
+
+        @keyframes floatingBobbing2 {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(12px) rotate(-4deg);
+            }
+        }
+
+        /* --- PRODUITS ALIMENTAIRES --- */
+        .food-parallax {
+            background-image: url('bgin.png');
+        }
+
+        .food-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .food-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+        }
+
+        .food-card-img {
+            width: 100%;
+            height: 190px;
+            background-color: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .food-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .food-card:hover .food-card-img img {
+            transform: scale(1.05);
+        }
+
+        .food-card-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .food-badge {
+            display: inline-block;
+            background-color: var(--accent-cyan);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .food-card-content h3 {
+            color: var(--primary-blue);
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .food-card-content p {
+            color: #64748b;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .see-more-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-see-more {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn-see-more:hover {
+            background-color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* --- PÔLES D'ACTIVITÉS --- */
+        .poles-parallax {
+            background-image: url('activites.png');
+        }
+
+        .poles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .pole-card {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-cyan);
+            transition: transform 0.3s ease;
+        }
+
+        .pole-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pole-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .pole-card p {
+            color: #475569;
+            line-height: 1.6;
+            font-size: 13.5px;
+        }
+
+        /* --- MANAGEMENT SECTION --- */
+        .management-section {
+            position: relative;
+            width: 100%;
+            padding: 80px 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #030d1c;
+        }
+
+        .bg-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .management-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 15, 40, 0.65);
+            z-index: 1;
+        }
+
+        .management-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .management-header {
+            margin-bottom: 40px;
+        }
+
+        .management-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .management-line {
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-cyan);
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 30px;
+        }
+
+        .management-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .management-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .card-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-role {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .card-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .card-position {
+            font-size: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* --- ENGAGEMENTS SECTION --- */
+        .engagements-parallax {
+            background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1920&auto=format&fit=crop');
+        }
+
+        .engagements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .engagement-item h3 {
+            color: var(--light-cyan);
+            font-size: 19px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .engagement-item p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        /* --- LOCALISATION / AGENCES RESPONSIVE --- */
+        .locations-section {
+            padding: 70px 20px;
+            background-color: #f1f5f9;
+            width: 100%;
+        }
+
+        .locations-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .location-card {
+            background: #ffffff;
+            padding: 22px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .location-image-container {
+            width: 100%;
+            height: 160px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .location-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .location-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .location-info p {
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            font-size: 13.5px;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #ffffff;
+            background-color: var(--accent-cyan);
+            padding: 8px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .map-link:hover {
+            background-color: var(--primary-blue);
+        }
+
+        .map-container {
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+            height: 200px;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #00132b;
+            color: white;
+            width: 100%;
+            padding: 60px 20px 25px 20px;
+            border-top: 4px solid var(--accent-cyan);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-cyan);
+            font-size: 15px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* ========================================================= */
+        /* --- MEDIA QUERIES (RESPONSIVE AVANCÉ) --- */
+        /* ========================================================= */
+        @media (max-width: 950px) {
+            .navbar .nav-content {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .parallax-section {
+                background-attachment: scroll; /* Améliore la performance sur mobile */
+            }
+
+            /* Réorganisation de la section histoire sur mobile/tablette */
+            .ccs-row, .ccs-row.reverse {
+                flex-direction: column !important;
+                gap: 20px;
+            }
+
+            .ccs-text-card, .ccs-image-card {
+                width: 100% !important;
+                margin: 0 !important;
+                transform: translateY(30px) !important;
+            }
+
+            .ccs-row-wrapper.active .ccs-text-card,
+            .ccs-row-wrapper.active .ccs-image-card {
+                transform: translateY(0) !important;
+            }
+
+            .ccs-image-card img {
+                height: 250px;
+            }
+
+            /* Adaptation des boutons flottants sur écran réduit */
+            .floating-circle-btn {
+                width: 65px;
+                height: 65px;
+                border-width: 2px;
+            }
+
+            .floating-btn-1 {
+                top: -15px;
+                left: 10px;
+            }
+
+            .floating-btn-2 {
+                bottom: -15px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-footer-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-presences {
+                text-align: left;
+            }
+
+            .floating-circle-btn {
+                width: 55px;
+                height: 55px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Barre de Navigation -->
+    <header class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <div class="red-dot" id="redDot"></div>
+                <li class="nav-item"><a href="index.html" class="nav-link active" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link" data-fr="PRODUITS" data-en="PRODUCTS">PRODUITS</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="ACTUALITÉS" data-en="NEWS">ACTUALITÉS</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></li>
+            </ul>
+
+            <div class="lang-buttons">
+                <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
+                <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+            </div>
+        </div>
+    </header>
 
     <!-- SECTION HERO -->
     <section class="hero-section" id="heroSection" style="background-image: url('img1.png');">
@@ -815,7 +1175,7 @@
                 </div>
                 <div class="hero-brand-sub">Comptoir Commercial Sourang</div>
                 <h1 class="hero-tagline">
-                    LE COMMERCE OUEST AFRICAINE DEVIENT PLUS ACCESSIBLE
+                    LE COMMERCE OUEST AFRICAIN DEVIENT PLUS ACCESSIBLE
                 </h1>
                 <div class="hero-bottom-slogan">
                     Structurer l'approvisionnement. Bâtir la confiance.
@@ -824,7 +1184,7 @@
 
             <div class="hero-footer-bar">
                 <div class="hero-mini-card">
-                    <img id="heroMiniImg" src="footer.png" alt="Pays">
+                    <img id="heroMiniImg" src="footer.png" alt="Pays" onerror="this.src='https://via.placeholder.com/80x50?text=CCS';">
                     <div class="hero-mini-info" id="heroMiniInfo">
                         SÉNÉGAL
                         <span id="heroMiniSub">DAKAR</span>
@@ -843,68 +1203,7 @@
         </div>
     </section>
 
-    <!-- SCRIPT DU DIAPORAMA AUTOMATIQUE -->
-    <script>
-        const slides = [
-            {
-                country: "SÉNÉGAL",
-                city: "DAKAR",
-                image: "ccs2.png"
-            },
-            {
-                country: "MALI",
-                city: "BAMAKO",
-                image: "bamako.png"
-            },
-            {
-                country: "GUINÉE",
-                city: "CONAKRY",
-                image: "guinee.png"
-            }
-        ];
-
-        let currentSlide = 0;
-        const heroSection = document.getElementById("heroSection");
-        const heroMiniImg = document.getElementById("heroMiniImg");
-        const heroMiniInfo = document.getElementById("heroMiniInfo");
-        const heroMiniSub = document.getElementById("heroMiniSub");
-        const presenceItems = document.querySelectorAll("#heroPresencesList li");
-
-        function updateSlide(index) {
-            currentSlide = index;
-            const slide = slides[currentSlide];
-
-            // Changement de l'arrière-plan de la hero section
-            heroSection.style.backgroundImage = `url('${slide.image}')`;
-            
-            // Mise à jour de la mini carte en bas à gauche
-            heroMiniImg.src = slide.image;
-            heroMiniInfo.innerHTML = `${slide.country} <span id="heroMiniSub">${slide.city}</span>`;
-
-            // Mise à jour de la liste active des présences
-            presenceItems.forEach((li, idx) => {
-                if (idx === currentSlide) {
-                    li.classList.add("active");
-                } else {
-                    li.classList.remove("active");
-                }
-            });
-        }
-
-        // Rotation automatique toutes les 4 secondes
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSlide(currentSlide);
-        }, 4000);
-
-        // Permettre de changer de slide au clic sur la liste des présences
-        presenceItems.forEach((li, idx) => {
-            li.addEventListener("click", () => {
-                updateSlide(idx);
-            });
-        });
-    </script>
-    <!-- SECTION 2 : QUI SOMMES-NOUS / ORIGINE (Parallaxe) -->
+    <!-- SECTION 2 : QUI SOMMES-NOUS -->
     <section class="parallax-section about-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
@@ -914,13 +1213,13 @@
                         <p data-fr="Créée au Sénégal en 2019, CCS — Comptoir Commercial Sourang est une entreprise spécialisée dans l'import-export et le commerce général. Dès ses débuts, elle s'est engagée à répondre aux besoins du marché sénégalais avec rigueur et professionnalisme." data-en="Created in Senegal in 2019, CCS — Comptoir Commercial Sourang is a company specializing in import-export and general trade. From its beginnings, it has committed to meeting the needs of the Senegalese market with rigor and professionalism.">
                             Créée au Sénégal en 2019, CCS — Comptoir Commercial Sourang est une entreprise spécialisée dans l'import-export et le commerce général. Dès ses débuts, elle s'est engagée à répondre aux besoins du marché sénégalais avec rigueur et professionnalisme.
                         </p>
-                        <p data-fr="Au fil des années, l'entreprise a développé ses activités, tissé des relations internationales solides et diversifié ses offres pour s'imposer comme un acteur commercial incontournable." data-en="Over the years, the company has developed its activities, built  international relationships and diversified its offers to establish itself as a key commercial player.">
+                        <p data-fr="Au fil des années, l'entreprise a développé ses activités, tissé des relations internationales solides et diversifié ses offres pour s'imposer comme un acteur commercial incontournable." data-en="Over the years, the company has developed its activities, built international relationships and diversified its offers to establish itself as a key commercial player.">
                             Au fil des années, l'entreprise a développé ses activités, tissé des relations internationales solides et diversifié ses offres pour s'imposer comme un acteur commercial incontournable.
                         </p>
                     </div>
                     <div class="about-card">
                         <h3 style="color: #002664; margin-bottom: 10px;" data-fr="Notre Fondation" data-en="Our Foundation">Notre Fondation</h3>
-                        <p style="color: #555; line-height: 1.5;" data-fr="Une vision née à Dakar en 2019, axée sur la qualité, la diversification sectorielle et l'ouverture progressive vers de nouveaux horizons régionaux." data-en="A vision born in Dakar in 2019, focused on quality, sectoral diversification and progressive opening to new regional horizons.">
+                        <p style="color: #555; line-height: 1.6;" data-fr="Une vision née à Dakar en 2019, axée sur la qualité, la diversification sectorielle et l'ouverture progressive vers de nouveaux horizons régionaux." data-en="A vision born in Dakar in 2019, focused on quality, sectoral diversification and progressive opening to new regional horizons.">
                             Une vision née à Dakar en 2019, axée sur la qualité, la diversification sectorielle et l'ouverture progressive vers de nouveaux horizons régionaux.
                         </p>
                     </div>
@@ -929,759 +1228,215 @@
         </div>
     </section>
 
-    <!-- SECTION DE PRÉSENTATION DÉTAILLÉE (Split-Screen) -->
-
-<style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* --- Barre de Navigation --- */
-        .navbar {
-            background-color: white;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 20px;
-            border-bottom: 2px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            gap: 30px; 
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .logo img {
-            height: 72px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            position: relative;
-            gap: 12px;
-        }
-
-        .nav-item {
-            margin: 0;
-            padding: 5px; 
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #002664;
-            font-weight: bold;
-            font-size: 13px;
-            text-transform: uppercase;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            position: relative;
-            display: inline-block;
-            padding: 8px 12px;
-            border: 2px solid #0ea5e9;
-            border-radius: 4px;
-            background-color: #fff;
-        }
-
-        .nav-link:hover {
-            color: white;
-            background-color: #0ea5e9;
-        }
-
-        .red-dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: #0ea5e9;
-            border-radius: 50%;
-            transition: left 0.3s ease-in-out;
-            top: -15px; 
-        }
-        
-        .nav-item .nav-link.active {
-            color: #0ea5e9;
-            background-color: #fff;
-        }
-
-        .section-container {
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #ffffff;
-            font-size: 28px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #0ea5e9;
-            margin: 10px auto 0;
-        }
-
-        /* --- STYLE HISTORIQUE CCS : VIDÉO EN ARRIÈRE-PLAN & EFFET HEURTOIR --- */
-        .ccs-about-section {
-            width: 100%;
-            position: relative;
-            padding: 80px 20px;
-            overflow: hidden;
-            background-color: #001226; /* Fallback couleur si la vidéo met du temps à charger */
-        }
-
-        /* Vidéo en arrière-plan */
-        .ccs-video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.55; /* Ajuste la transparence de la vidéo */
-        }
-
-        /* Superbe overlay sombre pour garder la lisibilité du texte par-dessus la vidéo */
-        .ccs-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 38, 100, 0.85), rgba(0, 18, 38, 0.9));
-            z-index: 1;
-        }
-
-        .ccs-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto 90px auto;
-            position: relative;
-            z-index: 2;
-            min-height: 420px;
-        }
-
-        .ccs-row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        /* Card de Texte Indépendante (Arrive de la gauche) */
-        .ccs-text-card {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-            width: 58%;
-            z-index: 4; /* Au-dessus de l'image */
-            position: relative;
-            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1.2s ease;
-            opacity: 0;
-            transform: translateX(-150px);
-        }
-
-        .ccs-row.reverse .ccs-text-card {
-            transform: translateX(150px);
-        }
-
-        /* Card d'Image Indépendante (Arrive de la droite, légèrement en dessous et enchevêtrée) */
-        .ccs-image-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            width: 48%;
-            position: relative;
-            margin-left: -80px; /* Chevauchement horizontal sur la carte texte */
-            margin-top: -20px;  /* Légèrement décalée pour que le texte soit au-dessus */
-            z-index: 3;
-            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1.2s ease;
-            opacity: 0;
-            transform: translateX(150px);
-        }
-
-        .ccs-row.reverse .ccs-image-card {
-            margin-left: 0;
-            margin-right: -80px;
-            transform: translateX(-150px);
-        }
-
-        /* Déclenchement de l'animation au scroll (Effet "heurtoir" / collision au centre) */
-        .ccs-row.active .ccs-text-card,
-        .ccs-row.active .ccs-image-card {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .ccs-image-card img {
-            width: 100%;
-            height: 340px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .ccs-title {
-            color: #002664;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1.3;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .ccs-separator {
-            width: 50px;
-            height: 3px;
-            background-color: #0ea5e9;
-            margin-bottom: 15px;
-        }
-
-        .ccs-description {
-            color: #444444;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .ccs-list {
-            list-style: none;
-            margin-top: 8px;
-        }
-
-        .ccs-list li {
-            position: relative;
-            padding-left: 18px;
-            color: #444;
-            font-size: 13px;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .ccs-list li::before {
-            content: "•";
-            color: #0ea5e9;
-            font-weight: bold;
-            font-size: 16px;
-            position: absolute;
-            left: 0;
-            top: -1px;
-        }
-
-        .ccs-badge-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 38, 100, 0.7);
-            backdrop-filter: blur(4px);
-        }
-
-        .ccs-badge-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: #ffffff;
-        }
-
-        /* --- Responsive Design Mobile --- */
-        @media(max-width: 900px) {
-            .ccs-row, .ccs-row.reverse {
-                flex-direction: column;
-            }
-            .ccs-text-card, .ccs-image-card {
-                width: 100%;
-                margin: 0 0 20px 0 !important;
-                transform: translateY(50px) !important;
-            }
-            .ccs-row.active .ccs-text-card,
-            .ccs-row.active .ccs-image-card {
-                transform: translateY(0) !important;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- SECTION HISTORIQUE CCS AVEC VIDÉO EN ARRIÈRE-PLAN & EFFET HEURTOIR -->
+    <!-- ========================================================================= -->
+    <!-- SECTION HISTORIQUE CCS AVEC LES 2 BOUTONS FLOTTANTS PAR ÉTAPE            -->
+    <!-- ========================================================================= -->
     <section class="ccs-about-section" id="historySection">
-        <!-- Vidéo MP4 en fond (remplacez 'votre-video.mp4' par le lien de votre fichier vidéo) -->
         <video autoplay muted loop playsinline class="ccs-video-background">
             <source src="votre-video.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture de vidéos HTML5.
         </video>
         <div class="ccs-video-overlay"></div>
 
-       
+        <div class="section-container" style="position: relative; z-index: 2;">
+            <h2 class="section-title" style="color: #ffffff; text-shadow: 0 2px 5px rgba(0,0,0,0.6);" data-fr="Notre Parcours & Évolution" data-en="Our Journey & Evolution">Notre Parcours & Évolution</h2>
 
-        <!-- Bloc 1 -->
-        <div class="ccs-row">
-            <div class="ccs-text-card">
-                <h2 class="ccs-title">CCS : une entreprise axée sur le papier à la base</h2>
-                <div class="ccs-separator"></div>
-                <p class="ccs-description">
-                    CCS a débuté son activité commerciale en se concentrant exclusivement sur la vente de papier Double A, une marque premium de haute qualité au Sénégal.<br>
-                    Par la suite, face à la nécessité de s'adapter aux différents budgets, l'entreprise a diversifié son offre en intégrant la commercialisation du papier Smart Copy.
-                </p>
-                <p class="ccs-description">
-                    C'est dans cette dynamique que nous avons signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais (A grade), touchant tous les segments du marché.
-                </p>
-            </div>
-            <div class="ccs-image-card">
-                <img src="das.png" alt="Expansion papier" onerror="this.src='https://via.placeholder.com/600x400?text=Double+A';">
-                <div class="ccs-badge-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <!-- ÉTAPE 1 : PAPIER -->
+            <div class="ccs-row-wrapper">
+                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
+                <div class="floating-circle-btn floating-btn-1" title="Double A Paper">
+                    <img src="das.png" alt="Double A Paper" onerror="this.src='https://via.placeholder.com/100x100?text=Double+A';">
+                </div>
+                <div class="floating-circle-btn floating-btn-2" title="Smart Copy Paper">
+                    <img src="das.png" alt="Smart Copy" onerror="this.src='https://via.placeholder.com/100x100?text=Smart+Copy';">
+                </div>
+
+                <div class="ccs-row">
+                    <div class="ccs-text-card">
+                        <h3 class="ccs-title">CCS : une entreprise axée sur le papier à la base</h3>
+                        <div class="ccs-separator"></div>
+                        <p class="ccs-description">
+                            CCS a débuté son activité commerciale en se concentrant exclusivement sur la vente de papier Double A, une marque premium de haute qualité au Sénégal.<br>
+                            Par la suite, face à la nécessité de s'adapter aux différents budgets, l'entreprise a diversifié son offre en intégrant la commercialisation du papier Smart Copy.
+                        </p>
+                        <p class="ccs-description">
+                            C'est dans cette dynamique que nous avons signé une exclusivité auprès de Double A pour la distribution de leur papier thaïlandais (A grade), touchant tous les segments du marché.
+                        </p>
+                    </div>
+                    <div class="ccs-image-card">
+                        <img src="das.png" alt="Expansion papier" onerror="this.src='https://via.placeholder.com/600x400?text=Double+A';">
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Bloc 2 (Inversé) -->
-        <div class="ccs-row reverse">
-            <div class="ccs-text-card">
-                <h2 class="ccs-title">La création de nos propres marques "Capital" et "Best Foods"</h2>
-                <div class="ccs-separator"></div>
-                <p class="ccs-description">
-                    Le Comptoir Commercial Sourang (CCS) a franchi une étape clé en créant ses propres marques : le papier « Capital » et la gamme alimentaire « Best Foods ». Toutes nos marques sont juridiquement protégées.
-                </p>
-                <ul class="ccs-list">
-                    <li>Gamme BEST FOODS : Poivre noir, piment rouge sec, petits pois, lentilles.</li>
-                    <li>Produits du quotidien : Huiles, laits, feuilles de laurier, raisins secs.</li>
-                    <li>Cible élargie : Détaillants, grossistes, hôtels, restaurants.</li>
-                </ul>
-            </div>
-            <div class="ccs-image-card">
-                <img src="capbests.png" alt="Diversification alimentaire" onerror="this.src='https://via.placeholder.com/600x400?text=Best+Foods';">
-                <div class="ccs-badge-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+
+            <!-- ÉTAPE 2 : MARQUES CAPITAL & BEST FOODS (Inversé) -->
+            <div class="ccs-row-wrapper">
+                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
+                <div class="floating-circle-btn floating-btn-1" title="Capital Paper">
+                    <img src="capbests.png" alt="Capital Paper" onerror="this.src='https://via.placeholder.com/100x100?text=Capital';">
+                </div>
+                <div class="floating-circle-btn floating-btn-2" title="Best Foods">
+                    <img src="epices.png" alt="Best Foods" onerror="this.src='https://via.placeholder.com/100x100?text=BestFoods';">
+                </div>
+
+                <div class="ccs-row reverse">
+                    <div class="ccs-text-card">
+                        <h3 class="ccs-title">La création de nos propres marques "Capital" et "Best Foods"</h3>
+                        <div class="ccs-separator"></div>
+                        <p class="ccs-description">
+                            Le Comptoir Commercial Sourang (CCS) a franchi une étape clé en créant ses propres marques : le papier « Capital » et la gamme alimentaire « Best Foods ». Toutes nos marques sont juridiquement protégées.
+                        </p>
+                        <ul class="ccs-list">
+                            <li>Gamme BEST FOODS : Poivre noir, piment rouge sec, petits pois, lentilles.</li>
+                            <li>Produits du quotidien : Huiles, laits, feuilles de laurier, raisins secs.</li>
+                            <li>Cible élargie : Détaillants, grossistes, hôtels, restaurants.</li>
+                        </ul>
+                    </div>
+                    <div class="ccs-image-card">
+                        <img src="capbests.png" alt="Diversification alimentaire" onerror="this.src='https://via.placeholder.com/600x400?text=Best+Foods';">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bloc 3 -->
-        <div class="ccs-row">
-            <div class="ccs-text-card">
-                <h2 class="ccs-title">Une entreprise en expansion en Afrique de l’Ouest</h2>
-                <div class="ccs-separator"></div>
-                <p class="ccs-description">
-                    Depuis 2026, CCS amorce son expansion régionale avec le démarrage officiel de ses opérations en Guinée et au Mali.
-                </p>
-                <p class="ccs-description">
-                    Cette dynamique s'appuie sur une croissance maîtrisée, un réseau logistique renforcé et l'ambition de devenir la référence ouest-africaine.
-                </p>
-            </div>
-            <div class="ccs-image-card">
-                <img src="afriou.png" alt="Expansion Afrique de l'Ouest" onerror="this.src='https://via.placeholder.com/600x400?text=Expansion';">
-                <div class="ccs-badge-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <!-- ÉTAPE 3 : EXPANSION RÉGIONALE -->
+            <div class="ccs-row-wrapper">
+                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
+                <div class="floating-circle-btn floating-btn-1" title="Mali Office">
+                    <img src="mali.png" alt="Expansion Mali" onerror="this.src='https://via.placeholder.com/100x100?text=Mali';">
+                </div>
+                <div class="floating-circle-btn floating-btn-2" title="Guinée Office">
+                    <img src="guinea.png" alt="Expansion Guinée" onerror="this.src='https://via.placeholder.com/100x100?text=Guinee';">
+                </div>
+
+                <div class="ccs-row">
+                    <div class="ccs-text-card">
+                        <h3 class="ccs-title">Une entreprise en expansion en Afrique de l’Ouest</h3>
+                        <div class="ccs-separator"></div>
+                        <p class="ccs-description">
+                            Depuis 2026, CCS amorce son expansion régionale avec le démarrage officiel de ses opérations en Guinée et au Mali.
+                        </p>
+                        <p class="ccs-description">
+                            Cette dynamique s'appuie sur une croissance maîtrisée, un réseau logistique renforcé et l'ambition de devenir la référence ouest-africaine.
+                        </p>
+                    </div>
+                    <div class="ccs-image-card">
+                        <img src="afriou.png" alt="Expansion Afrique de l'Ouest" onerror="this.src='https://via.placeholder.com/600x400?text=Expansion';">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bloc 4 (Inversé) -->
-        <div class="ccs-row reverse">
-            <div class="ccs-text-card">
-                <h2 class="ccs-title">Nos Missions & Nos Valeurs</h2>
-                <div class="ccs-separator"></div>
-                <p class="ccs-description">
-                    <strong>Mission :</strong> Fournir des produits essentiels de qualité constante à prix compétitifs et simplifier l'approvisionnement des professionnels.
-                </p>
-                <ul class="ccs-list">
-                    <li><strong>Qualité :</strong> Sélection rigoureuse et contrôle strict.</li>
-                    <li><strong>Fiabilité :</strong> Respect des délais et stock permanent.</li>
-                    <li><strong>Proximité :</strong> Écoute active et flexibilité.</li>
-                </ul>
-            </div>
-            <div class="ccs-image-card">
-                <img src="office.png" alt="Missions et Valeurs CCS" onerror="this.src='https://via.placeholder.com/600x400?text=Valeurs';">
-                <div class="ccs-badge-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+            <!-- ÉTAPE 4 : MISSIONS & VALEURS (Inversé) -->
+            <div class="ccs-row-wrapper">
+                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
+                <div class="floating-circle-btn floating-btn-1" title="Qualité & Contrôle">
+                    <img src="logo.png" alt="Qualité CCS" onerror="this.src='https://via.placeholder.com/100x100?text=Qualite';">
+                </div>
+                <div class="floating-circle-btn floating-btn-2" title="Service Client & Logistique">
+                    <img src="office.png" alt="Engagement" onerror="this.src='https://via.placeholder.com/100x100?text=Service';">
+                </div>
+
+                <div class="ccs-row reverse">
+                    <div class="ccs-text-card">
+                        <h3 class="ccs-title">Nos Missions & Nos Valeurs</h3>
+                        <div class="ccs-separator"></div>
+                        <p class="ccs-description">
+                            <strong>Mission :</strong> Fournir des produits essentiels de qualité constante à prix compétitifs et simplifier l'approvisionnement des professionnels.
+                        </p>
+                        <ul class="ccs-list">
+                            <li><strong>Qualité :</strong> Sélection rigoureuse et contrôle strict.</li>
+                            <li><strong>Fiabilité :</strong> Respect des délais et stock permanent.</li>
+                            <li><strong>Proximité :</strong> Écoute active et flexibilité.</li>
+                        </ul>
+                    </div>
+                    <div class="ccs-image-card">
+                        <img src="office.png" alt="Missions et Valeurs CCS" onerror="this.src='https://via.placeholder.com/600x400?text=Valeurs';">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Script JavaScript Intersection Observer pour animer les cartes au scroll -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const rows = document.querySelectorAll(".ccs-row");
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                    }
-                });
-            }, {
-                threshold: 0.2 // Déclenche l'animation quand 20% de la ligne entre dans l'écran
-            });
-
-            rows.forEach(row => {
-                observer.observe(row);
-            });
-        });
-    </script>
-</body>
-
-
-    
-     <!-- SECTION : DIVERSIFICATION & PRODUITS ALIMENTAIRES (Parallaxe) -->
+    <!-- SECTION : PRODUITS ALIMENTAIRES -->
     <section class="parallax-section food-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
-                <h2 class="section-title" data-fr="Un apercu sur nos produits alimentaires" data-en=" A look of Our Food PRODUITS">Un apercu sur nos produits alimentaires</h2>
+                <h2 class="section-title" data-fr="Un aperçu sur nos produits alimentaires" data-en="A look at Our Food Products">Un aperçu sur nos produits alimentaires</h2>
                 
-                <p style="text-align: center; color: #555; max-width: 800px; margin: 0 auto 40px auto; font-size: 15px; line-height: 1.6;" 
+                <p style="text-align: center; color: #555; max-width: 800px; margin: 0 auto 30px auto; font-size: 15px; line-height: 1.6;" 
                    data-fr="Dans le cadre de son expansion et de sa volonté de diversification, CCS importe et distribue une large gamme de produits alimentaires et de denrées de qualité, sourcés auprès de partenaires internationaux de confiance." 
-                   data-en="As part of its expansion and diversification strategy, CCS imports and distributes a wide range of quality food PRODUITS and commodities, sourced from trusted international partners.">
+                   data-en="As part of its expansion and diversification strategy, CCS imports and distributes a wide range of quality food products and commodities, sourced from trusted international partners.">
                     Dans le cadre de son expansion et de sa volonté de diversification, CCS importe et distribue une large gamme de produits alimentaires et de denrées de qualité, sourcés auprès de partenaires internationaux de confiance.
                 </p>
 
                 <div class="food-cards-grid">
                     <div class="food-card">
                         <div class="food-card-img">
-                            <img src="epices.png" alt="Épices CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x180?text=Epices';">
+                            <img src="epices.png" alt="Épices CCS" onerror="this.src='https://via.placeholder.com/300x180?text=Epices';">
                         </div>
                         <div class="food-card-content">
-                            <span class="food-badge" data-fr="International" data-en="International">International</span>
-                            <h3 data-fr="Épices & Condiments" data-en="Spices & Condiments">Épices & Condiments</h3>
-                            <p data-fr="Des saveurs authentiques importées directement des marchés mondiaux, incluant notamment le poivre noir du Brésil et le chili d'Inde." 
-                               data-en="Authentic flavors imported directly from global markets, including notably black pepper from Brazil and chili from India.">
-                                Des saveurs authentiques importées directement des marchés mondiaux, incluant notamment le poivre noir du Brésil et le chili d'Inde.
-                            </p>
+                            <span class="food-badge">International</span>
+                            <h3>Épices & Condiments</h3>
+                            <p>Des saveurs authentiques importées directement des marchés mondiaux, incluant notamment le poivre noir du Brésil et le chili d'Inde.</p>
                         </div>
                     </div>
 
                     <div class="food-card">
                         <div class="food-card-img">
-                            <img src="legumineuse.png" alt="Légumineuses CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x180?text=Produits+Secs';">
+                            <img src="legumineuse.png" alt="Légumineuses CCS" onerror="this.src='https://via.placeholder.com/300x180?text=Produits+Secs';">
                         </div>
                         <div class="food-card-content">
-                            <span class="food-badge" data-fr="Alimentation" data-en="Grocery">Alimentation</span>
-                            <h3 data-fr="Produits Secs & Légumineuses" data-en="Pulses & Dry Goods">Produits Secs & Légumineuses</h3>
-                            <p data-fr="Une sélection rigoureuse de denrées de base indispensables : lentilles, petits pois, tamarin et autres produits de premier choix." 
-                               data-en="A rigorous selection of essential staple commodities: lentils, peas, tamarind and other top-choice PRODUITS.">
-                                Une sélection rigoureuse de denrées de base indispensables : lentilles, petits pois, tamarin et autres produits de premier choix.
-                            </p>
+                            <span class="food-badge">Alimentation</span>
+                            <h3>Produits Secs & Légumineuses</h3>
+                            <p>Une sélection rigoureuse de denrées de base indispensables : lentilles, petits pois, tamarin et autres produits de premier choix.</p>
                         </div>
                     </div>
 
                     <div class="food-card">
                         <div class="food-card-img">
-                            <img src="laitier.png" alt="Produits laitiers CCS" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x180?text=Produits+Laitiers';">
+                            <img src="laitier.png" alt="Produits laitiers CCS" onerror="this.src='https://via.placeholder.com/300x180?text=Produits+Laitiers';">
                         </div>
                         <div class="food-card-content">
-                            <span class="food-badge" data-fr="Qualité" data-en="Quality">Qualité</span>
-                            <h3 data-fr="Produits Laitiers" data-en="Dairy PRODUITS">Produits Laitiers</h3>
-                            <p data-fr="Du lait en poudre et du lait concentré non sucré rigoureusement sélectionnés pour répondre aux besoins des foyers et des professionnels." 
-                               data-en="Milk powder and unsweetened condensed milk rigorously selected to meet the needs of households and professionals.">
-                                Du lait en poudre et du lait concentré non sucré rigoureusement sélectionnés pour répondre aux besoins des foyers et des professionnels.
-                            </p>
+                            <span class="food-badge">Qualité</span>
+                            <h3>Produits Laitiers</h3>
+                            <p>Du lait en poudre et du lait concentré non sucré rigoureusement sélectionnés pour répondre aux besoins des foyers et des professionnels.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="see-more-container">
-                    <a href="product.html" class="btn-see-more" data-fr="Voir tous nos produits" data-en="View all PRODUITS">Voir tous nos produits</a>
+                    <a href="product.html" class="btn-see-more">Voir tous nos produits</a>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- SECTION 3 : NOS PÔLES D'ACTIVITÉS (Parallaxe) -->
+    <!-- SECTION : PÔLES D'ACTIVITÉS -->
     <section class="parallax-section poles-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
                 <h2 class="section-title" data-fr="Nos Pôles d'Activités" data-en="Our Business Poles">Nos Pôles d'Activités</h2>
                 <div class="poles-grid">
                     <div class="pole-card">
-                        <h3 data-fr="Pôle Papeterie" data-en="Stationery Pole">Pôle Papeterie</h3>
-                        <p data-fr="Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper." data-en="Historical pillar of CCS since 2019. Official representation of the premium Double A brand, distribution of Smart Copy and launch of our own brand: Capital Paper.">
-                            Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper.
-                        </p>
+                        <h3>Pôle Papeterie</h3>
+                        <p>Pilier historique de CCS depuis 2019. Représentation officielle de la marque premium Double A, distribution de Smart Copy et lancement de notre propre marque : Capital Paper.</p>
                     </div>
                     <div class="pole-card">
-                        <h3 data-fr="Import-Export Alimentaire" data-en="Food Import-Export">Import-Export Alimentaire</h3>
-                        <p data-fr="Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore." data-en="Import of quality food items from various global markets (India, Brazil, etc.): spices (pepper, chili), pulses (lentils, peas), dairy PRODUITS and more.">
-                            Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore.
-                        </p>
+                        <h3>Import-Export Alimentaire</h3>
+                        <p>Importation de denrées de qualité depuis différents marchés mondiaux (Inde, Brésil, etc.) : épices (poivre, chili), légumineuses (lentilles, petits pois), produits laitiers et plus encore.</p>
                     </div>
                     <div class="pole-card">
-                        <h3 data-fr="Commerce Général" data-en="General Trade">Commerce Général</h3>
-                        <p data-fr="Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients." data-en="A versatile and flexible activity, open to market opportunities to efficiently meet the specific demands of our clients.">
-                            Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients.
-                        </p>
+                        <h3>Commerce Général</h3>
+                        <p>Une activité polyvalente et flexible, ouverte sur les opportunités du marché pour répondre efficacement aux demandes spécifiques de nos clients.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    ----
-<style>
-        :root {
-            --gold-color: #0ea5e9; 
-            --accent-blue: #0ea5e9; 
-            --font-main: 'Montserrat', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-main);
-            color: #ffffff;
-        }
-
-        .management-section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            padding: 80px 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .management-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 15, 40, 0.55);
-            z-index: -1;
-        }
-
-        .management-container {
-            max-width: 1300px;
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .management-header {
-            margin-bottom: 40px;
-        }
-
-        .management-title {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: var(--gold-color);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .management-line {
-            width: 50px;
-            height: 2px;
-            background-color: var(--gold-color);
-        }
-
-        .management-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        /* --- Effet Glassmorphism & Lueur interactive --- */
-        .management-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            z-index: 1;
-        }
-
-        .management-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-color);
-        }
-
-        /* Élément gérant la lueur dynamique sous la carte */
-        .card-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background: radial-gradient(
-                600px circle at var(--mouse-x) var(--mouse-y),
-                rgba(14, 165, 233, 0.45),
-                transparent 60%
-            );
-        }
-
-        .management-card:hover .card-glow {
-            opacity: 1;
-        }
-
-        .card-image-container {
-            position: relative;
-            width: 100%;
-            height: 320px;
-            background-color: rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            border-bottom: 2px solid var(--gold-color);
-        }
-
-        .card-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-        }
-
-        .card-number {
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--gold-color);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .card-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-role {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: var(--gold-color);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
-
-        .card-position {
-            font-size: 11px;
-            font-weight: 600;
-            color: #e0e0e0;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .card-desc {
-            font-size: 12px;
-            line-height: 1.6;
-            color: #d0d0d0;
-        }
-
-        .card-accent-dot {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-blue);
-            border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 0 8px var(--accent-blue);
-        }
-
-        @media (max-width: 992px) {
-            .management-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .management-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-    </style>
-</head>
-<body>
-
+    <!-- SECTION : MANAGEMENT -->
     <section class="management-section">
         <video autoplay muted loop playsinline class="bg-video">
             <source src="inloop.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-
         <div class="management-overlay"></div>
 
         <div class="management-container">
@@ -1691,429 +1446,230 @@
             </div>
 
             <div class="management-grid">
-                
-            
                 <!-- Carte 1 -->
                 <div class="management-card">
-                    <div class="card-glow"></div>
-                    <div class="card-accent-dot"></div>
                     <div class="card-image-container">
-                        <img src="modou.png" alt="Modou F. Sourang">
-                        <span class="card-number"></span>
+                        <img src="modou.png" alt="Modou F. Sourang" onerror="this.src='https://via.placeholder.com/300x320?text=Modou+Sourang';">
                     </div>
                     <div class="card-content">
                         <span class="card-role">Commerce International & FX</span>
                         <h3 class="card-name">Modou F. Sourang</h3>
                         <p class="card-position">Chief Executive Officer</p>
-                        <p class="card-desc">Expert des échanges internationaux et des marchés de change, il structure les flux transfrontaliers et pilote la croissance de l’entreprise sur les marchés régionaux et internationaux. Il supervise les opérations FX, développe les opportunités commerciales et renforce la compétitivité globale de la firme.
-Son approche allie agilité, précision analytique et sens du développement, permettant à l’entreprise d’évoluer avec assurance dans un environnement économique mondialisé.</p>
+                        <p class="card-desc">Expert des échanges internationaux et des marchés de change, il structure les flux transfrontaliers et pilote la croissance de l’entreprise sur les marchés régionaux et internationaux.</p>
                     </div>
                 </div>
 
                 <!-- Carte 2 -->
                 <div class="management-card">
-                    <div class="card-glow"></div>
-                    <div class="card-accent-dot"></div>
                     <div class="card-image-container">
-                        <img src="adji.png" alt="Adji Fatou Seck Ndjira Faye">
-                        <span class="card-number"></span>
+                        <img src="adji.png" alt="Adji Fatou Seck Ndjira Faye" onerror="this.src='https://via.placeholder.com/300x320?text=Adji+Fatou';">
                     </div>
                     <div class="card-content">
-                        <span class="card-role">Pilotage stratégique & Excellence opérationnelle</span>
+                        <span class="card-role">Pilotage stratégique & Finance</span>
                         <h3 class="card-name">Adji Fatou Seck Ndjira Faye</h3>
-                
-                        <p class="card-position">Responsable administrative et financière </p>
-                        <p class="card-desc">Elle dirige l’ensemble des fonctions administratives et financières avec une approche alliant précision analytique, discipline organisationnelle et vision stratégique. Elle veille à la solidité financière de l’entreprise, structure les processus internes, encadre les obligations légales et optimise l’allocation des ressources.</p>
+                        <p class="card-position">Responsable administrative et financière</p>
+                        <p class="card-desc">Elle dirige l’ensemble des fonctions administratives et financières avec une approche alliant précision analytique, discipline organisationnelle et vision stratégique.</p>
                     </div>
                 </div>
 
-                 <!-- Carte 1 -->
+                <!-- Carte 3 -->
                 <div class="management-card">
-                    <div class="card-glow"></div>
-                    <div class="card-accent-dot"></div>
                     <div class="card-image-container">
-                        <img src="modou2.png" alt="Modou Sourang">
-                        <span class="card-number"></span>
+                        <img src="modou2.png" alt="Modou Sourang" onerror="this.src='https://via.placeholder.com/300x320?text=Modou+Sourang+Sales';">
                     </div>
                     <div class="card-content">
-                        <span class="card-role"> Architecte commercial </span>
-                        <h3 class="card-name">Modou  Sourang</h3>
+                        <span class="card-role">Architecte commercial</span>
+                        <h3 class="card-name">Modou Sourang</h3>
                         <p class="card-position">Sales Manager</p>
-                        <p class="card-desc">Spécialiste de la relation client et de la structuration des stratégies commerciales, il accompagne les comptes stratégiques et supervise la mise en œuvre des solutions de vente à forte valeur ajoutée.
-Il contribue au positionnement de l’entreprise en assurant une gestion rigoureuse des portefeuilles, une compréhension fine des besoins du marché et une exécution commerciale alignée sur les objectifs de croissance. </p>
+                        <p class="card-desc">Spécialiste de la relation client et de la structuration des stratégies commerciales, il accompagne les comptes stratégiques et supervise les solutions de vente.</p>
                     </div>
                 </div>
-
-
-                
             </div>
         </div>
     </section>
 
-    <!-- Script JavaScript pour suivre les mouvements de la souris -->
-    <script>
-        const cards = document.querySelectorAll('.management-card');
-
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // Position X par rapport à la carte
-                const y = e.clientY - rect.top;  // Position Y par rapport à la carte
-
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    </script>
-    --
-
-
-<!-- STYLES CSS -->
-<style>
-    .dynamic-team-section {
-        width: 100%;
-        padding: 50px 0;
-        background-color: #f8fafc;
-        overflow: hidden;
-    }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .section-header h2 {
-        font-size: 26px;
-        color: #002664;
-        font-weight: bold;
-    }
-
-    .image-carousel-container {
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        cursor: grab;
-        padding: 10px 20px;
-    }
-
-    .image-carousel-container::-webkit-scrollbar {
-        display: none;
-    }
-
-    .image-carousel-container:active {
-        cursor: grabbing;
-    }
-
-    .image-carousel-track {
-        display: flex;
-        gap: 20px;
-        width: max-content;
-    }
-
-    .carousel-img-card {
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        width: 280px;
-        height: 350px; /* Ajustez la hauteur selon vos préférences d'images */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-        border: 1px solid #e2e8f0;
-        flex-shrink: 0;
-    }
-
-    .carousel-img-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-</style>
-
-<!-- CODE JAVASCRIPT -->
-<script>
-    const imgSlider = document.getElementById('imageCarousel');
-    let isAutoScrolling = true;
-    let speed = 1; // Vitesse du défilement automatique
-
-    function startAutoScroll() {
-        if (isAutoScrolling) {
-            imgSlider.scrollLeft += speed;
-            if (imgSlider.scrollLeft >= (imgSlider.scrollWidth - imgSlider.clientWidth)) {
-                imgSlider.scrollLeft = 0; // Boucle infinie
-            }
-        }
-        requestAnimationFrame(startAutoScroll);
-    }
-
-    // Arrêt au survol (PC)
-    imgSlider.addEventListener('mouseenter', () => { isAutoScrolling = false; });
-    imgSlider.addEventListener('mouseleave', () => { isAutoScrolling = true; });
-
-    // Arrêt au toucher (Mobile / Tablette)
-    imgSlider.addEventListener('touchstart', () => { isAutoScrolling = false; });
-    imgSlider.addEventListener('touchend', () => { 
-        setTimeout(() => { isAutoScrolling = true; }, 2500); // Reprend après 2.5 secondes
-    });
-
-    requestAnimationFrame(startAutoScroll);
-</script>
-   ------
-
-    <!-- SECTION 4 : NOS ENGAGEMENTS (Parallaxe) -->
+    <!-- SECTION : ENGAGEMENTS -->
     <section class="parallax-section engagements-parallax">
         <div class="parallax-overlay">
             <div class="section-container">
-                <h2 class="section-title" style="color: white;" data-fr="Notre Promesse" data-en="Our Promise">Notre Promesse</h2>
+                <h2 class="section-title" style="color: white;">Notre Promesse</h2>
                 <div class="engagements-grid">
                     <div class="engagement-item">
-                        <h3 data-fr="Qualité" data-en="Quality">Qualité</h3>
-                        <p data-fr="Une sélection rigoureuse de produits auprès de partenaires internationaux de confiance pour garantir l'excellence." data-en="A rigorous selection of PRODUITS from trusted international partners to guarantee excellence.">Une sélection rigoureuse de produits auprès de partenaires internationaux de confiance pour garantir l'excellence.</p>
+                        <h3>Qualité</h3>
+                        <p>Une sélection rigoureuse de produits auprès de partenaires internationaux de confiance pour garantir l'excellence.</p>
                     </div>
                     <div class="engagement-item">
-                        <h3 data-fr="Rapidité" data-en="Speed">Rapidité</h3>
-                        <p data-fr="Un service logistique performant pour assurer des livraisons rapides et sécurisées." data-en="A high-performance logistics service to ensure fast and secure deliveries.">Un service logistique performant pour assurer des livraisons rapides et sécurisées.</p>
+                        <h3>Rapidité</h3>
+                        <p>Un service logistique performant pour assurer des livraisons rapides et sécurisées.</p>
                     </div>
                     <div class="engagement-item">
-                        <h3 data-fr="Compétitivité" data-en="Competitiveness">Compétitivité</h3>
-                        <p data-fr="Des prix justes et étudiés pour offrir le meilleur rapport qualité-prix sur le marché." data-en="Fair and studied prices to offer the best value for money on the market.">Des prix justes et étudiés pour offrir le meilleur rapport qualité-prix sur le marché.</p>
+                        <h3>Compétitivité</h3>
+                        <p>Des prix justes et étudiés pour offrir le meilleur rapport qualité-prix sur le marché.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5 : LOCALISATION & CARTE (Parallaxe) -->
-<section class="locations-section">
-  <div class="locations-container">
-    <h2>Nos Agences</h2>
-    
-    <div class="locations-grid">
-      
-      <div class="location-card">
-        <div class="location-image-container">
-          <img src="senegal.png" alt="Agence Sénégal">
+    <!-- SECTION : LOCALISATION & AGENCES -->
+    <section class="locations-section">
+        <div class="locations-container">
+            <h2 class="section-title">Nos Agences</h2>
+            
+            <div class="locations-grid">
+                <!-- Sénégal -->
+                <div class="location-card">
+                    <div class="location-image-container">
+                        <img src="senegal.png" alt="Agence Sénégal" onerror="this.src='https://via.placeholder.com/300x160?text=Agence+Senegal';">
+                    </div>
+                    <div class="location-info">
+                        <h3>Sénégal</h3>
+                        <p><strong>Adresse :</strong> Hann Mariste, en face de la Coris Bank, Dakar</p>
+                        <a href="https://maps.google.com/?q=Hann+Mariste+Coris+Bank+Dakar" target="_blank" class="map-link">Voir sur Google Maps</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.0!2d-17.43!3d14.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSFNOTiBNQVJJU1RF!5e0!3m2!1sfr!2ssn!4v1" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Mali -->
+                <div class="location-card">
+                    <div class="location-image-container">
+                        <img src="mali.png" alt="Agence Mali" onerror="this.src='https://via.placeholder.com/300x160?text=Agence+Mali';">
+                    </div>
+                    <div class="location-info">
+                        <h3>Mali</h3>
+                        <p><strong>Adresse :</strong> Bamako - Hamdallaye ACI 2000, Building Mamadou Yara</p>
+                        <a href="https://maps.google.com/?q=Hamdallaye+ACI+2000+Building+Mamadou+Yara+Bamako" target="_blank" class="map-link">Voir sur Google Maps</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.5!2d-8.02!3d12.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQUNJIDIwMDAgQmFtYWtv!5e0!3m2!1sfr!2sml!4v1" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Guinée -->
+                <div class="location-card">
+                    <div class="location-image-container">
+                        <img src="guinea.png" alt="Agence Guinée" onerror="this.src='https://via.placeholder.com/300x160?text=Agence+Guinee';">
+                    </div>
+                    <div class="location-info">
+                        <h3>Guinée</h3>
+                        <p><strong>Adresse :</strong> Marché Madina, Conakry</p>
+                        <a href="https://maps.google.com/?q=Marche+Madina+Conakry+Guinee" target="_blank" class="map-link">Voir sur Google Maps</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.5!2d-13.68!3d9.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFyY2jDqSBNYWRpbmE!5e0!3m2!1sfr!2sgn!4v1" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="location-info">
-          <h3>Sénégal</h3>
-          <p><strong>Adresse :</strong> Hann Mariste, en face de la Coris Bank</p>
-          <a href="https://maps.google.com/?q=Hann+Mariste+Coris+Bank+Dakar" target="_blank" class="map-link">
-            Voir sur Google Maps
-          </a>
-        </div>
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.0!2d-17.43!3d14.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSFNOTiBNQVJJU1RF!5e0!3m2!1sfr!2ssn!4v1" 
-            width="100%" 
-            height="200" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="location-card">
-        <div class="location-image-container">
-          <img src="mali.png" alt="Agence Mali">
-        </div>
-        <div class="location-info">
-          <h3>Mali</h3>
-          <p><strong>Adresse :</strong> Bamako - Hamdallaye ACI 2000, Building Mamadou Yara</p>
-          <a href="https://maps.google.com/?q=Hamdallaye+ACI+2000+Building+Mamadou+Yara+Bamako" target="_blank" class="map-link">
-            Voir sur Google Maps
-          </a>
-        </div>
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.5!2d-8.02!3d12.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQUNJIDIwMDAgQmFtYWtv!5e0!3m2!1sfr!2sml!4v1" 
-            width="100%" 
-            height="200" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="location-card">
-        <div class="location-image-container">
-          <img src="guinea.png" alt="Agence Guinée">
-        </div>
-        <div class="location-info">
-          <h3>Guinée</h3>
-          <p><strong>Adresse :</strong> Marché Madina, Conakry</p>
-          <a href="https://maps.google.com/?q=Marche+Madina+Conakry+Guinee" target="_blank" class="map-link">
-            Voir sur Google Maps
-          </a>
-        </div>
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.5!2d-13.68!3d9.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTWFyY2jDqSBNYWRpbmE!5e0!3m2!1sfr!2sgn!4v1" 
-            width="100%" 
-            height="200" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-.locations-section {
-  padding: 60px 20px;
-  background-color: #f4f7f6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.locations-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.locations-container h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #2c3e50;
-}
-
-.locations-grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: nowrap;
-}
-
-.location-card {
-  background: #ffffff;
-  padding: 20px;
-  border: 2px solid #2c3e50; /* Bordure simple et visible */
-  border-radius: 0px; /* Coins pointus (suppression des arrondis) */
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1); /* Optionnel : style un peu brut/design */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  min-width: 0;
-  transition: transform 0.3s ease;
-}
-
-.location-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Style pour l'emplacement de l'image d'illustration */
-.location-image-container {
-  width: 100%;
-  height: 160px;
-  background-color: #e0e0e0; /* Fond gris par défaut si l'image tarde à charger */
-  border: 1px solid #ccc;
-  border-radius: 0px; /* Coins pointus aussi pour l'image */
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.location-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Permet à l'image de bien remplir l'espace sans se déformer */
-}
-
-.location-info h3 {
-  color: #007bff;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.location-info p {
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 15px;
-  font-size: 0.95rem;
-}
-
-.map-link {
-  display: inline-block;
-  margin-bottom: 15px;
-  color: #ffffff;
-  background-color: #007bff;
-  padding: 8px 14px;
-  border-radius: 0px; /* Coins pointus sur le bouton */
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.map-link:hover {
-  background-color: #0056b3;
-}
-
-.map-container {
-  border-radius: 0px; /* Coins pointus pour la map */
-  overflow: hidden;
-  border: 1px solid #ccc;
-}
-
-/* Responsive : passage en colonne sur les petits écrans */
-@media (max-width: 992px) {
-  .locations-grid {
-    flex-direction: column;
-  }
-}
-</style>
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
-                <h4 data-fr="À propos de CCS" data-en="About CCS">À propos de CCS</h4>
-                <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019." data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
-                    Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019.
-                </p>
+                <h4>À propos de CCS</h4>
+                <p>Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019.</p>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
-                <a href="index.html" data-fr="Accueil" data-en="ACCUEIL ">Accueil</a>
-                <a href="product.html" data-fr="Produits" data-en="PRODUITS">Produits</a>
-                <a href="contact.html" data-fr="Contact" data-en="Contact">Contacts</a>
+                <h4>Liens Rapides</h4>
+                <a href="index.html">Accueil</a>
+                <a href="product.html">Produits</a>
+                <a href="contact.html">Contacts</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Nos Pôles" data-en="Our Poles">Nos Pôles</h4>
-                <a href="product.html" data-fr="Papeterie (Double A, Capital Paper)" data-en="Stationery (Double A, Capital Paper)">Papeterie (Double A, Capital Paper)</a>
-                <a href="product.html" data-fr="Import-Export Alimentaire" data-en="Food Import-Export">Import-Export Alimentaire</a>
-                <a href="product.html" data-fr="Commerce Général" data-en="General Trade">Commerce Général</a>
+                <h4>Nos Pôles</h4>
+                <a href="product.html">Papeterie (Double A, Capital)</a>
+                <a href="product.html">Import-Export Alimentaire</a>
+                <a href="product.html">Commerce Général</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
-                <p data-fr="Dakar, Sénégal" data-en="Dakar, Senegal">Dakar, Sénégal</p>
+                <h4>Contactez-nous</h4>
+                <p>Dakar, Sénégal</p>
                 <p>Email : comptoircommercialsourang@gmail.com</p>
-                <p>Tél : +221 77 699 00 00 / 77 622 00 00 / 77 336 00 00</p>
+                <p>Tél : +221 77 699 00 00 / 77 622 00 00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-fr="© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés." data-en="© 2019 - 2026 CCS (Comptoir Commercial Sourang). All rights reserved.">
-                © 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.
-            </p>
+            <p>© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- SCRIPT DE GESTION DES LANGUES ET DU POINT ROUGE -->
+    <!-- ========================================================= -->
+    <!-- SCRIPTS JAVASCRIPT                                        -->
+    <!-- ========================================================= -->
     <script>
+        // 1. CARROUSEL HERO AUTOMATIQUE
+        const slides = [
+            { country: "SÉNÉGAL", city: "DAKAR", image: "ccs2.png" },
+            { country: "MALI", city: "BAMAKO", image: "bamako.png" },
+            { country: "GUINÉE", city: "CONAKRY", image: "guinee.png" }
+        ];
+
+        let currentSlide = 0;
+        const heroSection = document.getElementById("heroSection");
+        const heroMiniImg = document.getElementById("heroMiniImg");
+        const heroMiniInfo = document.getElementById("heroMiniInfo");
+        const presenceItems = document.querySelectorAll("#heroPresencesList li");
+
+        function updateSlide(index) {
+            currentSlide = index;
+            const slide = slides[currentSlide];
+            heroSection.style.backgroundImage = `url('${slide.image}')`;
+            heroMiniImg.src = slide.image;
+            heroMiniInfo.innerHTML = `${slide.country} <span>${slide.city}</span>`;
+
+            presenceItems.forEach((li, idx) => {
+                li.classList.toggle("active", idx === currentSlide);
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlide(currentSlide);
+        }, 4000);
+
+        presenceItems.forEach((li, idx) => {
+            li.addEventListener("click", () => updateSlide(idx));
+        });
+
+        // 2. INTERSECTION OBSERVER : GESTION D'APPARITION & DISPARITION DES ÉTAPES ET BOUTONS FLOTTANTS
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll(".ccs-row-wrapper");
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.25 // Déclenche dès qu'au moins 25% de l'étape est visible à l'écran
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // L'étape entre dans la vue : les cartes et boutons flottants apparaissent
+                        entry.target.classList.add("active");
+                    } else {
+                        // L'étape quitte la vue (dépassée vers le haut ou bas) : les boutons et cartes disparaissent
+                        entry.target.classList.remove("active");
+                    }
+                });
+            }, observerOptions);
+
+            rows.forEach(row => observer.observe(row));
+        });
+
+        // 3. GESTION DES LANGUES (FR / EN)
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
-
             document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
             document.getElementById('btnEn').classList.toggle('active', lang === 'en');
 
@@ -2122,39 +1678,6 @@ Il contribue au positionnement de l’entreprise en assurant une gestion rigoure
                 element.textContent = element.getAttribute(`data-${lang}`);
             });
         }
-
-        const navLinks = document.querySelectorAll('.nav-link');
-        const redDot = document.getElementById('redDot');
-
-        function moveDot(element) {
-            const linkRect = element.getBoundingClientRect();
-            const navRect = document.getElementById('navLinks').getBoundingClientRect();
-            redDot.style.left = `${linkRect.left - navRect.left + (linkRect.width / 2) - 4}px`;
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                moveDot(activeLink);
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', (e) => {
-                moveDot(e.target);
-            });
-        });
-
-        document.getElementById('navLinks').addEventListener('mouseleave', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) {
-                moveDot(activeLink);
-            }
-        });
     </script>
-  
-   
-
 </body>
-    
 </html>
