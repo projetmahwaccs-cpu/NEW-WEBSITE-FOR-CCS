@@ -1899,6 +1899,31 @@
     </div>
 
     <script>
+        function toggleNavMenu() {
+            const nav = document.getElementById('navLinks');
+            const toggle = document.getElementById('navToggle');
+            nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+        }
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('open');
+            const answer = item.querySelector('.faq-answer');
+            if (item.classList.contains('open')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                answer.style.maxHeight = null;
+            }
+        }
+
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            const msg = document.getElementById('newsletterMsg');
+            msg.textContent = 'Merci pour votre inscription !';
+            document.getElementById('newsletterForm').reset();
+        }
+
         const productsDatabase = [
             {
                 name: "Rame Papier Double A",
@@ -2259,7 +2284,7 @@
                 log: "Stockage entresôt sec",
                 extra: "Riz Oriba de premier choix, grains entiers parfumés.",
                 videoLoop: "moba.mp4",
-                images: [rim1.png", "rim2.png" "rio3.png", "rio4.png", "rio5.png", "rio6.png", "rio7.png", "rio8.png", "rio9.png", "rio10.png"]
+                images: ["rim1.png", "rim2.png", "rio3.png", "rio4.png", "rio5.png", "rio6.png", "rio7.png", "rio8.png", "rio9.png", "rio10.png"]
             }
         ];
 
@@ -2415,7 +2440,7 @@
             "cnt.9.png", "cnt.10.png", "cnt.11.png", "cnt.12.png", "cnt.13.png", "cnt.15.png",
             "cnt.16.png", "cnt.17.png", "cnt.19.png", "cnt.20.png", "cnt.22.png", "cnt.23.png",
             "cnt.24.png", "cnt.26.png", "cnt.27.png", "cnt.28.png", "cnt.29.png", "cnt.30.png",
-            "cnt.31.png", "cnt.32.png", tam1.png", "tam2.png", "tam3.png", "tam4.png", "tam5.png", "cnt.40.png", "cnt.41.png", "cnt.42.png",
+            "cnt.31.png", "cnt.32.png", "tam1.png", "tam2.png", "tam3.png", "tam4.png", "tam5.png", "cnt.40.png", "cnt.41.png", "cnt.42.png",
             "cnt.43.png", "cnt.44.png", "cnt.45.png", "cnt.46.png", "cnt.47.png", "cnt.48.png",
             "cnt.49.png", "cnt.50.png"
         ];
