@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -576,7 +575,7 @@
             background-color: #0ea5e9;
         }
 
-        /* ================= GRAND BOUTON ANIMÉ QUI BOUGE (CALL TO ACTION EN ÉVIDENCE) ================= */
+        /* ================= GRAND BOUTON ANIMÉ QUI BOUGE ================= */
         .cta-country-trigger-banner {
             width: 100%;
             margin: 45px 0 20px 0;
@@ -627,7 +626,6 @@
             flex-wrap: wrap;
         }
 
-        /* Bouton géant avec animation fluide de balancement / pulsation */
         .btn-giant-cta {
             position: relative;
             background: #ffffff;
@@ -679,13 +677,83 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* ================= SECTION DISPONIBILITÉS PAYS & BON DE COMMANDE ================= */
+        /* ================= NOUVEAU : POCHETTE DÉPLIANTE (COLLAPSIBLE POCKET) ================= */
         .countries-order-section {
             background-color: #f1f5f9;
             border-top: 3px solid #0ea5e9;
             border-bottom: 3px solid #0ea5e9;
-            padding: 60px 20px;
+            padding: 20px 20px 40px 20px;
             scroll-margin-top: 80px;
+            transition: all 0.4s ease;
+        }
+
+        /* La pochette contenant les tableaux est cachée et repliée par défaut */
+        .pocket-collapsible-wrapper {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+        }
+
+        .pocket-collapsible-wrapper.open {
+            max-height: 5000px; /* Assez grand pour tout le contenu */
+            opacity: 1;
+            padding-top: 25px;
+        }
+
+        /* Barre d'en-tête de la pochette active */
+        .pocket-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15);
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pocket-status-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #002664;
+        }
+
+        .pocket-status-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Bouton pour replier la pochette */
+        .btn-fold-pocket {
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-fold-pocket:hover {
+            background: #dc2626;
+            transform: scale(1.03);
         }
 
         .country-tabs-nav {
@@ -725,7 +793,6 @@
             transform: translateY(-2px);
         }
 
-        /* Mise en page en 2 colonnes : Carte d'illustration de l'Agence du pays + Tableau */
         .country-showcase-split {
             display: grid;
             grid-template-columns: 310px 1fr;
@@ -1034,7 +1101,7 @@
             text-align: center;
         }
 
-        /* ================= CARROUSEL TÉMOIGNAGES ANIMÉ ================= */
+        /* ================= CARROUSEL TÉMOIGNAGES ================= */
         .testimonials-carousel-wrapper {
             position: relative;
             width: 100%;
@@ -1741,7 +1808,7 @@
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
 
-            <!-- BARRE DE RECHERCHE GLOBALE AVEC MICRO-ICÔNE SVG -->
+            <!-- BARRE DE RECHERCHE GLOBALE -->
             <div class="global-nav-search-wrapper">
                 <span class="global-nav-search-icon">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -1771,7 +1838,7 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : PAPETERIE ================= -->
+    <!-- SECTION : PAPETERIE -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header">
@@ -1783,7 +1850,7 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : NOS PRODUITS ALIMENTAIRES (TERRE & LAITIERS ENSEMBLE) ================= -->
+    <!-- SECTION : PRODUITS ALIMENTAIRES -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header">
@@ -1796,17 +1863,16 @@
                 <div class="animated-typing-text" id="typingTextContainer"></div>
             </div>
 
-            <!-- GRILLE CONTINUE DE TOUS LES PRODUITS ALIMENTAIRES -->
             <div class="products-grid-horizontal" id="foodGridContainer"></div>
 
-            <!-- ================= GRAND BOUTON ANIMÉ QUI BOUGE (EN ÉVIDENCE) ================= -->
+            <!-- ================= GRAND BOUTON ANIMÉ QUI DÉPLOIE LA POCHETTE ================= -->
             <div class="cta-country-trigger-banner">
                 <span class="cta-pulse-badge">Accès Direct aux Dépôts Locaux</span>
                 <h3 class="cta-banner-title">Disponibilité Immédiate en Stock par Pays</h3>
-                <p class="cta-banner-subtitle">Cliquez sur votre pays pour consulter les stocks prêts à être expédiés depuis nos entrepôts de Dakar, Bamako ou Conakry.</p>
+                <p class="cta-banner-subtitle">Cliquez sur un bouton ci-dessous pour déplier la pochette des stocks et tableaux d'entrepôts de Dakar, Bamako ou Conakry.</p>
                 
                 <div class="cta-animated-buttons-wrap">
-                    <!-- Grand Bouton Sénégal -->
+                    <!-- Bouton Sénégal -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('senegal')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#00853F"/>
@@ -1815,10 +1881,10 @@
                             <polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/>
                         </svg>
                         <span>Stocks Sénégal</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
 
-                    <!-- Grand Bouton Mali -->
+                    <!-- Bouton Mali -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('mali')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#14B53A"/>
@@ -1826,10 +1892,10 @@
                             <rect x="600" width="300" height="600" fill="#CE1126"/>
                         </svg>
                         <span>Stocks Mali</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
 
-                    <!-- Grand Bouton Guinée -->
+                    <!-- Bouton Guinée -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('guinee')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#CE1126"/>
@@ -1837,7 +1903,7 @@
                             <rect x="600" width="300" height="600" fill="#009460"/>
                         </svg>
                         <span>Stocks Guinée</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                 </div>
             </div>
@@ -1845,217 +1911,231 @@
         </div>
     </section>
 
-    <!-- ================= SECTION : DISPONIBILITÉS PAYS & BON DE COMMANDE ================= -->
+    <!-- ================= POCHETTE DÉPLIANTE (REPLIÉE PAR DÉFAUT) ================= -->
     <section class="countries-order-section" id="commander-par-pays">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Disponibilité par Pays & Bon de Commande Direct</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Chaque agence dispose de son stock dédié. Choisissez vos volumes et validez directement votre commande transmise à Formspree.</p>
-            </div>
 
-            <!-- Onglets de sélection avec drapeaux SVG -->
-            <div class="country-tabs-nav">
-                <button class="country-tab-btn active" id="tabBtn-senegal" onclick="switchCountryTable('senegal', this)">
-                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
-                    <span>Sénégal (Dakar)</span>
-                </button>
-                <button class="country-tab-btn" id="tabBtn-mali" onclick="switchCountryTable('mali', this)">
-                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
-                    <span>Mali (Bamako)</span>
-                </button>
-                <button class="country-tab-btn" id="tabBtn-guinee" onclick="switchCountryTable('guinee', this)">
-                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
-                    <span>Guinée Conakry</span>
-                </button>
-            </div>
-
-            <!-- ================= SÉNÉGAL (IMAGE AGENCE + TABLEAU) ================= -->
-            <div class="country-table-pane" id="table-senegal">
-                <div class="country-showcase-split">
-                    <!-- Carte Visuelle de l'Agence du Sénégal -->
-                    <div class="country-side-agency-card">
-                        <div class="agency-visual-box">
-                            <img src="agence-senegal.png" alt="Agence Sénégal CCS" onerror="this.src='ccs2.png';">
-                            <div class="agency-flag-overlay">
-                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
-                                <span>Sénégal (Siège)</span>
-                            </div>
-                        </div>
-                        <div class="agency-details-body">
-                            <h4 class="agency-details-title">Siège Social & Port de Dakar</h4>
-                            <div class="agency-info-line">
-                                <strong>Adresse :</strong>
-                                <span>Hann Mariste, en face Coris Bank, Dakar</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Logistique :</strong>
-                                <span>Dépôts sous douane & conteneurs disponibles</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Contact :</strong>
-                                <span>+221 77 699 00 00 / 77 826 96 96</span>
-                            </div>
-                        </div>
+            <div class="pocket-collapsible-wrapper" id="pocketWrapper">
+                
+                <!-- Bandeau supérieur de la pochette avec bouton pour replier -->
+                <div class="pocket-status-bar">
+                    <div class="pocket-status-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        <span>Pochette d'inventaire ouverte : <span id="currentOpenedCountryLabel" class="pocket-status-badge">Sénégal (Dakar)</span></span>
                     </div>
 
-                    <!-- Tableau Produits Sénégal -->
-                    <div class="country-table-wrapper">
-                        <div class="country-header-banner">
-                            <span>Liste des Produits Disponibles au Sénégal</span>
-                            <span style="font-size: 12px; font-weight: normal; color: #bae6fd;">Dakar & Régions</span>
-                        </div>
-                        <table class="table-custom-ccs">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Emballage</th>
-                                    <th>Contenance</th>
-                                    <th>Origine</th>
-                                    <th>Qté</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-senegal"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= MALI (IMAGE AGENCE + TABLEAU) ================= -->
-            <div class="country-table-pane" id="table-mali" style="display: none;">
-                <div class="country-showcase-split">
-                    <!-- Carte Visuelle de l'Agence du Mali -->
-                    <div class="country-side-agency-card">
-                        <div class="agency-visual-box">
-                            <img src="agence-mali.png" alt="Agence Mali CCS" onerror="this.src='ccs2.png';">
-                            <div class="agency-flag-overlay">
-                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
-                                <span>Mali (Bamako)</span>
-                            </div>
-                        </div>
-                        <div class="agency-details-body">
-                            <h4 class="agency-details-title">Bureau & Dépôts Mali</h4>
-                            <div class="agency-info-line">
-                                <strong>Adresse :</strong>
-                                <span>Hamdallaye ACI 2000, Building Mamadou Yara</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Logistique :</strong>
-                                <span>Acheminement routier régulier depuis Dakar</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Contact :</strong>
-                                <span>Moussa SENE (+223 00 00 00 00)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tableau Produits Mali -->
-                    <div class="country-table-wrapper">
-                        <div class="country-header-banner" style="background:#92400e;">
-                            <span>Liste des Produits Disponibles au Mali</span>
-                            <span style="font-size: 12px; font-weight: normal; color: #fde68a;">Bamako & Hubs</span>
-                        </div>
-                        <table class="table-custom-ccs">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Emballage</th>
-                                    <th>Contenance</th>
-                                    <th>Origine</th>
-                                    <th>Qté</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-mali"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= GUINÉE CONAKRY (IMAGE AGENCE + TABLEAU) ================= -->
-            <div class="country-table-pane" id="table-guinee" style="display: none;">
-                <div class="country-showcase-split">
-                    <!-- Carte Visuelle de l'Agence de Guinée -->
-                    <div class="country-side-agency-card">
-                        <div class="agency-visual-box">
-                            <img src="agence-guinee.png" alt="Agence Guinée CCS" onerror="this.src='ccs2.png';">
-                            <div class="agency-flag-overlay">
-                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
-                                <span>Guinée Conakry</span>
-                            </div>
-                        </div>
-                        <div class="agency-details-body">
-                            <h4 class="agency-details-title">Bureau Commercial Conakry</h4>
-                            <div class="agency-info-line">
-                                <strong>Adresse :</strong>
-                                <span>Marché Madina, Conakry</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Logistique :</strong>
-                                <span>Stocks locaux & empotage direct conteneurs</span>
-                            </div>
-                            <div class="agency-info-line">
-                                <strong>Contact :</strong>
-                                <span>Mabi CAMARA (+224 614 08 62 62)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tableau Produits Guinée -->
-                    <div class="country-table-wrapper">
-                        <div class="country-header-banner" style="background:#065f46;">
-                            <span>Liste des Produits Disponibles en Guinée</span>
-                            <span style="font-size: 12px; font-weight: normal; color: #a7f3d0;">Conakry Madina</span>
-                        </div>
-                        <table class="table-custom-ccs">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Emballage</th>
-                                    <th>Contenance</th>
-                                    <th>Origine</th>
-                                    <th>Qté</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-guinee"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MINI PANIER & FORMULAIRE DE COMMANDE DIRECTE (FORMSPREE) -->
-            <div class="order-cart-box" id="orderCartBox">
-                <div class="order-cart-title">
-                    <span style="display:flex; align-items:center; gap:8px;">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                        <span>Votre Panier de Commande (<span id="cartCount">0</span> article)</span>
-                    </span>
-                    <button type="button" onclick="clearCart()" style="background:none; border:none; color:#ef4444; font-size:12px; cursor:pointer; font-weight:bold;">Vider le panier</button>
-                </div>
-
-                <div class="cart-items-list" id="cartItemsContainer">
-                    <p style="text-align:center; color:#94a3b8; font-style:italic; padding:10px;">Votre panier est actuellement vide. Choisissez vos produits dans les tableaux ci-dessus.</p>
-                </div>
-
-                <form id="directOrderForm" onsubmit="handleDirectOrderSubmit(event)">
-                    <div class="order-form-grid">
-                        <input type="text" id="orderFullName" class="order-form-input" placeholder="Votre nom complet *" required>
-                        <input type="tel" id="orderPhone" class="order-form-input" placeholder="Téléphone / WhatsApp *" required>
-                        <input type="email" id="orderEmail" class="order-form-input" placeholder="Votre adresse email *" required>
-                        <input type="text" id="orderCity" class="order-form-input" placeholder="Ville et pays de livraison *" required>
-                    </div>
-                    <textarea id="orderNotes" class="order-form-input" style="margin-top: 14px; min-height: 70px; resize: vertical;" placeholder="Précisions supplémentaires, lieu d'empotage, date souhaitée..."></textarea>
-
-                    <button type="submit" class="btn-submit-order" id="btnSubmitOrder">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                        <span>Envoyer ma demande de commande à CCS</span>
+                    <!-- BOUTON POUR REPLIER LA POCHETTE -->
+                    <button type="button" class="btn-fold-pocket" onclick="closeCountryPocket()" title="Replier la pochette">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        <span>Fermer / Replier la pochette</span>
                     </button>
-                    <div class="order-status-msg" id="orderStatusMsg"></div>
-                </form>
-            </div>
+                </div>
+
+                <div class="section-header">
+                    <h2 class="section-title">Disponibilité par Pays & Bon de Commande Direct</h2>
+                    <div class="section-separator"></div>
+                    <p class="section-subtitle">Chaque agence dispose de son stock dédié. Choisissez vos volumes et validez directement votre commande transmise à Formspree.</p>
+                </div>
+
+                <!-- Onglets de sélection -->
+                <div class="country-tabs-nav">
+                    <button class="country-tab-btn active" id="tabBtn-senegal" onclick="switchCountryTable('senegal', this)">
+                        <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
+                        <span>Sénégal (Dakar)</span>
+                    </button>
+                    <button class="country-tab-btn" id="tabBtn-mali" onclick="switchCountryTable('mali', this)">
+                        <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
+                        <span>Mali (Bamako)</span>
+                    </button>
+                    <button class="country-tab-btn" id="tabBtn-guinee" onclick="switchCountryTable('guinee', this)">
+                        <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
+                        <span>Guinée Conakry</span>
+                    </button>
+                </div>
+
+                <!-- TABLEAU SÉNÉGAL -->
+                <div class="country-table-pane" id="table-senegal">
+                    <div class="country-showcase-split">
+                        <div class="country-side-agency-card">
+                            <div class="agency-visual-box">
+                                <img src="agence-senegal.png" alt="Agence Sénégal CCS" onerror="this.src='ccs2.png';">
+                                <div class="agency-flag-overlay">
+                                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
+                                    <span>Sénégal (Siège)</span>
+                                </div>
+                            </div>
+                            <div class="agency-details-body">
+                                <h4 class="agency-details-title">Siège Social & Port de Dakar</h4>
+                                <div class="agency-info-line">
+                                    <strong>Adresse :</strong>
+                                    <span>Hann Mariste, en face Coris Bank, Dakar</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Logistique :</strong>
+                                    <span>Dépôts sous douane & conteneurs disponibles</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Contact :</strong>
+                                    <span>+221 77 699 00 00 / 77 826 96 96</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="country-table-wrapper">
+                            <div class="country-header-banner">
+                                <span>Liste des Produits Disponibles au Sénégal</span>
+                                <span style="font-size: 12px; font-weight: normal; color: #bae6fd;">Dakar & Régions</span>
+                            </div>
+                            <table class="table-custom-ccs">
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Emballage</th>
+                                        <th>Contenance</th>
+                                        <th>Origine</th>
+                                        <th>Qté</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-senegal"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLEAU MALI -->
+                <div class="country-table-pane" id="table-mali" style="display: none;">
+                    <div class="country-showcase-split">
+                        <div class="country-side-agency-card">
+                            <div class="agency-visual-box">
+                                <img src="agence-mali.png" alt="Agence Mali CCS" onerror="this.src='ccs2.png';">
+                                <div class="agency-flag-overlay">
+                                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
+                                    <span>Mali (Bamako)</span>
+                                </div>
+                            </div>
+                            <div class="agency-details-body">
+                                <h4 class="agency-details-title">Bureau & Dépôts Mali</h4>
+                                <div class="agency-info-line">
+                                    <strong>Adresse :</strong>
+                                    <span>Hamdallaye ACI 2000, Building Mamadou Yara</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Logistique :</strong>
+                                    <span>Acheminement routier régulier depuis Dakar</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Contact :</strong>
+                                    <span>Moussa SENE (+223 00 00 00 00)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="country-table-wrapper">
+                            <div class="country-header-banner" style="background:#92400e;">
+                                <span>Liste des Produits Disponibles au Mali</span>
+                                <span style="font-size: 12px; font-weight: normal; color: #fde68a;">Bamako & Hubs</span>
+                            </div>
+                            <table class="table-custom-ccs">
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Emballage</th>
+                                        <th>Contenance</th>
+                                        <th>Origine</th>
+                                        <th>Qté</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-mali"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLEAU GUINÉE -->
+                <div class="country-table-pane" id="table-guinee" style="display: none;">
+                    <div class="country-showcase-split">
+                        <div class="country-side-agency-card">
+                            <div class="agency-visual-box">
+                                <img src="agence-guinee.png" alt="Agence Guinée CCS" onerror="this.src='ccs2.png';">
+                                <div class="agency-flag-overlay">
+                                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
+                                    <span>Guinée Conakry</span>
+                                </div>
+                            </div>
+                            <div class="agency-details-body">
+                                <h4 class="agency-details-title">Bureau Commercial Conakry</h4>
+                                <div class="agency-info-line">
+                                    <strong>Adresse :</strong>
+                                    <span>Marché Madina, Conakry</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Logistique :</strong>
+                                    <span>Stocks locaux & empotage direct conteneurs</span>
+                                </div>
+                                <div class="agency-info-line">
+                                    <strong>Contact :</strong>
+                                    <span>Mabi CAMARA (+224 614 08 62 62)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="country-table-wrapper">
+                            <div class="country-header-banner" style="background:#065f46;">
+                                <span>Liste des Produits Disponibles en Guinée</span>
+                                <span style="font-size: 12px; font-weight: normal; color: #a7f3d0;">Conakry Madina</span>
+                            </div>
+                            <table class="table-custom-ccs">
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Emballage</th>
+                                        <th>Contenance</th>
+                                        <th>Origine</th>
+                                        <th>Qté</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-guinee"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MINI PANIER & FORMULAIRE DE COMMANDE -->
+                <div class="order-cart-box" id="orderCartBox">
+                    <div class="order-cart-title">
+                        <span style="display:flex; align-items:center; gap:8px;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <span>Votre Panier de Commande (<span id="cartCount">0</span> article)</span>
+                        </span>
+                        <button type="button" onclick="clearCart()" style="background:none; border:none; color:#ef4444; font-size:12px; cursor:pointer; font-weight:bold;">Vider le panier</button>
+                    </div>
+
+                    <div class="cart-items-list" id="cartItemsContainer">
+                        <p style="text-align:center; color:#94a3b8; font-style:italic; padding:10px;">Votre panier est actuellement vide. Choisissez vos produits dans les tableaux ci-dessus.</p>
+                    </div>
+
+                    <form id="directOrderForm" onsubmit="handleDirectOrderSubmit(event)">
+                        <div class="order-form-grid">
+                            <input type="text" id="orderFullName" class="order-form-input" placeholder="Votre nom complet *" required>
+                            <input type="tel" id="orderPhone" class="order-form-input" placeholder="Téléphone / WhatsApp *" required>
+                            <input type="email" id="orderEmail" class="order-form-input" placeholder="Votre adresse email *" required>
+                            <input type="text" id="orderCity" class="order-form-input" placeholder="Ville et pays de livraison *" required>
+                        </div>
+                        <textarea id="orderNotes" class="order-form-input" style="margin-top: 14px; min-height: 70px; resize: vertical;" placeholder="Précisions supplémentaires, lieu d'empotage, date souhaitée..."></textarea>
+
+                        <button type="submit" class="btn-submit-order" id="btnSubmitOrder">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            <span>Envoyer ma demande de commande à CCS</span>
+                        </button>
+                        <div class="order-status-msg" id="orderStatusMsg"></div>
+                    </form>
+                </div>
+
+            </div> <!-- Fin de .pocket-collapsible-wrapper -->
+
         </div>
     </section>
 
@@ -2176,7 +2256,7 @@
         </div>
     </section>
 
-    <!-- SECTION TÉMOIGNAGES EN CARROUSEL DÉFILANT (ÉTOILES SVG) -->
+    <!-- SECTION TÉMOIGNAGES -->
     <section class="catalog-section">
         <div class="container">
             <div class="section-header">
@@ -2187,7 +2267,6 @@
 
             <div class="testimonials-carousel-wrapper" id="testimonialsCarouselWrapper">
                 <div class="testimonials-track" id="testimonialsTrack">
-                    <!-- Helper étoiles SVG -->
                     <!-- Avis 1 -->
                     <div class="testimonial-card-marquee">
                         <div class="testimonial-stars">
@@ -2227,40 +2306,10 @@
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         </div>
-                        <p class="testimonial-quote-text">« Les délais sont toujours respectés à chaque commande et la qualité des produits impeccable et constante. CCS est vraiment un partenaire de confiance absolue. »</p>
+                        <p class="testimonial-quote-text">« Les délais sont toujours respectés à chaque commande et la qualité des produits版本 impeccable et constante. CCS est vraiment un partenaire de confiance absolue. »</p>
                         <div class="testimonial-footer">
                             <div class="testimonial-author-name">18 SAFAR GROSSISTE</div>
                             <div class="testimonial-author-role">Grossiste Alimentaire • Touba, Sénégal</div>
-                        </div>
-                    </div>
-                    <!-- Avis 4 -->
-                    <div class="testimonial-card-marquee">
-                        <div class="testimonial-stars">
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        </div>
-                        <p class="testimonial-quote-text">« Pour nos réceptions de poivre noir et de rames Double A à Bamako, tout est fluide. Le conditionnement en sacs et cartons résiste sans faille au trajet. »</p>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-author-name">ETS COULIBALY & FRÈRES</div>
-                            <div class="testimonial-author-role">Importateur & Négociant • Bamako, Mali</div>
-                        </div>
-                    </div>
-                    <!-- Avis 5 -->
-                    <div class="testimonial-card-marquee">
-                        <div class="testimonial-stars">
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        </div>
-                        <p class="testimonial-quote-text">« Au marché Madina, nos clients raffolent du poivre noir 25kg Best Foods et du papier Smart Copy. Des arrivages toujours à l'heure. »</p>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-author-name">MOHAMED DIALLO IMPORT</div>
-                            <div class="testimonial-author-role">Grossiste Distributeur • Conakry, Guinée</div>
                         </div>
                     </div>
                 </div>
@@ -2308,7 +2357,7 @@
         </div>
     </section>
 
-    <!-- SECTION NEWSLETTER (ENDPOINT FORMSPREE xeaqrzza) -->
+    <!-- SECTION NEWSLETTER -->
     <section class="catalog-section newsletter-section">
         <div class="container">
             <div class="section-header">
@@ -2356,7 +2405,7 @@
         </div>
     </footer>
 
-    <!-- DRAWER LATÉRAL PRODUIT AVEC BOUTON & FORMULAIRE DE COMMANDE INTÉGRÉ -->
+    <!-- DRAWER LATÉRAL PRODUIT -->
     <div class="side-drawer-overlay" id="sideDrawerOverlay" onclick="closeSideDrawer()"></div>
     <div class="side-drawer" id="sideDrawer">
         <div class="side-drawer-header">
@@ -2415,20 +2464,17 @@
                 <p>-</p>
             </div>
 
-            <!-- BOUTON DÉCLENCHEUR DE COMMANDE DIRECTE DANS LE TIROIR -->
             <button type="button" class="drawer-order-trigger-btn" id="drawerOrderTriggerBtn" onclick="toggleDrawerOrderForm()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 <span>Commander ce produit</span>
             </button>
 
-            <!-- FORMULAIRE DE COMMANDE INTÉGRÉ AU TIROIR AVEC VÉRIFICATION PAYS & SHIPPING -->
             <div class="drawer-order-form-panel" id="drawerOrderFormPanel">
                 <div class="drawer-order-form-title">
                     <span>Passer commande : <strong id="formDrawerProdTitle">-</strong></span>
                     <button type="button" onclick="toggleDrawerOrderForm()" style="background:none; border:none; color:#64748b; font-size:20px; cursor:pointer;">&times;</button>
                 </div>
 
-                <!-- BADGE DE DISPONIBILITÉ DYNAMIQUE SELON LE PAYS SÉLECTIONNÉ -->
                 <div id="drawerCountryAvailBadge" class="country-availability-badge"></div>
 
                 <form id="drawerDirectOrderForm" onsubmit="handleDrawerProductOrderSubmit(event)">
@@ -2468,7 +2514,6 @@
                         <input type="number" id="drawerOrderQty" class="drawer-field-input" value="1" min="1" max="100000" required>
                     </div>
 
-                    <!-- CHAMP OPTIONNEL APPARAISSANT SI LE PRODUIT N'EST PAS DISPONIBLE DANS LE PAYS DU CLIENT -->
                     <div class="drawer-field-group" id="drawerShippingDestinationGroup" style="display:none;">
                         <label style="color:#b91c1c;">Vers quel pays ou port souhaitez-vous faire acheminer la commande (Shipping) ? *</label>
                         <input type="text" id="drawerOrderShippingDest" class="drawer-field-input" placeholder="Ex: Port de Conakry, Débarcadère Bamako, Cotonou, etc.">
@@ -2490,15 +2535,50 @@
     </div>
 
     <script>
-        // ================= GESTION DU GRAND BOUTON ANIMÉ =================
+        // ================= GESTION DE LA POCHETTE DÉPLIANTE (OPEN / CLOSE POCKET) =================
         function openCountrySectionAndTab(countryKey) {
+            const pocket = document.getElementById('pocketWrapper');
             const section = document.getElementById('commander-par-pays');
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+            // 1. Déplier la pochette
+            pocket.classList.add('open');
+
+            // 2. Mettre à jour l'onglet actif et le libellé
             const tabBtn = document.getElementById(`tabBtn-${countryKey}`);
             if (tabBtn) {
                 switchCountryTable(countryKey, tabBtn);
             }
+
+            // 3. Faire défiler en douceur vers la section
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function closeCountryPocket() {
+            const pocket = document.getElementById('pocketWrapper');
+            pocket.classList.remove('open');
+            
+            // Remonter légèrement vers les boutons
+            document.querySelector('.cta-country-trigger-banner').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function switchCountryTable(countryKey, btnElement) {
+            document.querySelectorAll('.country-table-pane').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.country-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(`table-${countryKey}`).style.display = 'block';
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+
+            // Mettre à jour le badge de la pochette
+            const names = {
+                senegal: 'Sénégal (Dakar)',
+                mali: 'Mali (Bamako)',
+                guinee: 'Guinée Conakry'
+            };
+            document.getElementById('currentOpenedCountryLabel').innerText = names[countryKey] || countryKey;
         }
 
         // ================= DONNÉES DE DISPONIBILITÉ PAR PAYS =================
@@ -2528,7 +2608,6 @@
             ]
         };
 
-        // Rendu des tableaux de pays
         function renderCountryTables() {
             ['senegal', 'mali', 'guinee'].forEach(country => {
                 const tbody = document.getElementById(`tbody-${country}`);
@@ -2552,14 +2631,6 @@
                     </tr>
                 `).join('');
             });
-        }
-
-        function switchCountryTable(countryKey, btnElement) {
-            document.querySelectorAll('.country-table-pane').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.country-tab-btn').forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(`table-${countryKey}`).style.display = 'block';
-            btnElement.classList.add('active');
         }
 
         // ================= GESTION DU MINI-PANIER =================
@@ -2625,7 +2696,7 @@
             `).join('');
         }
 
-        // ================= ENVOI DU BON DE COMMANDE GÉNÉRAL DU PANIER VIA FORMSPREE =================
+        // ================= TRANSMISSION FORMSPREE DU PANIER =================
         async function handleDirectOrderSubmit(e) {
             e.preventDefault();
             const statusMsg = document.getElementById('orderStatusMsg');
@@ -2703,7 +2774,7 @@
             }
         }
 
-        // ================= GESTION DU FORMULAIRE DE COMMANDE DIRECTE DANS LE TIROIR (DRAWER) =================
+        // ================= GESTION DU TIROIR LATÉRAL (DRAWER) =================
         let currentActiveProduct = null;
 
         function toggleDrawerOrderForm() {
@@ -2847,23 +2918,8 @@
             }
         }
 
-        // ================= PAUSE / REPRISE DU CARROUSEL DE TÉMOIGNAGES =================
-        const testWrapper = document.getElementById('testimonialsCarouselWrapper');
-        const testTrack = document.getElementById('testimonialsTrack');
-
-        testTrack.innerHTML += testTrack.innerHTML;
-
-        function pauseTestimonials() { testTrack.classList.add('paused'); }
-        function resumeTestimonials() { testTrack.classList.remove('paused'); }
-
-        testWrapper.addEventListener('mouseenter', pauseTestimonials);
-        testWrapper.addEventListener('mouseleave', resumeTestimonials);
-        testWrapper.addEventListener('touchstart', pauseTestimonials, { passive: true });
-        testWrapper.addEventListener('touchend', resumeTestimonials, { passive: true });
-
-        // ================= BASE DE DONNÉES COMPLÈTE DES PRODUITS =================
+        // ================= BASE DE DONNÉES DES PRODUITS =================
         const productsDatabase = [
-            // Papeterie
             {
                 name: "Rame Papier Double A",
                 category: "papier",
@@ -2903,7 +2959,6 @@
                 videoLoop: "capital.mp4",
                 images: ["cap1.png", "cap2.png", "cap3.png", "cap4.png", "cap5.png"]
             },
-            // TOUS LES PRODUITS ALIMENTAIRES (Terre + Laitiers)
             {
                 name: "Piment Sec Rouge",
                 category: "alimentaire",
@@ -3205,7 +3260,6 @@
             }
         ];
 
-        // Rendu des grilles produits
         function buildProductCard(prod, index) {
             const badge = prod.category === 'papier' 
                 ? '<img src="lobr.png" alt="Badge Papeterie" class="card-border-badge">' 
@@ -3244,7 +3298,6 @@
                 .join('');
         }
 
-        // Navigation mobile & FAQ
         function toggleNavMenu() {
             document.getElementById('navLinks').classList.toggle('open');
         }
@@ -3256,7 +3309,6 @@
             answer.style.maxHeight = item.classList.contains('open') ? answer.scrollHeight + 'px' : null;
         }
 
-        // Recherche globale
         function handleGlobalNavSearch() {
             const input = document.getElementById('globalNavSearchInput');
             const dropdown = document.getElementById('globalSearchDropdown');
@@ -3299,10 +3351,6 @@
                 document.getElementById('globalSearchDropdown').classList.remove('active');
             }
         });
-
-        // Animation de frappe
-        const sentence = "";
-        document.getElementById('typingTextContainer').innerHTML = sentence.split(' ').map((w, i) => `<span style="animation-delay:${i * 0.25}s">${w}</span>`).join(' ');
 
         // Galerie conteneurs
         const containerImgs = [
@@ -3396,7 +3444,7 @@
             drawerTimer = setInterval(nextDrawerImage, 2500);
         }
 
-        // Newsletter Formspree xeaqrzza
+        // Newsletter Formspree
         async function handleNewsletterSubmit(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button');
