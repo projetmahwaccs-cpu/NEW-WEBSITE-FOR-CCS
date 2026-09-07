@@ -269,7 +269,7 @@
         }
 
         .country-accordion.active .country-content-wrap {
-            max-height: 1000px; /* Assez grand pour contenir les cartes */
+            max-height: 1000px;
             padding: 10px 25px 35px 25px;
         }
 
@@ -868,7 +868,7 @@
                     <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Home" data-en="Home">Home</a></li>
                     <li class="nav-item"><a href="product.html" class="nav-link" data-fr="Produit" data-en="Product">Product</a></li>
                     <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">News</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active" data-fr="Contact" data-en="Contact">Contact</a></li>
                 </ul>
 
                 <div class="lang-buttons">
@@ -998,6 +998,7 @@
         </div>
     </section>
 
+    <!-- ================= SECTION FORMULAIRE ACTIVÉE AVEC FORMSPREE ================= -->
     <section class="parallax-section form-parallax" id="contact">
         <div class="parallax-overlay">
             <div class="float-shape float-shape-1"></div>
@@ -1005,11 +1006,12 @@
             <div class="float-shape float-shape-3"></div>
             <div class="section-container">
                 <h2 class="section-title" data-fr="Contactez-nous" data-en="Contact Us" style="color: white;">Contactez-nous</h2>
-                <form class="glass-form" id="contactForm" action="https://formsubmit.co/comptoircommercialsourang@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Nouveau message depuis le site CCS">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                
+                <form class="glass-form" id="contactForm" action="https://formspree.io/f/mjyvavjd" method="POST">
+                    <!-- Sujet de l'email reçu sur Formspree -->
+                    <input type="hidden" name="_subject" value="Nouveau message de contact - CCS">
+                    <!-- Anti-spam honeypot de Formspree -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                     <div class="form-row">
                         <div class="form-group" data-field="fullname">
@@ -1190,7 +1192,7 @@
             });
         }
 
-        /* ===== Formulaire de contact interactif ===== */
+        /* ===== Formulaire de contact interactif avec Formspree ===== */
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             const messageField = contactForm.querySelector('textarea[name="message"]');
@@ -1231,7 +1233,7 @@
                 formStatus.className = `form-status show ${type}`;
             }
 
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
                 let allValid = true;
@@ -1250,31 +1252,40 @@
                 submitBtn.disabled = true;
                 formStatus.className = 'form-status';
 
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: new FormData(contactForm)
-                })
-                    .then((response) => {
-                        if (!response.ok) throw new Error('network');
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: new FormData(contactForm)
+                    });
+
+                    if (response.ok) {
                         showStatus('success',
-                            'Merci ! Votre message a bien été envoyé à comptoircommercialsourang@gmail.com.',
-                            'Thank you! Your message has been sent to comptoircommercialsourang@gmail.com.');
+                            'Merci ! Votre message a bien été envoyé à l\'équipe CCS.',
+                            'Thank you! Your message has been sent to the CCS team.');
                         contactForm.reset();
                         if (charCount) charCount.textContent = '0';
                         contactForm.querySelectorAll('.form-group').forEach((group) => {
                             group.classList.remove('valid', 'invalid');
                         });
-                    })
-                    .catch(() => {
-                        showStatus('error',
-                            'Une erreur est survenue. Réessayez ou écrivez-nous directement à comptoircommercialsourang@gmail.com.',
-                            'Something went wrong. Please retry or email us directly at comptoircommercialsourang@gmail.com.');
-                    })
-                    .finally(() => {
-                        submitBtn.classList.remove('loading');
-                        submitBtn.disabled = false;
-                    });
+                    } else {
+                        const data = await response.json().catch(() => ({}));
+                        let errorMsgFr = 'Une erreur est survenue lors de l\'envoi.';
+                        let errorMsgEn = 'An error occurred while sending.';
+                        if (data && data.errors && data.errors.length > 0) {
+                            errorMsgFr = data.errors.map(err => err.message).join(', ');
+                            errorMsgEn = errorMsgFr;
+                        }
+                        showStatus('error', errorMsgFr, errorMsgEn);
+                    }
+                } catch (err) {
+                    showStatus('error',
+                        'Une erreur réseau est survenue. Vérifiez votre connexion ou écrivez-nous directement à comptoircommercialsourang@gmail.com.',
+                        'A network error occurred. Please check your connection or email us directly at comptoircommercialsourang@gmail.com.');
+                } finally {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                }
             });
         }
     </script>
