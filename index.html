@@ -71,13 +71,19 @@
             width: 100%;
             max-width: 1250px;
             gap: 20px;
-            flex-wrap: wrap;
+            position: relative;
         }
 
         .logo img {
-            height: 60px;
+            height: 58px;
             width: auto;
             display: block;
+        }
+
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .nav-links {
@@ -86,8 +92,6 @@
             align-items: center;
             position: relative;
             gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .nav-item {
@@ -114,20 +118,9 @@
             background-color: var(--accent-cyan);
         }
 
-        .red-dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-            transition: left 0.3s ease-in-out;
-            top: -12px;
-            display: none; /* Activable sur écran large */
-        }
-
         .lang-buttons {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .btn-lang {
@@ -145,6 +138,43 @@
         .btn-lang:hover, .btn-lang.active {
             background-color: var(--primary-blue);
             color: white;
+        }
+
+        /* --- BOUTON MENU HAMBURGER (MOBILE) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger .bar {
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation de transformation en croix (X) */
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+            background-color: var(--accent-cyan);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+            background-color: var(--accent-cyan);
         }
 
         /* --- HERO SECTION --- */
@@ -391,9 +421,7 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* ========================================================= */
         /* --- SECTION HISTORIQUE CCS AVEC BOUTONS FLOTTANTS --- */
-        /* ========================================================= */
         .ccs-about-section {
             width: 100%;
             position: relative;
@@ -420,7 +448,6 @@
             z-index: 1;
         }
 
-        /* Chaque étape (row) est un conteneur relatif pour ancrer les boutons flottants */
         .ccs-row-wrapper {
             position: relative;
             max-width: 1100px;
@@ -483,7 +510,6 @@
             transform: translateX(-60px);
         }
 
-        /* Animation d'activation de la rangée */
         .ccs-row-wrapper.active .ccs-text-card,
         .ccs-row-wrapper.active .ccs-image-card {
             opacity: 1;
@@ -560,8 +586,6 @@
             z-index: 10;
             cursor: pointer;
             pointer-events: auto;
-            
-            /* État caché par défaut : fondu et réduit */
             opacity: 0;
             transform: scale(0.4) translateY(20px);
             transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
@@ -585,7 +609,6 @@
             transform: scale(1.15);
         }
 
-        /* Positionnement des 2 boutons flottants par défaut */
         .floating-btn-1 {
             top: -25px;
             left: -35px;
@@ -596,7 +619,6 @@
             right: -25px;
         }
 
-        /* Animation de lévitation (flottement dans les airs) quand la section est active */
         .ccs-row-wrapper.active .floating-btn-1 {
             opacity: 1;
             transform: scale(1) translateY(0);
@@ -610,21 +632,13 @@
         }
 
         @keyframes floatingBobbing1 {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-14px) rotate(4deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(4deg); }
         }
 
         @keyframes floatingBobbing2 {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(12px) rotate(-4deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(12px) rotate(-4deg); }
         }
 
         /* --- PRODUITS ALIMENTAIRES --- */
@@ -1066,11 +1080,50 @@
         }
 
         /* ========================================================= */
-        /* --- MEDIA QUERIES (RESPONSIVE AVANCÉ) --- */
+        /* --- MEDIA QUERIES : MENU HAMBURGER & RESPONSIVE MOBILE --- */
         /* ========================================================= */
         @media (max-width: 950px) {
-            .navbar .nav-content {
-                justify-content: center;
+            /* Affichage du bouton hamburger */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Transformation des liens en menu mobile déroulant */
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px 25px;
+                gap: 12px;
+                border-top: 1px solid #e2e8f0;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+                transform: translateY(-20px);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.35s ease;
+            }
+
+            /* État actif quand le menu hamburger est ouvert */
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 16px;
+                font-size: 14px;
             }
 
             .about-grid {
@@ -1078,7 +1131,7 @@
             }
 
             .parallax-section {
-                background-attachment: scroll; /* Améliore la performance sur mobile */
+                background-attachment: scroll;
             }
 
             /* Réorganisation de la section histoire sur mobile/tablette */
@@ -1139,24 +1192,34 @@
 </head>
 <body>
 
-    <!-- Barre de Navigation -->
+    <!-- Barre de Navigation avec Menu Hamburger -->
     <header class="navbar">
         <div class="nav-content">
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
             
+            <!-- Liste de liens (Menu horizontal sur PC, Tiroir déroulant sur Mobile) -->
             <ul class="nav-links" id="navLinks">
-                <div class="red-dot" id="redDot"></div>
                 <li class="nav-item"><a href="index.html" class="nav-link active" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a></li>
                 <li class="nav-item"><a href="product.html" class="nav-link" data-fr="PRODUITS" data-en="PRODUCTS">PRODUITS</a></li>
                 <li class="nav-item"><a href="news.html" class="nav-link" data-fr="ACTUALITÉS" data-en="NEWS">ACTUALITÉS</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></li>
             </ul>
 
-            <div class="lang-buttons">
-                <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
-                <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+            <!-- Zone droite : Choix de langue & Bouton Hamburger -->
+            <div class="nav-right-actions">
+                <div class="lang-buttons">
+                    <button class="btn-lang active" id="btnFr" onclick="changeLanguage('fr')">FR</button>
+                    <button class="btn-lang" id="btnEn" onclick="changeLanguage('en')">EN</button>
+                </div>
+
+                <!-- Bouton Hamburger visible uniquement sur Mobile/Tablette -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -1228,9 +1291,7 @@
         </div>
     </section>
 
-    <!-- ========================================================================= -->
-    <!-- SECTION HISTORIQUE CCS AVEC LES 2 BOUTONS FLOTTANTS PAR ÉTAPE            -->
-    <!-- ========================================================================= -->
+    <!-- SECTION HISTORIQUE CCS AVEC LES BOUTONS FLOTTANTS -->
     <section class="ccs-about-section" id="historySection">
         <video autoplay muted loop playsinline class="ccs-video-background">
             <source src="votre-video.mp4" type="video/mp4">
@@ -1242,7 +1303,6 @@
 
             <!-- ÉTAPE 1 : PAPIER -->
             <div class="ccs-row-wrapper">
-                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
                 <div class="floating-circle-btn floating-btn-1" title="Double A Paper">
                     <img src="das.png" alt="Double A Paper" onerror="this.src='https://via.placeholder.com/100x100?text=Double+A';">
                 </div>
@@ -1268,9 +1328,8 @@
                 </div>
             </div>
 
-            <!-- ÉTAPE 2 : MARQUES CAPITAL & BEST FOODS (Inversé) -->
+            <!-- ÉTAPE 2 : MARQUES CAPITAL & BEST FOODS -->
             <div class="ccs-row-wrapper">
-                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
                 <div class="floating-circle-btn floating-btn-1" title="Capital Paper">
                     <img src="capbests.png" alt="Capital Paper" onerror="this.src='https://via.placeholder.com/100x100?text=Capital';">
                 </div>
@@ -1299,7 +1358,6 @@
 
             <!-- ÉTAPE 3 : EXPANSION RÉGIONALE -->
             <div class="ccs-row-wrapper">
-                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
                 <div class="floating-circle-btn floating-btn-1" title="Mali Office">
                     <img src="mali.png" alt="Expansion Mali" onerror="this.src='https://via.placeholder.com/100x100?text=Mali';">
                 </div>
@@ -1324,9 +1382,8 @@
                 </div>
             </div>
 
-            <!-- ÉTAPE 4 : MISSIONS & VALEURS (Inversé) -->
+            <!-- ÉTAPE 4 : MISSIONS & VALEURS -->
             <div class="ccs-row-wrapper">
-                <!-- 2 BOUTONS FLOTTANTS ILLUSTRATIFS -->
                 <div class="floating-circle-btn floating-btn-1" title="Qualité & Contrôle">
                     <img src="logo.png" alt="Qualité CCS" onerror="this.src='https://via.placeholder.com/100x100?text=Qualite';">
                 </div>
@@ -1446,7 +1503,6 @@
             </div>
 
             <div class="management-grid">
-                <!-- Carte 1 -->
                 <div class="management-card">
                     <div class="card-image-container">
                         <img src="modou.png" alt="Modou F. Sourang" onerror="this.src='https://via.placeholder.com/300x320?text=Modou+Sourang';">
@@ -1459,7 +1515,6 @@
                     </div>
                 </div>
 
-                <!-- Carte 2 -->
                 <div class="management-card">
                     <div class="card-image-container">
                         <img src="adji.png" alt="Adji Fatou Seck Ndjira Faye" onerror="this.src='https://via.placeholder.com/300x320?text=Adji+Fatou';">
@@ -1472,7 +1527,6 @@
                     </div>
                 </div>
 
-                <!-- Carte 3 -->
                 <div class="management-card">
                     <div class="card-image-container">
                         <img src="modou2.png" alt="Modou Sourang" onerror="this.src='https://via.placeholder.com/300x320?text=Modou+Sourang+Sales';">
@@ -1609,7 +1663,34 @@
     <!-- SCRIPTS JAVASCRIPT                                        -->
     <!-- ========================================================= -->
     <script>
-        // 1. CARROUSEL HERO AUTOMATIQUE
+        // 1. GESTION DU MENU HAMBURGER (MOBILE & TABLETTE)
+        const hamburgerBtn = document.getElementById("hamburgerBtn");
+        const navLinks = document.getElementById("navLinks");
+        const navItems = document.querySelectorAll(".nav-link");
+
+        // Ouvrir / Fermer le menu au clic sur l'icône hamburger
+        hamburgerBtn.addEventListener("click", () => {
+            hamburgerBtn.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+
+        // Fermer automatiquement le menu dès qu'un lien est cliqué
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                hamburgerBtn.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
+        });
+
+        // Fermer le menu si l'utilisateur clique en dehors de la barre de navigation
+        document.addEventListener("click", (e) => {
+            if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                hamburgerBtn.classList.remove("active");
+                navLinks.classList.remove("active");
+            }
+        });
+
+        // 2. CARROUSEL HERO AUTOMATIQUE
         const slides = [
             { country: "SÉNÉGAL", city: "DAKAR", image: "ccs2.png" },
             { country: "MALI", city: "BAMAKO", image: "bamako.png" },
@@ -1643,22 +1724,20 @@
             li.addEventListener("click", () => updateSlide(idx));
         });
 
-        // 2. INTERSECTION OBSERVER : GESTION D'APPARITION & DISPARITION DES ÉTAPES ET BOUTONS FLOTTANTS
+        // 3. INTERSECTION OBSERVER : APPARITION/DISPARITION DES BOUTONS FLOTTANTS
         document.addEventListener("DOMContentLoaded", () => {
             const rows = document.querySelectorAll(".ccs-row-wrapper");
 
             const observerOptions = {
                 root: null,
-                threshold: 0.25 // Déclenche dès qu'au moins 25% de l'étape est visible à l'écran
+                threshold: 0.25
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // L'étape entre dans la vue : les cartes et boutons flottants apparaissent
                         entry.target.classList.add("active");
                     } else {
-                        // L'étape quitte la vue (dépassée vers le haut ou bas) : les boutons et cartes disparaissent
                         entry.target.classList.remove("active");
                     }
                 });
@@ -1667,7 +1746,7 @@
             rows.forEach(row => observer.observe(row));
         });
 
-        // 3. GESTION DES LANGUES (FR / EN)
+        // 4. GESTION DES LANGUES (FR / EN)
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
             document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
