@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCS - Comptoir Commercial Sourang | Produits, Partenaires & Évidences</title>
+    <title>CCS - Comptoir Commercial Sourang | Produits, Partenaires & Commandes</title>
     <style>
         * {
             margin: 0;
@@ -22,6 +23,20 @@
             overflow-x: hidden;
         }
 
+        /* Micro SVG Icon Utility */
+        .icon-svg {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+        .icon-svg svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+        }
+
         .navbar {
             background-color: white;
             width: 100%;
@@ -36,7 +51,6 @@
             z-index: 1000;
         }
 
-        /* --- CORRECTION NAVBAR & ESPACE RECHERCHE --- */
         .nav-content {
             display: flex;
             align-items: center;
@@ -62,7 +76,7 @@
 
         .global-nav-search-input {
             width: 100%;
-            padding: 8px 15px 8px 35px;
+            padding: 9px 15px 9px 38px;
             border: 2px solid #0ea5e9;
             border-radius: 30px;
             font-size: 13px;
@@ -83,10 +97,10 @@
             top: 50%;
             transform: translateY(-50%);
             color: #0ea5e9;
-            font-size: 13px;
+            display: flex;
+            align-items: center;
         }
 
-        /* --- DROPDOWN DES RÉSULTATS DE RECHERCHE GLOBALE --- */
         .global-search-dropdown {
             position: absolute;
             top: calc(100% + 8px);
@@ -139,49 +153,6 @@
             color: #64748b;
         }
 
-        .search-suggestions-box {
-            padding: 12px 15px;
-            background: #f8fafc;
-            border-top: 1px dashed #cbd5e1;
-        }
-
-        .search-suggestions-title {
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #002664;
-            margin-bottom: 6px;
-        }
-
-        .search-suggestions-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .suggestion-tag {
-            background: #e0f2fe;
-            color: #0369a1;
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .suggestion-tag:hover {
-            background: #bae6fd;
-        }
-
-        .search-no-result {
-            padding: 20px;
-            text-align: center;
-            font-size: 13px;
-            color: #94a3b8;
-            font-style: italic;
-        }
-
         .nav-links {
             list-style: none;
             display: flex;
@@ -232,39 +203,13 @@
             background-color: #fff;
         }
 
-        .lang-buttons {
-            display: flex;
-            gap: 6px;
-            margin-left: 5px;
-        }
-
-        .btn-lang {
-            text-decoration: none;
-            padding: 4px 8px;
-            border: 1px solid #002664;
-            color: #002664;
-            font-weight: bold;
-            font-size: 12px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            background: white;
-        }
-
-        .btn-lang:hover, .btn-lang.active {
-            background-color: #002664;
-            color: white;
-        }
-
         .nav-toggle {
             display: none;
             background: none;
             border: 2px solid #002664;
             border-radius: 4px;
             color: #002664;
-            font-size: 18px;
-            line-height: 1;
-            padding: 4px 6px;
+            padding: 6px 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -289,7 +234,9 @@
 
         @media (max-width: 768px) {
             .nav-toggle {
-                display: inline-block;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
             .nav-links {
                 display: none;
@@ -308,11 +255,6 @@
             .nav-link {
                 display: block;
                 text-align: center;
-            }
-            .lang-buttons {
-                flex-basis: auto;
-                margin-left: 0;
-                order: 2;
             }
         }
 
@@ -386,7 +328,6 @@
             font-size: 16px;
             text-transform: uppercase;
             margin-bottom: 20px;
-            position: relative;
         }
 
         .footer-col p, .footer-col a {
@@ -424,7 +365,7 @@
         .catalog-section {
             position: relative;
             width: 100%;
-            padding: 80px 20px;
+            padding: 70px 20px;
             background-color: #ffffff;
         }
 
@@ -440,15 +381,15 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .section-title {
             color: #002664;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: 0.5px;
             text-align: center;
         }
@@ -457,71 +398,20 @@
             width: 60px;
             height: 3px;
             background-color: #0ea5e9;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 18px auto;
         }
 
         .section-subtitle {
             color: #64748b;
-            font-size: 16px;
-            max-width: 700px;
+            font-size: 15px;
+            max-width: 800px;
             margin: 0 auto;
             line-height: 1.5;
             text-align: center;
         }
 
-        .conditioning-section {
-            background-image: url('bgi.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-        .conditioning-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            z-index: 1;
-        }
-        .conditioning-section > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .catalog-section.cards-bg-section {
-            background-image: url('bs.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-        .catalog-section.cards-bg-section > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- SECTION HORIZONTALE LIP.PNG REMPLACANT LES BACKGROUNDS ALIMENTAIRES --- */
-        .earth-food-section,
-        .transformed-food-section {
-            background-image: none;
-            position: relative;
-        }
-
-        .section-lip-banner {
-            width: 100%;
-            height: 120px;
-            background-image: url('lip.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 40px 0;
-            border-top: 3px solid #0ea5e9;
-            border-bottom: 3px solid #0ea5e9;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-        }
-
         .animated-typing-text {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -545,16 +435,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .animated-typing-text {
-                font-size: 1.6rem;
-            }
-            .section-lip-banner {
-                height: 80px;
-                margin: 20px 0;
             }
         }
 
@@ -609,27 +489,12 @@
             z-index: 10;
         }
 
-        @media (max-width: 640px) {
-            .card-border-badge {
-                height: 20px;
-                top: 6px;
-                right: 6px;
-            }
-        }
-
         .product-row-title {
             color: #0f172a;
             font-size: 16px;
             font-weight: bold;
             padding: 15px 15px 10px 15px;
             background: #fff;
-        }
-
-        @media (max-width: 640px) {
-            .product-row-title {
-                font-size: 11px;
-                padding: 8px 8px 4px 8px;
-            }
         }
 
         .product-row-img-wrap {
@@ -642,7 +507,11 @@
 
         @media (max-width: 640px) {
             .product-row-img-wrap {
-                height: 100px;
+                height: 110px;
+            }
+            .product-row-title {
+                font-size: 11px;
+                padding: 8px 8px 4px 8px;
             }
         }
 
@@ -673,15 +542,6 @@
             z-index: 2;
         }
 
-        @media (max-width: 640px) {
-            .product-row-badge {
-                font-size: 8px;
-                padding: 2px 5px;
-                top: 5px;
-                left: 5px;
-            }
-        }
-
         .product-row-body {
             padding: 15px;
             flex-grow: 1;
@@ -692,28 +552,10 @@
             background: #fff;
         }
 
-        @media (max-width: 640px) {
-            .product-row-body {
-                padding: 8px;
-                gap: 6px;
-            }
-        }
-
         .product-row-desc {
             color: #475569;
             font-size: 13px;
             line-height: 1.4;
-        }
-
-        @media (max-width: 640px) {
-            .product-row-desc {
-                font-size: 10px;
-                line-height: 1.2;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
         }
 
         .product-row-btn {
@@ -734,39 +576,548 @@
             background-color: #0ea5e9;
         }
 
-        @media (max-width: 640px) {
-            .product-row-btn {
-                padding: 4px 8px;
-                font-size: 9px;
+        /* ================= GRAND BOUTON ANIMÉ QUI BOUGE (CALL TO ACTION EN ÉVIDENCE) ================= */
+        .cta-country-trigger-banner {
+            width: 100%;
+            margin: 45px 0 20px 0;
+            padding: 35px 25px;
+            background: linear-gradient(135deg, #00193d 0%, #002664 50%, #0284c7 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 38, 100, 0.2);
+            text-align: center;
+            color: #ffffff;
+            border: 2px solid #38bdf8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-pulse-badge {
+            display: inline-block;
+            background: #38bdf8;
+            color: #002664;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .cta-banner-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-banner-subtitle {
+            font-size: 14px;
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+            line-height: 1.5;
+        }
+
+        .cta-animated-buttons-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Bouton géant avec animation fluide de balancement / pulsation */
+        .btn-giant-cta {
+            position: relative;
+            background: #ffffff;
+            color: #002664;
+            border: 2px solid #0ea5e9;
+            padding: 14px 26px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 40px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            animation: ctaFloatMotion 3s ease-in-out infinite;
+        }
+
+        .btn-giant-cta:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .btn-giant-cta:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes ctaFloatMotion {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+            }
+            50% {
+                transform: translateY(-8px) scale(1.03);
+                box-shadow: 0 14px 28px rgba(14, 165, 233, 0.5);
             }
         }
 
-        .category-empty-msg {
-            font-size: 14px;
-            color: #94a3b8;
-            font-style: italic;
-            text-align: center;
-            padding: 20px 0;
-            display: none;
+        .btn-giant-cta:hover {
+            background: #0ea5e9;
+            color: #ffffff;
+            animation-play-state: paused;
+            transform: translateY(-5px) scale(1.05);
         }
 
+        .btn-giant-cta svg {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* ================= SECTION DISPONIBILITÉS PAYS & BON DE COMMANDE ================= */
+        .countries-order-section {
+            background-color: #f1f5f9;
+            border-top: 3px solid #0ea5e9;
+            border-bottom: 3px solid #0ea5e9;
+            padding: 60px 20px;
+            scroll-margin-top: 80px;
+        }
+
+        .country-tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .country-tab-btn {
+            background: #ffffff;
+            border: 2px solid #002664;
+            color: #002664;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .country-tab-btn svg {
+            width: 18px;
+            height: 13px;
+            border-radius: 2px;
+        }
+
+        .country-tab-btn:hover,
+        .country-tab-btn.active {
+            background: #002664;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,38,100,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Mise en page en 2 colonnes : Carte d'illustration de l'Agence du pays + Tableau */
+        .country-showcase-split {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 20px;
+            margin-bottom: 35px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 980px) {
+            .country-showcase-split {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .country-side-agency-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agency-visual-box {
+            position: relative;
+            width: 100%;
+            height: 170px;
+            background: #e2e8f0;
+        }
+
+        .agency-visual-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .agency-flag-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #cbd5e1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #002664;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .agency-flag-overlay svg {
+            width: 18px;
+            height: 13px;
+            border-radius: 2px;
+        }
+
+        .agency-details-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .agency-details-title {
+            color: #002664;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .agency-info-line {
+            color: #475569;
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        .agency-info-line strong {
+            color: #1e293b;
+            flex-shrink: 0;
+        }
+
+        .country-table-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .country-header-banner {
+            background: #002664;
+            color: white;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .table-custom-ccs {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13.5px;
+        }
+
+        .table-custom-ccs thead tr {
+            background-color: #004b23;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .table-custom-ccs th,
+        .table-custom-ccs td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-custom-ccs tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge-country-table {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .qty-input-table {
+            width: 60px;
+            padding: 6px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            text-align: center;
+            outline: none;
+        }
+
+        .btn-add-table {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-add-table:hover {
+            background-color: #0284c7;
+            transform: scale(1.03);
+        }
+
+        /* Panier de commande */
+        .order-cart-box {
+            background: #ffffff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.15);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .order-cart-title {
+            color: #002664;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .cart-items-list {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cart-item-info strong {
+            color: #002664;
+        }
+
+        .cart-item-info span {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-remove-item {
+            color: #ef4444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .order-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 700px) {
+            .order-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .order-form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .order-form-input:focus {
+            border-color: #0ea5e9;
+        }
+
+        .btn-submit-order {
+            background-color: #002664;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit-order:hover {
+            background-color: #0ea5e9;
+        }
+
+        .order-status-msg {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ================= CARROUSEL TÉMOIGNAGES ANIMÉ ================= */
+        .testimonials-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 25px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: scrollTestimonials 55s linear infinite;
+        }
+
+        .testimonials-carousel-wrapper:hover .testimonials-track,
+        .testimonials-track.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTestimonials {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .testimonial-card-marquee {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 25px;
+            width: 360px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card-marquee:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,38,100,0.12);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            color: #f59e0b;
+        }
+
+        .testimonial-quote-text {
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-footer {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 10px;
+        }
+
+        .testimonial-author-name {
+            color: #002664;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .testimonial-author-role {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* PREUVES QUALITÉ */
         .proof-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        @media (max-width: 1024px) {
-            .proof-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .proof-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width: 1024px) { .proof-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
 
         .proof-card {
             background: #ffffff;
@@ -783,10 +1134,17 @@
             border-color: #002664;
         }
 
-        .proof-icon {
-            font-size: 40px;
+        .proof-icon-box {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 16px auto;
+            border-radius: 50%;
+            background: #e0f2fe;
             color: #0ea5e9;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
         }
 
         .proof-title {
@@ -856,29 +1214,6 @@
             z-index: 10;
         }
 
-        .container-gallery-item:hover img {
-            transform: scale(1.12);
-        }
-
-        .container-gallery-item::after {
-            content: "🔍 Loupe";
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 38, 100, 0.8);
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .container-gallery-item:hover::after {
-            opacity: 1;
-        }
-
         .gallery-lightbox {
             display: none;
             position: fixed;
@@ -891,9 +1226,7 @@
             padding: 30px;
         }
 
-        .gallery-lightbox.active {
-            display: flex;
-        }
+        .gallery-lightbox.active { display: flex; }
 
         .gallery-lightbox img {
             max-width: 90%;
@@ -923,11 +1256,6 @@
             user-select: none;
             background-color: rgba(255,255,255,0.08);
             border-radius: 6px;
-            transition: background-color 0.2s;
-        }
-
-        .gallery-lightbox-nav:hover {
-            background-color: rgba(255,255,255,0.2);
         }
 
         .gallery-lightbox-prev { left: 20px; }
@@ -940,9 +1268,9 @@
             transform: translateX(-50%);
             color: #cbd5e1;
             font-size: 14px;
-            letter-spacing: 1px;
         }
 
+        /* DRAWER LATÉRAL PRODUIT */
         .side-drawer-overlay {
             display: none;
             position: fixed;
@@ -951,13 +1279,9 @@
             width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            transition: opacity 0.3s ease;
         }
 
-        .side-drawer-overlay.active {
-            display: block;
-        }
+        .side-drawer-overlay.active { display: block; }
 
         .side-drawer {
             position: fixed;
@@ -975,9 +1299,7 @@
             overflow: hidden;
         }
 
-        .side-drawer.active {
-            right: 0;
-        }
+        .side-drawer.active { right: 0; }
 
         .side-drawer-header {
             background-color: #002664;
@@ -1000,21 +1322,15 @@
             font-size: 13px;
             color: #38bdf8;
             font-family: monospace;
-            letter-spacing: 0.5px;
         }
 
         .side-drawer-close {
-            font-size: 32px;
+            font-size: 28px;
             color: #fff;
             cursor: pointer;
             line-height: 1;
             background: none;
             border: none;
-            transition: color 0.2s;
-        }
-
-        .side-drawer-close:hover {
-            color: #38bdf8;
         }
 
         .side-drawer-body {
@@ -1035,13 +1351,10 @@
             padding: 15px;
             border-radius: 10px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
         @media (max-width: 640px) {
-            .drawer-media-section {
-                grid-template-columns: 1fr;
-            }
+            .drawer-media-section { grid-template-columns: 1fr; }
         }
 
         .drawer-media-box {
@@ -1057,7 +1370,6 @@
             color: #002664;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         .drawer-loop-container {
@@ -1077,7 +1389,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.4s ease;
         }
 
         .drawer-video-container {
@@ -1095,27 +1406,10 @@
             object-fit: cover;
         }
 
-        .drawer-loop-counter {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 10px;
-        }
-
         .drawer-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-        }
-
-        @media (max-width: 640px) {
-            .drawer-info-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .drawer-info-card {
@@ -1157,30 +1451,142 @@
             margin-bottom: 6px;
         }
 
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px) translateY(30px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px) translateY(30px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
-        }
-        .reveal-left.revealed,
-        .reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0) translateY(0);
+        .drawer-order-trigger-btn {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
+            transition: all 0.25s ease;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1);
+        .drawer-order-trigger-btn:hover {
+            background-color: #0284c7;
+            transform: translateY(-2px);
         }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
+
+        .drawer-order-form-panel {
+            display: none;
+            background: #ffffff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeInDrawerForm 0.3s ease;
+        }
+
+        @keyframes fadeInDrawerForm {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .drawer-order-form-panel.active {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .drawer-order-form-title {
+            font-size: 15px;
+            color: #002664;
+            font-weight: bold;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .country-availability-badge {
+            font-size: 12px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .country-availability-badge.available {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .country-availability-badge.not-available {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .drawer-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .drawer-field-group label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #334155;
+            text-transform: uppercase;
+        }
+
+        .drawer-field-input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .drawer-field-input:focus {
+            border-color: #0ea5e9;
+        }
+
+        .drawer-btn-submit {
+            background-color: #002664;
+            color: #ffffff;
+            border: none;
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .drawer-btn-submit:hover {
+            background-color: #0ea5e9;
+        }
+
+        .drawer-form-status {
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 5px;
         }
 
         .stats-section {
@@ -1189,13 +1595,9 @@
         }
 
         .stats-section .section-title,
-        .stats-section .section-subtitle {
-            color: #fff;
-        }
+        .stats-section .section-subtitle { color: #fff; }
 
-        .stats-section .section-separator {
-            background-color: #ffffff;
-        }
+        .stats-section .section-separator { background-color: #ffffff; }
 
         .stats-grid {
             display: grid;
@@ -1204,96 +1606,16 @@
             text-align: center;
         }
 
-        @media (max-width: 1024px) {
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+        @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        @media (max-width: 640px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        .stat-card { padding: 20px 10px; }
+        .stat-number { font-size: 42px; font-weight: bold; color: #fff; }
+        .stat-suffix { font-size: 32px; font-weight: bold; color: #38bdf8; }
+        .stat-label { margin-top: 10px; font-size: 14px; color: #cbd5e1; text-transform: uppercase; }
 
-        .stat-card {
-            padding: 20px 10px;
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: bold;
-            color: #fff;
-            line-height: 1;
-        }
-
-        .stat-suffix {
-            font-size: 32px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        .stat-label {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #cbd5e1;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        @media (max-width: 1024px) {
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .testimonial-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid #0ea5e9;
-            border-radius: 8px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-        }
-
-        .testimonial-quote {
-            color: #334155;
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-
-        .testimonial-author {
-            color: #002664;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .testimonial-role {
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-        }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #e2e8f0; }
 
         .faq-question {
             width: 100%;
@@ -1308,37 +1630,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 15px;
         }
 
-        .faq-icon {
-            flex-shrink: 0;
-            font-size: 20px;
-            color: #0ea5e9;
-            transition: transform 0.3s ease;
-        }
+        .faq-icon { font-size: 20px; color: #0ea5e9; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-answer p { padding: 0 5px 20px 5px; color: #64748b; font-size: 14px; line-height: 1.7; }
 
-        .faq-item.open .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-        }
-
-        .faq-answer p {
-            padding: 0 5px 20px 5px;
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .newsletter-section {
-            background-color: #f1f5f9;
-            text-align: center;
-        }
+        .newsletter-section { background-color: #f1f5f9; text-align: center; }
 
         .newsletter-form {
             display: flex;
@@ -1367,25 +1665,13 @@
             text-transform: uppercase;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .newsletter-btn:hover {
-            background-color: #0369a1;
-        }
-
-        .newsletter-btn:disabled {
-            background-color: #94a3b8;
-            cursor: not-allowed;
         }
 
         .newsletter-msg {
             margin-top: 15px;
             font-size: 14px;
-            color: #002664;
             font-weight: bold;
             min-height: 20px;
-            transition: color 0.3s ease;
         }
 
         .back-to-top {
@@ -1405,102 +1691,35 @@
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+            transition: all 0.3s ease;
             z-index: 500;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
 
-        .back-to-top:hover {
-            background-color: #0ea5e9;
-        }
-
-        .conditioning-section {
-            width: 100%;
-            padding: 50px 0;
-            overflow: hidden;
-        }
-
-        .conditioning-section .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 0 15px;
-        }
-
-        .conditioning-section .section-header h2 {
-            font-size: 26px;
-            color: #002664;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .conditioning-section .section-subtitle {
-            font-size: 14px;
-            color: #64748b;
-        }
-
+        .conditioning-section { width: 100%; padding: 50px 0; overflow: hidden; }
         .conditioning-carousel-container {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             overflow-x: auto;
             scrollbar-width: none;
-            -ms-overflow-style: none;
-            cursor: grab;
             padding: 10px 20px;
-            -webkit-overflow-scrolling: touch;
         }
-
-        .conditioning-carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .conditioning-carousel-container:active {
-            cursor: grabbing;
-        }
-
-        .conditioning-carousel-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-        }
-
+        .conditioning-carousel-container::-webkit-scrollbar { display: none; }
+        .conditioning-carousel-track { display: flex; gap: 20px; width: max-content; }
         .conditioning-card {
             position: relative;
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             width: 260px;
-            height: 260px; 
+            height: 260px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid #e2e8f0;
             flex-shrink: 0;
-            transition: transform 0.3s ease;
         }
-
-        @media (min-width: 768px) {
-            .conditioning-card {
-                width: 300px;
-                height: 300px;
-            }
-        }
-
-        .conditioning-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .conditioning-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
+        .conditioning-card img { width: 100%; height: 100%; object-fit: cover; }
         .card-badge {
             position: absolute;
             top: 12px;
@@ -1509,13 +1728,8 @@
             color: #ffffff;
             font-size: 11px;
             font-weight: bold;
-            text-transform: uppercase;
             padding: 5px 12px;
             border-radius: 20px;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(4px);
-            z-index: 5;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -1527,103 +1741,351 @@
                 <img src="logo.png" alt="CCS Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/60x60?text=CCS';"> 
             </a>
 
-            <!-- BARRE DE RECHERCHE GLOBALE -->
+            <!-- BARRE DE RECHERCHE GLOBALE AVEC MICRO-ICÔNE SVG -->
             <div class="global-nav-search-wrapper">
-                <span class="global-nav-search-icon"> </span>
-                <input type="text" id="globalNavSearchInput" class="global-nav-search-input" placeholder="Rechercher un produit (ex: riz, piment, café...)" oninput="handleGlobalNavSearch()" autocomplete="off">
-                
+                <span class="global-nav-search-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <input type="text" id="globalNavSearchInput" class="global-nav-search-input" placeholder="Rechercher un produit (ex: riz, piment, lait, café...)" oninput="handleGlobalNavSearch()" autocomplete="off">
                 <div class="global-search-dropdown" id="globalSearchDropdown"></div>
             </div>
 
-            <button class="nav-toggle" id="navToggle" onclick="toggleNavMenu()" aria-label="Menu" aria-expanded="false">☰</button>
+            <button class="nav-toggle" id="navToggle" onclick="toggleNavMenu()" aria-label="Menu" aria-expanded="false">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
             
             <ul class="nav-links" id="navLinks">
                 <div class="red-dot" id="redDot"></div>
-                <li class="nav-item"><a href="index.html" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-                <li class="nav-item"><a href="product.html" class="nav-link active" data-fr="Produits" data-en="Products">Produits</a></li>
-                <li class="nav-item"><a href="news.html" class="nav-link" data-fr="Actualités" data-en="News">Actualités</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link active">Produits</a></li>
+                <li class="nav-item"><a href="news.html" class="nav-link">Actualités</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-
         </div>
     </header>
 
     <section class="parallax-section hero-banner">
         <div class="parallax-overlay">
-            <h1 class="hero-title" data-fr="Nous sélectionnons des produits haut de gamme pour  vous satisfaire" data-en="">.</h1>
-            <p class="hero-subtitle" data-fr="Découvrez notre sélection de produits PREMIUM et de qualite des fournisseurs renommés du monde entier." data-en="">Découvrez notre sélection de produits haut de gamme pour satisfaire nos collaborateurs, issus de notre collaboration avec des fournisseurs renommés du monde entier.</p>
+            <h1 class="hero-title">Nous sélectionnons des produits haut de gamme pour vous satisfaire</h1>
+            <p class="hero-subtitle">Découvrez notre sélection de produits PREMIUM et de qualité des fournisseurs renommés du monde entier.</p>
         </div>
     </section>
 
     <!-- ================= SECTION : PAPETERIE ================= -->
     <section class="catalog-section">
         <div class="container">
-           
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Catalogue Papeterie</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Découvrez notre papeterie de qualité supérieure.</p>
+                <p class="section-subtitle">Découvrez notre papeterie de qualité supérieure (Double A, Smart Copy, Capital Paper).</p>
             </div>
             <div class="products-grid-horizontal" id="paperGridContainer"></div>
         </div>
     </section>
 
-    <!-- ================= SECTION : PRODUITS DE LA TERRE & AGRICULTURE ================= -->
-    <section class="catalog-section earth-food-section">
+    <!-- ================= SECTION : NOS PRODUITS ALIMENTAIRES (TERRE & LAITIERS ENSEMBLE) ================= -->
+    <section class="catalog-section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Produits de la Terre & Agriculture</h2>
+            <div class="section-header">
+                <h2 class="section-title">Nos Produits Alimentaires</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Découvrez nos produits issus de la terre : piment, poivre, len, petits pois, épices, tomates, huiles et récoltes de premier choix.</p>
+                <p class="section-subtitle">Notre gamme agro-alimentaire complète : produits de la terre, épices, légumineuses, riz parfumés, sucre blanc, huiles raffinées ainsi que notre sélection de produits laitiers et boissons de premier choix.</p>
             </div>
 
-            <!-- ANIMATED TEXT -->
-            <div class="reveal" style="text-align: center; margin-bottom: 30px;">
+            <div style="text-align: center; margin-bottom: 30px;">
                 <div class="animated-typing-text" id="typingTextContainer"></div>
             </div>
 
-            <div class="products-grid-horizontal" id="earthGridContainer"></div>
-            <p class="category-empty-msg" id="earthEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
-        </div>
-    </section>
+            <!-- GRILLE CONTINUE DE TOUS LES PRODUITS ALIMENTAIRES -->
+            <div class="products-grid-horizontal" id="foodGridContainer"></div>
 
-    <!-- SECTION HORIZONTALE LIP.PNG -->
-    <div class="section-lip-banner"></div>
+            <!-- ================= GRAND BOUTON ANIMÉ QUI BOUGE (EN ÉVIDENCE) ================= -->
+            <div class="cta-country-trigger-banner">
+                <span class="cta-pulse-badge">Accès Direct aux Dépôts Locaux</span>
+                <h3 class="cta-banner-title">Disponibilité Immédiate en Stock par Pays</h3>
+                <p class="cta-banner-subtitle">Cliquez sur votre pays pour consulter les stocks prêts à être expédiés depuis nos entrepôts de Dakar, Bamako ou Conakry.</p>
+                
+                <div class="cta-animated-buttons-wrap">
+                    <!-- Grand Bouton Sénégal -->
+                    <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('senegal')">
+                        <svg viewBox="0 0 900 600">
+                            <rect width="300" height="600" fill="#00853F"/>
+                            <rect x="300" width="300" height="600" fill="#FDEF42"/>
+                            <rect x="600" width="300" height="600" fill="#E31B23"/>
+                            <polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/>
+                        </svg>
+                        <span>Stocks Sénégal</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
 
-    <!-- ================= SECTION : LAIT & PRODUITS TRANSFORMÉS ================= -->
-    <section class="catalog-section transformed-food-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Lait & Produits Transformés</h2>
-                <div class="section-separator"></div>
-                <p class="section-subtitle">Découvrez notre sélection de lait (concentré, évaporé, en poudre) et produits transformés.</p>
+                    <!-- Grand Bouton Mali -->
+                    <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('mali')">
+                        <svg viewBox="0 0 900 600">
+                            <rect width="300" height="600" fill="#14B53A"/>
+                            <rect x="300" width="300" height="600" fill="#FCD116"/>
+                            <rect x="600" width="300" height="600" fill="#CE1126"/>
+                        </svg>
+                        <span>Stocks Mali</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+
+                    <!-- Grand Bouton Guinée -->
+                    <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('guinee')">
+                        <svg viewBox="0 0 900 600">
+                            <rect width="300" height="600" fill="#CE1126"/>
+                            <rect x="300" width="300" height="600" fill="#FCD116"/>
+                            <rect x="600" width="300" height="600" fill="#009460"/>
+                        </svg>
+                        <span>Stocks Guinée</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
             </div>
 
-            <div class="products-grid-horizontal" id="transformedGridContainer"></div>
-            <p class="category-empty-msg" id="transformedEmptyMsg">Aucun produit ne correspond à votre recherche.</p>
         </div>
     </section>
 
+    <!-- ================= SECTION : DISPONIBILITÉS PAYS & BON DE COMMANDE ================= -->
+    <section class="countries-order-section" id="commander-par-pays">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Disponibilité par Pays & Bon de Commande Direct</h2>
+                <div class="section-separator"></div>
+                <p class="section-subtitle">Chaque agence dispose de son stock dédié. Choisissez vos volumes et validez directement votre commande transmise à Formspree.</p>
+            </div>
+
+            <!-- Onglets de sélection avec drapeaux SVG -->
+            <div class="country-tabs-nav">
+                <button class="country-tab-btn active" id="tabBtn-senegal" onclick="switchCountryTable('senegal', this)">
+                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
+                    <span>Sénégal (Dakar)</span>
+                </button>
+                <button class="country-tab-btn" id="tabBtn-mali" onclick="switchCountryTable('mali', this)">
+                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
+                    <span>Mali (Bamako)</span>
+                </button>
+                <button class="country-tab-btn" id="tabBtn-guinee" onclick="switchCountryTable('guinee', this)">
+                    <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
+                    <span>Guinée Conakry</span>
+                </button>
+            </div>
+
+            <!-- ================= SÉNÉGAL (IMAGE AGENCE + TABLEAU) ================= -->
+            <div class="country-table-pane" id="table-senegal">
+                <div class="country-showcase-split">
+                    <!-- Carte Visuelle de l'Agence du Sénégal -->
+                    <div class="country-side-agency-card">
+                        <div class="agency-visual-box">
+                            <img src="agence-senegal.png" alt="Agence Sénégal CCS" onerror="this.src='ccs2.png';">
+                            <div class="agency-flag-overlay">
+                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
+                                <span>Sénégal (Siège)</span>
+                            </div>
+                        </div>
+                        <div class="agency-details-body">
+                            <h4 class="agency-details-title">Siège Social & Port de Dakar</h4>
+                            <div class="agency-info-line">
+                                <strong>Adresse :</strong>
+                                <span>Hann Mariste, en face Coris Bank, Dakar</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Logistique :</strong>
+                                <span>Dépôts sous douane & conteneurs disponibles</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Contact :</strong>
+                                <span>+221 77 699 00 00 / 77 826 96 96</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau Produits Sénégal -->
+                    <div class="country-table-wrapper">
+                        <div class="country-header-banner">
+                            <span>Liste des Produits Disponibles au Sénégal</span>
+                            <span style="font-size: 12px; font-weight: normal; color: #bae6fd;">Dakar & Régions</span>
+                        </div>
+                        <table class="table-custom-ccs">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Emballage</th>
+                                    <th>Contenance</th>
+                                    <th>Origine</th>
+                                    <th>Qté</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-senegal"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= MALI (IMAGE AGENCE + TABLEAU) ================= -->
+            <div class="country-table-pane" id="table-mali" style="display: none;">
+                <div class="country-showcase-split">
+                    <!-- Carte Visuelle de l'Agence du Mali -->
+                    <div class="country-side-agency-card">
+                        <div class="agency-visual-box">
+                            <img src="agence-mali.png" alt="Agence Mali CCS" onerror="this.src='ccs2.png';">
+                            <div class="agency-flag-overlay">
+                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#14B53A"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#CE1126"/></svg>
+                                <span>Mali (Bamako)</span>
+                            </div>
+                        </div>
+                        <div class="agency-details-body">
+                            <h4 class="agency-details-title">Bureau & Dépôts Mali</h4>
+                            <div class="agency-info-line">
+                                <strong>Adresse :</strong>
+                                <span>Hamdallaye ACI 2000, Building Mamadou Yara</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Logistique :</strong>
+                                <span>Acheminement routier régulier depuis Dakar</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Contact :</strong>
+                                <span>Moussa SENE (+223 00 00 00 00)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau Produits Mali -->
+                    <div class="country-table-wrapper">
+                        <div class="country-header-banner" style="background:#92400e;">
+                            <span>Liste des Produits Disponibles au Mali</span>
+                            <span style="font-size: 12px; font-weight: normal; color: #fde68a;">Bamako & Hubs</span>
+                        </div>
+                        <table class="table-custom-ccs">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Emballage</th>
+                                    <th>Contenance</th>
+                                    <th>Origine</th>
+                                    <th>Qté</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-mali"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= GUINÉE CONAKRY (IMAGE AGENCE + TABLEAU) ================= -->
+            <div class="country-table-pane" id="table-guinee" style="display: none;">
+                <div class="country-showcase-split">
+                    <!-- Carte Visuelle de l'Agence de Guinée -->
+                    <div class="country-side-agency-card">
+                        <div class="agency-visual-box">
+                            <img src="agence-guinee.png" alt="Agence Guinée CCS" onerror="this.src='ccs2.png';">
+                            <div class="agency-flag-overlay">
+                                <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#CE1126"/><rect x="300" width="300" height="600" fill="#FCD116"/><rect x="600" width="300" height="600" fill="#009460"/></svg>
+                                <span>Guinée Conakry</span>
+                            </div>
+                        </div>
+                        <div class="agency-details-body">
+                            <h4 class="agency-details-title">Bureau Commercial Conakry</h4>
+                            <div class="agency-info-line">
+                                <strong>Adresse :</strong>
+                                <span>Marché Madina, Conakry</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Logistique :</strong>
+                                <span>Stocks locaux & empotage direct conteneurs</span>
+                            </div>
+                            <div class="agency-info-line">
+                                <strong>Contact :</strong>
+                                <span>Mabi CAMARA (+224 614 08 62 62)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau Produits Guinée -->
+                    <div class="country-table-wrapper">
+                        <div class="country-header-banner" style="background:#065f46;">
+                            <span>Liste des Produits Disponibles en Guinée</span>
+                            <span style="font-size: 12px; font-weight: normal; color: #a7f3d0;">Conakry Madina</span>
+                        </div>
+                        <table class="table-custom-ccs">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Emballage</th>
+                                    <th>Contenance</th>
+                                    <th>Origine</th>
+                                    <th>Qté</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-guinee"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MINI PANIER & FORMULAIRE DE COMMANDE DIRECTE (FORMSPREE) -->
+            <div class="order-cart-box" id="orderCartBox">
+                <div class="order-cart-title">
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span>Votre Panier de Commande (<span id="cartCount">0</span> article)</span>
+                    </span>
+                    <button type="button" onclick="clearCart()" style="background:none; border:none; color:#ef4444; font-size:12px; cursor:pointer; font-weight:bold;">Vider le panier</button>
+                </div>
+
+                <div class="cart-items-list" id="cartItemsContainer">
+                    <p style="text-align:center; color:#94a3b8; font-style:italic; padding:10px;">Votre panier est actuellement vide. Choisissez vos produits dans les tableaux ci-dessus.</p>
+                </div>
+
+                <form id="directOrderForm" onsubmit="handleDirectOrderSubmit(event)">
+                    <div class="order-form-grid">
+                        <input type="text" id="orderFullName" class="order-form-input" placeholder="Votre nom complet *" required>
+                        <input type="tel" id="orderPhone" class="order-form-input" placeholder="Téléphone / WhatsApp *" required>
+                        <input type="email" id="orderEmail" class="order-form-input" placeholder="Votre adresse email *" required>
+                        <input type="text" id="orderCity" class="order-form-input" placeholder="Ville et pays de livraison *" required>
+                    </div>
+                    <textarea id="orderNotes" class="order-form-input" style="margin-top: 14px; min-height: 70px; resize: vertical;" placeholder="Précisions supplémentaires, lieu d'empotage, date souhaitée..."></textarea>
+
+                    <button type="submit" class="btn-submit-order" id="btnSubmitOrder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <span>Envoyer ma demande de commande à CCS</span>
+                    </button>
+                    <div class="order-status-msg" id="orderStatusMsg"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PREUVES & ENGAGEMENTS -->
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Nos Preuves & Engagements Qualité</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Une traçabilité totale et des contrôles rigoureux à chaque étape logistique.</p>
             </div>
-            <div class="proof-grid reveal">
+            <div class="proof-grid">
                 <div class="proof-card">
-                    <div class="proof-icon">✔</div>
+                    <div class="proof-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <h3 class="proof-title">Traçabilité Certifiée</h3>
-                    <p class="proof-text">Suivi méticuleux de l'origine de nos produits (Brésil, Inde, Asie, Afrique) jusqu'à la livraison finale.</p>
+                    <p class="proof-text">Suivi méticuleux de l'origine de nos produits (Brésil, Inde, Thaïlande, Canada) jusqu'à la livraison finale.</p>
                 </div>
                 <div class="proof-card">
-                    <div class="proof-icon">🛡</div>
+                    <div class="proof-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
                     <h3 class="proof-title">Contrôle d'Empotage</h3>
                     <p class="proof-text">Vidéos et galeries photo détaillées pour chaque opération de chargement et d'empotage en conteneur.</p>
                 </div>
                 <div class="proof-card">
-                    <div class="proof-icon">★</div>
+                    <div class="proof-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
                     <h3 class="proof-title">Standards Premium</h3>
                     <p class="proof-text">Sélection rigoureuse des grades A et respect strict des normes de conservation et de sécurité maritime.</p>
                 </div>
@@ -1631,6 +2093,7 @@
         </div>
     </section>
 
+    <!-- SECTION FORMATS DE CONDITIONNEMENT -->
     <section class="conditioning-section">
         <div class="section-header">
             <h2>Faites vous livrer dans de brefs délais</h2>
@@ -1639,7 +2102,7 @@
         
         <div class="conditioning-carousel-container" id="conditioningCarousel">
             <div class="conditioning-carousel-track">
-                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="1..png" alt="Conditionnement 1" onerror="this.src=''"></div>
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="1..png" alt="Conditionnement 1"></div>
                 <div class="conditioning-card"><div class="card-badge">CCS</div><img src="2.png" alt="Conditionnement 2"></div>
                 <div class="conditioning-card"><div class="card-badge">CCS</div><img src="3.png" alt="Conditionnement 3"></div>
                 <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="4.png" alt="Conditionnement 4"></div>
@@ -1654,24 +2117,19 @@
                 <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="13.png" alt="Conditionnement 13"></div>
                 <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="14.png" alt="Conditionnement 14"></div>
                 <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="15.png" alt="Conditionnement 15"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="16.png" alt="Conditionnement 16"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="17.png" alt="Conditionnement 17"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="18.png" alt="Conditionnement 18"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="19.png" alt="Conditionnement 19"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="20.png" alt="Conditionnement 20"></div>
             </div>
         </div>
     </section>
 
+    <!-- SECTION GALERIE DE CONTENEURS -->
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Galerie de nos Conteneurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Défilement continu de nos opérations. Touchez ou cliquez sur une image pour faire une pause et zoomer pour inspecter de plus près.</p>
+                <p class="section-subtitle">Défilement continu de nos opérations. Touchez ou cliquez sur une image pour faire une pause et zoomer.</p>
             </div>
-            
-            <div class="marquee-gallery-wrapper reveal" id="marqueeWrapper">
+            <div class="marquee-gallery-wrapper" id="marqueeWrapper">
                 <div class="marquee-track" id="marqueeTrack"></div>
             </div>
         </div>
@@ -1685,73 +2143,140 @@
         <span class="gallery-lightbox-counter" id="galleryLightboxCounter"></span>
     </div>
 
+    <!-- STATISTIQUES -->
     <section class="catalog-section stats-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">CCS en Chiffres</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Des années de présence sur le terrain, à Dakar et à l'international.</p>
             </div>
-            <div class="stats-grid reveal">
+            <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="7">7</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-number"><span>7</span><span class="stat-suffix">+</span></div>
                     <div class="stat-label">Années d'expérience</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="15">15</span></div>
+                    <div class="stat-number"><span>15</span></div>
                     <div class="stat-label">Pays d'origine des produits</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="200">200</span><span class="stat-suffix">+</span></div>
-                    <div class="stat-label">Full Container Loaded / Mois</div>
+                    <div class="stat-number"><span>200</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Conteneurs / Mois</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="15">15</span><span class="stat-suffix">+</span></div>
-                    <div class="stat-label">Produits au catalogue</div>
+                    <div class="stat-number"><span>25</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Références catalogue</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number"><span class="counter" data-target="100">100</span><span class="stat-suffix">%</span></div>
-                    <div class="stat-label">Traçabilité des chargements</div>
+                    <div class="stat-number"><span>100</span><span class="stat-suffix">%</span></div>
+                    <div class="stat-label">Traçabilité assurée</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SECTION TÉMOIGNAGES EN CARROUSEL DÉFILANT (ÉTOILES SVG) -->
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Ce Que Disent Nos Collaborateurs</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Ils ont fait confiance au Comptoir Commercial Sourang, et sont pour la plupart dans notre base de données depuis des années.</p>
+                <p class="section-subtitle">Fidèles partenaires au Sénégal, au Mali et en Guinée Conakry. <em>(Survolez ou touchez pour mettre en pause le défilement)</em></p>
             </div>
-            <div class="testimonials-grid reveal">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« Le papier Double A et Smart Copy arrive toujours en bon état, bien conditionné. Un fournisseur sérieux pour notre réseau de points de vente. »</p>
-                    <div class="testimonial-author">THIES DISTRIBUTION</div>
-                    <div class="testimonial-role">Partenaire distribution Papeterie</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« Communication claire du début à la fin. »</p>
-                    <div class="testimonial-author">LALA</div>
-                    <div class="testimonial-role">Collaborateur GROSSISTE</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">« Les délais sont respectés à chaque commande et la qualité des produits impeccable et constante. CCS vraiment, un partenaire fiable. »</p>
-                    <div class="testimonial-author">18 SAFAR GROSSISTE</div>
-                    <div class="testimonial-role">Collaborateur GROSSISTE</div>
+
+            <div class="testimonials-carousel-wrapper" id="testimonialsCarouselWrapper">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Helper étoiles SVG -->
+                    <!-- Avis 1 -->
+                    <div class="testimonial-card-marquee">
+                        <div class="testimonial-stars">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-quote-text">« Le papier Double A et Smart Copy arrive toujours en parfait état, bien emballé. Un fournisseur exemplaire pour l'ensemble de notre réseau de points de vente. »</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-name">THIÈS DISTRIBUTION</div>
+                            <div class="testimonial-author-role">Partenaire Papeterie • Thiès, Sénégal</div>
+                        </div>
+                    </div>
+                    <!-- Avis 2 -->
+                    <div class="testimonial-card-marquee">
+                        <div class="testimonial-stars">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-quote-text">« Communication claire du début à la fin. Les délais au port et le déchargement à l'entrepôt se font avec un professionnalisme remarquable. »</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-name">LALA TRADING</div>
+                            <div class="testimonial-author-role">Collaborateur Grossiste • Dakar</div>
+                        </div>
+                    </div>
+                    <!-- Avis 3 -->
+                    <div class="testimonial-card-marquee">
+                        <div class="testimonial-stars">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-quote-text">« Les délais sont toujours respectés à chaque commande et la qualité des produits impeccable et constante. CCS est vraiment un partenaire de confiance absolue. »</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-name">18 SAFAR GROSSISTE</div>
+                            <div class="testimonial-author-role">Grossiste Alimentaire • Touba, Sénégal</div>
+                        </div>
+                    </div>
+                    <!-- Avis 4 -->
+                    <div class="testimonial-card-marquee">
+                        <div class="testimonial-stars">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-quote-text">« Pour nos réceptions de poivre noir et de rames Double A à Bamako, tout est fluide. Le conditionnement en sacs et cartons résiste sans faille au trajet. »</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-name">ETS COULIBALY & FRÈRES</div>
+                            <div class="testimonial-author-role">Importateur & Négociant • Bamako, Mali</div>
+                        </div>
+                    </div>
+                    <!-- Avis 5 -->
+                    <div class="testimonial-card-marquee">
+                        <div class="testimonial-stars">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="testimonial-quote-text">« Au marché Madina, nos clients raffolent du poivre noir 25kg Best Foods et du papier Smart Copy. Des arrivages toujours à l'heure. »</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-author-name">MOHAMED DIALLO IMPORT</div>
+                            <div class="testimonial-author-role">Grossiste Distributeur • Conakry, Guinée</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FAQ -->
     <section class="catalog-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Questions Fréquentes</h2>
                 <div class="section-separator"></div>
                 <p class="section-subtitle">Tout ce qu'il faut savoir avant de commander auprès de CCS.</p>
             </div>
-            <div class="faq-list reveal">
+            <div class="faq-list">
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         Quels sont vos délais de chargement et d'expédition ?
@@ -1767,40 +2292,31 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits alimentaires comme le riz, le tamarin, l'ail ou le gingembre.</p>
+                        <p>Oui, des échantillons peuvent être fournis sur demande pour les produits comme le riz, le poivre, le tamarin, l'ail ou le gingembre.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        Quels modes de conditionnement utilisez-vous ?
+                        Comment passer une commande groupée pour l'export ?
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Selon le produit : cartons de 10 à 25 kg, sacs de 25/50 kg, ou conditionnement en vrac. Les fiches produits détaillent le conditionnement exact de chaque référence.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Comment vous contacter pour une demande de devis ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Par téléphone, email, ou via notre page Contact — nous répondons habituellement sous 24 à 48 heures ouvrées.</p>
+                        <p>Utilisez notre tableau de disponibilité par pays ci-dessus ou contactez directement nos représentants au Sénégal, au Mali ou en Guinée Conakry.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= SECTION NEWSLETTER ACTIVÉE AVEC FORMSPREE ================= -->
+    <!-- SECTION NEWSLETTER (ENDPOINT FORMSPREE xeaqrzza) -->
     <section class="catalog-section newsletter-section">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <h2 class="section-title">Restez Informé</h2>
                 <div class="section-separator"></div>
-                <p class="section-subtitle">Recevez nos actualités produits et nos disponibilités par email.</p>
+                <p class="section-subtitle">Recevez nos arrivages de conteneurs, nos disponibilités et nos tarifs par email.</p>
             </div>
-            <form class="newsletter-form reveal" id="newsletterForm" action="https://formspree.io/f/mjyvavjd" method="POST" onsubmit="handleNewsletterSubmit(event)">
+            <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xeaqrzza" method="POST" onsubmit="handleNewsletterSubmit(event)">
                 <input type="email" name="email" class="newsletter-input" id="newsletterEmail" placeholder="Votre adresse email" required autocomplete="email">
                 <button type="submit" class="newsletter-btn">S'inscrire</button>
             </form>
@@ -1808,42 +2324,39 @@
         </div>
     </section>
 
-    <button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
+    <button class="back-to-top" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Retour en haut">&uarr;</button>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
-                <h4 data-fr="À propos de CCS" data-en="About CCS">À propos de CCS</h4>
-                <p data-fr="Comptoir Commercial Sourang (CCS) est une entreprise d'import-export, de papeterie et de commerce général établie à Dakar depuis 2019." data-en="Comptoir Commercial Sourang (CCS) is an import-export, stationery, and general trade company established in Dakar since 2019.">
-                    Comptoir Commercial Sourang (CCS) est une entreprise d'import-export spécialisée dans la papeterie et les produits agro-alimentaires.
-                </p>
+                <h4>À propos de CCS</h4>
+                <p>Comptoir Commercial Sourang (CCS) est une entreprise d'import-export spécialisée dans la papeterie et les produits agro-alimentaires établie à Dakar depuis 2019.</p>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Liens Rapides" data-en="Quick Links">Liens Rapides</h4>
-                <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-                <a href="product.html" data-fr="Produits" data-en="Products">Produits</a>
-                <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
+                <h4>Liens Rapides</h4>
+                <a href="index.html">Accueil</a>
+                <a href="product.html">Produits</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Nos Pôles" data-en="Nos Pôles">Nos Pôles</h4>
-                <a href="product.html" data-fr="Papeterie (Double A, Rame A4)" data-en="Stationery (Double A, A4 Paper)">Papeterie (Double A, Rame A4)</a>
-                <a href="product.html" data-fr="Import-Export Alimentaire & Vrac" data-en="Food Import-Export & Bulk">Import-Export Alimentaire & Vrac</a>
-                <a href="product.html" data-fr="Preuves & Chargements" data-en="Evidence & Loading">Preuves & Chargements</a>
+                <h4>Nos Pôles</h4>
+                <a href="product.html">Papeterie (Double A, Smart Copy)</a>
+                <a href="product.html">Nos Produits Alimentaires</a>
+                <a href="#commander-par-pays">Disponibilités Sénégal, Mali, Guinée</a>
             </div>
             <div class="footer-col">
-                <h4 data-fr="Contactez-nous" data-en="Contact Us">Contactez-nous</h4>
-                <p data-fr="Hann Mariste en Face Coris Bank, Dakar, Sénégal" data-en="Hann Mariste en face Coris Bank, Dakar, Senegal">Dakar, Sénégal</p>
+                <h4>Contactez-nous</h4>
+                <p>Hann Mariste en face Coris Bank, Dakar, Sénégal</p>
                 <p>Email : comptoircommercialsourang@gmail.com</p>
-                <p>Tél : +221 77 699 00 00 / 77 622 00 22 / 77 336 00 00</p>
+                <p>Tél : +221 77 699 00 00 / +221 77 622 00 00 / +221 77 826 96 96</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-fr="© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés." data-en="© 2019 - 2026 CCS (Comptoir Commercial Sourang). All rights reserved.">
-                © 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.
-            </p>
+            <p>© 2019 - 2026 CCS (Comptoir Commercial Sourang). Tous droits réservés.</p>
         </div>
     </footer>
 
+    <!-- DRAWER LATÉRAL PRODUIT AVEC BOUTON & FORMULAIRE DE COMMANDE INTÉGRÉ -->
     <div class="side-drawer-overlay" id="sideDrawerOverlay" onclick="closeSideDrawer()"></div>
     <div class="side-drawer" id="sideDrawer">
         <div class="side-drawer-header">
@@ -1858,12 +2371,11 @@
             <div class="drawer-media-section">
                 <div class="drawer-media-box">
                     <div class="drawer-media-label">
-                        <span>Images Produit </span>
+                        <span>Images Produit</span>
                         <span id="drawerImgCounter" style="font-weight:normal; font-size:10px; color:#64748b;">1/10</span>
                     </div>
                     <div class="drawer-loop-container" onclick="nextDrawerImage()" title="Cliquez pour passer à l'image suivante">
                         <img id="drawerLoopImg" src="" class="drawer-loop-img" alt="Loop produit">
-                        <div class="drawer-loop-counter">Cliquez ↻</div>
                     </div>
                 </div>
 
@@ -1902,77 +2414,456 @@
                 <strong>Informations Complémentaires :</strong>
                 <p>-</p>
             </div>
+
+            <!-- BOUTON DÉCLENCHEUR DE COMMANDE DIRECTE DANS LE TIROIR -->
+            <button type="button" class="drawer-order-trigger-btn" id="drawerOrderTriggerBtn" onclick="toggleDrawerOrderForm()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Commander ce produit</span>
+            </button>
+
+            <!-- FORMULAIRE DE COMMANDE INTÉGRÉ AU TIROIR AVEC VÉRIFICATION PAYS & SHIPPING -->
+            <div class="drawer-order-form-panel" id="drawerOrderFormPanel">
+                <div class="drawer-order-form-title">
+                    <span>Passer commande : <strong id="formDrawerProdTitle">-</strong></span>
+                    <button type="button" onclick="toggleDrawerOrderForm()" style="background:none; border:none; color:#64748b; font-size:20px; cursor:pointer;">&times;</button>
+                </div>
+
+                <!-- BADGE DE DISPONIBILITÉ DYNAMIQUE SELON LE PAYS SÉLECTIONNÉ -->
+                <div id="drawerCountryAvailBadge" class="country-availability-badge"></div>
+
+                <form id="drawerDirectOrderForm" onsubmit="handleDrawerProductOrderSubmit(event)">
+                    <div class="drawer-field-group">
+                        <label>Votre Nom complet *</label>
+                        <input type="text" id="drawerOrderName" class="drawer-field-input" placeholder="Ex: Mouhamed Ndiaye" required>
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Téléphone / WhatsApp *</label>
+                        <input type="tel" id="drawerOrderPhone" class="drawer-field-input" placeholder="Ex: +221 77 000 00 00" required>
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Adresse Email *</label>
+                        <input type="email" id="drawerOrderEmail" class="drawer-field-input" placeholder="Ex: vous@exemple.com" required>
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Votre Pays de résidence / livraison *</label>
+                        <select id="drawerOrderCountry" class="drawer-field-input" onchange="checkDrawerProductAvailability()" required>
+                            <option value="">-- Sélectionnez votre pays --</option>
+                            <option value="senegal">Sénégal (Dakar)</option>
+                            <option value="mali">Mali (Bamako)</option>
+                            <option value="guinee">Guinée Conakry</option>
+                            <option value="autre">Autre pays (International)</option>
+                        </select>
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Ville & Adresse précise de livraison *</label>
+                        <input type="text" id="drawerOrderCity" class="drawer-field-input" placeholder="Ex: Dakar - Hann Mariste, Bamako, Conakry..." required>
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Quantité souhaitée (pièces / cartons / sacs) *</label>
+                        <input type="number" id="drawerOrderQty" class="drawer-field-input" value="1" min="1" max="100000" required>
+                    </div>
+
+                    <!-- CHAMP OPTIONNEL APPARAISSANT SI LE PRODUIT N'EST PAS DISPONIBLE DANS LE PAYS DU CLIENT -->
+                    <div class="drawer-field-group" id="drawerShippingDestinationGroup" style="display:none;">
+                        <label style="color:#b91c1c;">Vers quel pays ou port souhaitez-vous faire acheminer la commande (Shipping) ? *</label>
+                        <input type="text" id="drawerOrderShippingDest" class="drawer-field-input" placeholder="Ex: Port de Conakry, Débarcadère Bamako, Cotonou, etc.">
+                    </div>
+
+                    <div class="drawer-field-group">
+                        <label>Instructions ou remarques particulières</label>
+                        <textarea id="drawerOrderNotes" class="drawer-field-input" style="min-height: 60px; resize: vertical;" placeholder="Précisez votre demande, conteneur plein, date limite..."></textarea>
+                    </div>
+
+                    <button type="submit" class="drawer-btn-submit" id="drawerSubmitBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <span>Envoyer ma demande à CCS</span>
+                    </button>
+                    <div class="drawer-form-status" id="drawerFormStatus"></div>
+                </form>
+            </div>
         </div>
     </div>
 
     <script>
-        function toggleNavMenu() {
-            const nav = document.getElementById('navLinks');
-            const toggle = document.getElementById('navToggle');
-            nav.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
-        }
+        // ================= GESTION DU GRAND BOUTON ANIMÉ =================
+        function openCountrySectionAndTab(countryKey) {
+            const section = document.getElementById('commander-par-pays');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            item.classList.toggle('open');
-            const answer = item.querySelector('.faq-answer');
-            if (item.classList.contains('open')) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            } else {
-                answer.style.maxHeight = null;
+            const tabBtn = document.getElementById(`tabBtn-${countryKey}`);
+            if (tabBtn) {
+                switchCountryTable(countryKey, tabBtn);
             }
         }
 
-        // ================= GESTION ACTIVATION FORMSPREE =================
-        async function handleNewsletterSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const input = document.getElementById('newsletterEmail');
-            const msg = document.getElementById('newsletterMsg');
-            const btn = form.querySelector('.newsletter-btn');
+        // ================= DONNÉES DE DISPONIBILITÉ PAR PAYS =================
+        const countryProductsData = {
+            senegal: [
+                { name: "Rame papier A4 80 gsm DOUBLE A", emballage: "Carton", contenance: "5 rames", origine: "Thaïlande" },
+                { name: "Rame papier A4 80 gsm SMART COPY", emballage: "Carton", contenance: "5 rames", origine: "Thaïlande" },
+                { name: "Petits Pois (Green Peas)", emballage: "Sac", contenance: "20 kg", origine: "Argentine" },
+                { name: "Lentilles Rouges (Red Lentils)", emballage: "Sac", contenance: "15 kg", origine: "Canada" },
+                { name: "Brazilian White Crystal Sugar ICUMSA 150", emballage: "Sac", contenance: "50 kg", origine: "Brésil" },
+                { name: "Riz Moba 100% Brisure Parboiled Long Grain", emballage: "Sac", contenance: "25 kg", origine: "Inde" },
+                { name: "Gingembre Mature (Ginger)", emballage: "Carton", contenance: "10 kg", origine: "Brésil" },
+                { name: "Lait Concentré Sucré Touba", emballage: "Carton", contenance: "24 pièces (1 kg)", origine: "Malaisie" },
+                { name: "Huile Végétale Pure Raffinée Sarama", emballage: "Bidon", contenance: "20 Litres", origine: "Malaisie" },
+                { name: "Rame papier A4 80 gsm Capital Paper", emballage: "Carton", contenance: "5 rames", origine: "Thaïlande" },
+                { name: "Raisin Sec Golden Grade AAA", emballage: "Carton", contenance: "10 kg", origine: "Inde" },
+                { name: "Muscade (Nutmeg ABCD)", emballage: "Sac / Carton", contenance: "Standard", origine: "Inde" }
+            ],
+            mali: [
+                { name: "Poivre Noir (Black Pepper 580 GL)", emballage: "Sac", contenance: "25 kg", origine: "Brésil" },
+                { name: "Raisins Secs (Raisinn)", emballage: "Carton", contenance: "10 kg", origine: "Inde" },
+                { name: "Rame papier A4 80 gsm Double A & Smart Copy", emballage: "Carton", contenance: "5 rames", origine: "Thaïlande" }
+            ],
+            guinee: [
+                { name: "Poivre Noir (Black Pepper 580 GL)", emballage: "Sac", contenance: "25 kg", origine: "Brésil" },
+                { name: "Rame papier A4 80 gsm Double A & Smart Copy", emballage: "Carton", contenance: "5 rames", origine: "Thaïlande" }
+            ]
+        };
 
-            btn.disabled = true;
-            btn.textContent = "Envoi...";
-            msg.textContent = "";
+        // Rendu des tableaux de pays
+        function renderCountryTables() {
+            ['senegal', 'mali', 'guinee'].forEach(country => {
+                const tbody = document.getElementById(`tbody-${country}`);
+                const products = countryProductsData[country];
+
+                tbody.innerHTML = products.map((item, index) => `
+                    <tr>
+                        <td><strong>${item.name}</strong></td>
+                        <td>${item.emballage}</td>
+                        <td>${item.contenance}</td>
+                        <td><span class="badge-country-table">${item.origine}</span></td>
+                        <td>
+                            <input type="number" id="qty-${country}-${index}" class="qty-input-table" value="1" min="1" max="5000">
+                        </td>
+                        <td>
+                            <button type="button" class="btn-add-table" onclick="addToOrderCart('${country}', ${index})">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <span>Commander</span>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            });
+        }
+
+        function switchCountryTable(countryKey, btnElement) {
+            document.querySelectorAll('.country-table-pane').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.country-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(`table-${countryKey}`).style.display = 'block';
+            btnElement.classList.add('active');
+        }
+
+        // ================= GESTION DU MINI-PANIER =================
+        let userCart = [];
+
+        function addToOrderCart(countryKey, index) {
+            const product = countryProductsData[countryKey][index];
+            const qtyInput = document.getElementById(`qty-${countryKey}-${index}`);
+            const quantity = parseInt(qtyInput.value) || 1;
+            const countryName = countryKey === 'senegal' ? 'Sénégal' : (countryKey === 'mali' ? 'Mali' : 'Guinée Conakry');
+
+            const existingIndex = userCart.findIndex(item => item.name === product.name && item.country === countryName);
+            if (existingIndex > -1) {
+                userCart[existingIndex].qty += quantity;
+            } else {
+                userCart.push({
+                    name: product.name,
+                    country: countryName,
+                    emballage: product.emballage,
+                    contenance: product.contenance,
+                    origine: product.origine,
+                    qty: quantity
+                });
+            }
+
+            renderCart();
+            document.getElementById('orderCartBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function removeFromCart(index) {
+            userCart.splice(index, 1);
+            renderCart();
+        }
+
+        function clearCart() {
+            userCart = [];
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const countElem = document.getElementById('cartCount');
+            countElem.innerText = userCart.reduce((total, item) => total + item.qty, 0);
+
+            if (userCart.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:#94a3b8; font-style:italic; padding:10px;">Votre panier est actuellement vide. Choisissez vos produits dans les tableaux ci-dessus.</p>`;
+                return;
+            }
+
+            container.innerHTML = userCart.map((item, idx) => `
+                <div class="cart-item-row">
+                    <div class="cart-item-info">
+                        <strong>${item.name}</strong>
+                        <span>Destination : <strong>${item.country}</strong> | Format : ${item.emballage} (${item.contenance}) | Origine : ${item.origine}</span>
+                    </div>
+                    <div class="cart-item-actions">
+                        <span style="font-weight:bold; color:#0ea5e9; font-size:14px;">Qté: ${item.qty}</span>
+                        <button type="button" class="btn-remove-item" onclick="removeFromCart(${idx})" title="Supprimer">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ================= ENVOI DU BON DE COMMANDE GÉNÉRAL DU PANIER VIA FORMSPREE =================
+        async function handleDirectOrderSubmit(e) {
+            e.preventDefault();
+            const statusMsg = document.getElementById('orderStatusMsg');
+            const submitBtn = document.getElementById('btnSubmitOrder');
+
+            if (userCart.length === 0) {
+                statusMsg.style.color = '#dc2626';
+                statusMsg.textContent = 'Veuillez ajouter au moins un produit à votre panier avant d\'envoyer la commande.';
+                return;
+            }
+
+            const fullName = document.getElementById('orderFullName').value.trim();
+            const phone = document.getElementById('orderPhone').value.trim();
+            const email = document.getElementById('orderEmail').value.trim();
+            const city = document.getElementById('orderCity').value.trim();
+            const notes = document.getElementById('orderNotes').value.trim();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi de la commande en cours...";
+            statusMsg.textContent = "";
+
+            const recapArticlesTexte = userCart.map((item, index) => {
+                return `Article ${index + 1} :
+- Produit : ${item.name}
+- Quantité : ${item.qty}
+- Destination / Dépôt : ${item.country}
+- Conditionnement : ${item.emballage} (${item.contenance})
+- Origine : ${item.origine}`;
+            }).join('\n\n--------------------------------\n\n');
+
+            const dateCommande = new Date().toLocaleString('fr-FR', {
+                dateStyle: 'full',
+                timeStyle: 'medium',
+                timeZone: 'Africa/Dakar'
+            });
+
+            const payload = {
+                _subject: `COMMANDE GLOBALE CCS : ${fullName} (${city})`,
+                _replyto: email,
+                "=== COORDONNÉES DU CLIENT ===": "==============================",
+                "Nom complet": fullName,
+                "Téléphone / WhatsApp": phone,
+                "Adresse Email": email,
+                "Ville & Pays de livraison": city,
+                "Date et Heure": dateCommande,
+                "=== RÉSUMÉ DU PANIER ===": "==============================",
+                "Nombre total d'articles": userCart.reduce((total, i) => total + i.qty, 0) + " unité(s)",
+                "Détail des articles commandés": "\n" + recapArticlesTexte,
+                "=== REMARQUES DU CLIENT ===": "==============================",
+                "Instructions spéciales": notes ? notes : "Aucune instruction particulière renseignée."
+            };
 
             try {
-                const response = await fetch("https://formspree.io/f/mjyvavjd", {
+                const response = await fetch("https://formspree.io/f/xeaqrzza", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify({ 
-                        email: input.value,
-                        source: "Formulaire Restez Informé - CCS"
-                    })
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(payload)
                 });
 
                 if (response.ok) {
-                    msg.style.color = "#0ea5e9";
-                    msg.textContent = "Merci ! Votre inscription a bien été enregistrée.";
-                    form.reset();
+                    statusMsg.style.color = '#16a34a';
+                    statusMsg.textContent = 'Votre bon de commande a été transmis avec succès à notre équipe commerciale CCS. Nous vous contacterons très rapidement.';
+                    document.getElementById('directOrderForm').reset();
+                    clearCart();
                 } else {
-                    const data = await response.json().catch(() => ({}));
-                    if (data && data.errors && data.errors.length > 0) {
-                        msg.style.color = "#dc2626";
-                        msg.textContent = data.errors.map(err => err.message).join(", ");
-                    } else {
-                        msg.style.color = "#dc2626";
-                        msg.textContent = "Une erreur est survenue lors de l'inscription. Veuillez réessayer.";
-                    }
+                    statusMsg.style.color = '#dc2626';
+                    statusMsg.textContent = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous joindre directement par téléphone.';
                 }
-            } catch (error) {
-                msg.style.color = "#dc2626";
-                msg.textContent = "Erreur de connexion. Veuillez vérifier votre réseau.";
+            } catch (err) {
+                statusMsg.style.color = '#dc2626';
+                statusMsg.textContent = 'Erreur réseau. Merci de vérifier votre connexion.';
             } finally {
-                btn.disabled = false;
-                btn.textContent = "S'inscrire";
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer ma demande de commande à CCS";
             }
         }
 
+        // ================= GESTION DU FORMULAIRE DE COMMANDE DIRECTE DANS LE TIROIR (DRAWER) =================
+        let currentActiveProduct = null;
+
+        function toggleDrawerOrderForm() {
+            const panel = document.getElementById('drawerOrderFormPanel');
+            const triggerBtn = document.getElementById('drawerOrderTriggerBtn');
+            const isActive = panel.classList.toggle('active');
+
+            if (isActive) {
+                triggerBtn.style.display = 'none';
+                document.getElementById('formDrawerProdTitle').innerText = currentActiveProduct ? currentActiveProduct.name : '';
+                checkDrawerProductAvailability();
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                triggerBtn.style.display = 'flex';
+            }
+        }
+
+        function checkDrawerProductAvailability() {
+            if (!currentActiveProduct) return;
+
+            const selectedCountry = document.getElementById('drawerOrderCountry').value;
+            const badge = document.getElementById('drawerCountryAvailBadge');
+            const shippingGroup = document.getElementById('drawerShippingDestinationGroup');
+            const shippingInput = document.getElementById('drawerOrderShippingDest');
+
+            if (!selectedCountry) {
+                badge.className = 'country-availability-badge';
+                badge.style.display = 'none';
+                shippingGroup.style.display = 'none';
+                shippingInput.removeAttribute('required');
+                return;
+            }
+
+            const productNameLower = currentActiveProduct.name.toLowerCase();
+            let isAvailableInCountry = false;
+
+            if (countryProductsData[selectedCountry]) {
+                isAvailableInCountry = countryProductsData[selectedCountry].some(item => {
+                    const itemNameLower = item.name.toLowerCase();
+                    return itemNameLower.includes(productNameLower) || productNameLower.includes(itemNameLower.slice(0, 8));
+                });
+            }
+
+            if (isAvailableInCountry) {
+                badge.className = 'country-availability-badge available';
+                badge.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-top:2px; flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <div><strong>Produit disponible en stock dans votre pays !</strong><br>Livraison et empotage rapides assurés depuis nos entrepôts locaux.</div>
+                `;
+                shippingGroup.style.display = 'none';
+                shippingInput.removeAttribute('required');
+            } else {
+                badge.className = 'country-availability-badge not-available';
+                badge.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-top:2px; flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div><strong>Ce produit n'est pas actuellement disponible en stock dans votre pays.</strong><br>Vous pouvez soumettre une demande spéciale d'importation / shipping ci-dessous afin que notre équipe commerciale vous envoie une cotation.</div>
+                `;
+                shippingGroup.style.display = 'flex';
+                shippingInput.setAttribute('required', 'required');
+            }
+        }
+
+        async function handleDrawerProductOrderSubmit(e) {
+            e.preventDefault();
+            const statusMsg = document.getElementById('drawerFormStatus');
+            const submitBtn = document.getElementById('drawerSubmitBtn');
+
+            if (!currentActiveProduct) return;
+
+            const clientName = document.getElementById('drawerOrderName').value.trim();
+            const clientPhone = document.getElementById('drawerOrderPhone').value.trim();
+            const clientEmail = document.getElementById('drawerOrderEmail').value.trim();
+            const clientCountryCode = document.getElementById('drawerOrderCountry').value;
+            const clientCity = document.getElementById('drawerOrderCity').value.trim();
+            const clientQty = document.getElementById('drawerOrderQty').value;
+            const clientShippingDest = document.getElementById('drawerOrderShippingDest').value.trim();
+            const clientNotes = document.getElementById('drawerOrderNotes').value.trim();
+
+            const countryNamesMap = {
+                senegal: "Sénégal",
+                mali: "Mali",
+                guinee: "Guinée Conakry",
+                autre: "Autre pays international"
+            };
+            const countryLabel = countryNamesMap[clientCountryCode] || clientCountryCode;
+            const isShippingRequest = document.getElementById('drawerShippingDestinationGroup').style.display !== 'none';
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Transmission en cours...";
+            statusMsg.textContent = "";
+
+            const payload = {
+                _subject: isShippingRequest 
+                    ? `DEMANDE SHIPPING/IMPORTATION : ${currentActiveProduct.name} - ${clientName} (${countryLabel})`
+                    : `COMMANDE PRODUIT : ${currentActiveProduct.name} - ${clientName} (${countryLabel})`,
+                _replyto: clientEmail,
+                "=== PRODUIT DEMANDÉ ===": "==============================",
+                "Produit": currentActiveProduct.name,
+                "Référence": currentActiveProduct.ref || "N/A",
+                "Origine produit": currentActiveProduct.origin,
+                "Conditionnement": currentActiveProduct.cond,
+                "Quantité demandée": `${clientQty} unité(s) / carton(s) / sac(s)`,
+                "=== COORDONNÉES CLIENT ===": "==============================",
+                "Nom du client": clientName,
+                "Téléphone / WhatsApp": clientPhone,
+                "Email": clientEmail,
+                "Pays de résidence": countryLabel,
+                "Ville & Adresse": clientCity,
+                "=== STATUT DISPONIBILITÉ & LOGISTIQUE ===": "==============================",
+                "Disponibilité locale": isShippingRequest ? "NON DISPONIBLE EN STOCK LOCAL (DEMANDE SHIPPING)" : "DISPONIBLE EN STOCK",
+                "Destination Shipping demandée": isShippingRequest ? (clientShippingDest || "Non précisée") : `Entrepôt / Dépôt ${countryLabel}`,
+                "Remarques client": clientNotes ? clientNotes : "Aucune note additionnelle.",
+                "Date de soumission": new Date().toLocaleString('fr-FR', { timeZone: 'Africa/Dakar' })
+            };
+
+            try {
+                const response = await fetch("https://formspree.io/f/xeaqrzza", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    statusMsg.style.color = '#16a34a';
+                    statusMsg.textContent = isShippingRequest
+                        ? 'Votre demande spéciale d\'expédition a bien été transmise à CCS ! Notre équipe étudie la logistique et vous recontactera avec une cotation.'
+                        : 'Merci ! Votre commande a été transmise directement à notre équipe CCS. Vous serez contacté très rapidement.';
+                    document.getElementById('drawerDirectOrderForm').reset();
+                    document.getElementById('drawerShippingDestinationGroup').style.display = 'none';
+                    document.getElementById('drawerCountryAvailBadge').style.display = 'none';
+                } else {
+                    statusMsg.style.color = '#dc2626';
+                    statusMsg.textContent = 'Une erreur est survenue. Veuillez vérifier vos coordonnées ou nous contacter par téléphone.';
+                }
+            } catch (err) {
+                statusMsg.style.color = '#dc2626';
+                statusMsg.textContent = 'Erreur réseau lors de la transmission. Veuillez réessayer.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer ma demande à CCS";
+            }
+        }
+
+        // ================= PAUSE / REPRISE DU CARROUSEL DE TÉMOIGNAGES =================
+        const testWrapper = document.getElementById('testimonialsCarouselWrapper');
+        const testTrack = document.getElementById('testimonialsTrack');
+
+        testTrack.innerHTML += testTrack.innerHTML;
+
+        function pauseTestimonials() { testTrack.classList.add('paused'); }
+        function resumeTestimonials() { testTrack.classList.remove('paused'); }
+
+        testWrapper.addEventListener('mouseenter', pauseTestimonials);
+        testWrapper.addEventListener('mouseleave', resumeTestimonials);
+        testWrapper.addEventListener('touchstart', pauseTestimonials, { passive: true });
+        testWrapper.addEventListener('touchend', resumeTestimonials, { passive: true });
+
+        // ================= BASE DE DONNÉES COMPLÈTE DES PRODUITS =================
         const productsDatabase = [
+            // Papeterie
             {
                 name: "Rame Papier Double A",
                 category: "papier",
@@ -2006,408 +2897,366 @@
                 origin: "Thaïlande",
                 ref: "CCS-PAPIER-CAPITAL",
                 cond: "Carton de 5 rames",
-                qual: "80g/m² - Haute blancheur, format standard",
+                qual: "80g/m² - Haute blancheur",
                 log: "CONTENEUR",
-                extra: "Papier de bureau Capital, nouvelle marque de notre gamme papeterie, au grammage optimisé pour les impressions et photocopies quotidiennes. Chargé et empoté avec soin dans nos conteneurs pour l'export.",
+                extra: "Papier de bureau Capital, au grammage optimisé pour les impressions quotidiennes de bureau.",
                 videoLoop: "capital.mp4",
                 images: ["cap1.png", "cap2.png", "cap3.png", "cap4.png", "cap5.png"]
             },
+            // TOUS LES PRODUITS ALIMENTAIRES (Terre + Laitiers)
             {
                 name: "Piment Sec Rouge",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "piment.png",
                 origin: "Inde",
                 ref: "CCS-PIMENT-SEC-ROUGE",
                 cond: "Sacs de 10 kg (Poids Net)",
                 qual: "Grade A Premium - Best Foods Spices",
                 log: "CONTENEUR",
-                extra: "Piment rouge entier de qualité supérieure Best Foods Spices, séché et conditionné avec soin (Sacs de 10 kg). Conforme aux normes strictes de traçabilité et de transport maritime.",
+                extra: "Piment rouge entier de qualité supérieure Best Foods Spices, séché et conditionné avec soin.",
                 videoLoop: "piment.mp4",
-                images: ["pim1.png",  "pim7.png", "pim8.png", "pim9.png","pim3.png", "pim4.png", "pim5.png", "pim6.png", "pim10.png"]
+                images: ["pim1.png", "pim7.png", "pim8.png", "pim9.png", "pim3.png"]
             },
             {
                 name: "Poivre Noir",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "poivre.png",
                 origin: "Brésil",
-                ref: "POIVRE- 580 GL  ",
-                cond: "Sacs de 25 kg ",
+                ref: "POIVRE- 580 GL",
+                cond: "Sacs de 25 kg",
                 qual: "Grade A Premium - Best Foods Spices",
                 log: "CONTENEUR",
-                extra: "Poivre noir Best Foods Spices de qualité supérieure (Black Pepper), origine Brésil, récolté et conditionné avec soin en sacs de 25 kg, avec dates de production et d'expiration clairement indiquées pour une traçabilité totale.",
+                extra: "Poivre noir Best Foods Spices de qualité supérieure (Black Pepper 580 GL), origine Brésil.",
                 videoLoop: "poivre.mp4",
-                images: ["poi1.png", "poi2.png", "poi3.png", "poi4.png", "poi5.png", "poi6.png", "poi7.png", "poi8.png", "poi9.png", "poi10.png"]
+                images: ["poi1.png", "poi2.png", "poi3.png", "poi4.png"]
             },
             {
                 name: "Clous de Girofle",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "produit_clous-de-girofle.jpg",
-                origin: "MADAGASCAR",
+                origin: "Madagascar",
                 ref: "CLOVES BEST QUALITY SUPER CLEANED",
                 cond: "Sacs de 25 kg",
                 qual: "Grade A Premium - Best Foods Spices",
                 log: "CONTENEUR",
                 extra: "Clous de girofle aux notes intenses, récoltés à maturité, de la gamme Best Foods Spices.",
                 videoLoop: "girofle.mp4",
-                images: ["gir1.png",  "gir3.png", "gir4.png"]
+                images: ["gir1.png", "gir3.png", "gir4.png"]
             },
             {
                 name: "Feuilles de Laurier",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "produit_feuilles-laurier.jpg",
                 origin: "Argentine",
-                ref: "DRY LEAVES, GREEN COLOR AROMATIC, NATURAL, AND SORTED BY SIZE AND COLOR; MOISTURE: 5-8% STEM:2-3%; BROKEN LEAVES:3-4%",
-                cond: "Sacs de 25 kg ",
-                qual: "Séchées naturellement - Best Foods Spices",
-                log: "",
-                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé.",
+                ref: "DRY LEAVES GREEN COLOR AROMATIC",
+                cond: "Sacs de 25 kg",
+                qual: "Séchées naturellement - Best Foods",
+                log: "CONTENEUR",
+                extra: "Feuilles de laurier sélectionnées pour leur parfum prononcé et leur fraîcheur naturelle.",
                 videoLoop: "laurier.mp4",
-                images: ["laur1.png", "laur2.png", "laur3.png", "laur4.png", "laur5.png", "laur6.png", "laur7.png", "laur8.png", "laur9.png", "laur10.png"]
+                images: ["laur1.png", "laur2.png", "laur3.png"]
             },
             {
-                name: "Ail (Garlic)",
+                name: "Ail Frais (Garlic)",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "ail.png",
                 origin: "Argentine",
                 ref: "CCS-AIL-01",
-                cond: "Cartons de 10 kg ",
-                qual: "Cat. 1 Premium - Calibres 50-70mm - Best Foods",
-                log: "CONTENEUR",
-                extra: "Ail frais Best Foods de qualité supérieure , disponible en plusieurs calibres. Conditionné en cartons de 10 kg, stocké en chambre froide et chargé en conteneur réfrigéré pour garantir sa fraîcheur à l'export.",
+                cond: "Cartons de 10 kg",
+                qual: "Cat. 1 Premium - Calibres 50-70mm",
+                log: "CONTENEUR RÉFRIGÉRÉ",
+                extra: "Ail frais Best Foods de qualité supérieure, conditionné en cartons et stocké en chambre froide.",
                 videoLoop: "ail.mp4",
-                images: ["ail1.png", "ail3.png", "ail4.png", "ail5.png", "ail6.png", "ail7.png", "ail9.png"]
+                images: ["ail1.png", "ail3.png", "ail4.png"]
             },
             {
                 name: "Gingembre (Ginger)",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "ginger.png",
                 origin: "Brésil",
                 ref: "GINGEMBRE MATURE",
-                cond: "Cartons de 10 kg ",
-                qual: "Gingembre frais MATURE - Origine Brésil - Best Foods",
+                cond: "Cartons de 10 kg",
+                qual: "Gingembre frais MATURE - Best Foods",
                 log: "CONTENEUR",
-                extra: " Gros Gingembre frais Best Foods, origine Brésil, sélectionné et conditionné en cartons perforés de 10 kg pour assurer une bonne aération pendant le transport.",
+                extra: "Gros Gingembre frais Best Foods, origine Brésil, en cartons perforés pour une aération optimale.",
                 videoLoop: "ginger.mp4",
-                images: ["ging1.png", "ging2.png", "ging3.png", "ging4.png", "ging5.png", "ging6.png", "ging7.png", "ging8.png", "ging9.png", "ging10.png"]
+                images: ["ging1.png", "ging2.png", "ging3.png"]
             },
             {
                 name: "Tamarin",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "tamarin.png",
-                origin: "INDIA",
-                ref: "TAMARING WITH SEEDS AND FIBER 2025 NEW CROP PREMIUM QUALITY",
+                origin: "Inde",
+                ref: "TAMARIND WITH SEEDS NEW CROP",
                 cond: "Cartons de 10 kg",
-                qual: "TAMARIN AVEC GRAINE ET FIBRE CROP 2025",
-                log: "",
+                qual: "Tamarin avec graines et fibres",
+                log: "CONTENEUR",
                 extra: "Tamarin de qualité supérieure avec graines et fibres, emballé en cartons de 10 kg.",
                 videoLoop: "tamarin.mp4",
-                images: [ "tam6.png", "tam7.png", "tam8.png", "tam9.png"]
+                images: ["tam6.png", "tam7.png", "tam8.png"]
             },
             {
-                name: "Petits Pois ",
+                name: "Petits Pois",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "produit_petits-pois.jpg",
                 origin: "Argentine",
-                ref: "ARGENTINE WHOLE GREEN PEAS  CROP 2025",
-                cond: "Sacs de 20 kg  PP BAG",
+                ref: "WHOLE GREEN PEAS CROP",
+                cond: "Sacs de 20 kg PP BAG",
                 qual: "Best Foods",
                 log: "CONTENEUR",
-                extra: "Petits pois sélectionnés mis en conserve le jour même.",
+                extra: "Petits pois verts entiers de qualité supérieure, récolte sélectionnée.",
                 videoLoop: "pp.mp4",
-                images: ["pois1.png",  "pois3.png", "pois4.png", "pois5.png", "pois7.png"]
+                images: ["pois1.png", "pois3.png", "pois4.png"]
             },
             {
-                name: "lentilles ",
+                name: "Lentilles Rouges",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "lentil.png",
                 origin: "Canada",
                 ref: "WHOLE RED LENTIL",
-                cond: "Sacs de 15 kg  PP BAG",
+                cond: "Sacs de 15 kg PP BAG",
                 qual: "Calibre trié et sélectionné - Best Foods",
                 log: "CONTENEUR",
-                extra: "lentille riches en protéines et en fer, idéales pour de multiples préparations culinaires.",
+                extra: "Lentilles riches en protéines et en fer, idéales pour de multiples préparations culinaires.",
                 videoLoop: "len.mp4",
                 images: ["lentil.png"]
             },
             {
                 name: "Pâte de Tomate Sarama",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "tomato.png",
-                origin: " ..",
+                origin: "International",
                 ref: "CCS-TOMATE-11",
-                cond: "Boîtes / Sachets doypack",
+                cond: "Boîtes / Sachets",
                 qual: "Concentré 28-30% Brix",
                 log: "CONTENEUR",
-                extra: "Pâte de tomate Sarama riche en goût, chargée et empotée avec soin dans nos conteneurs pour l'export.",
+                extra: "Pâte de tomate Sarama riche en goût, chargée avec soin dans nos conteneurs.",
                 videoLoop: "tomato.mp4",
                 images: ["tomato.png"]
             },
             {
-                name: "Huiles",
+                name: "Huile Végétale Pure",
                 category: "alimentaire",
-                subCategory: "terre",
                 image: "huiles.png",
                 origin: "Malaisie",
-                ref: "HUILE-RAFFINEE SARAMA de CCS SANS CHORESTEROLE",
+                ref: "HUILE RAFFINEE SARAMA SANS CHOLESTEROL",
                 cond: "Bidons de 20 Litres",
-                qual: "100% pure huile végétale pour la cuisine",
+                qual: "100% pure huile végétale",
                 log: "CONTENEUR",
-                extra: "Huile végétale pure Sarama de CCS; qualité supérieure, conditionnée en bidons de 20 litres.",
+                extra: "Huile végétale raffinée pure Sarama, bidons pratiques de 20 litres.",
                 videoLoop: "huile.mp4",
                 images: ["huile.png"]
             },
             {
-                name: "Lait Concentré Touba",
+                name: "Sucre Blanc Cristal (ICUMSA 150)",
                 category: "alimentaire",
-                subCategory: "transforme",
+                image: "sucre.png",
+                origin: "Brésil",
+                ref: "WHITE BRAZILIAN SUGAR ICUMSA 150",
+                cond: "Sacs de 50 kg",
+                qual: "Açúcar Cristal White - Grade A",
+                log: "CONTENEUR",
+                extra: "Sucre crystal blanc de qualité supérieure, emballé en sacs renforcés de 50 kg.",
+                videoLoop: "sucre.mp4",
+                images: ["suc1.png", "suc2.png", "suc3.png"]
+            },
+            {
+                name: "Café Sélection CCS",
+                category: "alimentaire",
+                image: "cafe.png",
+                origin: "Brésil",
+                ref: "CAFE 16 UP",
+                cond: "Sacs / Paquets étanches",
+                qual: "100% Pur Arabica / Robusta",
+                log: "CONTENEUR",
+                extra: "Café d'exception torréfié et conditionné sous vide pour préserver tous les arômes.",
+                videoLoop: "cafe.mp4",
+                images: ["caf1.png", "caf2.png", "caf3.png"]
+            },
+            {
+                name: "Ananas Sarama",
+                category: "alimentaire",
+                image: "produit_ananas-sarama-1.jpg",
+                origin: "Côte d'Ivoire",
+                ref: "ANANAS SARAMA",
+                cond: "Carton / Conserve",
+                qual: "Extra Frais & Savoureux",
+                log: "CONTENEUR",
+                extra: "Ananas de choix, sélectionné pour sa teneur en sucre et sa jutosité.",
+                videoLoop: "nanasram.mp4",
+                images: ["produit_ananas-sarama-1.jpg"]
+            },
+            {
+                name: "Noix de Muscade",
+                category: "alimentaire",
+                image: "mouscade.png",
+                origin: "Indonésie",
+                ref: "NUTMEG ABCD",
+                cond: "Sacs / Cartons",
+                qual: "Grade A Premium - Best Foods",
+                log: "CONTENEUR",
+                extra: "Noix de muscade de qualité supérieure aux arômes riches, sélectionnée par Best Foods Spices.",
+                videoLoop: "muscade.mp4",
+                images: ["mus1.png"]
+            },
+            {
+                name: "Raisins Secs Golden",
+                category: "alimentaire",
+                image: "produit_raisins-secs.jpg",
+                origin: "Inde",
+                ref: "RAISIN GOLDEN COLOR GRADE AAA",
+                cond: "Cartons de 10 kg",
+                qual: "Moelleux et naturellement sucrés",
+                log: "CONTENEUR",
+                extra: "Raisins secs dorés de premier choix, idéaux pour la pâtisserie et la consommation directe.",
+                videoLoop: "raisin.mp4",
+                images: ["raisin1.png", "raisin2.png", "raisin3.png"]
+            },
+            {
+                name: "Riz Moba (100% Brisure)",
+                category: "alimentaire",
+                image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
+                origin: "Inde",
+                ref: "MOBA RICE 100% BRISURE",
+                cond: "Sacs de 25 kg",
+                qual: "Parboiled Rice Long Grain Selected Quality",
+                log: "CONTENEUR / CAMION",
+                extra: "Riz Moba 100% brisure, cuisson rapide homogène, référence incontournable en Afrique de l'Ouest.",
+                videoLoop: "rio.mp4",
+                images: ["rim3.png", "rim4.png", "rim5.png"]
+            },
+            {
+                name: "Riz Oriba",
+                category: "alimentaire",
+                image: "oriba.png",
+                origin: "USA / International",
+                ref: "RIZ-ORIBA",
+                cond: "Sacs de 25 kg / 50 kg",
+                qual: "Grains longs parfumés",
+                log: "CONTENEUR",
+                extra: "Riz Oriba de premier choix, grains entiers savoureux et raffinés.",
+                videoLoop: "moba.mp4",
+                images: ["rim1.png", "rim2.png", "rio3.png"]
+            },
+            {
+                name: "Lait Concentré Sucré Touba",
+                category: "alimentaire",
                 image: "produit_lait-concentre-touba.jpg",
                 origin: "Malaisie",
                 ref: "CCS-LAIT-CONC-07",
-                cond: "Cartons de 1 kg (24 pièces / 24 tonnes)",
+                cond: "Cartons de 1 kg (24 pièces)",
                 qual: "Onctueux et riche",
                 log: "CONTENEUR",
-                extra: "Lait concentré sucré de marque Touba.",
+                extra: "Lait concentré sucré de marque Touba, plébiscité pour sa texture veloutée.",
                 videoLoop: "letouba.mp4",
                 images: ["produit_lait-concentre-touba.jpg"]
             },
             {
                 name: "Lait Évaporé Touba",
                 category: "alimentaire",
-                subCategory: "transforme",
                 image: "produit_lait-evapore-touba.jpg",
                 origin: "Sénégal",
-                ref: "CCS-LAIT-EVAPORE-",
+                ref: "CCS-LAIT-EVAPORE",
                 cond: "Boîtes de conserve étanches",
-                qual: "PREMIUM QUALITY FIRST QUALITY",
+                qual: "First Quality",
                 log: "CONTENEUR",
-                extra: "Lait évaporé Touba pour préparations culinaires.",
+                extra: "Lait évaporé non sucré Touba, idéal pour le café, le thé et la cuisine.",
                 videoLoop: "letev.mp4",
                 images: ["produit_lait-evapore-touba.jpg"]
             },
             {
                 name: "Lait en Poudre Victoria",
                 category: "alimentaire",
-                subCategory: "transforme",
                 image: "produit_lait-poudre-victoria.jpg",
                 origin: "International",
                 ref: "CCS-LAIT-POUDRE",
-                cond: "Sachets ",
+                cond: "Sachets / Boîtes",
                 qual: "Enrichi en vitamines",
                 log: "CONTENEUR",
-                extra: "Lait en poudre Victoria formulé pour une dissolution rapide.",
+                extra: "Lait en poudre instantané Victoria avec dissolution rapide.",
                 videoLoop: "letpv.mp4",
                 images: ["produit_lait-poudre-victoria.jpg"]
             },
             {
-                name: "Lait en Poudre Ornua",
+                name: "Lait en Poudre Ornua (Yogurt King)",
                 category: "alimentaire",
-                subCategory: "transforme",
                 image: "or1.png",
-                origin: "International",
-                ref: "LAIT POUDRE YOGURT KING FFMP 28/24 25 KG",
-                cond: "Sacs / Boîtes",
-                qual: "Qualité supérieure - Ornua",
+                origin: "Irlande / International",
+                ref: "LAIT POUDRE YOGURT KING 25 KG",
+                cond: "Sacs de 25 kg",
+                qual: "Qualité supérieure Ornua",
                 log: "CONTENEUR",
-                extra: "Lait en poudre Ornua de premier choix, riche en nutriments et parfait pour diverses applications.",
+                extra: "Lait en poudre Ornua de premier choix, riche en matières grasses pour le yaourt et l'industrie.",
                 videoLoop: "lait_ornua.mp4",
                 images: ["or1.png"]
             },
             {
-                name: "WHITE BRAZILIAN SUGAR ",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "sucre.png",
-                origin: "Brésil",
-                ref: "CCS-SUCRE-BLANC CRISTALISE 150 ICUNSA",
-                cond: "Sacs de 50 kg",
-                qual: "Açúcar Cristal White - ICUMSA 150 - Grade A",
-                log: "CONTENEUR",
-                extra: "Sucre crystal blanc de qualité supérieure (Grupo Bazan), emballé en sacs de 50 kg. Produit de choix rigoureusement stocké et contrôlé pour l'exportation internationale.",
-                videoLoop: "sucre.mp4",
-                images: ["suc1.png", "suc2.png", "suc3.png", "suc4.png", "suc5.png"]
-            },
-            {
-                name: "Café Sélection CCS",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "cafe.png",
-                origin: "BRESIL",
-                ref: "CAFE 16 UP ",
-                cond: "Sacs / Paquets étanches",
-                qual: "100% Pur Arabica / Robusta",
-                log: "CONTENEUR",
-                extra: "Café d'exception torréfié et emballé sous vide.",
-                videoLoop: "cafe.mp4",
-                images: ["caf1.png ", "caf2.png", "caf3.png", "caf4.png", "caf5.png", "caf6.png", "caf7.png", "caf8.png", "caf9.png", "caf10.png", "caf11.png", "caf12.png"]
-            },
-            {
-                name: "Ananas Sarama",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "produit_ananas-sarama-1.jpg",
-                origin: ".",
-                ref: "ANNANAS SARAMA",
-                cond: "Carton / Palette",
-                qual: "Extra Frais / Conserve",
-                log: "CONTENEUR FRIGORIFIQUE",
-                extra: "Ananas Sarama de premier choix, rigoureusement sélectionné.",
-                videoLoop: "nanasram.mp4",
-                images: ["produit_ananas-sarama-1.jpg"]
-            },
-            {
                 name: "Jus Trois Continental",
                 category: "alimentaire",
-                subCategory: "transforme",
                 image: "produit_jus-orange-trois.jpg",
                 origin: "International",
                 ref: "CCS-JUS-06",
-                cond: "Canette",
-                qual: "Pur jus",
-                log: "Chaîne du froid respectée",
-                extra: "Jus d'orange rafraîchissant aux fruits rigoureusement pressés.",
+                cond: "Canettes / Cartons",
+                qual: "Pur jus de fruits",
+                log: "CONTENEUR",
+                extra: "Boisson fruitée rafraîchissante issue de fruits rigoureusement pressés.",
                 videoLoop: "juo.mp4",
-                images: ["juo1.png", "juo7.png", "juo8.png"]
-            },
-            {
-                name: "Muscade",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "mouscade.png",
-                origin: "Indonesia",
-                ref: "NUTMEG ABCD",
-                cond: "Sacs / Cartons",
-                qual: "Grade A Premium - Best Foods Spices",
-                log: "",
-                extra: "Noix de muscade de qualité supérieure aux arômes riches et chaleureux, sélectionnée par Best Foods Spices.",
-                videoLoop: "muscade.mp4",
-                images: ["mus1.png"]
-            },
-            {
-                name: "Raisins Secs",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "produit_raisins-secs.jpg",
-                origin: "RAISIN GOLDEN COLOR GRADE AAA",
-                ref: "RAISIN-SEC GRADE A MALAYAR PREMIUM QUALITY",
-                cond: "Cartons de 10 kg",
-                qual: "Moelleux et sucrés",
-                log: "CONTENEUR ",
-                extra: "Raisins secs sélectionnés, riches en énergie.",
-                videoLoop: "raisin.mp4",
-                images: ["raisin1.png", "raisin2.png", "raisin3.png", "raisin4.png", "raisin5.png", "raisin6.png", "raisin7.png", "raisin8.png", "raisin9.png", "raisin10.png"]
-            },
-            {
-                name: "Riz Moba (100% Brisure)",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "WhatsApp_Image_2026-09-02_at_12_17_14.jpeg",
-                origin: "Inde",
-                ref: "MOBA RICE 100% brissure  ",
-                cond: "Sacs de 25 kg ",
-                qual: "Premium Quality Indian Parboiled Rice Long Grain 5% Broken Selected Quality",
-                log: "Transport par camion ",
-                extra: "Riz Moba 100% brisure, cuisson rapide homogène, stocké en entrepôt et empoté pour l'export.",
-                videoLoop: "rio.mp4",
-                images: ["rim3.png", "rim4.png", "rim5.png", "rim6.png", "rim7.png", "rim8.png", "rim9.png", "rim10.png"]
-            },
-            {
-                name: "Riz Oriba",
-                category: "alimentaire",
-                subCategory: "terre",
-                image: "oriba.png",
-                origin: "AMERICAINE",
-                ref: "RIZ-ORIBA",
-                cond: "Sacs de 25kg / 50kg",
-                qual: "Grains longs sélectionnés",
-                log: "Transport par camion",
-                extra: "Riz Oriba de premier choix, grains entiers parfumés.",
-                videoLoop: "moba.mp4",
-                images: ["rim1.png", "rim2.png", "rio3.png", "rio4.png", "rio5.png", "rio6.png", "rio7.png", "rio8.png", "rio9.png", "rio10.png"]
+                images: ["juo1.png", "juo7.png"]
             }
         ];
 
-        const revealObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        function observeReveals() {
-            document.querySelectorAll('.reveal:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed)').forEach(el => {
-                revealObserver.observe(el);
-            });
-        }
-
-        const paperGridContainer = document.getElementById('paperGridContainer');
-        const earthGridContainer = document.getElementById('earthGridContainer');
-        const transformedGridContainer = document.getElementById('transformedGridContainer');
-
-        function buildProductCardHTML(prod, index, i) {
-            const revealClass = (i % 2 === 0) ? 'reveal-left' : 'reveal-right';
-            const delay = Math.min((i % 3) * 0.15, 0.4);
-
-            let badgeHtml = '';
-            if (prod.category === 'papier') {
-                badgeHtml = `<img src="lobr.png" alt="Badge Papeterie CCS" class="card-border-badge">`;
-            } else {
-                badgeHtml = `<img src="bg.png" alt="Badge Best Foods" class="card-border-badge">`;
-            }
+        // Rendu des grilles produits
+        function buildProductCard(prod, index) {
+            const badge = prod.category === 'papier' 
+                ? '<img src="lobr.png" alt="Badge Papeterie" class="card-border-badge">' 
+                : '<img src="bg.png" alt="Badge Best Foods" class="card-border-badge">';
 
             return `
-                <div class="product-row ${revealClass}" style="transition-delay:${delay}s" onclick="openSideDrawer(${index})">
-                    ${badgeHtml}
+                <div class="product-row" onclick="openSideDrawer(${index})">
+                    ${badge}
                     <h3 class="product-row-title">${prod.name}</h3>
                     <div class="product-row-img-wrap">
                         <span class="product-row-badge">${prod.origin}</span>
                         <img src="${prod.image}" class="product-row-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=${encodeURIComponent(prod.name)}'">
                     </div>
                     <div class="product-row-body">
-                        <p class="product-row-desc">${prod.extra.substring(0, 90)}${prod.extra.length > 90 ? '...' : ''}</p>
-                        <div class="product-row-btn">Détails</div>
+                        <p class="product-row-desc">${prod.extra.substring(0, 95)}...</p>
+                        <div class="product-row-btn">Détails & Fiche</div>
                     </div>
                 </div>
             `;
         }
 
-        function renderPaperGrid() {
-            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'papier');
-            paperGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
-            observeReveals();
+        function renderGrids() {
+            const paperGrid = document.getElementById('paperGridContainer');
+            const foodGrid = document.getElementById('foodGridContainer');
+
+            paperGrid.innerHTML = productsDatabase
+                .map((p, idx) => ({ p, idx }))
+                .filter(item => item.p.category === 'papier')
+                .map(item => buildProductCard(item.p, item.idx))
+                .join('');
+
+            foodGrid.innerHTML = productsDatabase
+                .map((p, idx) => ({ p, idx }))
+                .filter(item => item.p.category === 'alimentaire')
+                .map(item => buildProductCard(item.p, item.idx))
+                .join('');
         }
 
-        function renderEarthGrid() {
-            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'alimentaire' && prod.subCategory === 'terre');
-            earthGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
-            observeReveals();
+        // Navigation mobile & FAQ
+        function toggleNavMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
         }
 
-        function renderTransformedGrid() {
-            const items = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => prod.category === 'alimentaire' && prod.subCategory === 'transforme');
-            transformedGridContainer.innerHTML = items.map(({ prod, index }, i) => buildProductCardHTML(prod, index, i)).join('');
-            observeReveals();
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('open');
+            const answer = item.querySelector('.faq-answer');
+            answer.style.maxHeight = item.classList.contains('open') ? answer.scrollHeight + 'px' : null;
         }
 
-        function renderAllGrids() {
-            renderPaperGrid();
-            renderEarthGrid();
-            renderTransformedGrid();
-        }
-
-        renderAllGrids();
-
+        // Recherche globale
         function handleGlobalNavSearch() {
             const input = document.getElementById('globalNavSearchInput');
             const dropdown = document.getElementById('globalSearchDropdown');
@@ -2419,23 +3268,14 @@
                 return;
             }
 
-            let matchedProducts = [];
-            if (query.includes('légumineuse') || query.includes('legumineuse')) {
-                matchedProducts = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => 
-                    prod.name.toLowerCase().includes('lentille') || prod.name.toLowerCase().includes('pois') || prod.extra.toLowerCase().includes('légumineuse')
-                );
-            } else {
-                matchedProducts = productsDatabase
-                    .map((prod, index) => ({ prod, index }))
-                    .filter(({ prod }) => prod.name.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query) || prod.category.toLowerCase().includes(query) || prod.origin.toLowerCase().includes(query));
-            }
+            const matched = productsDatabase.map((prod, index) => ({ prod, index })).filter(({ prod }) => 
+                prod.name.toLowerCase().includes(query) || prod.origin.toLowerCase().includes(query) || prod.extra.toLowerCase().includes(query)
+            );
 
-            let htmlContent = '';
-
-            if (matchedProducts.length > 0) {
-                htmlContent += matchedProducts.map(({ prod, index }) => `
-                    <div class="search-result-item" onclick="selectGlobalSearchResult(${index})">
-                        <img src="${prod.image}" class="search-result-img" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/40+x40?text=CCS'">
+            if (matched.length > 0) {
+                dropdown.innerHTML = matched.map(({ prod, index }) => `
+                    <div class="search-result-item" onclick="selectSearchResult(${index})">
+                        <img src="${prod.image}" class="search-result-img" alt="${prod.name}">
                         <div class="search-result-info">
                             <h4>${prod.name}</h4>
                             <p>${prod.origin} • ${prod.cond}</p>
@@ -2443,168 +3283,160 @@
                     </div>
                 `).join('');
             } else {
-                htmlContent += `<div class="search-no-result">Aucun produit correspondant disponible pour "${input.value}".</div>`;
+                dropdown.innerHTML = `<div class="search-no-result">Aucun produit trouvé pour "${input.value}".</div>`;
             }
-
-            const otherProducts = productsDatabase.filter((p, idx) => !matchedProducts.some(m => m.index === idx)).slice(0, 5);
-            if (otherProducts.length > 0) {
-                htmlContent += `
-                    <div class="search-suggestions-box">
-                        <div class="search-suggestions-title">Suggestions d'autres produits disponibles :</div>
-                        <div class="search-suggestions-tags">
-                            ${otherProducts.map(p => {
-                                const originalIdx = productsDatabase.findIndex(item => item.name === p.name);
-                                return `<span class="suggestion-tag" onclick="selectGlobalSearchResult(${originalIdx})">${p.name}</span>`;
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            dropdown.innerHTML = htmlContent;
             dropdown.classList.add('active');
         }
 
-        function selectGlobalSearchResult(index) {
+        function selectSearchResult(index) {
             document.getElementById('globalSearchDropdown').classList.remove('active');
             document.getElementById('globalNavSearchInput').value = '';
             openSideDrawer(index);
         }
 
         document.addEventListener('click', (e) => {
-            const wrapper = document.querySelector('.global-nav-search-wrapper');
-            if (wrapper && !wrapper.contains(e.target)) {
+            if (!document.querySelector('.global-nav-search-wrapper').contains(e.target)) {
                 document.getElementById('globalSearchDropdown').classList.remove('active');
             }
         });
 
-        const typingTextContainer = document.getElementById('typingTextContainer');
-        const sentenceToType = "our food products just for you";
-        const words = sentenceToType.split(' ');
-        typingTextContainer.innerHTML = words.map((word, idx) => `<span style="animation-delay: ${idx * 0.25}s">${word}</span>`).join(' ');
+        // Animation de frappe
+        const sentence = "our food products just for you";
+        document.getElementById('typingTextContainer').innerHTML = sentence.split(' ').map((w, i) => `<span style="animation-delay:${i * 0.25}s">${w}</span>`).join(' ');
 
-        const containerGalleryImages = [
-            "cnt.1.png", "cnt.2.png", "cnt.3.png", "cnt.4.png", "cnt.6.png", "cnt.7.png",
-            "cnt.9.png", "cnt.10.png", "cnt.11.png", "cnt.12.png", "cnt.13.png", "cnt.15.png",
-            "cnt.16.png", "cnt.17.png", "cnt.19.png", "cnt.20.png", "cnt.22.png", "cnt.23.png",
-            "cnt.24.png", "cnt.26.png", "cnt.27.png", "cnt.28.png", "cnt.29.png", "cnt.30.png",
-            "cnt.31.png", "cnt.32.png", "tam1.png", "tam2.png", "tam3.png", "tam4.png", "tam5.png", "cnt.40.png", "cnt.41.png", "cnt.42.png",
-            "cnt.43.png", "cnt.44.png", "cnt.45.png", "cnt.46.png", "cnt.47.png", "cnt.48.png",
-            "cnt.49.png", "cnt.50.png"
+        // Galerie conteneurs
+        const containerImgs = [
+            "cnt.1.png", "cnt.2.png", "cnt.3.png", "cnt.4.png", "cnt.6.png", "cnt.7.png", "cnt.9.png", "cnt.10.png",
+            "cnt.11.png", "cnt.12.png", "cnt.13.png", "cnt.15.png", "cnt.16.png", "cnt.17.png", "cnt.19.png", "cnt.20.png"
         ];
-
-        const marqueeTrack = document.getElementById('marqueeTrack');
-        const marqueeWrapper = document.getElementById('marqueeWrapper');
-
-        const galleryHTMLContent = containerGalleryImages.map((img, idx) => `
-            <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})" title="Cliquez pour zoomer">
-                <img src="${img}" alt="Conteneur CCS ${idx + 1}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/002664/ffffff?text=Conteneur+CCS'">
+        const track = document.getElementById('marqueeTrack');
+        const contHTML = containerImgs.map((img, idx) => `
+            <div class="container-gallery-item" onclick="openGalleryLightbox(${idx})">
+                <img src="${img}" alt="Conteneur CCS" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Conteneur+CCS'">
             </div>
         `).join('');
+        track.innerHTML = contHTML + contHTML;
 
-        marqueeTrack.innerHTML = galleryHTMLContent + galleryHTMLContent;
-        const marqueeTrackElem = document.getElementById('marqueeTrack');
-
-        function pauseMarquee() { marqueeTrackElem.classList.add('paused'); }
-        function resumeMarquee() { marqueeTrackElem.classList.remove('paused'); }
-
-        marqueeWrapper.addEventListener('mouseenter', pauseMarquee);
-        marqueeWrapper.addEventListener('mouseleave', resumeMarquee);
-        marqueeWrapper.addEventListener('touchstart', pauseMarquee, {passive: true});
-        marqueeWrapper.addEventListener('touchend', resumeMarquee, {passive: true});
-
-        let galleryLightboxIndex = 0;
-
+        let lightboxIdx = 0;
         function openGalleryLightbox(idx) {
-            galleryLightboxIndex = idx;
-            updateGalleryLightbox();
+            lightboxIdx = idx;
+            document.getElementById('galleryLightboxImg').src = containerImgs[idx];
+            document.getElementById('galleryLightboxCounter').innerText = `${idx + 1} / ${containerImgs.length}`;
             document.getElementById('galleryLightbox').classList.add('active');
         }
-
-        function closeGalleryLightbox() {
-            document.getElementById('galleryLightbox').classList.remove('active');
+        function closeGalleryLightbox() { document.getElementById('galleryLightbox').classList.remove('active'); }
+        function galleryLightboxNav(dir) {
+            lightboxIdx = (lightboxIdx + dir + containerImgs.length) % containerImgs.length;
+            document.getElementById('galleryLightboxImg').src = containerImgs[lightboxIdx];
+            document.getElementById('galleryLightboxCounter').innerText = `${lightboxIdx + 1} / ${containerImgs.length}`;
         }
 
-        function galleryLightboxNav(direction) {
-            galleryLightboxIndex = (galleryLightboxIndex + direction + containerGalleryImages.length) % containerGalleryImages.length;
-            updateGalleryLightbox();
-        }
+        // Side Drawer
+        let drawerImages = [];
+        let drawerImgIdx = 0;
+        let drawerTimer = null;
 
-        function updateGalleryLightbox() {
-            document.getElementById('galleryLightboxImg').src = containerGalleryImages[galleryLightboxIndex];
-            document.getElementById('galleryLightboxCounter').innerText = `${galleryLightboxIndex + 1} / ${containerGalleryImages.length}`;
-        }
+        function openSideDrawer(idx) {
+            const p = productsDatabase[idx];
+            currentActiveProduct = p;
+            drawerImages = p.images && p.images.length ? p.images : [p.image];
+            drawerImgIdx = 0;
 
-        document.getElementById('galleryLightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'galleryLightbox') closeGalleryLightbox();
-        });
+            document.getElementById('drawerProductName').innerText = p.name;
+            document.getElementById('drawerProductRef').innerText = `RÉF : ${p.ref} • ORIGINE : ${p.origin}`;
+            document.getElementById('drawerOrigin').innerText = p.origin;
+            document.getElementById('drawerCond').innerText = p.cond;
+            document.getElementById('drawerQual').innerText = p.qual;
+            document.getElementById('drawerLog').innerText = p.log;
+            document.getElementById('drawerExtraText').innerHTML = `<strong>Informations Complémentaires :</strong><p>${p.extra}</p>`;
 
-        let currentDrawerIndex = 0;
-        let drawerImageIndex = 0;
-        let drawerImagesList = [];
-        let drawerLoopInterval = null;
+            const panel = document.getElementById('drawerOrderFormPanel');
+            const triggerBtn = document.getElementById('drawerOrderTriggerBtn');
+            panel.classList.remove('active');
+            triggerBtn.style.display = 'flex';
+            document.getElementById('drawerFormStatus').textContent = '';
+            document.getElementById('drawerDirectOrderForm').reset();
+            document.getElementById('drawerCountryAvailBadge').style.display = 'none';
+            document.getElementById('drawerShippingDestinationGroup').style.display = 'none';
 
-        function openSideDrawer(index) {
-            currentDrawerIndex = index;
-            drawerImageIndex = 0;
-            const prod = productsDatabase[index];
-            drawerImagesList = prod.images && prod.images.length ? prod.images : [prod.image];
+            const vid = document.getElementById('drawerVideo');
+            vid.src = p.videoLoop;
+            vid.load();
+            vid.play().catch(() => {});
 
-            document.getElementById('drawerProductName').innerText = prod.name;
-            document.getElementById('drawerProductRef').innerText = `RÉF : ${prod.ref || 'N/A'} • ORIGINE : ${prod.origin}`;
-            
-            document.getElementById('drawerOrigin').innerText = prod.origin;
-            document.getElementById('drawerCond').innerText = prod.cond;
-            document.getElementById('drawerQual').innerText = prod.qual;
-            document.getElementById('drawerLog').innerText = prod.log;
-            document.getElementById('drawerExtraText').innerHTML = `<strong>Informations Complémentaires :</strong><p>${prod.extra}</p>`;
-
-            const videoElem = document.getElementById('drawerVideo');
-            videoElem.src = prod.videoLoop;
-            videoElem.load();
-            videoElem.play().catch(e => console.log("Autoplay bloqué:", e));
-
-            updateDrawerLoopImage();
-            startDrawerLoop();
+            updateDrawerImg();
+            startDrawerTimer();
 
             document.getElementById('sideDrawerOverlay').classList.add('active');
             document.getElementById('sideDrawer').classList.add('active');
         }
 
         function closeSideDrawer() {
-            stopDrawerLoop();
+            clearInterval(drawerTimer);
             document.getElementById('sideDrawerOverlay').classList.remove('active');
             document.getElementById('sideDrawer').classList.remove('active');
-            const videoElem = document.getElementById('drawerVideo');
-            videoElem.pause();
-            videoElem.src = "";
+            const vid = document.getElementById('drawerVideo');
+            vid.pause();
+            vid.src = "";
+            currentActiveProduct = null;
         }
 
-        function updateDrawerLoopImage() {
-            const imgElem = document.getElementById('drawerLoopImg');
-            const counterElem = document.getElementById('drawerImgCounter');
-            imgElem.src = drawerImagesList[drawerImageIndex];
-            counterElem.innerText = `${drawerImageIndex + 1}/${drawerImagesList.length}`;
+        function updateDrawerImg() {
+            document.getElementById('drawerLoopImg').src = drawerImages[drawerImgIdx];
+            document.getElementById('drawerImgCounter').innerText = `${drawerImgIdx + 1}/${drawerImages.length}`;
         }
 
         function nextDrawerImage() {
-            drawerImageIndex = (drawerImageIndex + 1) % drawerImagesList.length;
-            updateDrawerLoopImage();
+            drawerImgIdx = (drawerImgIdx + 1) % drawerImages.length;
+            updateDrawerImg();
         }
 
-        function startDrawerLoop() {
-            stopDrawerLoop();
-            drawerLoopInterval = setInterval(() => {
-                nextDrawerImage();
-            }, 2500);
+        function startDrawerTimer() {
+            clearInterval(drawerTimer);
+            drawerTimer = setInterval(nextDrawerImage, 2500);
         }
 
-        function stopDrawerLoop() {
-            if (drawerLoopInterval) {
-                clearInterval(drawerLoopInterval);
-                drawerLoopInterval = null;
+        // Newsletter Formspree xeaqrzza
+        async function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('newsletterMsg');
+            btn.disabled = true;
+            btn.innerText = "Envoi...";
+            msg.innerText = "";
+
+            try {
+                const res = await fetch("https://formspree.io/f/xeaqrzza", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify({ email: document.getElementById('newsletterEmail').value, provenance: "Newsletter Produits CCS" })
+                });
+                if (res.ok) {
+                    msg.style.color = "#0ea5e9";
+                    msg.innerText = "Merci pour votre inscription !";
+                    e.target.reset();
+                } else {
+                    msg.style.color = "#dc2626";
+                    msg.innerText = "Une erreur est survenue.";
+                }
+            } catch (err) {
+                msg.style.color = "#dc2626";
+                msg.innerText = "Erreur de connexion.";
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "S'inscrire";
             }
         }
+
+        // Back to top
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTopBtn').classList.toggle('visible', window.scrollY > 400);
+        });
+
+        // Initialisation générale
+        renderGrids();
+        renderCountryTables();
+        renderCart();
     </script>
 </body>
 </html>
