@@ -405,6 +405,142 @@
             fill: white;
         }
 
+        /* ===== NOUVELLE SECTION : CARTES AGENCES ===== */
+        .agencies-section {
+            width: 100%;
+            padding: 70px 20px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+        }
+
+        .agencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            width: 100%;
+        }
+
+        @media (max-width: 980px) {
+            .agencies-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        .agency-card {
+            background: #ffffff;
+            border: 2px solid #2b3a4a;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .agency-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+        }
+
+        .agency-img-wrap {
+            width: 100%;
+            height: 180px;
+            background-color: #d1d5db;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .agency-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .agency-body {
+            padding: 20px 20px 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .agency-name {
+            color: #007bff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .agency-address {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 42px;
+        }
+
+        .agency-address strong {
+            color: #1e293b;
+        }
+
+        .agency-btn-maps {
+            display: inline-block;
+            background-color: #007bff;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 4px;
+            width: fit-content;
+            transition: background-color 0.2s ease;
+            margin-bottom: 5px;
+        }
+
+        .agency-btn-maps:hover {
+            background-color: #0056b3;
+        }
+
+        .agency-map-box {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            border-top: 1px solid #e2e8f0;
+            background-color: #f1f5f9;
+        }
+
+        .agency-map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .map-badge-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ffffff;
+            color: #007bff;
+            border: 1px solid #cbd5e1;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 5;
+            transition: background 0.2s;
+        }
+
+        .map-badge-link:hover {
+            background: #f8fafc;
+            color: #0056b3;
+        }
+
         .hero-banner {
             background-image: url('contactbg.png');
             color: white;
@@ -886,12 +1022,13 @@
         </div>
     </section>
 
+    <!-- SECTION CONTACTS D'ÉQUIPE -->
     <section class="parallax-section info-parallax">
         <div class="parallax-overlay light-overlay">
             <div class="section-container">
-                <h2 class="section-title" data-fr="Nous Sommes Tres joignable" data-en="Our Contacts & Team">Nous Sommes Tres joignable</h2>
+                <h2 class="section-title" data-fr="Nous Sommes Très Joignables" data-en="Our Contacts & Team">Nous Sommes Très Joignables</h2>
 
-                <!-- POCHE SÉNÉGAL (Ouverte par défaut) -->
+                <!-- POCHE SÉNÉGAL -->
                 <div class="country-accordion active">
                     <div class="country-header" onclick="toggleAccordion(this)">
                         <h3 class="country-title" data-fr="🇸🇳 Sénégal (Siège Dakar)" data-en="🇸🇳 Senegal (Dakar HQ)">🇸🇳 Sénégal (Siège Dakar)</h3>
@@ -919,14 +1056,14 @@
                                 </div>
                             </div>
 
-                            <!-- adji - Secrétaire -->
+                            <!-- Adji - Secrétaire -->
                             <div class="team-circle-card">
                                 <div class="team-avatar floating-bubble">
                                     <img src="adji.png" alt="adji" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=adji';">
                                 </div>
                                 <div class="team-content">
                                     <span class="team-country" data-fr="Sénégal" data-en="Senegal">Sénégal</span>
-                                    <h3>adji</h3>
+                                    <h3>Adji</h3>
                                     <span class="team-role" data-fr="Secrétaire" data-en="Secretary">Secrétaire</span>
                                     <div class="team-phones">
                                         <a href="tel:+221785309736">+221 78 530 97 36</a>
@@ -948,7 +1085,6 @@
                     </div>
                     <div class="country-content-wrap">
                         <div class="circular-team-grid">
-                            <!-- Moussa SENE - Mali -->
                             <div class="team-circle-card">
                                 <div class="team-avatar floating-bubble">
                                     <img src="moussa.png" alt="Moussa SENE" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Moussa';">
@@ -975,7 +1111,6 @@
                     </div>
                     <div class="country-content-wrap">
                         <div class="circular-team-grid">
-                            <!-- Guinée Conakry -->
                             <div class="team-circle-card">
                                 <div class="team-avatar floating-bubble">
                                     <img src="guinea.png" alt="Guinée Conakry" onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Guinee';">
@@ -998,7 +1133,94 @@
         </div>
     </section>
 
-    <!-- ================= SECTION FORMULAIRE ACTIVÉE AVEC FORMSPREE ================= -->
+    <!-- ================= NOUVELLE SECTION : NOS AGENCES ET LOCALISATIONS ================= -->
+    <section class="agencies-section">
+        <div class="section-container">
+            <h2 class="section-title" data-fr="Nos Agences & Localisations" data-en="Our Agencies & Locations">Nos Agences & Localisations</h2>
+
+            <div class="agencies-grid">
+                <!-- CARTE SÉNÉGAL -->
+                <div class="agency-card">
+                    <div class="agency-img-wrap">
+                        <img src="agence-senegal.png" class="agency-img" alt="Agence Sénégal" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x200/cbd5e1/002664?text=Agence+S%C3%A9n%C3%A9gal';">
+                    </div>
+                    <div class="agency-body">
+                        <h3 class="agency-name" data-fr="Sénégal" data-en="Senegal">Sénégal</h3>
+                        <p class="agency-address">
+                            <strong data-fr="Adresse : " data-en="Address: ">Adresse : </strong>Hann Mariste, en face de la Coris Bank
+                        </p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hann+Mariste+Coris+Bank+Dakar" target="_blank" rel="noopener" class="agency-btn-maps" data-fr="Voir sur Google Maps" data-en="View on Google Maps">
+                            Voir sur Google Maps
+                        </a>
+                    </div>
+                    <div class="agency-map-box">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hann+Mariste+Coris+Bank+Dakar" target="_blank" rel="noopener" class="map-badge-link">
+                            <span data-fr="Ouvrir dans Maps" data-en="Open in Maps">Ouvrir dans Maps</span> ↗
+                        </a>
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Hann+Mariste+Coris+Bank+Dakar&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            loading="lazy" 
+                            title="Carte Agence Sénégal">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- CARTE MALI -->
+                <div class="agency-card">
+                    <div class="agency-img-wrap">
+                        <img src="agence-mali.png" class="agency-img" alt="Agence Mali" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x200/cbd5e1/002664?text=Agence+Mali';">
+                    </div>
+                    <div class="agency-body">
+                        <h3 class="agency-name" data-fr="Mali" data-en="Mali">Mali</h3>
+                        <p class="agency-address">
+                            <strong data-fr="Adresse : " data-en="Address: ">Adresse : </strong>Bamako - Hamdallaye ACI 2000, Building Mamadou Yara
+                        </p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hamdallaye+ACI+2000+Building+Mamadou+Yara+Bamako" target="_blank" rel="noopener" class="agency-btn-maps" data-fr="Voir sur Google Maps" data-en="View on Google Maps">
+                            Voir sur Google Maps
+                        </a>
+                    </div>
+                    <div class="agency-map-box">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Hamdallaye+ACI+2000+Building+Mamadou+Yara+Bamako" target="_blank" rel="noopener" class="map-badge-link">
+                            <span data-fr="Ouvrir dans Maps" data-en="Open in Maps">Ouvrir dans Maps</span> ↗
+                        </a>
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Hamdallaye+ACI+2000+Bamako&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            loading="lazy" 
+                            title="Carte Agence Mali">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- CARTE GUINÉE -->
+                <div class="agency-card">
+                    <div class="agency-img-wrap">
+                        <img src="agence-guinee.png" class="agency-img" alt="Agence Guinée" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x200/cbd5e1/002664?text=Agence+Guin%C3%A9e';">
+                    </div>
+                    <div class="agency-body">
+                        <h3 class="agency-name" data-fr="Guinée" data-en="Guinea">Guinée</h3>
+                        <p class="agency-address">
+                            <strong data-fr="Adresse : " data-en="Address: ">Adresse : </strong>Marché Madina, Conakry
+                        </p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Marche+Madina+Conakry" target="_blank" rel="noopener" class="agency-btn-maps" data-fr="Voir sur Google Maps" data-en="View on Google Maps">
+                            Voir sur Google Maps
+                        </a>
+                    </div>
+                    <div class="agency-map-box">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Marche+Madina+Conakry" target="_blank" rel="noopener" class="map-badge-link">
+                            <span data-fr="Ouvrir dans Maps" data-en="Open in Maps">Ouvrir dans Maps</span> ↗
+                        </a>
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Marche+Madina+Conakry&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            loading="lazy" 
+                            title="Carte Agence Guinée">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FORMULAIRE DE CONTACT (FORMSPREE) -->
     <section class="parallax-section form-parallax" id="contact">
         <div class="parallax-overlay">
             <div class="float-shape float-shape-1"></div>
@@ -1008,9 +1230,7 @@
                 <h2 class="section-title" data-fr="Contactez-nous" data-en="Contact Us" style="color: white;">Contactez-nous</h2>
                 
                 <form class="glass-form" id="contactForm" action="https://formspree.io/f/mjyvavjd" method="POST">
-                    <!-- Sujet de l'email reçu sur Formspree -->
                     <input type="hidden" name="_subject" value="Nouveau message de contact - CCS">
-                    <!-- Anti-spam honeypot de Formspree -->
                     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                     <div class="form-row">
