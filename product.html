@@ -575,7 +575,7 @@
             background-color: #0ea5e9;
         }
 
-        /* ================= GRAND BOUTON ANIMÉ QUI BOUGE ================= */
+        /* ================= GRAND BOUTON ANIMÉ ================= */
         .cta-country-trigger-banner {
             width: 100%;
             margin: 45px 0 20px 0;
@@ -645,12 +645,8 @@
             animation: ctaFloatMotion 3s ease-in-out infinite;
         }
 
-        .btn-giant-cta:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        .btn-giant-cta:nth-child(3) {
-            animation-delay: 1s;
-        }
+        .btn-giant-cta:nth-child(2) { animation-delay: 0.5s; }
+        .btn-giant-cta:nth-child(3) { animation-delay: 1s; }
 
         @keyframes ctaFloatMotion {
             0%, 100% {
@@ -677,7 +673,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
-        /* ================= NOUVEAU : POCHETTE DÉPLIANTE (COLLAPSIBLE POCKET) ================= */
+        /* ================= POCHETTE DÉPLIANTE (COLLAPSIBLE POCKET) ================= */
         .countries-order-section {
             background-color: #f1f5f9;
             border-top: 3px solid #0ea5e9;
@@ -687,7 +683,6 @@
             transition: all 0.4s ease;
         }
 
-        /* La pochette contenant les tableaux est cachée et repliée par défaut */
         .pocket-collapsible-wrapper {
             max-height: 0;
             opacity: 0;
@@ -696,12 +691,11 @@
         }
 
         .pocket-collapsible-wrapper.open {
-            max-height: 5000px; /* Assez grand pour tout le contenu */
+            max-height: 5000px;
             opacity: 1;
             padding-top: 25px;
         }
 
-        /* Barre d'en-tête de la pochette active */
         .pocket-status-bar {
             display: flex;
             align-items: center;
@@ -733,7 +727,6 @@
             font-size: 12px;
         }
 
-        /* Bouton pour replier la pochette */
         .btn-fold-pocket {
             background: #ef4444;
             color: #ffffff;
@@ -802,9 +795,7 @@
         }
 
         @media (max-width: 980px) {
-            .country-showcase-split {
-                grid-template-columns: 1fr;
-            }
+            .country-showcase-split { grid-template-columns: 1fr; }
         }
 
         .country-side-agency-card {
@@ -1019,14 +1010,8 @@
             gap: 2px;
         }
 
-        .cart-item-info strong {
-            color: #002664;
-        }
-
-        .cart-item-info span {
-            color: #64748b;
-            font-size: 12px;
-        }
+        .cart-item-info strong { color: #002664; }
+        .cart-item-info span { color: #64748b; font-size: 12px; }
 
         .cart-item-actions {
             display: flex;
@@ -1053,9 +1038,7 @@
         }
 
         @media (max-width: 700px) {
-            .order-form-grid {
-                grid-template-columns: 1fr;
-            }
+            .order-form-grid { grid-template-columns: 1fr; }
         }
 
         .order-form-input {
@@ -1067,9 +1050,7 @@
             outline: none;
         }
 
-        .order-form-input:focus {
-            border-color: #0ea5e9;
-        }
+        .order-form-input:focus { border-color: #0ea5e9; }
 
         .btn-submit-order {
             background-color: #002664;
@@ -1090,9 +1071,7 @@
             transition: background 0.3s ease;
         }
 
-        .btn-submit-order:hover {
-            background-color: #0ea5e9;
-        }
+        .btn-submit-order:hover { background-color: #0ea5e9; }
 
         .order-status-msg {
             margin-top: 12px;
@@ -1227,6 +1206,102 @@
             line-height: 1.6;
         }
 
+        /* ================= SECTION CONDITIONNEMENT EN BOUCLE & ZOOM INTERACTIF ================= */
+        .conditioning-section {
+            width: 100%;
+            padding: 60px 0;
+            overflow: hidden;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .conditioning-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 35px 0;
+            position: relative;
+        }
+
+        /* Défilement continu infini */
+        .conditioning-carousel-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: scrollConditioningTrack 45s linear infinite;
+            will-change: transform;
+        }
+
+        /* Mise en pause du défilement au survol ou tactile */
+        .conditioning-carousel-container:hover .conditioning-carousel-track,
+        .conditioning-carousel-track.is-paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollConditioningTrack {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Carte avec effet d'élévation et zoom orienté sous la souris */
+        .conditioning-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            width: 270px;
+            height: 270px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e2e8f0;
+            flex-shrink: 0;
+            cursor: zoom-in;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        box-shadow 0.35s ease, 
+                        border-color 0.35s ease;
+            z-index: 1;
+        }
+
+        .conditioning-card:hover,
+        .conditioning-card.touched {
+            transform: scale(1.12) translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0, 38, 100, 0.25);
+            border-color: #0ea5e9;
+            z-index: 50;
+        }
+
+        .conditioning-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.25s ease-out;
+            pointer-events: none;
+        }
+
+        /* Zoom puissant de l'image au survol */
+        .conditioning-card:hover img,
+        .conditioning-card.touched img {
+            transform: scale(1.9); /* Zoom profond sous la souris */
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 38, 100, 0.88);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            z-index: 5;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        /* GALERIE DE CONTENEURS */
         .marquee-gallery-wrapper {
             position: relative;
             width: 100%;
@@ -1624,9 +1699,7 @@
             outline: none;
         }
 
-        .drawer-field-input:focus {
-            border-color: #0ea5e9;
-        }
+        .drawer-field-input:focus { border-color: #0ea5e9; }
 
         .drawer-btn-submit {
             background-color: #002664;
@@ -1645,9 +1718,7 @@
             transition: background 0.2s ease;
         }
 
-        .drawer-btn-submit:hover {
-            background-color: #0ea5e9;
-        }
+        .drawer-btn-submit:hover { background-color: #0ea5e9; }
 
         .drawer-form-status {
             font-size: 13px;
@@ -1663,7 +1734,6 @@
 
         .stats-section .section-title,
         .stats-section .section-subtitle { color: #fff; }
-
         .stats-section .section-separator { background-color: #ffffff; }
 
         .stats-grid {
@@ -1763,41 +1833,6 @@
         }
 
         .back-to-top.visible { opacity: 1; visibility: visible; }
-
-        .conditioning-section { width: 100%; padding: 50px 0; overflow: hidden; }
-        .conditioning-carousel-container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow-x: auto;
-            scrollbar-width: none;
-            padding: 10px 20px;
-        }
-        .conditioning-carousel-container::-webkit-scrollbar { display: none; }
-        .conditioning-carousel-track { display: flex; gap: 20px; width: max-content; }
-        .conditioning-card {
-            position: relative;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            width: 260px;
-            height: 260px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-            flex-shrink: 0;
-        }
-        .conditioning-card img { width: 100%; height: 100%; object-fit: cover; }
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(0, 38, 100, 0.85);
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
     </style>
 </head>
 <body>
@@ -1834,7 +1869,7 @@
     <section class="parallax-section hero-banner">
         <div class="parallax-overlay">
             <h1 class="hero-title">Nous sélectionnons des produits haut de gamme pour vous satisfaire</h1>
-            <p class="hero-subtitle">Découvrez notre sélection de produits PREMIUM et de qualité des fournisseurs renommés international.</p>
+            <p class="hero-subtitle">Découvrez notre sélection de produits PREMIUM et de qualité des fournisseurs renommés du monde entier.</p>
         </div>
     </section>
 
@@ -1865,14 +1900,13 @@
 
             <div class="products-grid-horizontal" id="foodGridContainer"></div>
 
-            <!-- ================= GRAND BOUTON ANIMÉ QUI DÉPLOIE LA POCHETTE ================= -->
+            <!-- GRAND BOUTON ANIMÉ QUI DÉPLOIE LA POCHETTE -->
             <div class="cta-country-trigger-banner">
                 <span class="cta-pulse-badge">Accès Direct aux Dépôts Locaux</span>
                 <h3 class="cta-banner-title">Disponibilité Immédiate en Stock par Pays</h3>
                 <p class="cta-banner-subtitle">Cliquez sur un bouton ci-dessous pour déplier la pochette des stocks et tableaux d'entrepôts de Dakar, Bamako ou Conakry.</p>
                 
                 <div class="cta-animated-buttons-wrap">
-                    <!-- Bouton Sénégal -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('senegal')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#00853F"/>
@@ -1884,7 +1918,6 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
 
-                    <!-- Bouton Mali -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('mali')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#14B53A"/>
@@ -1895,7 +1928,6 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
 
-                    <!-- Bouton Guinée -->
                     <button type="button" class="btn-giant-cta" onclick="openCountrySectionAndTab('guinee')">
                         <svg viewBox="0 0 900 600">
                             <rect width="300" height="600" fill="#CE1126"/>
@@ -1911,20 +1943,18 @@
         </div>
     </section>
 
-    <!-- ================= POCHETTE DÉPLIANTE (REPLIÉE PAR DÉFAUT) ================= -->
+    <!-- POCHETTE DÉPLIANTE (REPLIÉE PAR DÉFAUT) -->
     <section class="countries-order-section" id="commander-par-pays">
         <div class="container">
 
             <div class="pocket-collapsible-wrapper" id="pocketWrapper">
                 
-                <!-- Bandeau supérieur de la pochette avec bouton pour replier -->
                 <div class="pocket-status-bar">
                     <div class="pocket-status-info">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                         <span>Pochette d'inventaire ouverte : <span id="currentOpenedCountryLabel" class="pocket-status-badge">Sénégal (Dakar)</span></span>
                     </div>
 
-                    <!-- BOUTON POUR REPLIER LA POCHETTE -->
                     <button type="button" class="btn-fold-pocket" onclick="closeCountryPocket()" title="Replier la pochette">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
                         <span>Fermer / Replier la pochette</span>
@@ -1937,7 +1967,6 @@
                     <p class="section-subtitle">Chaque agence dispose de son stock dédié. Choisissez vos volumes et validez directement votre commande transmise à Formspree.</p>
                 </div>
 
-                <!-- Onglets de sélection -->
                 <div class="country-tabs-nav">
                     <button class="country-tab-btn active" id="tabBtn-senegal" onclick="switchCountryTable('senegal', this)">
                         <svg viewBox="0 0 900 600"><rect width="300" height="600" fill="#00853F"/><rect x="300" width="300" height="600" fill="#FDEF42"/><rect x="600" width="300" height="600" fill="#E31B23"/><polygon points="450,210 470,270 535,270 482,310 502,370 450,330 398,370 418,310 365,270 430,270" fill="#00853F"/></svg>
@@ -2103,7 +2132,7 @@
                     </div>
                 </div>
 
-                <!-- MINI PANIER & FORMULAIRE DE COMMANDE -->
+                <!-- MINI PANIER & FORMULAIRE -->
                 <div class="order-cart-box" id="orderCartBox">
                     <div class="order-cart-title">
                         <span style="display:flex; align-items:center; gap:8px;">
@@ -2134,7 +2163,7 @@
                     </form>
                 </div>
 
-            </div> <!-- Fin de .pocket-collapsible-wrapper -->
+            </div>
 
         </div>
     </section>
@@ -2173,30 +2202,31 @@
         </div>
     </section>
 
-    <!-- SECTION FORMATS DE CONDITIONNEMENT -->
+    <!-- ================= SECTION FORMATS DE CONDITIONNEMENT (EN BOUCLE & ZOOM INTERACTIF) ================= -->
     <section class="conditioning-section">
         <div class="section-header">
-            <h2>Faites vous livrer dans de brefs délais</h2>
-            <p class="section-subtitle">Découvrez nos formats de conditionnement</p>
+            <h2 class="section-title">Faites-vous livrer dans de brefs délais</h2>
+            <div class="section-separator"></div>
+            <p class="section-subtitle">Découvrez nos formats de conditionnement. <em>(Défilement continu — Survolez ou touchez une image pour zoomer dessus)</em></p>
         </div>
         
         <div class="conditioning-carousel-container" id="conditioningCarousel">
-            <div class="conditioning-carousel-track">
-                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="1..png" alt="Conditionnement 1"></div>
-                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="2.png" alt="Conditionnement 2"></div>
-                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="3.png" alt="Conditionnement 3"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="4.png" alt="Conditionnement 4"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="5.png" alt="Conditionnement 5"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="6.png" alt="Conditionnement 6"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="7.png" alt="Conditionnement 7"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="8.png" alt="Conditionnement 8"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="9.png" alt="Conditionnement 9"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="10.png" alt="Conditionnement 10"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="11.png" alt="Conditionnement 11"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="12.png" alt="Conditionnement 12"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="13.png" alt="Conditionnement 13"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="14.png" alt="Conditionnement 14"></div>
-                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="15.png" alt="Conditionnement 15"></div>
+            <div class="conditioning-carousel-track" id="conditioningTrack">
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="1..png" alt="Conditionnement 1" onerror="this.src='https://via.placeholder.com/300x300?text=CCS+1'"></div>
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="2.png" alt="Conditionnement 2" onerror="this.src='https://via.placeholder.com/300x300?text=CCS+2'"></div>
+                <div class="conditioning-card"><div class="card-badge">CCS</div><img src="3.png" alt="Conditionnement 3" onerror="this.src='https://via.placeholder.com/300x300?text=CCS+3'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="4.png" alt="Conditionnement 4" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+4'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="5.png" alt="Conditionnement 5" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+5'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="6.png" alt="Conditionnement 6" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+6'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="7.png" alt="Conditionnement 7" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+7'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="8.png" alt="Conditionnement 8" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+8'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="9.png" alt="Conditionnement 9" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+9'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="10.png" alt="Conditionnement 10" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+10'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="11.png" alt="Conditionnement 11" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+11'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="12.png" alt="Conditionnement 12" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+12'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="13.png" alt="Conditionnement 13" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+13'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="14.png" alt="Conditionnement 14" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+14'"></div>
+                <div class="conditioning-card"><div class="card-badge">Best Foods</div><img src="15.png" alt="Conditionnement 15" onerror="this.src='https://via.placeholder.com/300x300?text=BestFoods+15'"></div>
             </div>
         </div>
     </section>
@@ -2267,7 +2297,6 @@
 
             <div class="testimonials-carousel-wrapper" id="testimonialsCarouselWrapper">
                 <div class="testimonials-track" id="testimonialsTrack">
-                    <!-- Avis 1 -->
                     <div class="testimonial-card-marquee">
                         <div class="testimonial-stars">
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -2282,7 +2311,6 @@
                             <div class="testimonial-author-role">Partenaire Papeterie • Thiès, Sénégal</div>
                         </div>
                     </div>
-                    <!-- Avis 2 -->
                     <div class="testimonial-card-marquee">
                         <div class="testimonial-stars">
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -2297,7 +2325,6 @@
                             <div class="testimonial-author-role">Collaborateur Grossiste • Dakar</div>
                         </div>
                     </div>
-                    <!-- Avis 3 -->
                     <div class="testimonial-card-marquee">
                         <div class="testimonial-stars">
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -2306,7 +2333,7 @@
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         </div>
-                        <p class="testimonial-quote-text">« Les délais sont toujours respectés à chaque commande et la qualité des produits版本 impeccable et constante. CCS est vraiment un partenaire de confiance absolue. »</p>
+                        <p class="testimonial-quote-text">« Les délais sont toujours respectés à chaque commande et la qualité des produits impeccable et constante. CCS est vraiment un partenaire de confiance absolue. »</p>
                         <div class="testimonial-footer">
                             <div class="testimonial-author-name">18 SAFAR GROSSISTE</div>
                             <div class="testimonial-author-role">Grossiste Alimentaire • Touba, Sénégal</div>
@@ -2535,21 +2562,18 @@
     </div>
 
     <script>
-        // ================= GESTION DE LA POCHETTE DÉPLIANTE (OPEN / CLOSE POCKET) =================
+        // ================= GESTION DE LA POCHETTE DÉPLIANTE =================
         function openCountrySectionAndTab(countryKey) {
             const pocket = document.getElementById('pocketWrapper');
             const section = document.getElementById('commander-par-pays');
 
-            // 1. Déplier la pochette
             pocket.classList.add('open');
 
-            // 2. Mettre à jour l'onglet actif et le libellé
             const tabBtn = document.getElementById(`tabBtn-${countryKey}`);
             if (tabBtn) {
                 switchCountryTable(countryKey, tabBtn);
             }
 
-            // 3. Faire défiler en douceur vers la section
             setTimeout(() => {
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
@@ -2558,8 +2582,6 @@
         function closeCountryPocket() {
             const pocket = document.getElementById('pocketWrapper');
             pocket.classList.remove('open');
-            
-            // Remonter légèrement vers les boutons
             document.querySelector('.cta-country-trigger-banner').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
@@ -2572,13 +2594,57 @@
                 btnElement.classList.add('active');
             }
 
-            // Mettre à jour le badge de la pochette
             const names = {
                 senegal: 'Sénégal (Dakar)',
                 mali: 'Mali (Bamako)',
                 guinee: 'Guinée Conakry'
             };
             document.getElementById('currentOpenedCountryLabel').innerText = names[countryKey] || countryKey;
+        }
+
+        // ================= GESTION DU DÉFILEMENT EN BOUCLE ET DU ZOOM SUR LES CONDITIONNEMENTS =================
+        function initConditioningCarousel() {
+            const track = document.getElementById('conditioningTrack');
+            const container = document.getElementById('conditioningCarousel');
+            if (!track || !container) return;
+
+            // 1. Duplication automatique des cartes pour assurer une boucle infinie continue
+            track.innerHTML += track.innerHTML;
+
+            const cards = track.querySelectorAll('.conditioning-card');
+
+            // 2. Gestion du zoom interactif suivant la souris
+            cards.forEach(card => {
+                const img = card.querySelector('img');
+
+                // Quand la souris bouge sur la carte, on déplace le point focal du zoom exactement sous le curseur
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    img.style.transformOrigin = `${x}% ${y}%`;
+                });
+
+                // Réinitialisation quand la souris quitte la carte
+                card.addEventListener('mouseleave', () => {
+                    img.style.transformOrigin = 'center center';
+                });
+
+                // Support tactile sur mobile / tablette
+                card.addEventListener('touchstart', () => {
+                    cards.forEach(c => c.classList.remove('touched'));
+                    card.classList.add('touched');
+                    track.classList.add('is-paused');
+                }, { passive: true });
+            });
+
+            // Reprise du défilement après un toucher mobile
+            document.addEventListener('touchend', (e) => {
+                if (!container.contains(e.target)) {
+                    cards.forEach(c => c.classList.remove('touched'));
+                    track.classList.remove('is-paused');
+                }
+            }, { passive: true });
         }
 
         // ================= DONNÉES DE DISPONIBILITÉ PAR PAYS =================
@@ -3481,10 +3547,13 @@
             document.getElementById('backToTopBtn').classList.toggle('visible', window.scrollY > 400);
         });
 
-        // Initialisation générale
-        renderGrids();
-        renderCountryTables();
-        renderCart();
+        // Initialisation générale au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            renderGrids();
+            renderCountryTables();
+            renderCart();
+            initConditioningCarousel();
+        });
     </script>
 </body>
 </html>
